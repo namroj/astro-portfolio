@@ -1,5 +1,5 @@
 {
-  "name": "astro-portfolio",
+  "name": "namroj-astro-portfolio",
   "type": "module",
   "version": "0.0.1",
   "scripts": {
@@ -9,9 +9,6 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/mdx": "^4.2.1",
-    "@astrojs/rss": "^4.0.11",
-    "@astrojs/sitemap": "^3.3.0",
     "astro": "^5.5.4"
   }
 }
