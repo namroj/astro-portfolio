@@ -7,7 +7,7 @@ image:
     url: "https://docs.astro.build/assets/rays.webp"
     alt: "The Astro logo on a dark background with rainbow rays."
 pubDate: 2022-07-15
-tags: ["java", "desing-patter", "guard"]
+tags: ["java", "desing-patter", "guard", "clean-code"]
 draft: false
 ---
 

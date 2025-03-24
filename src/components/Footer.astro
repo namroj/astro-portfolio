@@ -34,6 +34,13 @@ const socials = [
 ];
 ---
 
+<footer>
+    <p>Learn more about my projects on</p>
+    <div class="socials">
+        {socials.map((social) => <Social {...social} />)}
+    </div>
+</footer>
+
 <style>
     footer {
         display: flex;
@@ -45,10 +52,3 @@ const socials = [
         gap: 1rem;
     }
 </style>
-
-<footer>
-    <p>Learn more about my projects on</p>
-    <div class="socials">
-        {socials.map((social) => <Social {...social} />)}
-    </div>
-</footer>

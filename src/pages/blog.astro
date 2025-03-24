@@ -1,7 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import BlogPost from "../components/BlogPost.astro";
-const posts = Object.values(import.meta.glob("./posts/*.md", { eager: true }));
+const allPosts = Object.values(import.meta.glob("./posts/*.md", { eager: true }));
 const title = {
     tab: "Blog",
     page: "Blog",
@@ -11,9 +11,11 @@ const title = {
 <Layout title={title}>
     <ul>
         {
-            posts
+            allPosts
                 .filter((post: any) => !post.frontmatter.draft)
                 .map((post: any) => <BlogPost url={post.url} title={post.frontmatter.title} />)
         }
     </ul>
+
+    <a href="/tags">Tags</a>
 </Layout>
