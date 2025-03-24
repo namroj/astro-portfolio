@@ -1,5 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import Greeting from "../components/Greeting.jsx";
 const title = {
 	tab: "",
 	page: "Jorman Espinoza",
@@ -8,4 +9,5 @@ const title = {
 
 <Layout title={title}>
 	<h2>Software Engineer</h2>
+	<Greeting client:load messages={["Hi", "Hello", "Howdy", "Hey there"]} />
 </Layout>
