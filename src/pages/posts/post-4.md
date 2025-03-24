@@ -1,0 +1,21 @@
+---
+layout: ../../layouts/MarkdownPostLayout.astro
+title: Guard pattern
+author: Jorman Espinoza
+description: "Guard pattern simplifies and improve code reading!"
+image:
+    url: "https://docs.astro.build/assets/rays.webp"
+    alt: "The Astro logo on a dark background with rainbow rays."
+pubDate: 2022-07-15
+tags: ["java", "desing-patter", "guard"]
+draft: false
+---
+
+```java
+public boolean legalAge(int age) {
+    if (age <= 18) {
+        return false;
+    }
+    return true;
+}
+```
