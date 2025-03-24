@@ -1,5 +1,4 @@
 ---
-layout: ../../layouts/MarkdownPostLayout.astro
 title: Guard pattern
 author: Jorman Espinoza
 description: "Guard pattern simplifies and improve code reading!"
