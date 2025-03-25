@@ -1,20 +1,20 @@
 import rss from '@astrojs/rss';
+import { pagesGlobToRssItems } from '@astrojs/rss';
+import { getCollection } from 'astro:content';
 
 export async function GET(context) {
-    const posts = await import.meta.glob('../blog/**/*.md', { eager: true });
-
-    const items = Object.values(posts).map((post) => ({
-        title: post.frontmatter.title,
-        description: post.frontmatter.description,
-        pubDate: post.frontmatter.pubDate,
-        link: `/blog/${post.file.split('/').pop().split('.').shift()}`,
-    }));
-
+    const posts = await getCollection("blog");
     return rss({
-        title: '[Blog] Jorman Espinoza',
-        description: 'Personal blog of Jorman Espinoza, Software Engineer',
+        title: 'Astro Learner | Blog',
+        description: 'My journey learning Astro',
         site: context.site,
-        items: items,
+        items: await pagesGlobToRssItems(import.meta.glob('./**/*.md')),
+        items: posts.map((post) => ({
+            title: post.data.title,
+            pubDate: post.data.pubDate,
+            description: post.data.description,
+            link: `/posts/${post.id}/`,
+        })),
         customData: `<language>en-us</language>`,
-    });
+    })
 }
