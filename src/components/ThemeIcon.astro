@@ -3,83 +3,73 @@
 ---
 
 <div class="themes">
-    <button id="light">
+    <button class="theme-btn theme-light">
         <svg
             width="25px"
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
         >
             <path
+                class="sun"
                 fill-rule="evenodd"
                 d="M12 17.5a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11zm0 1.5a7 7 0 1 0 0-14 7 7 0 0 0 0 14zm12-7a.8.8 0 0 1-.8.8h-2.4a.8.8 0 0 1 0-1.6h2.4a.8.8 0 0 1 .8.8zM4 12a.8.8 0 0 1-.8.8H.8a.8.8 0 0 1 0-1.6h2.5a.8.8 0 0 1 .8.8zm16.5-8.5a.8.8 0 0 1 0 1l-1.8 1.8a.8.8 0 0 1-1-1l1.7-1.8a.8.8 0 0 1 1 0zM6.3 17.7a.8.8 0 0 1 0 1l-1.7 1.8a.8.8 0 1 1-1-1l1.7-1.8a.8.8 0 0 1 1 0zM12 0a.8.8 0 0 1 .8.8v2.5a.8.8 0 0 1-1.6 0V.8A.8.8 0 0 1 12 0zm0 20a.8.8 0 0 1 .8.8v2.4a.8.8 0 0 1-1.6 0v-2.4a.8.8 0 0 1 .8-.8zM3.5 3.5a.8.8 0 0 1 1 0l1.8 1.8a.8.8 0 1 1-1 1L3.5 4.6a.8.8 0 0 1 0-1zm14.2 14.2a.8.8 0 0 1 1 0l1.8 1.7a.8.8 0 0 1-1 1l-1.8-1.7a.8.8 0 0 1 0-1z"
             ></path>
         </svg>
     </button>
-    <button id="dark">
+    <button class="theme-btn theme-dark">
         <svg
             width="25px"
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
         >
             <path
+                class="moon"
                 fill-rule="evenodd"
                 d="M16.5 6A10.5 10.5 0 0 1 4.7 16.4 8.5 8.5 0 1 0 16.4 4.7l.1 1.3zm-1.7-2a9 9 0 0 1 .2 2 9 9 0 0 1-11 8.8 9.4 9.4 0 0 1-.8-.3c-.4 0-.8.3-.7.7a10 10 0 0 0 .3.8 10 10 0 0 0 9.2 6 10 10 0 0 0 4-19.2 9.7 9.7 0 0 0-.9-.3c-.3-.1-.7.3-.6.7a9 9 0 0 1 .3.8z"
-            >
-            </path>
+            ></path>
         </svg>
     </button>
-    <button id="auto">
+    <button class="theme-btn theme-auto">
         <svg
             width="25px"
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
         >
             <path
+                class="system"
                 fill-rule="evenodd"
-                d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2zm0 1a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1V6a1 1 0 0 0-1-1H4zm0 1h16v8H4V6zm0 11v-1h16v1H4z"
-            >
-            </path>
+                d="M4 5a2 2 0 00-2 2v10a2 2 0 002 2h16a2 2 0 002-2V7a2 2 0 00-2-2H4zm16 2H4v10h16V7z M7 9a1 1 0 011-1h8a1 1 0 110 2H8a1 1 0 01-1-1zm1 3a1 1 0 100 2h8a1 1 0 100-2H8z"
+            ></path>
         </svg>
     </button>
 </div>
 
 <style>
-    button {
+    .theme-btn {
         border: solid 1px grey;
         border-radius: 0.5em;
         background: none;
         cursor: pointer;
         opacity: 0.5;
     }
-    button.active {
+    .theme-btn.active {
         border: solid 1px black;
         opacity: 1;
     }
-    :global(.dark) button.active svg {
+    .theme-light,
+    .theme-dark,
+    .theme-auto {
         fill: black;
     }
-    #light {
-        fill: black;
-    }
-    #dark {
-        fill: black;
-    }
-    #auto {
-        fill: black;
-    }
-    :global(.dark) #light {
-        fill: white;
-    }
-    :global(.dark) #dark {
-        fill: white;
-    }
-    :global(.dark) #auto {
-        fill: white;
-    }
-    :global(.dark) button.active {
+    :global(.dark) .theme-btn.active {
         border: solid 1px white;
     }
-    :global(.dark) button.active svg {
+    :global(.dark) .theme-btn.active svg {
+        fill: white;
+    }
+    :global(.dark) .theme-light,
+    :global(.dark) .theme-dark,
+    :global(.dark) .theme-auto {
         fill: white;
     }
 </style>
@@ -109,10 +99,11 @@
         document.documentElement.classList.add("dark");
     }
 
+    // Set initial active button based on stored theme setting
     const storedTheme = localStorage.getItem("theme") || "auto";
-    document.querySelectorAll(".themes button").forEach((btn) => {
+    document.querySelectorAll(".theme-btn").forEach((btn) => {
         btn.classList.remove("active");
-        if (btn.id === storedTheme) {
+        if (btn.classList.contains(`theme-${storedTheme}`)) {
             btn.classList.add("active");
         }
     });
@@ -120,29 +111,40 @@
     const handleThemeChange = (theme) => {
         const element = document.documentElement;
         if (theme === "auto") {
-            const isDark = window.matchMedia(
-                "(prefers-color-scheme: dark)",
-            ).matches;
+            const isDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
             element.classList.toggle("dark", isDark);
         } else {
             element.classList.toggle("dark", theme === "dark");
         }
-        document.querySelectorAll(".themes button").forEach((btn) => {
+        localStorage.setItem("theme", theme);
+
+        document.querySelectorAll(".theme-btn").forEach((btn) => {
             btn.classList.remove("active");
-            if (btn.id === theme) {
+            if (btn.classList.contains(`theme-${theme}`)) {
                 btn.classList.add("active");
             }
         });
-        localStorage.setItem("theme", theme);
     };
 
-    document
-        .getElementById("light")
-        ?.addEventListener("click", () => handleThemeChange("light"));
-    document
-        .getElementById("dark")
-        ?.addEventListener("click", () => handleThemeChange("dark"));
-    document
-        .getElementById("auto")
-        ?.addEventListener("click", () => handleThemeChange("auto"));
+    // Add click handlers for theme buttons
+    document.querySelectorAll(".theme-btn").forEach((btn) => {
+        btn.addEventListener("click", () => {
+            const theme = btn.classList.contains("theme-light") 
+                ? "light" 
+                : btn.classList.contains("theme-dark") 
+                    ? "dark" 
+                    : "auto";
+            handleThemeChange(theme);
+        });
+    });
+
+    if (window.matchMedia) {
+        window
+            .matchMedia("(prefers-color-scheme: dark)")
+            .addEventListener("change", (e) => {
+                if (localStorage.getItem("theme") === "auto") {
+                    handleThemeChange("auto");
+                }
+            });
+    }
 </script>
