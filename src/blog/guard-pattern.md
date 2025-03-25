@@ -49,8 +49,10 @@ public String validateUserRegistration(User user) {
         return "User object cannot be null";
     }
 }
+```
 
-// With guard pattern - clear and flat structure
+With guard pattern - clear and flat structure
+```java
 public String validateUserRegistration(User user) {
     // Guard clauses for null checks and basic validation
     if (user == null) {
@@ -110,7 +112,10 @@ public double calculateDiscount(Customer customer, Order order) {
         return 0;
     }
 }
+```
 
+With guard pattern - clear and flat structure
+```java
 // With guard pattern - flat and clear
 public double calculateDiscount(Customer customer, Order order) {
     // Guard clauses
