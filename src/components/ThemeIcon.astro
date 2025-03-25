@@ -111,7 +111,9 @@
     const handleThemeChange = (theme) => {
         const element = document.documentElement;
         if (theme === "auto") {
-            const isDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+            const isDark = window.matchMedia(
+                "(prefers-color-scheme: dark)",
+            ).matches;
             element.classList.toggle("dark", isDark);
         } else {
             element.classList.toggle("dark", theme === "dark");
@@ -129,11 +131,11 @@
     // Add click handlers for theme buttons
     document.querySelectorAll(".theme-btn").forEach((btn) => {
         btn.addEventListener("click", () => {
-            const theme = btn.classList.contains("theme-light") 
-                ? "light" 
-                : btn.classList.contains("theme-dark") 
-                    ? "dark" 
-                    : "auto";
+            const theme = btn.classList.contains("theme-light")
+                ? "light"
+                : btn.classList.contains("theme-dark")
+                  ? "dark"
+                  : "auto";
             handleThemeChange(theme);
         });
     });
