@@ -1,0 +1,28 @@
+---
+import { getCollection } from "astro:content";
+
+import Layout from "../layouts/Layout.astro";
+import Item from "../components/EducationItem.astro";
+
+const title = {
+    tab: "Education",
+    title: "Education",
+};
+
+const [education] = await getCollection("education");
+const items = education.data;
+---
+
+<Layout title={title}>
+    <p>
+        Here you'll find a journey through my academic and professional
+        education. This timeline shows the courses, certifications and studies
+        I've completed to stay up-to-date in the software development world. I
+        mainly focus on web technologies, software architecture, and programming
+        best practices.
+    </p>
+
+    <ul>
+        {items.map((item) => <Item item={item} />)}
+    </ul>
+</Layout>
