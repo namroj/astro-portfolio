@@ -5,61 +5,219 @@ type Education = CollectionEntry<"education">;
 
 interface Props {
     item: Education["data"][number];
+    isLast: boolean;
 }
 
-const { item } = Astro.props as Props;
-const { title, interval, entity, location, description, tags, certificate } =
-    item;
+const { item, isLast } = Astro.props;
+const { title, interval, entity, location, description, tags, certificate } = item;
 ---
 
-<li class="education-item">
-    <header class="education-header">
-        <h3>{title}</h3>
-        <span class="interval">{interval}</span>
-    </header>
-
-    <div class="entity-info">
-        <img
-            src={entity.image.path}
-            alt={entity.image.alt}
-            width="30"
-            height="30"
-        />
-        <a href={entity.url} target="_blank" rel="noopener noreferrer">
-            {entity.name}
-        </a>
-        <span class="location">{location}.</span>
+<li class="timeline-item" data-tags={tags.join(',')}>
+    <div class="timeline-connector">
+        <div class="timeline-dot"></div>
+        {!isLast && <div class="timeline-line"></div>}
     </div>
+    
+    <article class="timeline-content">
+        <header class="timeline-header">
+            <time class="timeline-date">{interval}</time>
+            <h3 class="timeline-title">{title}</h3>
+        </header>
 
-    <p class="description">{description}</p>
+        <div class="entity-info">
+            <img 
+                src={entity.image.path} 
+                alt={entity.image.alt}
+                class="entity-logo" 
+                width="30" 
+                height="30" 
+            />
+            <a href={entity.url} 
+               target="_blank" 
+               rel="noopener noreferrer" 
+               class="entity-name"
+            >
+                {entity.name}
+            </a>
+            <span class="location">{location}</span>
+        </div>
 
-    {
-        tags && (
-            <ul class="tags">
-                {tags.map((tag) => (
-                    <li class="tag">{tag}</li>
-                ))}
+        <p class="description">{description}</p>
+
+        {tags && (
+            <ul class="tags-list">
+                {tags.map(tag => <li class="tag">{tag}</li>)}
             </ul>
-        )
-    }
+        )}
 
-    {
-        certificate && (
-            <a
-                href={certificate}
-                class="certificate-link"
-                target="_blank"
+        {certificate && (
+            <a 
+                href={certificate} 
+                class="certificate-link" 
+                target="_blank" 
                 rel="noopener noreferrer"
             >
                 Ver certificado
             </a>
-        )
-    }
+        )}
+    </article>
 </li>
 
 <style>
-    .education-item {
-        /* Add your styles */
+    /* Mobile-first base styles */
+    .timeline-item {
+        position: relative;
+        display: grid;
+        grid-template-columns: 3rem 1fr;
+        gap: 1rem;
+        padding-bottom: 2rem;
     }
-    /* Add other style definitions */
+
+    .timeline-connector {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .timeline-dot {
+        width: 1rem;
+        height: 1rem;
+        background: #3b82f6;
+        border: 2px solid #fff;
+        border-radius: 50%;
+        box-shadow: 0 0 0 2px #3b82f6;
+        z-index: 2;
+    }
+
+    .timeline-line {
+        position: absolute;
+        top: 1rem;
+        width: 2px;
+        height: calc(100% + 2rem);
+        background: #e5e7eb;
+    }
+
+    .timeline-content {
+        background: white;
+        border-radius: 0.5rem;
+        padding: 1rem;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        border: 1px solid #e5e7eb;
+    }
+
+    .timeline-header {
+        display: flex;
+        flex-direction: column;
+        gap: 0.25rem;
+        margin-bottom: 1rem;
+    }
+
+    .timeline-date {
+        font-size: 0.875rem;
+        color: #6b7280;
+    }
+
+    .timeline-title {
+        font-size: 1.125rem;
+        font-weight: 600;
+        color: #111827;
+        margin: 0;
+    }
+
+    .entity-info {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 0.5rem;
+        margin-bottom: 1rem;
+    }
+
+    .entity-logo {
+        border-radius: 4px;
+        object-fit: cover;
+    }
+
+    .entity-name {
+        color: #4b5563;
+        text-decoration: none;
+        font-weight: 500;
+    }
+
+    .entity-name:hover {
+        color: #3b82f6;
+    }
+
+    .location {
+        color: #6b7280;
+        font-size: 0.875rem;
+        width: 100%;
+    }
+
+    .description {
+        color: #4b5563;
+        font-size: 0.875rem;
+        line-height: 1.5;
+        margin-bottom: 1rem;
+    }
+
+    .tags-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        list-style: none;
+        padding: 0;
+        margin-bottom: 1rem;
+    }
+
+    .tag {
+        background: #f3f4f6;
+        padding: 0.25rem 0.75rem;
+        border-radius: 9999px;
+        font-size: 0.75rem;
+        color: #4b5563;
+    }
+
+    .certificate-link {
+        display: inline-flex;
+        align-items: center;
+        color: #3b82f6;
+        text-decoration: none;
+        font-size: 0.875rem;
+    }
+
+    .certificate-link:hover {
+        text-decoration: underline;
+    }
+
+    /* Tablet and desktop styles */
+    @media (min-width: 768px) {
+        .timeline-item {
+            grid-template-columns: 4rem 1fr;
+            gap: 2rem;
+            padding-bottom: 3rem;
+        }
+
+        .timeline-content {
+            padding: 1.5rem;
+        }
+
+        .timeline-header {
+            flex-direction: row;
+            align-items: baseline;
+            gap: 1rem;
+        }
+
+        .timeline-title {
+            font-size: 1.25rem;
+        }
+
+        .location {
+            width: auto;
+        }
+
+        .description {
+            font-size: 1rem;
+        }
+    }
 </style>

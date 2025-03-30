@@ -3,6 +3,7 @@ import { getCollection } from "astro:content";
 
 import Layout from "../layouts/Layout.astro";
 import Item from "../components/EducationItem.astro";
+import EducationFilter from "../components/EducationFilter.astro";
 
 const title = {
     tab: "Education",
@@ -11,6 +12,7 @@ const title = {
 
 const [education] = await getCollection("education");
 const items = education.data;
+const tags = [...new Set(items.flatMap((item) => item.tags))];
 ---
 
 <Layout title={title}>
@@ -22,7 +24,34 @@ const items = education.data;
         best practices.
     </p>
 
-    <ul>
-        {items.map((item) => <Item item={item} />)}
-    </ul>
+    <section class="timeline-section">
+        <EducationFilter tags={tags} />
+        <ul class="timeline-list">
+            {
+                items.map((item, index) => (
+                    <Item item={item} isLast={index === items.length - 1} />
+                ))
+            }
+        </ul>
+    </section>
 </Layout>
+
+<style>
+    .timeline-section {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 1rem;
+    }
+
+    .timeline-list {
+        list-style: none;
+        padding: 0;
+        margin: 2rem 0;
+        position: relative;
+    }
+
+    /* Last item line adjustment */
+    .timeline-list > :last-child::before {
+        height: 2rem;
+    }
+</style>
