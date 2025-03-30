@@ -313,7 +313,8 @@ const { tags } = Astro.props;
         
         // Update filter buttons UI
         tagButtons.forEach((btn) => {
-            btn.classList.toggle('active', btn.dataset.tag === newTag);
+            const button = btn as HTMLElement;
+            button.classList.toggle('active', button.dataset.tag === newTag);
         });
 
         // Highlight matching tags
