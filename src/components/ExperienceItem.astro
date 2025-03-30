@@ -1,0 +1,266 @@
+---
+import type { CollectionEntry } from "astro:content";
+
+type Experience = CollectionEntry<"experience">;
+
+interface Props {
+    item: Experience["data"][number];
+    isLast: boolean;
+}
+
+const { item, isLast } = Astro.props;
+const { entity, interval, location, tags, positions } = item;
+---
+
+<li class="timeline-item" data-tags={tags.join(",")}>
+    <div class="timeline-connector">
+        <div class="timeline-dot"></div>
+        {!isLast && <div class="timeline-line" />}
+    </div>
+
+    <article class="timeline-content">
+        <header class="timeline-header">
+            <time class="timeline-date">{interval}</time>
+            <h3 class="timeline-title">{entity.title}</h3>
+        </header>
+
+        <div class="entity-info">
+            <img
+                src={entity.image.path}
+                alt={entity.image.alt}
+                class="entity-logo"
+                width="30"
+                height="30"
+            />
+            <a
+                href={entity.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="entity-name"
+            >
+                {entity.name}
+            </a>
+            <span class="location">{location}</span>
+        </div>
+
+        {
+            positions && (
+                <ul class="positions-list">
+                    {positions.map((position) => (
+                        <li class="position">
+                            <h4 class="position-title">{position.title}</h4>
+                            <ul class="position-description">
+                                {
+                                    position.description.split("||").map((description) => (
+                                        <li>{description}</li>
+                                    ))
+                                }
+                            </ul>
+                            <p class="position-highlight">{position.highlight}</p>
+                        </li>
+                    ))}
+                </ul>
+             
+            )
+        }
+
+        {
+            tags && (
+                <ul class="tags-list">
+                    {tags.map((tag) => (
+                        <li class="tag">{tag}</li>
+                    ))}
+                </ul>
+            )
+        }
+    </article>
+</li>
+
+<style>
+    /* Mobile-first base styles */
+    .timeline-item {
+        position: relative;
+        display: grid;
+        grid-template-columns: 3rem 1fr;
+        gap: 1rem;
+        padding-bottom: 2rem;
+    }
+
+    .timeline-connector {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .timeline-dot {
+        width: 1rem;
+        height: 1rem;
+        background: #3b82f6;
+        border: 2px solid #fff;
+        border-radius: 50%;
+        box-shadow: 0 0 0 2px #3b82f6;
+        z-index: 2;
+    }
+
+    .timeline-line {
+        position: absolute;
+        top: 1rem;
+        width: 2px;
+        height: calc(100% + 2rem);
+        background: #e5e7eb;
+    }
+
+    .timeline-content {
+        background: white;
+        border-radius: 0.5rem;
+        padding: 1rem;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        border: 1px solid #e5e7eb;
+    }
+
+    .timeline-header {
+        display: flex;
+        flex-direction: column;
+        gap: 0.25rem;
+        margin-bottom: 1rem;
+    }
+
+    .timeline-date {
+        font-size: 0.875rem;
+        color: #6b7280;
+    }
+
+    .timeline-title {
+        font-size: 1.125rem;
+        font-weight: 600;
+        color: #111827;
+        margin: 0;
+    }
+
+    .entity-info {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 0.5rem;
+        margin-bottom: 1rem;
+    }
+
+    .entity-logo {
+        border-radius: 4px;
+        object-fit: cover;
+    }
+
+    .entity-name {
+        color: #4b5563;
+        text-decoration: none;
+        font-weight: 500;
+    }
+
+    .entity-name:hover {
+        color: #3b82f6;
+    }
+
+    .location {
+        color: #6b7280;
+        font-size: 0.875rem;
+        width: 100%;
+    }
+
+    .description {
+        color: #4b5563;
+        font-size: 0.875rem;
+        line-height: 1.5;
+        margin-bottom: 1rem;
+    }
+
+    /* New styles for position classes */
+    .position {
+        padding: 1rem;
+        border: 1px solid #e5e7eb;
+        border-radius: 0.5rem;
+        margin-bottom: 1rem;
+        background: #f9fafb; /* Light background for separation */
+    }
+
+    .position-title {
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: #111827;
+        margin: 0 0 0.5rem 0; /* Margin for spacing */
+    }
+
+    .position-description {
+        color: #4b5563;
+        font-size: 0.875rem;
+        line-height: 1.4;
+        margin-bottom: 0.5rem; /* Margin for spacing */
+    }
+
+    .position-highlight {
+        background: #e0f7fa; /* Light blue background for highlights */
+        padding: 0.5rem;
+        border-radius: 0.25rem;
+        font-style: italic; /* Italic style for emphasis */
+    }
+
+    .tags-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        list-style: none;
+        padding: 0;
+        margin-bottom: 1rem;
+    }
+
+    .tag {
+        background: #f3f4f6;
+        padding: 0.25rem 0.75rem;
+        border-radius: 9999px;
+        font-size: 0.75rem;
+        color: #4b5563;
+    }
+
+    .certificate-link {
+        display: inline-flex;
+        align-items: center;
+        color: #3b82f6;
+        text-decoration: none;
+        font-size: 0.875rem;
+    }
+
+    .certificate-link:hover {
+        text-decoration: underline;
+    }
+
+    /* Tablet and desktop styles */
+    @media (min-width: 768px) {
+        .timeline-item {
+            grid-template-columns: 4rem 1fr;
+            gap: 2rem;
+            padding-bottom: 3rem;
+        }
+
+        .timeline-content {
+            padding: 1.5rem;
+        }
+
+        .timeline-header {
+            flex-direction: row;
+            align-items: baseline;
+            gap: 1rem;
+        }
+
+        .timeline-title {
+            font-size: 1.25rem;
+        }
+
+        .location {
+            width: auto;
+        }
+
+        .description {
+            font-size: 1rem;
+        }
+    }
+</style>

@@ -11,9 +11,9 @@ const { tags } = Astro.props;
                 placeholder="Find by keyword"
                 class="search-input"
             />
-            <button 
-                type="button" 
-                class="clear-search" 
+            <button
+                type="button"
+                class="clear-search"
                 id="clearSearch"
                 style="display: none;"
             >
@@ -102,7 +102,9 @@ const { tags } = Astro.props;
     }
 
     :global(.timeline-item) {
-        transition: opacity 0.3s ease, visibility 0.3s ease;
+        transition:
+            opacity 0.3s ease,
+            visibility 0.3s ease;
     }
 
     :global(.tag) {
@@ -179,7 +181,9 @@ const { tags } = Astro.props;
 </style>
 
 <script>
-    const searchInput = document.getElementById("searchInput") as HTMLInputElement;
+    const searchInput = document.getElementById(
+        "searchInput",
+    ) as HTMLInputElement;
     const tagButtons = document.querySelectorAll(".tag-btn");
     const educationItems = document.querySelectorAll(".timeline-item");
     const noResultsDiv = document.querySelector(".no-results") as HTMLElement;
@@ -297,29 +301,29 @@ const { tags } = Astro.props;
     }
 
     function highlightMatchingTags(activeTagValue: string) {
-        document.querySelectorAll('.tag').forEach((tagElement: Element) => {
+        document.querySelectorAll(".tag").forEach((tagElement: Element) => {
             const tag = tagElement as HTMLElement;
-            if (activeTagValue === 'all') {
-                tag.classList.remove('highlight-tag');
+            if (activeTagValue === "all") {
+                tag.classList.remove("highlight-tag");
             } else {
                 const matches = tag.textContent?.trim() === activeTagValue;
-                tag.classList.toggle('highlight-tag', matches);
+                tag.classList.toggle("highlight-tag", matches);
             }
         });
     }
 
     function setActiveTag(newTag: string) {
         activeTag = newTag;
-        
+
         // Update filter buttons UI
         tagButtons.forEach((btn) => {
             const button = btn as HTMLElement;
-            button.classList.toggle('active', button.dataset.tag === newTag);
+            button.classList.toggle("active", button.dataset.tag === newTag);
         });
 
         // Highlight matching tags
         highlightMatchingTags(newTag);
-        
+
         // Filter items
         filterItems();
     }
@@ -340,10 +344,10 @@ const { tags } = Astro.props;
     });
 
     // Add click handler for item tags
-    document.addEventListener('click', (e) => {
+    document.addEventListener("click", (e) => {
         const target = e.target as HTMLElement;
-        if (target.classList.contains('tag')) {
-            const tagText = target.textContent?.trim() || '';
+        if (target.classList.contains("tag")) {
+            const tagText = target.textContent?.trim() || "";
             setActiveTag(tagText);
         }
     });
@@ -354,7 +358,7 @@ const { tags } = Astro.props;
     // Show/hide clear button based on input content
     searchInput?.addEventListener("input", (e) => {
         clearTimeout(debounceTimeout);
-        
+
         const hasValue = (e.target as HTMLInputElement).value.length > 0;
         clearSearchBtn!.style.display = hasValue ? "block" : "none";
 
