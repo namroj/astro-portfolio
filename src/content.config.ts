@@ -2,7 +2,7 @@ import { glob } from "astro/loaders";
 import { z, defineCollection } from "astro:content";
 
 const blog = defineCollection({
-    loader: glob({ pattern: '**/[^_]*.md', base: "./src/content/blog" }),
+    loader: glob({ pattern: '**/[^_]*.md', base: "src/content/blog" }),
     schema: z.object({
         title: z.string(),
         pubDate: z.date(),
@@ -18,7 +18,7 @@ const blog = defineCollection({
 });
 
 export const experience = defineCollection({
-    loader: glob({ pattern: '**/experience.json', base: "./src/content" }),
+    loader: glob({ pattern: '**/experience.json', base: "src/content" }),
     schema: z.array(z.object({
         "entity": z.object({
             "name": z.string(),
@@ -41,7 +41,7 @@ export const experience = defineCollection({
 });
 
 export const education = defineCollection({
-    loader: glob({ pattern: '**/education.json', base: "./src/content" }),
+    loader: glob({ pattern: '**/education.json', base: "src/content" }),
     schema: z.array(z.object({
         title: z.string(),
         interval: z.string(),
@@ -61,7 +61,7 @@ export const education = defineCollection({
 });
 
 export const socials = defineCollection({
-    loader: glob({ pattern: '**/socials.json', base: "./src/content" }),
+    loader: glob({ pattern: '**/socials.json', base: "src/content" }),
     schema: z.array(z.object({
         url: z.string().url(),
         username: z.string(),
