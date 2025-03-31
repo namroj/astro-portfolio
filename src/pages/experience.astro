@@ -10,8 +10,7 @@ const title = {
     page: "Experience",
 };
 
-const [experience] = await getCollection("experience");
-const items = experience.data;
+const items = (await getCollection("experience"))[0].data;
 const tags = [...new Set(items.flatMap((item) => item.tags))];
 ---
 

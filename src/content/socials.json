@@ -1,0 +1,32 @@
+[
+    {
+        "url": "https://github.com",
+        "username": "namroj",
+        "platform": "GitHub"
+    },
+    {
+        "url": "https://www.linkedin.com/in",
+        "username": "jormanespinoza",
+        "platform": "LinkedIn"
+    },
+    {
+        "url": "https://x.com",
+        "username": "jormandev",
+        "platform": "X"
+    },
+    {
+        "url": "https://instagram.com",
+        "username": "jorman.dev",
+        "platform": "Instagram"
+    },
+    {
+        "url": "https://www.threads.net",
+        "username": "@jorman.dev",
+        "platform": "Threads"
+    },
+    {
+        "url": "https://bsky.app/profile",
+        "username": "jormandev.bsky.social",
+        "platform": "Bluesky"
+    }
+]

@@ -1,0 +1,18 @@
+---
+import { getCollection } from "astro:content";
+import Social from "./Social.astro";
+
+const socials = (await getCollection("socials"))[0].data;
+---
+
+<div class="socials">
+    {socials.map((social) => <Social {...social} />)}
+</div>
+
+<style>
+    .socials {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1em;
+    }
+</style>

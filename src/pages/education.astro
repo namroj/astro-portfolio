@@ -10,8 +10,7 @@ const title = {
     page: "Education",
 };
 
-const [education] = await getCollection("education");
-const items = education.data;
+const items = (await getCollection("education"))[0].data;
 const tags = [...new Set(items.flatMap((item) => item.tags))];
 ---
 

@@ -18,7 +18,7 @@ const blog = defineCollection({
 });
 
 export const experience = defineCollection({
-    loader: glob({ pattern: '**/*.json', base: "./src/content/experience" }),
+    loader: glob({ pattern: '**/experience.json', base: "./src/content" }),
     schema: z.array(z.object({
         "entity": z.object({
             "name": z.string(),
@@ -41,7 +41,7 @@ export const experience = defineCollection({
 });
 
 export const education = defineCollection({
-    loader: glob({ pattern: '**/*.json', base: "./src/content/education" }),
+    loader: glob({ pattern: '**/education.json', base: "./src/content" }),
     schema: z.array(z.object({
         title: z.string(),
         interval: z.string(),
@@ -60,4 +60,13 @@ export const education = defineCollection({
     }))
 });
 
-export const collections = { blog, education, experience };
+export const socials = defineCollection({
+    loader: glob({ pattern: '**/socials.json', base: "./src/content" }),
+    schema: z.array(z.object({
+        url: z.string().url(),
+        username: z.string(),
+        platform: z.string()
+    }))
+});
+
+export const collections = { blog, education, experience, socials };
