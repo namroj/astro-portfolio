@@ -1,0 +1,55 @@
+---
+import { getCollection } from "astro:content";
+
+import Layout from "../layouts/Layout.astro";
+import Filter from "../components/Filter.astro";
+import Item from "../components/ProjectItem.astro";
+
+const title = {
+    tab: "Projects",
+    title: "Projects",
+};
+
+const items = await getCollection("projects", ({ data }) => data.visible);
+const tags = [...new Set(items.flatMap((item) => item.data.tags))];
+---
+
+<Layout title={title}>
+    <p>
+        Here, you will find a diverse range of innovative and creative projects
+        that highlight my expertise in web development, design, and user
+        experience. From real estate platforms to artistic portfolios, each
+        project reflects my commitment to quality and functionality.
+    </p>
+
+    <section class="timeline-section">
+        <Filter tags={tags} />
+        <ul class="timeline-list">
+            {
+                items.map((item, index) => (
+                    <Item item={item} isLast={index === items.length - 1} />
+                ))
+            }
+        </ul>
+    </section>
+
+    <style>
+        .timeline-section {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 1rem;
+        }
+
+        .timeline-list {
+            list-style: none;
+            padding: 0;
+            margin: 2rem 0;
+            position: relative;
+        }
+
+        /* Last item line adjustment */
+        .timeline-list > :last-child::before {
+            height: 2rem;
+        }
+    </style>
+</Layout>

@@ -63,6 +63,7 @@ export const projects = defineCollection({
         name: z.string(),
         summary: z.string(),
         description: z.string(),
+        // TODO unified, bg_color, url, and add an alt propert y in a new object
         url: z.string().url(),
         logo: z.string(),
         bg_color: z.string(),
