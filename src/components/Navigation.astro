@@ -1,5 +1,5 @@
 ---
-const currentPath = new URL(Astro.request.url).pathname;
+const currentPath = Astro.url.pathname;
 ---
 
 <nav class="nav-links">
