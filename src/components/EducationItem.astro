@@ -1,15 +1,6 @@
 ---
-import type { CollectionEntry } from "astro:content";
-
-type Education = CollectionEntry<"education">;
-
-interface Props {
-    item: Education["data"][number];
-    isLast: boolean;
-}
-
 const { item, isLast } = Astro.props;
-const { title, interval, entity, location, description, tags, certificate } = item;
+const { title, interval, entity, location, description, tags, certificate } = item.data;
 ---
 
 <li class="timeline-item" data-tags={tags.join(',')}>
@@ -46,7 +37,7 @@ const { title, interval, entity, location, description, tags, certificate } = it
 
         {tags && (
             <ul class="tags-list">
-                {tags.map(tag => <li class="tag">{tag}</li>)}
+                {tags.map((tag: string) => <li class="tag">{tag}</li>)}
             </ul>
         )}
 

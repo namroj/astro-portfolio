@@ -10,8 +10,8 @@ const title = {
     page: "Education",
 };
 
-const items = (await getCollection("education"))[0].data;
-const tags = [...new Set(items.flatMap((item) => item.tags))];
+const items = await getCollection("education");
+const tags = [...new Set(items.flatMap((item) => item.data.tags))];
 ---
 
 <Layout title={title}>

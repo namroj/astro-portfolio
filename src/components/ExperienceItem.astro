@@ -4,12 +4,12 @@ import type { CollectionEntry } from "astro:content";
 type Experience = CollectionEntry<"experience">;
 
 interface Props {
-    item: Experience["data"][number];
+    item: Experience;
     isLast: boolean;
 }
 
 const { item, isLast } = Astro.props;
-const { entity, interval, location, positions, tags  } = item;
+const { entity, interval, location, positions, tags } = item.data;
 ---
 
 <li class="timeline-item" data-tags={tags.join(",")}>
@@ -50,17 +50,18 @@ const { entity, interval, location, positions, tags  } = item;
                         <li class="position">
                             <h4 class="position-title">{position.title}</h4>
                             <ul class="position-description">
-                                {
-                                    position.description.split("||").map((description) => (
+                                {position.description
+                                    .split("||")
+                                    .map((description) => (
                                         <li>{description}</li>
-                                    ))
-                                }
+                                    ))}
                             </ul>
-                            <p class="position-highlight">{position.highlight}</p>
+                            <p class="position-highlight">
+                                {position.highlight}
+                            </p>
                         </li>
                     ))}
                 </ul>
-             
             )
         }
 

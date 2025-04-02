@@ -1,395 +1,403 @@
 [
     {
-      "entity": {
-        "name": "Freelance",
-        "url": "https://jorman.dev/proyectos/freelance",
-        "image": {
-          "path": "/images/experience/freelance.jpeg",
-          "alt": "Freelance logo"
-        }
-      },
-      "location": "Buenos Aires, Argentina",
-      "interval": "Abr 2018 - Presente",
-      "positions": [
-        {
-          "title": "Desarrollador Full Stack",
-          "description": "Desarrollo de sitios web, landing pages, portafolios, blogs, tiendas virtuales, sistemas de gestión de contenido, entre otros.Modelado de bases de datos.||Despliegue de sitios a nivel Hosting.||Configuración de dominios y DNS.||Configuración de cuentas de correo.||Instalación/configuración y aplicación de WordPress, incluyendo personalización de temas y edición y aplicación de plugins PHP.||Armado de firmas de correo electrónico con HTML.",
-          "highlight": "Desarrollador autónomo en paralelo -clientes generados a través de networking y recomendaciones por compañeros de trabajo y referencias de clientes previos. Maquetado|Desarrollo de API con Java|Spring Boot.",
-          "interval": "Abr 2018 - Presente"
-        }
-      ],
-      "tags": [
-        "Freelance",
-        "Desarrollo",
-        "Web",
-        "Fullstack",
-        "Windows",
-        "Linux",
-        "API",
-        "HTML",
-        "WordPress",
-        "CSS",
-        "SASS",
-        "JavaScript",
-        "TypeScript",
-        "NodeJs",
-        "React",
-        "UmiJs",
-        "Java",
-        "Spring",
-        "PHP",
-        "MySQL",
-        "Dominio",
-        "Hosting",
-        "Illustrator",
-        "Photoshop",
-        "Figma",
-        "Google",
-        "Snazzy Maps",
-        "2018",
-        "Presente"
-      ]
-    },
-    {
-      "entity": {
-        "name": "Accenture",
-        "url": "https://www.accenture.com/ar-es/services/song/commerce-transformation",
-        "image": {
-          "path": "/images/experience/accenture-song.jpeg",
-          "alt": "Accenture Song logo"
-        }
-      },
-      "location": "Buenos Aires, Argentina",
-      "interval": "Abr 2022 - Presente",
-      "positions": [
-        {
-          "title": "Desarrollador Full Stack [Líder]",
-          "description": "Creación de diagramas de arquitectura, secuencia, flujo y entidad relación.||Inducción de procesos y proyectos a integrantes del equipo.||Desarrollo de una aplicación para el manejo interno de la documentación de proceso mediante una herramienta de generación de contenido estático.||Documentación de procesos.||Levantamiento/relevamiento de información con clientes y personal interno.",
-          "highlight": "Traspaso a un nuevo equipo como líder, pasando de tener algunos proyectos a muchos en poco tiempo -requirió una rápida adaptación para el avance, resolución y desarrollo de nuevas funcionalidades, además de mejorar habilidades en cuanto a liderazgo, negociación y organización.",
-          "interval": "Abr 2023 - Presente"
+        "id": "freelance",
+        "entity": {
+            "name": "Freelance",
+            "url": "https://jorman.dev/proyectos/freelance",
+            "image": {
+                "path": "/images/experience/freelance.jpeg",
+                "alt": "Freelance logo"
+            }
         },
-        {
-          "title": "Desarrollador Full Stack",
-          "description": "Desarrollo y mantenimiento de microservicios, librerías Y SDKs internas.||Optimización y actualización de aplicaciones.||Integración y documentación de APIs.||Aplicación de Arquitectura Hexagonal para la integración de módulos.",
-          "highlight": "Glamit es adquirida por Accenture, así que marca una transición dentro de la línea de tiempo. En esta etapa destaca la elaboración de un módulo completo para la gestión de stock de productos.",
-          "interval": "Ago 2022 - Abr 2023"
-        }
-      ],
-      "tags": [
-        "Accenture",
-        "Desarrollo",
-        "Web",
-        "Backend",
-        "Frontend",
-        "Windows",
-        "Linux",
-        "AWS",
-        "API",
-        "Microservicio",
-        "Serverless",
-        "Lambda",
-        "HTML",
-        "WordPress",
-        "CSS",
-        "JavaScript",
-        "TypeScript",
-        "NodeJs",
-        "React",
-        "UmiJs",
-        "Java",
-        "Spring",
-        "PHP",
-        "Magento",
-        "MySQL",
-        "VTEX",
-        "2022",
-        "Presente"
-      ]
+        "location": "Buenos Aires, Argentina",
+        "interval": "Abr 2018 - Presente",
+        "positions": [
+            {
+                "title": "Desarrollador Full Stack",
+                "description": "Desarrollo de sitios web, landing pages, portafolios, blogs, tiendas virtuales, sistemas de gestión de contenido, entre otros.Modelado de bases de datos.||Despliegue de sitios a nivel Hosting.||Configuración de dominios y DNS.||Configuración de cuentas de correo.||Instalación/configuración y aplicación de WordPress, incluyendo personalización de temas y edición y aplicación de plugins PHP.||Armado de firmas de correo electrónico con HTML.",
+                "highlight": "Desarrollador autónomo en paralelo -clientes generados a través de networking y recomendaciones por compañeros de trabajo y referencias de clientes previos. Maquetado|Desarrollo de API con Java|Spring Boot.",
+                "interval": "Abr 2018 - Presente"
+            }
+        ],
+        "tags": [
+            "Freelance",
+            "Desarrollo",
+            "Web",
+            "Fullstack",
+            "Windows",
+            "Linux",
+            "API",
+            "HTML",
+            "WordPress",
+            "CSS",
+            "SASS",
+            "JavaScript",
+            "TypeScript",
+            "NodeJs",
+            "React",
+            "UmiJs",
+            "Java",
+            "Spring",
+            "PHP",
+            "MySQL",
+            "Dominio",
+            "Hosting",
+            "Illustrator",
+            "Photoshop",
+            "Figma",
+            "Google",
+            "Snazzy Maps",
+            "2018",
+            "Presente"
+        ]
     },
     {
-      "entity": {
-        "name": "Glamit",
-        "url": "https://www.linkedin.com/company/glamit",
-        "image": {
-          "path": "/images/experience/glamit.jpeg",
-          "alt": "Glamit logo"
-        }
-      },
-      "location": "Buenos Aires, Argentina",
-      "interval": "Jul 2020 - Abr 2022",
-      "positions": [
-        {
-          "title": "Desarrollador Back End [Senior]",
-          "description": "Armado y aplicación de máquinas de estados <<mediante Spring Boot State Machine>> para el manejo de estados de las entidades base de proyectos para garantizar el correcto flujo de vida de los datos.||Documentación de procesos internos.",
-          "highlight": "Buen desempeño en la resolución de tareas llevaron a un ascenso tras haber participado en 2 proyectos clave -uno, un sistema de gestión de envío de compras a clientes .Y dos, un sistema gestor de productos y preparación de paquetes para entregas.",
-          "interval": "Jul 2021 - Abr 2022"
+        "id": "accenture-song",
+        "entity": {
+            "name": "Accenture",
+            "url": "https://www.accenture.com/ar-es/services/song/commerce-transformation",
+            "image": {
+                "path": "/images/experience/accenture-song.jpeg",
+                "alt": "Accenture Song logo"
+            }
         },
-        {
-          "title": "Desarrollador Back End [Semi Senior]",
-          "description": "Creación de diagramas entidad relación y modelado/mantenimiento/gestión de bases de datos.||Desarrollo de API RESTful.||Desarrollo y mantenimiento de microservicios mediante Spring Boot.||Desarrollo de servicios y procesos serverless para integraciones con AWS Lambda.||Desarrollo/mantenimiento de aplicaciones web con NodeJs, React y UmiJS.||Desarrollo de funciones en Java, PHP y Magento.",
-          "highlight": "La prueba técnica implicó el desarrollo de un Blog que manejará comentarios y likes, así como gestión de usuarios -esto con cualquier tecnología (la elegida fue Symfony con MySQL para el back y jQuery con Bootstrap para el front). No tenía fecha límite pero logré armarlo en 5 días y 4 largas noches.",
-          "interval": "Jul 2020 - Jun 2021"
-        }
-      ],
-      "tags": [
-        "Glamit",
-        "Desarrollo",
-        "Web",
-        "eCommerce",
-        "Backend",
-        "Windows",
-        "Linux",
-        "AWS",
-        "API",
-        "Microservicio",
-        "Serverless",
-        "Lambda",
-        "HTML",
-        "CSS",
-        "Bootstrap",
-        "JavaScript",
-        "TypeScript",
-        "NodeJs",
-        "React",
-        "UmiJs",
-        "Java",
-        "Spring",
-        "PHP",
-        "Magento",
-        "MySQL",
-        "Scrum",
-        "2020",
-        "2022"
-      ]
+        "location": "Buenos Aires, Argentina",
+        "interval": "Abr 2022 - Presente",
+        "positions": [
+            {
+                "title": "Desarrollador Full Stack [Líder]",
+                "description": "Creación de diagramas de arquitectura, secuencia, flujo y entidad relación.||Inducción de procesos y proyectos a integrantes del equipo.||Desarrollo de una aplicación para el manejo interno de la documentación de proceso mediante una herramienta de generación de contenido estático.||Documentación de procesos.||Levantamiento/relevamiento de información con clientes y personal interno.",
+                "highlight": "Traspaso a un nuevo equipo como líder, pasando de tener algunos proyectos a muchos en poco tiempo -requirió una rápida adaptación para el avance, resolución y desarrollo de nuevas funcionalidades, además de mejorar habilidades en cuanto a liderazgo, negociación y organización.",
+                "interval": "Abr 2023 - Presente"
+            },
+            {
+                "title": "Desarrollador Full Stack",
+                "description": "Desarrollo y mantenimiento de microservicios, librerías Y SDKs internas.||Optimización y actualización de aplicaciones.||Integración y documentación de APIs.||Aplicación de Arquitectura Hexagonal para la integración de módulos.",
+                "highlight": "Glamit es adquirida por Accenture, así que marca una transición dentro de la línea de tiempo. En esta etapa destaca la elaboración de un módulo completo para la gestión de stock de productos.",
+                "interval": "Ago 2022 - Abr 2023"
+            }
+        ],
+        "tags": [
+            "Accenture",
+            "Desarrollo",
+            "Web",
+            "Backend",
+            "Frontend",
+            "Windows",
+            "Linux",
+            "AWS",
+            "API",
+            "Microservicio",
+            "Serverless",
+            "Lambda",
+            "HTML",
+            "WordPress",
+            "CSS",
+            "JavaScript",
+            "TypeScript",
+            "NodeJs",
+            "React",
+            "UmiJs",
+            "Java",
+            "Spring",
+            "PHP",
+            "Magento",
+            "MySQL",
+            "VTEX",
+            "2022",
+            "Presente"
+        ]
     },
     {
-      "entity": {
-        "name": "REMOLINO",
-        "url": "https://remolino.org/es",
-        "image": {
-          "path": "/images/experience/remolino.jpeg",
-          "alt": "Remolino logo"
-        }
-      },
-      "location": "Buenos Aires, Argentina",
-      "interval": "Oct 2017 - Jun 2020",
-      "positions": [
-        {
-          "title": "Desarrollador Web",
-          "description": "Generación de sitios web personalizados incluyendo sistemas gestores de contenido (CMS) específicos para cada proyecto/cliente basados en un framework PHP específico de la organización, así como también el uso de Symfony 4.||Maquetación, corrección y mantenimiento de los mismos.||Generación de firmas de mail (HTML).||Diseño/creación/gestión de bases de datos.||Manejo de herramientas de diseño como Adobe Photoshop e Illustrator para la gestión de imágenes y elementos de diseño a llevar a los sitios.||Integración con la API de Google Maps junto con Snazzy Maps para generar/aplicar mapas personalizados.||Generación de manuales de usuario e inducción online/presencial a clientes acerca del manejo de sus respectivos sitios.",
-          "highlight": "Primer trabajo en Argentina. Desarrollo continuo de sitios para clientes variados mayoritariamente en las áreas de Marketing/Diseño y Real Estate, tanto nacionales como internacionales -esto representó un reto por la diversidad de requerimientos y necesidades de los clientes. Al ser un equipo pequeño de desarrolladores, se requería de un alto grado de comunicación y organización para llevar a cabo los proyectos de manera exitosa - destacar el buen manejo del líder de tecnología (gracias Tomy!) quien trajo mucho aprendizaje no sólo a nivel técnico sino también en cuanto a la gestión del equipo/tiempos/priorización de tareas así como habilidades blandas.",
-          "interval": "Oct 2017 - Jun 2020"
-        }
-      ],
-      "tags": [
-        "Remolino",
-        "Desarrollo",
-        "Web",
-        "Windows",
-        "Linux",
-        "HTML",
-        "WordPress",
-        "CSS",
-        "SASS",
-        "LESS",
-        "JavaScript",
-        "jQuery",
-        "React",
-        "Google",
-        "Snazzy Maps",
-        "PHP",
-        "Laravel",
-        "MySQL",
-        "Photoshop",
-        "Illustrator",
-        "2017",
-        "2020"
-      ]
-    },
-    {
-      "entity": {
-        "name": "3D LINK",
-        "url": "https://www.3dlinkweb.com",
-        "image": {
-          "path": "/images/experience/3dlink.jpeg",
-          "alt": "3D Link logo"
-        }
-      },
-      "location": "Caracas, Venezuela",
-      "interval": "Ene 2017 - Dic 2018",
-      "positions": [
-        {
-          "title": "Desarrollador Web",
-          "description": "Generación de sitios web mediante HTML, CSS, PHP, JavaScript, jQuery incluyendo WordPress y frameworks como Laravel.||Edición de temas y plugins para WordPress, adaptaciones, implementaciones de diseños específicas para los distintos clientes.||Implementación de sitios web a nivel de servidor.||Inducción presencial a clientes acerca del manejo de sus respectivos sitios web, así como la generación video tutoriales y manuales de procedimiento acerca del manejo de herramientas y sitios web.",
-          "highlight": "Afianzamiento en la aplicación de tecnologías y manejo de CMS -desarrollo de un gestor de tareas y asignaciones dentro del equipo <<utilizando Laravel>>.",
-          "interval": "Ene 2017 - Dic 2018"
-        }
-      ],
-      "tags": [
-        "3DLink",
-        "Comunicación",
-        "Gestión",
-        "Soporte",
-        "Desarrollo",
-        "Web",
-        "Windows",
-        "Linux",
-        "HTML",
-        "WordPress",
-        "CSS",
-        "Bootstrap",
-        "JavaScript",
-        "jQuery",
-        "PHP",
-        "Laravel",
-        "MySQL",
-        "Scrum",
-        "2017",
-        "2018"
-      ]
-    },
-    {
-      "entity": {
-        "name": "Key Systems",
-        "url": "https://twitter.com/keysystemsca",
-        "image": {
-          "path": "/images/experience/key-systems.jpeg",
-          "alt": "Key Systems logo"
-        }
-      },
-      "location": "Estado Miranda, Venezuela",
-      "interval": "Abr 2014 - Dic 2016",
-      "positions": [
-        {
-          "title": "Desarrollador Web",
-          "description": "Elaboración de sitios web mediante HTML, CSS, PHP, JavaScript incluyendo WordPress, PrestaShop, Joomla y WIX como gestores de contenido.||Edición de temas y plugins para WordPress, adaptaciones, implementaciones de diseños específicas para clientes.||Implementación de sitios web a nivel de servidor.||Soporte en línea para usuarios en cuanto el manejo de sus respectivos sitios web.||Creación de Video tutoriales acerca del manejo de herramientas y sitios web.||Elaboración de manuales de usuario.",
-          "highlight": "Primer trabajo en desarrollo web. Aprendizaje de nuevas tecnologías, manejo de CMS, creación de múltiples sitios web (desde páginas sencillas hasta tiendas virtuales) -agradecimiento siempre para esta Startup por la oportunidad brindada.",
-          "interval": "Abr 2014 - Dic 2016"
-        }
-      ],
-      "tags": [
-        "KeySystems",
-        "Comunicación",
-        "Gestión",
-        "Soporte",
-        "Desarrollo",
-        "Web",
-        "Windows",
-        "Linux",
-        "HTML",
-        "WordPress",
-        "CSS",
-        "Bootstrap",
-        "JavaScript",
-        "jQuery",
-        "PHP",
-        "MySQL",
-        "2014",
-        "2016"
-      ]
-    },
-    {
-      "entity": {
-        "name": "BBVA Provincial",
-        "url": "https://www.provincial.com",
-        "image": {
-          "path": "/images/experience/bbva-provincial.jpeg",
-          "alt": "BBVA Provincial logo"
-        }
-      },
-      "location": "Caracas, Venezuela",
-      "interval": "Mar 2010 - Sep 2014",
-      "positions": [
-        {
-          "title": "Analista de Soporte Informático",
-          "description": "Soporte telefónico a la red de oficinas a nivel nacional.||Soporte remoto mediante la herramienta DameWare para equipos con S.O. Windows.||Atención remota con Putty a estaciones de trabajo Windows, Linux, servidores de oficina.||Registro, atención y canalización de casos web a través de la herramienta CRM (Microsoft).||Activación y desbloqueo de terminales de usuarios y oficinas a través del Emulador 3270.||Monitoreo de ATMs (manejo y distribución del total de cajeros automáticos a monitorear entre gestores, canalización y gestión de fallas y/o consultas, validación de estado de ATMs).||Soporte técnico de primer nivel a red oficinas (activación de servicios, importación de datos estadísticos).||Soporte de primer nivel en el área de Seguridad Lógica.||Reinicio y desbloqueo de claves de acceso de usuarios.||Monitoreo de equipos de comunicación de las oficinas (routers, switches, servidores).||Canalización y escalamiento de fallas con las distintas áreas resolutorias.",
-          "highlight": "Resolución de problemas variados, manejo de herramientas de soporte remoto, atención telefónica y remota, manejo de herramientas de monitoreo y gestión de fallas.",
-          "interval": "Mar 2011 - Set 2014"
+        "id": "glamit",
+        "entity": {
+            "name": "Glamit",
+            "url": "https://www.linkedin.com/company/glamit",
+            "image": {
+                "path": "/images/experience/glamit.jpeg",
+                "alt": "Glamit logo"
+            }
         },
-        {
-          "title": "Gestor de Requerimientos Especiales",
-          "description": "Atención telefónica a todo el personal interno a nivel nacional en las áreas de Diseño y Desarrollo (D&D).||Gestión, canalización y escalamiento de requerimientos vía web de parte del personal de D&D  hacia las distintas Áreas Resolutorias.||Coordinación y planificación de proyectos en conjunto con las áreas de D&D, Implantación, Homologación y Producción.||Canalización de pases emergentes (programas, modificaciones, scripts) hacia el entorno de producción.||Auditoría y seguimiento de proyectos de D&D, llevados al ambiente de producción.",
-          "highlight": "Capacidad de organización, planificación y comunicación. Redacción y envío de emails -debido a constante comunicación con personal de D&D y áreas resolutorias tanto telefónica, remota y presencial.",
-          "interval": "Mar 2010 - Mar 2011"
-        }
-      ],
-      "tags": [
-        "BBVA",
-        "Comunicación",
-        "Atención",
-        "Cliente",
-        "Gestión",
-        "Informática",
-        "Soporte",
-        "Técnico",
-        "Microsoft",
-        "Windows",
-        "Linux",
-        "2010",
-        "2014"
-      ]
+        "location": "Buenos Aires, Argentina",
+        "interval": "Jul 2020 - Abr 2022",
+        "positions": [
+            {
+                "title": "Desarrollador Back End [Senior]",
+                "description": "Armado y aplicación de máquinas de estados <<mediante Spring Boot State Machine>> para el manejo de estados de las entidades base de proyectos para garantizar el correcto flujo de vida de los datos.||Documentación de procesos internos.",
+                "highlight": "Buen desempeño en la resolución de tareas llevaron a un ascenso tras haber participado en 2 proyectos clave -uno, un sistema de gestión de envío de compras a clientes .Y dos, un sistema gestor de productos y preparación de paquetes para entregas.",
+                "interval": "Jul 2021 - Abr 2022"
+            },
+            {
+                "title": "Desarrollador Back End [Semi Senior]",
+                "description": "Creación de diagramas entidad relación y modelado/mantenimiento/gestión de bases de datos.||Desarrollo de API RESTful.||Desarrollo y mantenimiento de microservicios mediante Spring Boot.||Desarrollo de servicios y procesos serverless para integraciones con AWS Lambda.||Desarrollo/mantenimiento de aplicaciones web con NodeJs, React y UmiJS.||Desarrollo de funciones en Java, PHP y Magento.",
+                "highlight": "La prueba técnica implicó el desarrollo de un Blog que manejará comentarios y likes, así como gestión de usuarios -esto con cualquier tecnología (la elegida fue Symfony con MySQL para el back y jQuery con Bootstrap para el front). No tenía fecha límite pero logré armarlo en 5 días y 4 largas noches.",
+                "interval": "Jul 2020 - Jun 2021"
+            }
+        ],
+        "tags": [
+            "Glamit",
+            "Desarrollo",
+            "Web",
+            "eCommerce",
+            "Backend",
+            "Windows",
+            "Linux",
+            "AWS",
+            "API",
+            "Microservicio",
+            "Serverless",
+            "Lambda",
+            "HTML",
+            "CSS",
+            "Bootstrap",
+            "JavaScript",
+            "TypeScript",
+            "NodeJs",
+            "React",
+            "UmiJs",
+            "Java",
+            "Spring",
+            "PHP",
+            "Magento",
+            "MySQL",
+            "Scrum",
+            "2020",
+            "2022"
+        ]
     },
     {
-      "entity": {
-        "name": "CANTV",
-        "url": "https://www.cantv.com.ve",
-        "image": {
-          "path": "/images/experience/cantv.jpeg",
-          "alt": "CANTV logo"
-        }
-      },
-      "location": "Caracas, Venezuela",
-      "interval": "Ene 2010 - Mar 2010",
-      "positions": [
-        {
-          "title": "Operador telefónico",
-          "description": "Servicio 113 de CANTV. Agente de atención al cliente. Responsable de proveer datos en base a recepción de solicitudes de información (números telefónicos y direcciones) de locales, establecimientos, hospitales, empresas, entre otros.",
-          "highlight": "Velocidad en la gestión, rapidez de respuesta, seguimiento de procedimientos y metodologías -30 segundos era la cantidad máxima esperada de tiempo de respuesta de cara al cliente con una media de 300 llamadas durante la jornada.",
-          "interval": "Ene 2010 - Mar 2010"
-        }
-      ],
-      "tags": [
-        "CANTV",
-        "Comunicación",
-        "Atención",
-        "Cliente",
-        "Gestión",
-        "2010"
-      ]
-    },
-    {
-      "entity": {
-        "name": "DIRECTV",
-        "url": "https://www.directvla.com/es.html",
-        "image": {
-          "path": "/images/experience/directv.jpeg",
-          "alt": "DIRECTV logo"
-        }
-      },
-      "location": "Caracas, Venezuela",
-      "interval": "Ene 2009 - Dic 2009",
-      "positions": [
-        {
-          "title": "Actualizador de datos",
-          "description": "Actualizador de datos de las carteras de clientes, verificando y actualizando la información de los mismos.",
-          "highlight": "Capacidad de organización y velocidad en la gestión -debido a meta diaria de actualización de datos.",
-          "interval": "Jul 2009 - Dic 2009"
+        "id": "remolino",
+        "entity": {
+            "name": "REMOLINO",
+            "url": "https://remolino.org/es",
+            "image": {
+                "path": "/images/experience/remolino.jpeg",
+                "alt": "Remolino logo"
+            }
         },
-        {
-          "title": "Agente de cobranzas",
-          "description": "Realizando llamadas a los clientes para gestionar el pago de sus facturas.",
-          "highlight": "Mejor comunicación/manejo con/de clientes -todo un reto al tener que comunicar aspectos negativos a clientes.",
-          "interval": "Ene 2009 - Jun 2009"
-        }
-      ],
-      "tags": [
-        "DIRECTV",
-        "Comunicación",
-        "Atención",
-        "Cliente",
-        "2009",
-        "2010"
-      ]
+        "location": "Buenos Aires, Argentina",
+        "interval": "Oct 2017 - Jun 2020",
+        "positions": [
+            {
+                "title": "Desarrollador Web",
+                "description": "Generación de sitios web personalizados incluyendo sistemas gestores de contenido (CMS) específicos para cada proyecto/cliente basados en un framework PHP específico de la organización, así como también el uso de Symfony 4.||Maquetación, corrección y mantenimiento de los mismos.||Generación de firmas de mail (HTML).||Diseño/creación/gestión de bases de datos.||Manejo de herramientas de diseño como Adobe Photoshop e Illustrator para la gestión de imágenes y elementos de diseño a llevar a los sitios.||Integración con la API de Google Maps junto con Snazzy Maps para generar/aplicar mapas personalizados.||Generación de manuales de usuario e inducción online/presencial a clientes acerca del manejo de sus respectivos sitios.",
+                "highlight": "Primer trabajo en Argentina. Desarrollo continuo de sitios para clientes variados mayoritariamente en las áreas de Marketing/Diseño y Real Estate, tanto nacionales como internacionales -esto representó un reto por la diversidad de requerimientos y necesidades de los clientes. Al ser un equipo pequeño de desarrolladores, se requería de un alto grado de comunicación y organización para llevar a cabo los proyectos de manera exitosa - destacar el buen manejo del líder de tecnología (gracias Tomy!) quien trajo mucho aprendizaje no sólo a nivel técnico sino también en cuanto a la gestión del equipo/tiempos/priorización de tareas así como habilidades blandas.",
+                "interval": "Oct 2017 - Jun 2020"
+            }
+        ],
+        "tags": [
+            "Remolino",
+            "Desarrollo",
+            "Web",
+            "Windows",
+            "Linux",
+            "HTML",
+            "WordPress",
+            "CSS",
+            "SASS",
+            "LESS",
+            "JavaScript",
+            "jQuery",
+            "React",
+            "Google",
+            "Snazzy Maps",
+            "PHP",
+            "Laravel",
+            "MySQL",
+            "Photoshop",
+            "Illustrator",
+            "2017",
+            "2020"
+        ]
+    },
+    {
+        "id": "3dlink",
+        "entity": {
+            "name": "3D LINK",
+            "url": "https://www.3dlinkweb.com",
+            "image": {
+                "path": "/images/experience/3dlink.jpeg",
+                "alt": "3D Link logo"
+            }
+        },
+        "location": "Caracas, Venezuela",
+        "interval": "Ene 2017 - Dic 2018",
+        "positions": [
+            {
+                "title": "Desarrollador Web",
+                "description": "Generación de sitios web mediante HTML, CSS, PHP, JavaScript, jQuery incluyendo WordPress y frameworks como Laravel.||Edición de temas y plugins para WordPress, adaptaciones, implementaciones de diseños específicas para los distintos clientes.||Implementación de sitios web a nivel de servidor.||Inducción presencial a clientes acerca del manejo de sus respectivos sitios web, así como la generación video tutoriales y manuales de procedimiento acerca del manejo de herramientas y sitios web.",
+                "highlight": "Afianzamiento en la aplicación de tecnologías y manejo de CMS -desarrollo de un gestor de tareas y asignaciones dentro del equipo <<utilizando Laravel>>.",
+                "interval": "Ene 2017 - Dic 2018"
+            }
+        ],
+        "tags": [
+            "3DLink",
+            "Comunicación",
+            "Gestión",
+            "Soporte",
+            "Desarrollo",
+            "Web",
+            "Windows",
+            "Linux",
+            "HTML",
+            "WordPress",
+            "CSS",
+            "Bootstrap",
+            "JavaScript",
+            "jQuery",
+            "PHP",
+            "Laravel",
+            "MySQL",
+            "Scrum",
+            "2017",
+            "2018"
+        ]
+    },
+    {
+        "id": "key-systems",
+        "entity": {
+            "name": "Key Systems",
+            "url": "https://twitter.com/keysystemsca",
+            "image": {
+                "path": "/images/experience/key-systems.jpeg",
+                "alt": "Key Systems logo"
+            }
+        },
+        "location": "Estado Miranda, Venezuela",
+        "interval": "Abr 2014 - Dic 2016",
+        "positions": [
+            {
+                "title": "Desarrollador Web",
+                "description": "Elaboración de sitios web mediante HTML, CSS, PHP, JavaScript incluyendo WordPress, PrestaShop, Joomla y WIX como gestores de contenido.||Edición de temas y plugins para WordPress, adaptaciones, implementaciones de diseños específicas para clientes.||Implementación de sitios web a nivel de servidor.||Soporte en línea para usuarios en cuanto el manejo de sus respectivos sitios web.||Creación de Video tutoriales acerca del manejo de herramientas y sitios web.||Elaboración de manuales de usuario.",
+                "highlight": "Primer trabajo en desarrollo web. Aprendizaje de nuevas tecnologías, manejo de CMS, creación de múltiples sitios web (desde páginas sencillas hasta tiendas virtuales) -agradecimiento siempre para esta Startup por la oportunidad brindada.",
+                "interval": "Abr 2014 - Dic 2016"
+            }
+        ],
+        "tags": [
+            "KeySystems",
+            "Comunicación",
+            "Gestión",
+            "Soporte",
+            "Desarrollo",
+            "Web",
+            "Windows",
+            "Linux",
+            "HTML",
+            "WordPress",
+            "CSS",
+            "Bootstrap",
+            "JavaScript",
+            "jQuery",
+            "PHP",
+            "MySQL",
+            "2014",
+            "2016"
+        ]
+    },
+    {
+        "id": "bbva-provincial",
+        "entity": {
+            "name": "BBVA Provincial",
+            "url": "https://www.provincial.com",
+            "image": {
+                "path": "/images/experience/bbva-provincial.jpeg",
+                "alt": "BBVA Provincial logo"
+            }
+        },
+        "location": "Caracas, Venezuela",
+        "interval": "Mar 2010 - Sep 2014",
+        "positions": [
+            {
+                "title": "Analista de Soporte Informático",
+                "description": "Soporte telefónico a la red de oficinas a nivel nacional.||Soporte remoto mediante la herramienta DameWare para equipos con S.O. Windows.||Atención remota con Putty a estaciones de trabajo Windows, Linux, servidores de oficina.||Registro, atención y canalización de casos web a través de la herramienta CRM (Microsoft).||Activación y desbloqueo de terminales de usuarios y oficinas a través del Emulador 3270.||Monitoreo de ATMs (manejo y distribución del total de cajeros automáticos a monitorear entre gestores, canalización y gestión de fallas y/o consultas, validación de estado de ATMs).||Soporte técnico de primer nivel a red oficinas (activación de servicios, importación de datos estadísticos).||Soporte de primer nivel en el área de Seguridad Lógica.||Reinicio y desbloqueo de claves de acceso de usuarios.||Monitoreo de equipos de comunicación de las oficinas (routers, switches, servidores).||Canalización y escalamiento de fallas con las distintas áreas resolutorias.",
+                "highlight": "Resolución de problemas variados, manejo de herramientas de soporte remoto, atención telefónica y remota, manejo de herramientas de monitoreo y gestión de fallas.",
+                "interval": "Mar 2011 - Set 2014"
+            },
+            {
+                "title": "Gestor de Requerimientos Especiales",
+                "description": "Atención telefónica a todo el personal interno a nivel nacional en las áreas de Diseño y Desarrollo (D&D).||Gestión, canalización y escalamiento de requerimientos vía web de parte del personal de D&D  hacia las distintas Áreas Resolutorias.||Coordinación y planificación de proyectos en conjunto con las áreas de D&D, Implantación, Homologación y Producción.||Canalización de pases emergentes (programas, modificaciones, scripts) hacia el entorno de producción.||Auditoría y seguimiento de proyectos de D&D, llevados al ambiente de producción.",
+                "highlight": "Capacidad de organización, planificación y comunicación. Redacción y envío de emails -debido a constante comunicación con personal de D&D y áreas resolutorias tanto telefónica, remota y presencial.",
+                "interval": "Mar 2010 - Mar 2011"
+            }
+        ],
+        "tags": [
+            "BBVA",
+            "Comunicación",
+            "Atención",
+            "Cliente",
+            "Gestión",
+            "Informática",
+            "Soporte",
+            "Técnico",
+            "Microsoft",
+            "Windows",
+            "Linux",
+            "2010",
+            "2014"
+        ]
+    },
+    {
+        "id": "cantv",
+        "entity": {
+            "name": "CANTV",
+            "url": "https://www.cantv.com.ve",
+            "image": {
+                "path": "/images/experience/cantv.jpeg",
+                "alt": "CANTV logo"
+            }
+        },
+        "location": "Caracas, Venezuela",
+        "interval": "Ene 2010 - Mar 2010",
+        "positions": [
+            {
+                "title": "Operador telefónico",
+                "description": "Servicio 113 de CANTV. Agente de atención al cliente. Responsable de proveer datos en base a recepción de solicitudes de información (números telefónicos y direcciones) de locales, establecimientos, hospitales, empresas, entre otros.",
+                "highlight": "Velocidad en la gestión, rapidez de respuesta, seguimiento de procedimientos y metodologías -30 segundos era la cantidad máxima esperada de tiempo de respuesta de cara al cliente con una media de 300 llamadas durante la jornada.",
+                "interval": "Ene 2010 - Mar 2010"
+            }
+        ],
+        "tags": [
+            "CANTV",
+            "Comunicación",
+            "Atención",
+            "Cliente",
+            "Gestión",
+            "2010"
+        ]
+    },
+    {
+        "id": "directv",
+        "entity": {
+            "name": "DIRECTV",
+            "url": "https://www.directvla.com/es.html",
+            "image": {
+                "path": "/images/experience/directv.jpeg",
+                "alt": "DIRECTV logo"
+            }
+        },
+        "location": "Caracas, Venezuela",
+        "interval": "Ene 2009 - Dic 2009",
+        "positions": [
+            {
+                "title": "Actualizador de datos",
+                "description": "Actualizador de datos de las carteras de clientes, verificando y actualizando la información de los mismos.",
+                "highlight": "Capacidad de organización y velocidad en la gestión -debido a meta diaria de actualización de datos.",
+                "interval": "Jul 2009 - Dic 2009"
+            },
+            {
+                "title": "Agente de cobranzas",
+                "description": "Realizando llamadas a los clientes para gestionar el pago de sus facturas.",
+                "highlight": "Mejor comunicación/manejo con/de clientes -todo un reto al tener que comunicar aspectos negativos a clientes.",
+                "interval": "Ene 2009 - Jun 2009"
+            }
+        ],
+        "tags": [
+            "DIRECTV",
+            "Comunicación",
+            "Atención",
+            "Cliente",
+            "2009",
+            "2010"
+        ]
     }
-  ]
-  
+]

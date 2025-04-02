@@ -1,4 +1,4 @@
-import { glob } from "astro/loaders";
+import { file, glob } from "astro/loaders";
 import { z, defineCollection } from "astro:content";
 
 const blog = defineCollection({
@@ -18,8 +18,9 @@ const blog = defineCollection({
 });
 
 export const experience = defineCollection({
-    loader: glob({ pattern: '**/experience.json', base: "src/content" }),
-    schema: z.array(z.object({
+    loader: file("src/content/experience.json"),
+    schema: z.object({
+        id: z.string(),
         "entity": z.object({
             "name": z.string(),
             "url": z.string().url(),
@@ -37,12 +38,13 @@ export const experience = defineCollection({
             "interval": z.string()
         })),
         "tags": z.array(z.string())
-    }))
+    })
 });
 
 export const education = defineCollection({
-    loader: glob({ pattern: '**/education.json', base: "src/content" }),
-    schema: z.array(z.object({
+    loader: file("src/content/education.json"),
+    schema: z.object({
+        id: z.string(),
         title: z.string(),
         interval: z.string(),
         entity: z.object({
@@ -57,16 +59,17 @@ export const education = defineCollection({
         description: z.string(),
         tags: z.array(z.string()),
         certificate: z.string().optional()
-    }))
+    })
 });
 
 export const socials = defineCollection({
-    loader: glob({ pattern: '**/socials.json', base: "src/content" }),
-    schema: z.array(z.object({
+    loader: file("src/content/socials.json"),
+    schema: z.object({
+        id: z.string(),
         url: z.string().url(),
         username: z.string(),
         platform: z.string()
-    }))
+    })
 });
 
 export const collections = { blog, education, experience, socials };
