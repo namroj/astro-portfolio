@@ -8,8 +8,11 @@ const currentPath = new URL(Astro.request.url).pathname;
     <a href="/education" class={currentPath === "/education" ? "active" : ""}>
         Education
     </a>
-    <a href="/experience" class={currentPath === "/experience" ? "active" : ""}
-        >Experience
+    <a href="/experience" class={currentPath === "/experience" ? "active" : ""}>
+        Experience
+    </a>
+    <a href="/projects" class={currentPath === "/project" ? "active" : ""}>
+        Projects
     </a>
     <a
         href="/blog"
