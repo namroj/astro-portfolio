@@ -9,3 +9,18 @@ import Navigation from "./Navigation.astro";
         <Navigation />
     </nav>
 </header>
+
+<script>
+    import "../scripts/menu.js";
+</script>
+
+<style>
+    nav {
+        display: flex;
+        justify-content: flex-end
+    }
+
+    .expanded {
+        flex-direction: column;
+    }
+</style>

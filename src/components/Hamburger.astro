@@ -5,5 +5,53 @@
 <div class="hamburger">
     <div class="line"></div>
     <div class="line"></div>
-    <div class="line"></div>
 </div>
+
+<style>
+    .hamburger {
+        cursor: pointer;
+        margin-left: auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 40px;
+        height: 40px;
+        position: relative;
+    }
+
+    .hamburger .line {
+        width: 40px;
+        height: 5px;
+        background-color: #4c1d95;
+        transition:
+            transform 0.3s ease-in-out,
+            opacity 0.2s ease-in-out;
+        position: absolute;
+    }
+
+    /* Position first line */
+    .hamburger .line:nth-of-type(1) {
+        top: 12px;
+    }
+
+    /* Position second line */
+    .hamburger .line:nth-of-type(2) {
+        bottom: 12px;
+    }
+
+    /* Expanded State */
+    .expanded .line:nth-of-type(1) {
+        transform: rotate(45deg) translateY(8px);
+    }
+
+    .expanded .line:nth-of-type(2) {
+        transform: rotate(-45deg) translateY(-8px);
+    }
+
+    @media screen and (min-width: 768px) {
+        .hamburger {
+            display: none;
+        }
+    }
+</style>

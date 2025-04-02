@@ -27,13 +27,20 @@ const currentPath = Astro.url.pathname;
 <style>
     .nav-links {
         display: flex;
-        gap: 1rem;
+        justify-content: flex-end;
+        width: 100%;
+        gap: 1em;
+        display: none;
+        margin: 0;
     }
 
     .nav-links a {
-        background-color: transparent;
         text-decoration: none;
-        color: var(--text-color);
+        display: block;
+        text-align: right;
+        width: auto;
+        font-size: 1.2em;
+        color: grey;
     }
 
     .nav-links a:hover {
@@ -43,5 +50,15 @@ const currentPath = Astro.url.pathname;
 
     .nav-links a.active {
         color: purple;
+    }
+
+    .expanded {
+        display: unset;
+    }
+
+    @media screen and (min-width: 768px) {
+        .nav-links {
+            display: flex;
+        }
     }
 </style>
