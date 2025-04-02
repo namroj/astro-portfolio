@@ -7,4 +7,3 @@ hamburger.addEventListener('click', () => {
     hamburger.classList.toggle('expanded');
     nav.classList.toggle('expanded');
 });
-
