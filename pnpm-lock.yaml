@@ -9,14 +9,14 @@ importers:
   .:
     dependencies:
       '@astrojs/preact':
-        specifier: ^4.0.6
-        version: 4.0.6(@babel/core@7.26.10)(preact@10.26.4)
+        specifier: ^4.0.8
+        version: 4.0.8(@babel/core@7.26.10)(preact@10.26.4)
       '@astrojs/rss':
         specifier: ^4.0.11
         version: 4.0.11
       astro:
-        specifier: ^5.5.4
-        version: 5.5.4(rollup@4.36.0)(typescript@5.8.2)
+        specifier: ^5.6.1
+        version: 5.6.1(rollup@4.36.0)(typescript@5.8.2)
       preact:
         specifier: ^10.26.4
         version: 10.26.4
@@ -36,8 +36,8 @@ packages:
   '@astrojs/markdown-remark@6.3.1':
     resolution: {integrity: sha512-c5F5gGrkczUaTVgmMW9g1YMJGzOtRvjjhw6IfGuxarM6ct09MpwysP10US729dy07gg8y+ofVifezvP3BNsWZg==}
 
-  '@astrojs/preact@4.0.6':
-    resolution: {integrity: sha512-SmfQU2cuEqWBHFf/X0rwHK1MKbrzuOBDg3Es02p7iXNLE0iysXVin5wNiFh/+EDxk0jcLN3zPggK7a14wVnBjA==}
+  '@astrojs/preact@4.0.8':
+    resolution: {integrity: sha512-hrHRzto0vOAYajhI/4YyUdm6EfDP39RpLQlqOpDC1Lzs7KBLmWjqIknG0BI1DcW1lK/1SaC3SVgB+JzwiDWGUw==}
     engines: {node: ^18.17.1 || ^20.3.0 || >=22.0.0}
     peerDependencies:
       preact: ^10.6.5
@@ -430,8 +430,8 @@ packages:
   '@preact/signals-core@1.8.0':
     resolution: {integrity: sha512-OBvUsRZqNmjzCZXWLxkZfhcgT+Fk8DDcT/8vD6a1xhDemodyy87UJRJfASMuSD8FaAIeGgGm85ydXhm7lr4fyA==}
 
-  '@preact/signals@2.0.1':
-    resolution: {integrity: sha512-f9p/utMgttPb9bJ+UgRBkTDZ9uQiZfX1/gV3pXGWz+yGNQj8MrnG55Xo8MAG4IHcb5UXQO6tvt9ZlsM4A2j+Rw==}
+  '@preact/signals@2.0.3':
+    resolution: {integrity: sha512-ZdC6w8+LdCMeALEoJgzwEAGw2YahqWGCQLfzRCRvRGC411SzcJOiti5gEqrSN+tKtGqMgicHtQ/eUUxWGTBw0A==}
     peerDependencies:
       preact: 10.x
 
@@ -639,8 +639,8 @@ packages:
   array-iterate@2.0.1:
     resolution: {integrity: sha512-I1jXZMjAgCMmxT4qxXfPXa6SthSoE8h6gkSI9BGGNv8mP8G/v0blc+qFnZu6K42vTOiuME596QaLO0TP3Lk0xg==}
 
-  astro@5.5.4:
-    resolution: {integrity: sha512-rc9Mj6dIKM9ylTSQ0/S1l5f1iSDNs0PEjRMnvVpZ0W+wfBCu99JEuXy+fiWDNT6gf60bC4dKQehZxZGdSJB9kg==}
+  astro@5.6.1:
+    resolution: {integrity: sha512-aQ2TV7wIf+q2Oi6gGWMINHWEAZqoP0eH6/mihodfTJYATPWyd03JIGVfjtYUJlkNdNSKxDXwEe/r/Zx4CZ1FPg==}
     engines: {node: ^18.17.1 || ^20.3.0 || >=22.0.0, npm: '>=9.6.5', pnpm: '>=7.1.0'}
     hasBin: true
 
@@ -1411,8 +1411,8 @@ packages:
   ufo@1.5.4:
     resolution: {integrity: sha512-UsUk3byDzKd04EyoZ7U4DOlxQaD14JUKQl6/P7wiX4FNvUfm3XL246n9W5AmqwW5RSFJ27NAuM0iLscAOYUiGQ==}
 
-  ultrahtml@1.5.3:
-    resolution: {integrity: sha512-GykOvZwgDWZlTQMtp5jrD4BVL+gNn2NVlVafjcFUJ7taY20tqYdwdoWBFy6GBJsNTZe1GkGPkSl5knQAjtgceg==}
+  ultrahtml@1.6.0:
+    resolution: {integrity: sha512-R9fBn90VTJrqqLDwyMph+HGne8eqY1iPfYhPzZrvKpIfwkWZbcYlfpsb8B9dTvBfpy1/hqAD7Wi8EKfP9e8zdw==}
 
   uncrypto@0.1.3:
     resolution: {integrity: sha512-Ql87qFHB3s/De2ClA9e0gsnS6zXG27SkTiSJwjCc9MebbfapQfuPzumMIUMi38ezPZVNFcHI9sUIepeQfw8J8Q==}
@@ -1524,8 +1524,8 @@ packages:
   vite-prerender-plugin@0.5.7:
     resolution: {integrity: sha512-NSn/lewd0dZn8+mXvv9aXv6Wy7vx2wN5myawZc2YIFcVfrkcqEQVAjsOuWRWprovBHNplWIiPgEoUats8nt8+g==}
 
-  vite@6.2.2:
-    resolution: {integrity: sha512-yW7PeMM+LkDzc7CgJuRLMW2Jz0FxMOsVJ8Lv3gpgW9WLcb9cTW+121UEr1hvmfR7w3SegR5ItvYyzVz1vxNJgQ==}
+  vite@6.2.5:
+    resolution: {integrity: sha512-j023J/hCAa4pRIUH6J9HemwYfjB5llR2Ps0CWeikOtdR8+pAURAk0DoJC5/mm9kd+UgdnIy7d6HE4EAvlYhPhA==}
     engines: {node: ^18.0.0 || ^20.0.0 || >=22.0.0}
     hasBin: true
     peerDependencies:
@@ -1663,16 +1663,16 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@astrojs/preact@4.0.6(@babel/core@7.26.10)(preact@10.26.4)':
+  '@astrojs/preact@4.0.8(@babel/core@7.26.10)(preact@10.26.4)':
     dependencies:
       '@babel/plugin-transform-react-jsx': 7.25.9(@babel/core@7.26.10)
       '@babel/plugin-transform-react-jsx-development': 7.25.9(@babel/core@7.26.10)
-      '@preact/preset-vite': 2.10.1(@babel/core@7.26.10)(preact@10.26.4)(vite@6.2.2)
-      '@preact/signals': 2.0.1(preact@10.26.4)
+      '@preact/preset-vite': 2.10.1(@babel/core@7.26.10)(preact@10.26.4)(vite@6.2.5)
+      '@preact/signals': 2.0.3(preact@10.26.4)
       babel-plugin-transform-hook-names: 1.0.2(@babel/core@7.26.10)
       preact: 10.26.4
       preact-render-to-string: 6.5.13(preact@10.26.4)
-      vite: 6.2.2
+      vite: 6.2.5
     transitivePeerDependencies:
       - '@babel/core'
       - '@types/node'
@@ -2010,17 +2010,17 @@ snapshots:
 
   '@oslojs/encoding@1.1.0': {}
 
-  '@preact/preset-vite@2.10.1(@babel/core@7.26.10)(preact@10.26.4)(vite@6.2.2)':
+  '@preact/preset-vite@2.10.1(@babel/core@7.26.10)(preact@10.26.4)(vite@6.2.5)':
     dependencies:
       '@babel/core': 7.26.10
       '@babel/plugin-transform-react-jsx': 7.25.9(@babel/core@7.26.10)
       '@babel/plugin-transform-react-jsx-development': 7.25.9(@babel/core@7.26.10)
-      '@prefresh/vite': 2.4.7(preact@10.26.4)(vite@6.2.2)
+      '@prefresh/vite': 2.4.7(preact@10.26.4)(vite@6.2.5)
       '@rollup/pluginutils': 4.2.1
       babel-plugin-transform-hook-names: 1.0.2(@babel/core@7.26.10)
       debug: 4.4.0
       kolorist: 1.8.0
-      vite: 6.2.2
+      vite: 6.2.5
       vite-prerender-plugin: 0.5.7
     transitivePeerDependencies:
       - preact
@@ -2028,7 +2028,7 @@ snapshots:
 
   '@preact/signals-core@1.8.0': {}
 
-  '@preact/signals@2.0.1(preact@10.26.4)':
+  '@preact/signals@2.0.3(preact@10.26.4)':
     dependencies:
       '@preact/signals-core': 1.8.0
       preact: 10.26.4
@@ -2041,7 +2041,7 @@ snapshots:
 
   '@prefresh/utils@1.2.0': {}
 
-  '@prefresh/vite@2.4.7(preact@10.26.4)(vite@6.2.2)':
+  '@prefresh/vite@2.4.7(preact@10.26.4)(vite@6.2.5)':
     dependencies:
       '@babel/core': 7.26.10
       '@prefresh/babel-plugin': 0.5.1
@@ -2049,7 +2049,7 @@ snapshots:
       '@prefresh/utils': 1.2.0
       '@rollup/pluginutils': 4.2.1
       preact: 10.26.4
-      vite: 6.2.2
+      vite: 6.2.5
     transitivePeerDependencies:
       - supports-color
 
@@ -2203,7 +2203,7 @@ snapshots:
 
   array-iterate@2.0.1: {}
 
-  astro@5.5.4(rollup@4.36.0)(typescript@5.8.2):
+  astro@5.6.1(rollup@4.36.0)(typescript@5.8.2):
     dependencies:
       '@astrojs/compiler': 2.11.0
       '@astrojs/internal-helpers': 0.6.1
@@ -2250,12 +2250,12 @@ snapshots:
       tinyexec: 0.3.2
       tinyglobby: 0.2.12
       tsconfck: 3.1.5(typescript@5.8.2)
-      ultrahtml: 1.5.3
+      ultrahtml: 1.6.0
       unist-util-visit: 5.0.0
       unstorage: 1.15.0
       vfile: 6.0.3
-      vite: 6.2.2
-      vitefu: 1.0.6(vite@6.2.2)
+      vite: 6.2.5
+      vitefu: 1.0.6(vite@6.2.5)
       xxhash-wasm: 1.1.0
       yargs-parser: 21.1.1
       yocto-spinner: 0.2.1
@@ -3342,7 +3342,7 @@ snapshots:
 
   ufo@1.5.4: {}
 
-  ultrahtml@1.5.3: {}
+  ultrahtml@1.6.0: {}
 
   uncrypto@0.1.3: {}
 
@@ -3439,7 +3439,7 @@ snapshots:
       source-map: 0.7.4
       stack-trace: 1.0.0-pre2
 
-  vite@6.2.2:
+  vite@6.2.5:
     dependencies:
       esbuild: 0.25.1
       postcss: 8.5.3
@@ -3447,9 +3447,9 @@ snapshots:
     optionalDependencies:
       fsevents: 2.3.3
 
-  vitefu@1.0.6(vite@6.2.2):
+  vitefu@1.0.6(vite@6.2.5):
     optionalDependencies:
-      vite: 6.2.2
+      vite: 6.2.5
 
   web-namespaces@2.0.1: {}
 
