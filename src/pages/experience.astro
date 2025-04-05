@@ -1,5 +1,5 @@
 ---
-import { getCollection } from "astro:content";
+import {getCollection} from "astro:content";
 
 import Layout from "../layouts/Layout.astro";
 import Item from "../components/ExperienceItem.astro";
@@ -27,11 +27,11 @@ const tags = [...new Set(items.flatMap((item) => item.data.tags))];
     </p>
 
     <section class="timeline-section">
-        <Filter tags={tags} />
+        <Filter tags={tags}/>
         <ul class="timeline-list">
             {
                 items.map((item, index) => (
-                    <Item item={item} isLast={index === items.length - 1} />
+                        <Item item={item} isLast={index === items.length - 1}/>
                 ))
             }
         </ul>
@@ -41,17 +41,15 @@ const tags = [...new Set(items.flatMap((item) => item.data.tags))];
         .timeline-section {
             max-width: 800px;
             margin: 0 auto;
-            padding: 1rem;
+            padding: 1em;
         }
 
         .timeline-list {
-            list-style: none;
             padding: 0;
             margin: 2rem 0;
             position: relative;
         }
 
-        /* Last item line adjustment */
         .timeline-list > :last-child::before {
             height: 2rem;
         }

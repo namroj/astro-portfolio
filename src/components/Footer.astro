@@ -14,17 +14,17 @@ import Themes from "./Themes.astro";
 <style>
     footer {
         position: fixed;
+        z-index: 3;
         bottom: 0;
         left: 0;
         width: 100%;
         height: 80px;
-        padding: 1em;
-        border-top: 1px solid #e4e4e4;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
+        padding: 1em;
+        border-top: 1px solid #8e8e8e;
         background-color: #f1f5f9;
-        z-index: 3;
     }
 
     :global(.dark) footer {
@@ -39,8 +39,8 @@ import Themes from "./Themes.astro";
     }
 
     footer.expanded {
+        z-index: 4;
         background-color: transparent;
         border-top-color: transparent;
-        z-index: 4;
     }
 </style>

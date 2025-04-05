@@ -4,25 +4,25 @@ import Footer from "../components/Footer.astro";
 import "../styles/reset.css";
 import "../styles/global.css";
 
-const { title } = Astro.props;
+const {title} = Astro.props;
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>
-			{title.tab && `[${title.tab}]`} Jorman Espinoza | Software Engineer
-		</title>
-	</head>
-	<body>
-		<Header />
-		<main>
-			<h1>{title.page}</h1>
-			<slot />
-		</main>
-		<Footer />
-	</body>
+<html lang="es">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg"/>
+    <meta name="generator" content={Astro.generator}/>
+    <title>
+        {title.tab && `[${title.tab}]`} Jorman Espinoza | Software Engineer
+    </title>
+</head>
+<body>
+<Header/>
+<main>
+    <h1>{title.page}</h1>
+    <slot/>
+</main>
+<Footer/>
+</body>
 </html>

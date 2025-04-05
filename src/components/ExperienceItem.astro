@@ -1,5 +1,5 @@
 ---
-import type { CollectionEntry } from "astro:content";
+import type {CollectionEntry} from "astro:content";
 
 type Experience = CollectionEntry<"experience">;
 
@@ -8,14 +8,15 @@ interface Props {
     isLast: boolean;
 }
 
-const { item, isLast } = Astro.props;
-const { entity, interval, location, positions, tags } = item.data;
+const {item, isLast} = Astro.props;
+const {entity, interval, location, positions, tags} = item.data;
 ---
 
 <li class="timeline-item" data-tags={tags.join(",")}>
     <div class="timeline-connector">
         <div class="timeline-dot"></div>
-        {!isLast && <div class="timeline-line" />}
+        {!isLast &&
+                <div class="timeline-line"/>}
     </div>
 
     <article class="timeline-content">
@@ -26,17 +27,17 @@ const { entity, interval, location, positions, tags } = item.data;
 
         <div class="entity-info">
             <img
-                src={entity.image.path}
-                alt={entity.image.alt}
-                class="entity-logo"
-                width="30"
-                height="30"
+                    src={entity.image.path}
+                    alt={entity.image.alt}
+                    class="entity-logo"
+                    width="30"
+                    height="30"
             />
             <a
-                href={entity.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                class="entity-name"
+                    href={entity.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="entity-name"
             >
                 {entity.name}
             </a>
@@ -45,46 +46,45 @@ const { entity, interval, location, positions, tags } = item.data;
 
         {
             positions && (
-                <ul class="positions-list">
-                    {positions.map((position) => (
-                        <li class="position">
-                            <h4 class="position-title">{position.title}</h4>
-                            <ul class="position-description">
-                                {position.description
-                                    .split("||")
-                                    .map((description) => (
-                                        <li>{description}</li>
-                                    ))}
-                            </ul>
-                            <p class="position-highlight">
-                                {position.highlight}
-                            </p>
-                        </li>
-                    ))}
-                </ul>
+                        <ul class="positions-list">
+                            {positions.map((position) => (
+                                    <li class="position">
+                                        <h4 class="position-title">{position.title}</h4>
+                                        <ul class="position-description">
+                                            {position.description
+                                                .split("||")
+                                                .map((description) => (
+                                                        <li>{description}</li>
+                                                ))}
+                                        </ul>
+                                        <p class="position-highlight">
+                                            {position.highlight}
+                                        </p>
+                                    </li>
+                            ))}
+                        </ul>
             )
         }
 
         {
             tags && (
-                <ul class="tags-list">
-                    {tags.map((tag) => (
-                        <li class="tag">{tag}</li>
-                    ))}
-                </ul>
+                        <ul class="tags-list">
+                            {tags.map((tag) => (
+                                    <li class="tag">{tag}</li>
+                            ))}
+                        </ul>
             )
         }
     </article>
 </li>
 
 <style>
-    /* Mobile-first base styles */
     .timeline-item {
         position: relative;
         display: grid;
         grid-template-columns: 3rem 1fr;
-        gap: 1rem;
-        padding-bottom: 2rem;
+        gap: 1em;
+        padding-bottom: 2em;
     }
 
     .timeline-connector {
@@ -95,21 +95,30 @@ const { entity, interval, location, positions, tags } = item.data;
     }
 
     .timeline-dot {
-        width: 1rem;
-        height: 1rem;
-        background: #3b82f6;
-        border: 2px solid #fff;
+        width: 1em;
+        height: 1em;
+        background: #8e4ace;
+        border: 1px solid #f5f5f5;
         border-radius: 50%;
-        box-shadow: 0 0 0 2px #3b82f6;
+        box-shadow: 0 0 0 2px #8e8e8e;
         z-index: 2;
+    }
+
+    :global(.dark) .timeline-dot {
+        border: 1px solid #181a1b;
+        box-shadow: 0 0 0 1px #8e8e8e;
     }
 
     .timeline-line {
         position: absolute;
-        top: 1rem;
-        width: 2px;
+        top: 1em;
+        width: 1px;
         height: calc(100% + 2rem);
-        background: #e5e7eb;
+        background: #8e8e8e;
+    }
+
+    :global(.dark) .timeline-line {
+        background: #4f4f58;
     }
 
     .timeline-content {
@@ -117,7 +126,12 @@ const { entity, interval, location, positions, tags } = item.data;
         border-radius: 0.5rem;
         padding: 1rem;
         box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-        border: 1px solid #e5e7eb;
+        border: 1px solid #8e8e8e;
+    }
+
+    :global(.dark) .timeline-content {
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        border: 1px solid #4f4f58;
     }
 
     .timeline-header {
@@ -129,13 +143,15 @@ const { entity, interval, location, positions, tags } = item.data;
 
     .timeline-date {
         font-size: 0.875rem;
-        color: #6b7280;
+        color: #181a1b;
+    }
+
+    :global(.dark) .timeline-date {
+        color: #8e8e8e;
     }
 
     .timeline-title {
-        font-size: 1.125rem;
-        font-weight: 600;
-        color: #111827;
+        color: #181a1b;
         margin: 0;
     }
 
@@ -153,56 +169,78 @@ const { entity, interval, location, positions, tags } = item.data;
     }
 
     .entity-name {
-        color: #4b5563;
-        text-decoration: none;
+        color: #181a1b;
         font-weight: 500;
     }
 
+    :global(.dark) .entity-name {
+        color: #e4e4e4;
+    }
+
     .entity-name:hover {
-        color: #3b82f6;
+        color: #8e4ace;
     }
 
     .location {
-        color: #6b7280;
+        color: #181a1b;
         font-size: 0.875rem;
         width: 100%;
     }
+    
+    :global(.dark) .location {
+        color: #8e8e8e;
+    }
 
     .description {
-        color: #4b5563;
+        color: #181a1b;
         font-size: 0.875rem;
-        line-height: 1.5;
         margin-bottom: 1rem;
     }
 
-    /* New styles for position classes */
+    :global(.dark) .description {
+        color: #8e8e8e;
+    }
+
     .position {
         padding: 1rem;
-        border: 1px solid #e5e7eb;
+        border: 1px solid #8e8e8e;
         border-radius: 0.5rem;
         margin-bottom: 1rem;
-        background: #f9fafb; /* Light background for separation */
+        background: #f9fafb;
+    }
+
+    :global(.dark) .position{
+        background-color: transparent;
     }
 
     .position-title {
         font-size: 1.1rem;
         font-weight: 600;
-        color: #111827;
-        margin: 0 0 0.5rem 0; /* Margin for spacing */
+        color: #8e8e8e;
+        margin: 0 0 0.5rem 0;
     }
 
     .position-description {
-        color: #4b5563;
+        color: #181a1b;
         font-size: 0.875rem;
         line-height: 1.4;
-        margin-bottom: 0.5rem; /* Margin for spacing */
+        margin-bottom: 0.5rem;
+    }
+
+    :global(.dark) .position-description {
+        color: #8e8e8e;
     }
 
     .position-highlight {
-        background: #e0f7fa; /* Light blue background for highlights */
+        background: #e4e4e4;
+        color: #181a1b;
         padding: 0.5rem;
         border-radius: 0.25rem;
-        font-style: italic; /* Italic style for emphasis */
+        font-style: italic;
+    }
+
+    :global(.dark) .position-highlight {
+        background: #8e8e8e;
     }
 
     .tags-list {
@@ -215,18 +253,26 @@ const { entity, interval, location, positions, tags } = item.data;
     }
 
     .tag {
-        background: #f3f4f6;
-        padding: 0.25rem 0.75rem;
-        border-radius: 9999px;
-        font-size: 0.75rem;
-        color: #4b5563;
+        background: #8e8e8e;
+        padding: 0.25em 0.75em;
+        border-radius: 25px;
+        font-size: 0.75em;
+        color: #f5f5f5;
+    }
+
+    :global(.dark) .tag {
+        color: #181a1b;
+    }
+
+    :global(.dark) .tag:hover {
+        background: #8e4ace;
+        color: #181a1b;
     }
 
     .certificate-link {
         display: inline-flex;
         align-items: center;
-        color: #3b82f6;
-        text-decoration: none;
+        color: #8e4ace;
         font-size: 0.875rem;
     }
 
@@ -234,7 +280,10 @@ const { entity, interval, location, positions, tags } = item.data;
         text-decoration: underline;
     }
 
-    /* Tablet and desktop styles */
+    :global(.dark) .timeline-content {
+        background-color: #181a1b;
+    }
+
     @media (min-width: 768px) {
         .timeline-item {
             grid-template-columns: 4rem 1fr;
