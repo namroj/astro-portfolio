@@ -5,22 +5,23 @@ import Navigation from "./Navigation.astro";
 
 <header>
     <nav>
-        <Hamburger />
-        <Navigation />
+        <Hamburger/>
+        <Navigation/>
     </nav>
 </header>
-
-<script>
-    import "../scripts/menu.js";
-</script>
 
 <style>
     nav {
         display: flex;
-        justify-content: flex-end
+        justify-content: flex-end;
+        padding: 0 1em;
     }
 
     .expanded {
         flex-direction: column;
     }
 </style>
+
+<script>
+    import "../scripts/navigation.js";
+</script>

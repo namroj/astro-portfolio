@@ -1,14 +1,15 @@
 ---
 const { item, isLast } = Astro.props;
-const { title, interval, entity, location, description, tags, certificate } = item.data;
+const { title, interval, entity, location, description, tags, certificate } =
+    item.data;
 ---
 
-<li class="timeline-item" data-tags={tags.join(',')}>
+<li class="timeline-item" data-tags={tags.join(",")}>
     <div class="timeline-connector">
         <div class="timeline-dot"></div>
-        {!isLast && <div class="timeline-line"></div>}
+        {!isLast && <div class="timeline-line" />}
     </div>
-    
+
     <article class="timeline-content">
         <header class="timeline-header">
             <time class="timeline-date">{interval}</time>
@@ -16,17 +17,18 @@ const { title, interval, entity, location, description, tags, certificate } = it
         </header>
 
         <div class="entity-info">
-            <img 
-                src={entity.image.path} 
+            <img
+                src={entity.image.path}
                 alt={entity.image.alt}
-                class="entity-logo" 
-                width="30" 
-                height="30" 
+                class="entity-logo"
+                width="30"
+                height="30"
             />
-            <a href={entity.url} 
-               target="_blank" 
-               rel="noopener noreferrer" 
-               class="entity-name"
+            <a
+                href={entity.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="entity-name"
             >
                 {entity.name}
             </a>
@@ -35,22 +37,28 @@ const { title, interval, entity, location, description, tags, certificate } = it
 
         <p class="description">{description}</p>
 
-        {tags && (
-            <ul class="tags-list">
-                {tags.map((tag: string) => <li class="tag">{tag}</li>)}
-            </ul>
-        )}
+        {
+            tags && (
+                <ul class="tags-list">
+                    {tags.map((tag: string) => (
+                        <li class="tag">{tag}</li>
+                    ))}
+                </ul>
+            )
+        }
 
-        {certificate && (
-            <a 
-                href={certificate} 
-                class="certificate-link" 
-                target="_blank" 
-                rel="noopener noreferrer"
-            >
-                Ver certificado
-            </a>
-        )}
+        {
+            certificate && (
+                <a
+                    href={certificate}
+                    class="certificate-link"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    Ver certificado
+                </a>
+            )
+        }
     </article>
 </li>
 
@@ -90,7 +98,7 @@ const { title, interval, entity, location, description, tags, certificate } = it
     }
 
     .timeline-content {
-        background: white;
+        background: #e4e4e4;
         border-radius: 0.5rem;
         padding: 1rem;
         box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);

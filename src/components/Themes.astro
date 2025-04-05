@@ -3,7 +3,7 @@
 ---
 
 <div class="themes">
-    <button class="theme-btn theme-light">
+    <button class="btn light">
         <svg
             width="20px"
             xmlns="http://www.w3.org/2000/svg"
@@ -16,7 +16,7 @@
             ></path>
         </svg>
     </button>
-    <button class="theme-btn theme-dark">
+    <button class="btn dark">
         <svg
             width="20px"
             xmlns="http://www.w3.org/2000/svg"
@@ -29,7 +29,7 @@
             ></path>
         </svg>
     </button>
-    <button class="theme-btn theme-auto">
+    <button class="btn auto">
         <svg
             width="20px"
             xmlns="http://www.w3.org/2000/svg"
@@ -49,7 +49,8 @@
         display: flex;
         gap: 0.25em;
     }
-    .theme-btn {
+
+    .btn {
         width: 30px;
         height: 30px;
         border: solid 1px grey;
@@ -61,25 +62,27 @@
         align-items: center;
         justify-content: center;
     }
-    .theme-btn.active {
+
+    .btn.active {
         border: solid 1px black;
         opacity: 1;
     }
-    .theme-light,
-    .theme-dark,
-    .theme-auto {
+
+    .light,
+    .dark,
+    .auto {
         fill: black;
     }
-    :global(.dark) .theme-btn.active {
-        border: solid 1px white;
+
+    :global(.dark) .btn {
+        border: solid 1px #e4e4e4;
     }
-    :global(.dark) .theme-btn.active svg {
-        fill: white;
-    }
-    :global(.dark) .theme-light,
-    :global(.dark) .theme-dark,
-    :global(.dark) .theme-auto {
-        fill: white;
+
+    :global(.dark) .btn.active svg,
+    :global(.dark) .light,
+    :global(.dark) .dark,
+    :global(.dark) .auto {
+        fill: #e4e4e4;
     }
 </style>
 
@@ -110,9 +113,9 @@
 
     // Set initial active button based on stored theme setting
     const storedTheme = localStorage.getItem("theme") || "auto";
-    document.querySelectorAll(".theme-btn").forEach((btn) => {
+    document.querySelectorAll(".btn").forEach((btn) => {
         btn.classList.remove("active");
-        if (btn.classList.contains(`theme-${storedTheme}`)) {
+        if (btn.classList.contains(`${storedTheme}`)) {
             btn.classList.add("active");
         }
     });
@@ -129,20 +132,20 @@
         }
         localStorage.setItem("theme", theme);
 
-        document.querySelectorAll(".theme-btn").forEach((btn) => {
+        document.querySelectorAll(".btn").forEach((btn) => {
             btn.classList.remove("active");
-            if (btn.classList.contains(`theme-${theme}`)) {
+            if (btn.classList.contains(`${theme}`)) {
                 btn.classList.add("active");
             }
         });
     };
 
     // Add click handlers for theme buttons
-    document.querySelectorAll(".theme-btn").forEach((btn) => {
+    document.querySelectorAll(".btn").forEach((btn) => {
         btn.addEventListener("click", () => {
-            const theme = btn.classList.contains("theme-light")
+            const theme = btn.classList.contains("light")
                 ? "light"
-                : btn.classList.contains("theme-dark")
+                : btn.classList.contains("dark")
                   ? "dark"
                   : "auto";
             handleThemeChange(theme);

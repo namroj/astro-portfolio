@@ -1,16 +1,24 @@
 ---
-const { url, platform, username } = Astro.props;
+const {url, platform, username} = Astro.props;
 ---
 
-<style>
-    a {
-        padding: 0.5em 1em;
-        color: white;
-        background-color: #4c1d95;
-        text-decoration: none;
-    }
-</style>
-
-<a href={`${url}/${username}`} target="_blank">
+<a href={`${url}/${username}`} class="social" target="_blank">
     {platform}
 </a>
+
+<style>
+    .social {
+        padding-right: 1em;
+        color: #4a4d99;
+    }
+
+    .social:last-of-type {
+        padding-right: 0;
+    }
+
+    :global(.dark) {
+        .social {
+            color: #c6c1c5;
+        }
+    }
+</style>
