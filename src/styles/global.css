@@ -1,22 +1,21 @@
 html {
-    background-color: #f1f5f9;
+    background-color: #e4e4e4;
     color: #4f4f58;
-    font-family: sans-serif;
     padding: 0;
     margin: 0;
 }
 
 html.dark {
     background-color: #181a1b;
-    color: #eae1e1;
+    color: #e4e4e4;
 }
 
 main {
     position: relative;
     z-index: 2;
     width: 100%;
-    height: calc(100dvh - 168px);
-    padding: 1em;
+    height: calc(100dvh - 60px);
+    padding: 60px 1em 1em 1em;
     overflow: auto;
 }
 
