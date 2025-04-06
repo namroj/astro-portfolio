@@ -33,7 +33,7 @@ h1 {
     --scrollbarThumbColor: #8e4ace;
 }
 
-:global(.dark)::-webkit-scrollbar-track {
+.dark {
     --scrollbarTrackColor: #181a1b;
     --scrollbarThumbColor: #8e4ace;
 }
