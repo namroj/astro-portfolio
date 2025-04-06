@@ -1,7 +1,9 @@
 ---
+import {getCollection} from "astro:content";
+
 import Layout from "../layouts/Layout.astro";
 import BlogPost from "../components/BlogPost.astro";
-import { getCollection } from "astro:content";
+
 const allPosts = await getCollection("blog");
 const title = {
     tab: "Blog",
@@ -14,9 +16,7 @@ const title = {
         {
             allPosts
                 .filter((post: any) => !post.data.draft)
-                .map((post: any) => (
-                    <BlogPost url={post.id} title={post.data.title} />
-                ))
+                .map((post: any) => (<BlogPost url={post.id} title={post.data.title}/>))
         }
     </ul>
 

@@ -7,7 +7,7 @@ import Filter from "../components/Filter.astro";
 
 const title = {
     tab: "Experience",
-    page: "Experience",
+    page: "Experiencia",
 };
 
 const items = await getCollection("experience");
@@ -16,14 +16,12 @@ const tags = [...new Set(items.flatMap((item) => item.data.tags))];
 
 <Layout title={title}>
     <p>
-        Throughout my career, I have had the opportunity to work with various
-        companies, ranging from startups to multinational corporations. My
-        journey began in 2010, providing technical support at BBVA Provincial,
-        and has evolved into a full-stack development role at Accenture, where I
-        currently lead projects. I have gained extensive experience in web
-        development, API integration, and team leadership, contributing to
-        diverse projects across different industries. Below is a timeline of my
-        professional experiences.
+        A lo largo de mi carrera he tenido la oportunidad de trabajar con diversas empresas, desde startups hasta
+        corporaciones multinacionales. Mi trayectoria comenzó en 2010 brindando soporte técnico en BBVA Provincial, y ha
+        evolucionado hasta convertirme en desarrollador full-stack en Accenture, donde actualmente lidero proyectos. He
+        adquirido una amplia experiencia en desarrollo web, integración de APIs y liderazgo de equipos, contribuyendo en
+        proyectos diversos de distintas industrias. A continuación, se muestra una línea de tiempo con mis experiencias
+        profesionales.
     </p>
 
     <section class="timeline">

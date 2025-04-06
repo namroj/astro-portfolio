@@ -1,5 +1,5 @@
 ---
-import { getCollection } from "astro:content";
+import {getCollection} from "astro:content";
 import Layout from "../../layouts/Layout.astro";
 import BlogPost from "../../components/BlogPost.astro";
 
@@ -14,14 +14,14 @@ export async function getStaticPaths() {
             post.data.tags.includes(tag),
         );
         return {
-            params: { tag },
-            props: { posts: filteredPosts },
+            params: {tag},
+            props: {posts: filteredPosts},
         };
     });
 }
 
-const { tag } = Astro.params;
-const { posts } = Astro.props;
+const {tag} = Astro.params;
+const {posts} = Astro.props;
 const title = {
     tab: `Tag: ${tag}`,
     page: tag,
@@ -29,11 +29,11 @@ const title = {
 ---
 
 <Layout title={title}>
-    <p>Posts tagged with <i>{tag}</i></p>
+    <p>Artículo etiquetados con <i>{tag}</i></p>
     <ul>
         {
             posts.map((post: any) => (
-                <BlogPost url={post.id} title={post.data.title} />
+                    <BlogPost url={post.id} title={post.data.title}/>
             ))
         }
     </ul>

@@ -57,7 +57,7 @@ h1 {
 
 @media screen and (min-width: 992px) {
     .wrapper {
-        height: calc((100dvh - 70px) + 1em);
+        height: calc((100dvh - 90px) + 1em);
         margin: 0 auto;
         padding: 0 15dvw;
     }

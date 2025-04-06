@@ -7,7 +7,7 @@ import Filter from "../components/Filter.astro";
 
 const title = {
     tab: "Education",
-    page: "Education",
+    page: "Educación",
 };
 
 const items = await getCollection("education");
@@ -16,11 +16,7 @@ const tags = [...new Set(items.flatMap((item) => item.data.tags))];
 
 <Layout title={title}>
     <p>
-        Here you'll find a journey through my academic and professional
-        education. This timeline shows the courses, certifications and studies
-        I've completed to stay up-to-date in the software development world. I
-        mainly focus on web technologies, software architecture, and programming
-        best practices.
+        Aquí encontrarás un recorrido por mi formación académica y profesional. Esta línea de tiempo muestra los cursos, certificaciones y estudios que he completado para mantenerme al día en el mundo del desarrollo de software. Me enfoco principalmente en tecnologías web, arquitectura de software y buenas prácticas de programación.
     </p>
 
     <section class="timeline">

@@ -4,7 +4,7 @@ import Themes from "./Themes.astro";
 ---
 
 <footer>
-    <div class="content">
+    <div class="wrapper">
         <Socials/>
         <div class="bottom">
             <p>© {new Date().getFullYear()}. Jorman Espinoza</p>
@@ -24,7 +24,6 @@ import Themes from "./Themes.astro";
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-        padding: 1em 0; /* Padding for footer itself */
         border-top: 1px solid #8e8e8e;
         background-color: #f1f5f9;
     }
@@ -34,8 +33,8 @@ import Themes from "./Themes.astro";
         border-top: 1px solid #2a3033;
     }
 
-    footer .content {
-        padding: 0 1em;
+    footer .wrapper {
+        padding: 1em;
     }
 
     footer .bottom {
@@ -51,10 +50,10 @@ import Themes from "./Themes.astro";
     }
 
     @media screen and (min-width: 992px) {
-        footer .content {
+        footer .wrapper {
             width: 100%;
             margin: 0 auto;
-            padding: 0 15dvw;
+            padding: 1em calc(15dvw + 1em);
         }
     }
 </style>
