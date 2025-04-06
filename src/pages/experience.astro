@@ -26,7 +26,7 @@ const tags = [...new Set(items.flatMap((item) => item.data.tags))];
         professional experiences.
     </p>
 
-    <section class="timeline-section">
+    <section class="timeline">
         <Filter tags={tags}/>
         <ul class="timeline-list">
             {
@@ -38,12 +38,6 @@ const tags = [...new Set(items.flatMap((item) => item.data.tags))];
     </section>
 
     <style>
-        .timeline-section {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 1em;
-        }
-
         .timeline-list {
             padding: 0;
             margin: 2rem 0;
@@ -51,7 +45,7 @@ const tags = [...new Set(items.flatMap((item) => item.data.tags))];
         }
 
         .timeline-list > :last-child::before {
-            height: 2rem;
+            height: 2em;
         }
     </style>
 </Layout>

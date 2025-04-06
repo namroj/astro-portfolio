@@ -4,10 +4,12 @@ import Themes from "./Themes.astro";
 ---
 
 <footer>
-    <Socials/>
-    <div class="footer-bottom">
-        <p>© {new Date().getFullYear()}. Jorman Espinoza</p>
-        <Themes/>
+    <div class="content">
+        <Socials/>
+        <div class="bottom">
+            <p>© {new Date().getFullYear()}. Jorman Espinoza</p>
+            <Themes/>
+        </div>
     </div>
 </footer>
 
@@ -22,7 +24,7 @@ import Themes from "./Themes.astro";
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-        padding: 1em;
+        padding: 1em 0; /* Padding for footer itself */
         border-top: 1px solid #8e8e8e;
         background-color: #f1f5f9;
     }
@@ -32,15 +34,27 @@ import Themes from "./Themes.astro";
         border-top: 1px solid #2a3033;
     }
 
-    .footer-bottom {
+    footer .content {
+        padding: 0 1em;
+    }
+
+    footer .bottom {
         display: flex;
         justify-content: space-between;
-        align-items: center;
+        align-items: flex-end;
     }
 
     footer.expanded {
         z-index: 4;
         background-color: transparent;
         border-top-color: transparent;
+    }
+
+    @media screen and (min-width: 992px) {
+        footer .content {
+            width: 100%;
+            margin: 0 auto;
+            padding: 0 15dvw;
+        }
     }
 </style>

@@ -67,9 +67,9 @@ const {title, interval, entity, location, description, tags, certificate} =
     .timeline-item {
         position: relative;
         display: grid;
-        grid-template-columns: 3em 1fr;
+        grid-template-columns: 1em 1fr;
         gap: 1em;
-        padding-bottom: 2em;
+        padding-bottom: 1em;
     }
 
     .timeline-connector {
@@ -221,11 +221,11 @@ const {title, interval, entity, location, description, tags, certificate} =
         background-color: #181a1b;
     }
 
-    @media (min-width: 768px) {
+    @media screen and (min-width: 992px) {
         .timeline-item {
-            grid-template-columns: 4em 1fr;
-            gap: 2em;
-            padding-bottom: 3em;
+            grid-template-columns: 1em 1fr;
+            gap: 1em;
+            padding-bottom: 1em;
         }
 
         .timeline-content {

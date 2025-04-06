@@ -82,9 +82,9 @@ const {entity, interval, location, positions, tags} = item.data;
     .timeline-item {
         position: relative;
         display: grid;
-        grid-template-columns: 3rem 1fr;
+        grid-template-columns: 1em 1fr;
         gap: 1em;
-        padding-bottom: 2em;
+        padding-bottom: 1em;
     }
 
     .timeline-connector {
@@ -123,8 +123,8 @@ const {entity, interval, location, positions, tags} = item.data;
 
     .timeline-content {
         background: #e4e4e4;
-        border-radius: 0.5rem;
-        padding: 1rem;
+        border-radius: 0.5em;
+        padding: 1em;
         box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
         border: 1px solid #8e8e8e;
     }
@@ -137,12 +137,12 @@ const {entity, interval, location, positions, tags} = item.data;
     .timeline-header {
         display: flex;
         flex-direction: column;
-        gap: 0.25rem;
-        margin-bottom: 1rem;
+        gap: 0.25em;
+        margin-bottom: 1em;
     }
 
     .timeline-date {
-        font-size: 0.875rem;
+        font-size: 0.875em;
         color: #181a1b;
     }
 
@@ -159,8 +159,8 @@ const {entity, interval, location, positions, tags} = item.data;
         display: flex;
         flex-wrap: wrap;
         align-items: center;
-        gap: 0.5rem;
-        margin-bottom: 1rem;
+        gap: 0.5em;
+        margin-bottom: 1em;
     }
 
     .entity-logo {
@@ -183,7 +183,7 @@ const {entity, interval, location, positions, tags} = item.data;
 
     .location {
         color: #181a1b;
-        font-size: 0.875rem;
+        font-size: 0.875em;
         width: 100%;
     }
     
@@ -193,8 +193,8 @@ const {entity, interval, location, positions, tags} = item.data;
 
     .description {
         color: #181a1b;
-        font-size: 0.875rem;
-        margin-bottom: 1rem;
+        font-size: 0.875em;
+        margin-bottom: 1em;
     }
 
     :global(.dark) .description {
@@ -202,10 +202,10 @@ const {entity, interval, location, positions, tags} = item.data;
     }
 
     .position {
-        padding: 1rem;
+        padding: 1em;
         border: 1px solid #8e8e8e;
-        border-radius: 0.5rem;
-        margin-bottom: 1rem;
+        border-radius: 0.5em;
+        margin-bottom: 1em;
         background: #f9fafb;
     }
 
@@ -214,7 +214,7 @@ const {entity, interval, location, positions, tags} = item.data;
     }
 
     .position-title {
-        font-size: 1.1rem;
+        font-size: 1.1em;
         font-weight: 600;
         color: #8e8e8e;
         margin: 0 0 0.5rem 0;
@@ -222,9 +222,8 @@ const {entity, interval, location, positions, tags} = item.data;
 
     .position-description {
         color: #181a1b;
-        font-size: 0.875rem;
-        line-height: 1.4;
-        margin-bottom: 0.5rem;
+        font-size: 0.875em;
+        margin-bottom: 0.5em;
     }
 
     :global(.dark) .position-description {
@@ -234,8 +233,8 @@ const {entity, interval, location, positions, tags} = item.data;
     .position-highlight {
         background: #e4e4e4;
         color: #181a1b;
-        padding: 0.5rem;
-        border-radius: 0.25rem;
+        padding: 0.5em;
+        border-radius: 0.25em;
         font-style: italic;
     }
 
@@ -246,10 +245,10 @@ const {entity, interval, location, positions, tags} = item.data;
     .tags-list {
         display: flex;
         flex-wrap: wrap;
-        gap: 0.5rem;
+        gap: 0.5em;
         list-style: none;
         padding: 0;
-        margin-bottom: 1rem;
+        margin-bottom: 1em;
     }
 
     .tag {
@@ -273,7 +272,7 @@ const {entity, interval, location, positions, tags} = item.data;
         display: inline-flex;
         align-items: center;
         color: #8e4ace;
-        font-size: 0.875rem;
+        font-size: 0.875em;
     }
 
     .certificate-link:hover {
@@ -284,15 +283,15 @@ const {entity, interval, location, positions, tags} = item.data;
         background-color: #181a1b;
     }
 
-    @media (min-width: 768px) {
+    @media screen and (min-width: 992px) {
         .timeline-item {
-            grid-template-columns: 4rem 1fr;
-            gap: 2rem;
-            padding-bottom: 3rem;
+            grid-template-columns: 1em 1fr;
+            gap: 1em;
+            padding-bottom: 1em;
         }
 
         .timeline-content {
-            padding: 1.5rem;
+            padding: 1em;
         }
 
         .timeline-header {
@@ -302,7 +301,7 @@ const {entity, interval, location, positions, tags} = item.data;
         }
 
         .timeline-title {
-            font-size: 1.25rem;
+            font-size: 1.25em;
         }
 
         .location {
@@ -310,7 +309,7 @@ const {entity, interval, location, positions, tags} = item.data;
         }
 
         .description {
-            font-size: 1rem;
+            font-size: 1em;
         }
     }
 </style>
