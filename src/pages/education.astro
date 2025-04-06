@@ -46,4 +46,11 @@ const tags = [...new Set(items.flatMap((item) => item.data.tags))];
     .timeline-list > :last-child::before {
         height: 1em;
     }
+
+    @media screen and (min-width: 992px) {
+        .timeline {
+            max-width: 880px;
+            margin: 0 auto;
+        }
+    }
 </style>
