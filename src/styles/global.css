@@ -29,8 +29,13 @@ h1 {
 }
 
 :root {
-    --scrollbarTrackColor: #8e4ace;
-    --scrollbarThumbColor: #181a1b;
+    --scrollbarTrackColor: #8e8e8e;
+    --scrollbarThumbColor: #8e4ace;
+}
+
+:global(.dark)::-webkit-scrollbar-track {
+    --scrollbarTrackColor: #181a1b;
+    --scrollbarThumbColor: #8e4ace;
 }
 
 ::-webkit-scrollbar-track {
