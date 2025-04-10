@@ -1,5 +1,5 @@
-import {GOOGLE_MAPS_API_KEY} from 'astro:env/client';
 import {useCallback, useEffect, useState} from 'preact/hooks';
+import {GOOGLE_MAPS_API_KEY} from 'astro:env/client';
 
 import mapDarkStyles from '../assets/dark';
 import mapLightStyles from '../assets/light';
@@ -51,7 +51,7 @@ export default function VenezuelaToArgentinaMap() {
                 });
             };
 
-            [point1, point3, point4, point5].forEach(createMarker);
+            [point1, point2, point3, point4, point5].forEach(createMarker);
 
             const createPolyline = (path: google.maps.LatLngLiteral[]) => {
                 const polyline = new google.maps.Polyline({
