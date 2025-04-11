@@ -24,36 +24,31 @@ import ThemeSwitcher from "./ThemeSwitcher.astro";
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-        border-top: 1px solid #8e8e8e;
-        background-color: #f1f5f9;
-    }
+        border-top: 1px solid var(--border-color);
+        background-color: var(--background-color);
 
-    :global(.dark) footer {
-        background-color: #181a1b;
-        border-top: 1px solid #2a3033;
-    }
+        .wrapper {
+            padding: 0.5em;
+        }
 
-    footer .wrapper {
-        padding: 1em;
-    }
+        .bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+        }
 
-    footer .bottom {
-        display: flex;
-        justify-content: space-between;
-        align-items: flex-end;
-    }
+        &.expanded {
+            z-index: 4;
+            background-color: transparent;
+            border-top-color: transparent;
+        }
 
-    footer.expanded {
-        z-index: 4;
-        background-color: transparent;
-        border-top-color: transparent;
-    }
-
-    @media screen and (min-width: 992px) {
-        footer .wrapper {
-            width: 100%;
-            margin: 0 auto;
-            padding: 1em calc(15dvw + 1em);
+        @media screen and (min-width: 992px) {
+            .wrapper {
+                width: 100%;
+                margin: 0 auto;
+                padding: 1em calc(15dvw + 0.5em);
+            }
         }
     }
 </style>

@@ -29,14 +29,14 @@
             ></path>
         </svg>
     </button>
-    <button class="btn auto">
+    <button class="btn system">
         <svg
                 width="20px"
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
         >
             <path
-                    class="auto"
+                    class="system"
                     fill-rule="evenodd"
                     d="M6 4a2 2 0 00-2 2v8l-1 3h18l-1-3V6a2 2 0 00-2-2H6zm0 1h12a1 1 0 011 1v7H5V6a1 1 0 011-1zm-2.25 9h16.5l.75 2H3l.75-2zm5.25 3h4v1h-4v-1z"
             ></path>
@@ -53,7 +53,7 @@
     .btn {
         width: 30px;
         height: 30px;
-        border: solid 1px #8e8e8e;
+        border: solid 1px var(--border-color);
         border-radius: 0.5em;
         background: none;
         cursor: pointer;
@@ -65,93 +65,61 @@
 
     .btn.light,
     .btn.dark,
-    .btn.auto {
-        fill: #181a1b;
+    .btn.system {
+        fill: var(--foreground-color);
     }
 
     .btn:hover {
-        border: solid 1px #8e4ace;
+        border: solid 1px var(--foreground-color);
         opacity: 1;
     }
 
     .btn:hover svg,
     .btn:hover .light,
     .btn:hover .dark,
-    .btn:hover .auto {
-        fill: #8e4ace;
-        opacity: 1;
-    }
-
-    :global(.dark) .btn {
-        border: solid 1px #e4e4e4;
-    }
-
-    :global(.dark) .btn:hover {
-        border: solid 1px #8e4ace;
-    }
-
-    :global(.dark) .btn:hover svg,
-    :global(.dark) .btn:hover .light,
-    :global(.dark) .btn:hover .dark,
-    :global(.dark) .btn:hover .auto {
-        fill: #8e4ace;
+    .btn:hover .system {
+        fill: var(--foreground-color);
         opacity: 1;
     }
 
     .btn.active {
-        border: solid 1px #181a1b;
+        border: solid 1px var(--foreground-color);
         opacity: 1;
     }
 
     .btn.active:hover {
-        border: solid 1px #8e4ace;
+        border: solid 1px var(--foreground-color);
         opacity: 1;
-    }
-
-    :global(.dark) .btn.active {
-        border: solid 1px #e4e4e4;
-        opacity: 1;
-    }
-
-    :global(.dark) .btn.active svg,
-    :global(.dark) .light,
-    :global(.dark) .dark,
-    :global(.dark) .auto {
-        fill: #e4e4e4;
-    }
-
-    :global(.dark) .btn.active:hover {
-        border: solid 1px #8e4ace;
     }
 </style>
 
 <script is:inline>
+    const preferredColorScheme = window.matchMedia("(prefers-color-scheme: dark)").matches
+        ? "dark"
+        : "light";
+
+    // Set initial theme based on system preference
     const theme = (() => {
         const localStorageTheme = localStorage?.getItem("theme") ?? "";
-        if (["dark", "light", "auto"].includes(localStorageTheme)) {
-            if (localStorageTheme === "auto") {
-                return window.matchMedia("(prefers-color-scheme: dark)").matches
-                    ? "dark"
-                    : "light";
+        if (["dark", "light", "system"].includes(localStorageTheme)) {
+            if (localStorageTheme === "system") {
+                document.querySelector("html")?.setAttribute("data-theme", preferredColorScheme);
+                return preferredColorScheme;
             }
             return localStorageTheme;
         } else {
-            localStorage.setItem("theme", "auto");
+            localStorage.setItem("theme", "system");
         }
         if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+            document.querySelector("html")?.setAttribute("data-theme", "dark");
             return "dark";
         }
+        document.querySelector("html")?.setAttribute("data-theme", "light");
         return "light";
     })();
 
-    if (theme === "light") {
-        document.documentElement.classList.remove("dark");
-    } else {
-        document.documentElement.classList.add("dark");
-    }
-
     // Set initial active button based on stored theme setting
-    const storedTheme = localStorage.getItem("theme") || "auto";
+    const storedTheme = localStorage.getItem("theme") || "system";
     document.querySelectorAll(".btn").forEach((btn) => {
         btn.classList.remove("active");
         if (btn.classList.contains(`${storedTheme}`)) {
@@ -159,17 +127,14 @@
         }
     });
 
+    // Handle theme change
     const handleThemeChange = (theme) => {
-        const element = document.documentElement;
-        if (theme === "auto") {
-            const isDark = window.matchMedia(
-                "(prefers-color-scheme: dark)",
-            ).matches;
-            element.classList.toggle("dark", isDark);
-        } else {
-            element.classList.toggle("dark", theme === "dark");
-        }
         localStorage.setItem("theme", theme);
+        if (theme === "system") {
+            document.querySelector("html")?.setAttribute("data-theme", preferredColorScheme);
+        } else {
+            document.querySelector("html")?.setAttribute("data-theme", theme);
+        }
 
         document.querySelectorAll(".btn").forEach((btn) => {
             btn.classList.remove("active");
@@ -186,17 +151,18 @@
                 ? "light"
                 : btn.classList.contains("dark")
                     ? "dark"
-                    : "auto";
+                    : "system";
             handleThemeChange(theme);
         });
     });
 
+    // Handle system preference change
     if (window.matchMedia) {
         window
             .matchMedia("(prefers-color-scheme: dark)")
-            .addEventListener("change", (e) => {
-                if (localStorage.getItem("theme") === "auto") {
-                    handleThemeChange("auto");
+            .addEventListener("change", () => {
+                if (localStorage.getItem("theme") === "system") {
+                    handleThemeChange("system");
                 }
             });
     }

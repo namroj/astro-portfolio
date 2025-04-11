@@ -1,0 +1,34 @@
+:root {
+    color-scheme: light dark;
+    --accent-color: #8e4ace;
+    --accent-color-muted: #8e8e8e;
+    --background-color: #e4e4e4;
+    --foreground-color: #4f4f58;
+    --background-image: url("data:image/svg+xml,%3Csvg width='6' height='6' viewBox='0 0 6 6' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.4' fill-rule='evenodd'%3E%3Cpath d='M5 0h1L0 6V5zM6 5v1H5z'/%3E%3C/g%3E%3C/svg%3E");
+    --navigation-background-image: url("data:image/svg+xml,%3Csvg width='6' height='6' viewBox='0 0 6 6' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%238e4ace' fill-opacity='0.4' fill-rule='evenodd'%3E%3Cpath d='M5 0h1L0 6V5zM6 5v1H5z'/%3E%3C/g%3E%3C/svg%3E");
+    --scrollbar-track-color: #8e8e8e;
+    --scrollbar-thumb-color: #8e4ace;
+    --border-color: #8e8e8e;
+}
+
+:root[data-theme="system"],
+:root:has(button[class="btn system active"]) {
+    color-scheme: light dark;
+}
+
+:root[data-theme="light"],
+:root:has(button[class="btn dark active"]) {
+    color-scheme: light;
+}
+
+:root[data-theme="dark"],
+:root:has(button[class="btn dark active"]) {
+    color-scheme: dark;
+    --background-color: #181a1b;
+    --foreground-color: #e4e4e4;
+    --background-image: url("data:image/svg+xml,%3Csvg width='6' height='6' viewBox='0 0 6 6' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%234f4f58' fill-opacity='0.4' fill-rule='evenodd'%3E%3Cpath d='M5 0h1L0 6V5zM6 5v1H5z'/%3E%3C/g%3E%3C/svg%3E");
+    --navigation-background-image: url("data:image/svg+xml,%3Csvg width='6' height='6' viewBox='0 0 6 6' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%238e4ace' fill-opacity='0.4' fill-rule='evenodd'%3E%3Cpath d='M5 0h1L0 6V5zM6 5v1H5z'/%3E%3C/g%3E%3C/svg%3E");
+    --scrollbar-track-color: #181a1b;
+    --scrollbar-thumb-color: #8e4ace;
+    --border-color: #2a3033;
+}

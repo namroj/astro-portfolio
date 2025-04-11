@@ -9,7 +9,10 @@
 
 <style>
     .hamburger {
-        position: relative;
+        position: absolute;
+        top: 0.25em;
+        right: 1em;
+
         /* Box model */
         display: flex;
         flex-direction: column;
@@ -21,35 +24,37 @@
         margin-top: 0.5em;
         /* Visual styles */
         cursor: pointer;
-    }
 
-    .hamburger .line {
-        width: 40px;
-        height: 5px;
-        background-color: #8e4ace;
-        transition: transform 0.2s ease-in-out,
-        opacity 0.1s ease-in-out;
-        position: absolute;
-    }
+        .line {
+            width: 40px;
+            height: 5px;
+            background-color: #8e4ace;
+            transition: transform 0.2s ease-in-out,
+            opacity 0.1s ease-in-out;
+            position: absolute;
 
-    .hamburger .line:nth-of-type(1) {
-        top: 12px;
-    }
+            &:nth-of-type(1) {
+                top: 12px;
+            }
 
-    .hamburger .line:nth-of-type(2) {
-        bottom: 12px;
-    }
+            &:nth-of-type(2) {
+                bottom: 12px;
+            }
+        }
 
-    .expanded .line:nth-of-type(1) {
-        transform: rotate(45deg) translateY(8px);
-    }
+        &.expanded {
+            .line {
+                &:nth-of-type(1) {
+                    transform: rotate(45deg) translateY(8px);
+                }
 
-    .expanded .line:nth-of-type(2) {
-        transform: rotate(-45deg) translateY(-8px);
-    }
+                &:nth-of-type(2) {
+                    transform: rotate(-45deg) translateY(-8px);
+                }
+            }
+        }
 
-    @media screen and (min-width: 992px) {
-        .hamburger {
+        @media screen and (min-width: 992px) {
             display: none;
         }
     }
