@@ -69,41 +69,27 @@ const {name, year, logo, location, summary, description, url, bg_color, tags} = 
     .timeline-dot {
         width: 1em;
         height: 1em;
-        background: #8e4ace;
-        border: 1px solid #e4e4e4;
+        background: var(--accent-color);
+        border: 1px solid var(--border-color);
         border-radius: 50%;
-        box-shadow: 0 0 0 1px #8e8e8e;
+        box-shadow: 0 0 0 2px var(--border-color);
         z-index: 2;
-    }
-
-    :global(.dark) .timeline-dot {
-        border: 1px solid #181a1b;
-        box-shadow: 0 0 0 1px #8e8e8e;
     }
 
     .timeline-line {
         position: absolute;
         top: 1em;
         width: 1px;
-        height: calc(100% + 2em);
-        background: #8e8e8e;
-    }
-
-    :global(.dark) .timeline-line {
-        background: #4f4f58;
+        height: calc(100% + 2rem);
+        background: var(--border-color);
     }
 
     .timeline-content {
-        background: #e4e4e4;
+        background: var(--background-color);
+        border: 1px solid var(--border-color);
         border-radius: 0.5em;
         padding: 1em;
-        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-        border: 1px solid #8e8e8e;
-    }
-
-    :global(.dark) .timeline-content {
-        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-        border: 1px solid #4f4f58;
+        box-shadow: 0 1px 3px rgba(var(--background-color), 0.1);
     }
 
     .timeline-header {
@@ -115,18 +101,14 @@ const {name, year, logo, location, summary, description, url, bg_color, tags} = 
 
     .timeline-date {
         font-size: 0.875em;
-        color: #6b7280;
+        color: var(--foreground-color);
     }
 
     .timeline-title {
-        font-size: 1.125em;
+        font-size: 1em;
         font-weight: 600;
-        color: #111827;
+        color: var(--accent-color);
         margin: 0;
-    }
-
-    :global(.dark) .timeline-title {
-        color: #e4e4e4;
     }
 
     .entity-info {
@@ -139,18 +121,14 @@ const {name, year, logo, location, summary, description, url, bg_color, tags} = 
 
     .entity-logo {
         border-radius: 4px;
-        border: 1px solid grey;
+        border: 1px solid var(--border-color);
         object-fit: contain;
         padding: 1em;
     }
 
     .entity-name {
-        color: #181a1b;
+        color: var(--foreground-color);
         font-weight: 500;
-    }
-
-    :global(.dark) .entity-name {
-        color: #8e8e8e;
     }
 
     .entity-name:hover {
@@ -158,24 +136,20 @@ const {name, year, logo, location, summary, description, url, bg_color, tags} = 
     }
 
     .location {
-        color: #6b7280;
+        color: var(--accent-color-muted);
         font-size: 0.875em;
         width: 100%;
     }
 
     .summary {
-        color: #4b5563;
+        color: var(--foreground-color);
         font-size: 0.875em;
         line-height: 1.5;
         margin-bottom: 1em;
     }
 
-    :global(.dark) .summary {
-        color: #8e8e8e;
-    }
-
     .description {
-        color: #8e4ace;
+        color: var(--accent-color-muted);
         font-size: 0.875em;
         line-height: 1.5;
         margin-bottom: 1em;
@@ -191,40 +165,19 @@ const {name, year, logo, location, summary, description, url, bg_color, tags} = 
     }
 
     .tag {
-        background: #8e8e8e;
+        background: var(--accent-color-muted);
         padding: 0.25em 0.75em;
         border-radius: 25px;
+        border: 1px solid var(--accent-color-muted);
         font-size: 0.75em;
-        color: #f5f5f5;
+        color: var(--background-color);
+        cursor: pointer;
     }
 
-    :global(.dark) .tag {
-        color: #181a1b;
-    }
-
-    :global(.dark) .tag:hover {
-        background: #8e4ace;
-        color: #181a1b;
-    }
-
-    :global(.dark) .tag {
-        background: #8e8e8e;
-        color: #181a1b;
-    }
-
-    .certificate-link {
-        display: inline-flex;
-        align-items: center;
-        color: #8e4ace;
-        font-size: 0.875em;
-    }
-
-    .certificate-link:hover {
-        text-decoration: underline;
-    }
-
-    :global(.dark) .timeline-content {
-        background-color: #181a1b;
+    .tag:hover,
+    .tag.highlight-tag {
+        background: var(--accent-color);
+        border-color: var(--accent-color);
     }
 
     @media screen and (min-width: 992px) {

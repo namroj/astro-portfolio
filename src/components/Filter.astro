@@ -23,20 +23,18 @@ const {tags} = Astro.props;
     </form>
 
     <div class="tags-filter">
-        <button class="tag-btn active" data-tag="all">All</button>
-        {
-            tags.map((tag: string) => (
-                    <button class="tag-btn" data-tag={tag}>
-                        {tag}
-                    </button>
-            ))
-        }
+        <button class="tag-btn active" data-tag="all">Todas</button>
+        {tags.map((tag: string) => (
+                <button class="tag-btn" data-tag={tag}>
+                    {tag}
+                </button>
+        ))}
     </div>
 </div>
 
 <div class="no-results" style="display: none;">
     <p>No se encontraron resultados que coincidan con tus criterios de búsqueda.</p>
-    <button class="reset-search-btn">Clear search</button>
+    <button class="reset-search-btn">Limpiar búsqueda</button>
 </div>
 
 <style>
@@ -56,11 +54,9 @@ const {tags} = Astro.props;
         width: 100%;
         padding: 0.5em 2.5em 0.5em 0.5em;
         border-radius: 4px;
-    }
-
-    :global(.dark) .search-input {
-        background: #8e8e8e;
-        color: #181a1b;
+        background-color: var(--background-color);
+        color: var(--foreground-color);
+        border: 1px solid var(--border-color);
     }
 
     .tags-filter {
@@ -71,88 +67,37 @@ const {tags} = Astro.props;
 
     .tag-btn {
         padding: 0.5em 1em;
-        border: 1px solid #8e8e8e;
+        border: 1px solid var(--border-color);
         border-radius: 4px;
-        background: transparent;
+        background: var(--background-color);
+        color: var(--foreground-color);
         cursor: pointer;
         transition: all 0.3s ease;
     }
 
-    :global(.dark) .tag-btn {
-        background: #181a1b;
-        color: #e4e4e4;
-    }
-
     .tag-btn.active {
-        background: #333;
-        color: #e4e4e4;
-    }
-
-    :global(.dark) .tag-btn.active,
-    :global(.dark) .tag-btn:hover {
-        background: #8e4ace !important;
-        border-color: #8e4ace !important;
-        color: #181a1b !important;
-    }
-
-    :global(.highlight) {
-        background-color: #8e4ace;
-        padding: 0 2px;
-        border-radius: 2px;
-        font-weight: bold;
+        background: var(--accent-color);
+        color: var(--foreground-color);
     }
 
     @keyframes highlightFade {
         from {
-            background-color: #8e4ace;
+            background-color: var(--accent-color);
         }
         to {
-            background-color: #8e8e8e;
+            background-color: var(--accent-color-muted);
         }
-    }
-
-    :global(.highlight) {
-        animation: highlightFade 1s ease-out;
-    }
-
-    :global(.timeline-item) {
-        transition: opacity 0.3s ease,
-        visibility 0.3s ease;
-    }
-
-    :global(.tag) {
-        cursor: pointer;
-        transition: all 0.3s ease;
-    }
-
-    :global(.tag:hover) {
-        background: #8e4ace;
-        color: #e4e4e4;
-    }
-
-    :global(.dark)  :global(.tag:hover) {
-        background: #8e4ace;
-        color: #181a1b;
-    }
-
-    :global(.highlight-tag) {
-        background: #8e4ace !important;
-        color: #e4e4e4 !important;
-    }
-
-    :global(.dark) :global(.highlight-tag) {
-        color: #181a1b !important;
     }
 
     .tag-btn:hover {
-        background: #8e4ace;
-        color: #e4e4e4 !important;
+        background: var(--accent-color);
+        color: var(--background-color);
     }
 
     .tag-btn.active {
-        background: #8e4ace;
-        color: #e4e4e4;
-        border-color: #8e4ace;
+        background: var(--accent-color);
+        color: var(--background-color);
+        border-color: var(--accent-color);
     }
 
     .no-results {
@@ -163,7 +108,7 @@ const {tags} = Astro.props;
     }
 
     .no-results p {
-        color: #8e8e8e;
+        color: var(--accent-color-muted);
         margin-bottom: 1em;
     }
 
@@ -176,12 +121,8 @@ const {tags} = Astro.props;
         transition: all 0.3s ease;
     }
 
-    :global(.dark) .reset-search-btn {
-        color: #8e8e8e
-    }
-
     .reset-search-btn:hover {
-        color: #8e4ace;
+        color: var(--accent-color);
     }
 
     .clear-search {
@@ -194,11 +135,11 @@ const {tags} = Astro.props;
         padding: 0.25em 0.5em;
         cursor: pointer;
         transition: all 0.2s ease;
-        color: #374151;
+        color: var(--accent-color-muted);
     }
 
     .clear-search:hover {
-        color: #8e4ace;
+        color: var(--accent-color);
     }
 </style>
 
@@ -215,7 +156,7 @@ const {tags} = Astro.props;
     let activeTag = "all";
     let searchTerm = "";
 
-    // Function to normalize text (emove accents and convert to lowercase)
+    // Function to normalize text (remove accents and convert to lowercase)
     function normalizeText(text: string): string {
         return text
             .normalize("NFD")
@@ -226,7 +167,7 @@ const {tags} = Astro.props;
 
     function highlightText(element: Element, term: string) {
         if (!term.trim()) {
-            // Restore original text by emoving highlight spans
+            // Restore original text by removing highlight spans
             element.innerHTML = element.innerHTML.replace(
                 /<mark class="highlight">|<\/mark>/g,
                 "",

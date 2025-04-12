@@ -82,36 +82,32 @@ const {title, interval, entity, location, description, tags, certificate} =
     .timeline-dot {
         width: 1em;
         height: 1em;
-        background: #8e4ace;
-        border: 1px solid #f5f5f5;
+        background: var(--accent-color);
+        border: 1px solid var(--border-color);
         border-radius: 50%;
-        box-shadow: 0 0 0 2px #8e8e8e;
+        box-shadow: 0 0 0 2px var(--border-color);
         z-index: 2;
     }
 
     :global(.dark) .timeline-dot {
-        border: 1px solid #181a1b;
-        box-shadow: 0 0 0 1px #8e8e8e;
+        border: 1px solid var(--border-color);
+        box-shadow: 0 0 0 1px var(--accent-color-muted);
     }
 
     .timeline-line {
         position: absolute;
         top: 1em;
         width: 1px;
-        height: calc(100% + 2em);
-        background: #8e8e8e;
-    }
-
-    :global(.dark) .timeline-line {
-        background: #4f4f58;
+        height: calc(100% + 1em);
+        background: var(--border-color);
     }
 
     .timeline-content {
-        background: #e4e4e4;
-        border: 1px solid #8e8e8e;
+        background: var(--background-color);
+        border: 1px solid var(--border-color);
         border-radius: 0.5em;
         padding: 1em;
-        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 1px 3px rgba(var(--background-color), 0.1);
     }
 
     .timeline-header {
@@ -123,18 +119,14 @@ const {title, interval, entity, location, description, tags, certificate} =
 
     .timeline-date {
         font-size: 0.875em;
-        color: #8e8e8e;
+        color: var(--foreground-color);
     }
 
     .timeline-title {
         font-size: 1em;
         font-weight: 600;
-        color: #181a1b;
+        color: var(--accent-color);
         margin: 0;
-    }
-
-    :global(.dark) .timeline-title {
-        color: #e4e4e4;
     }
 
     .entity-info {
@@ -151,30 +143,22 @@ const {title, interval, entity, location, description, tags, certificate} =
     }
 
     .entity-name {
-        color: #181a1b;
+        color: var(--foreground-color);
         font-weight: 500;
     }
 
-    :global(.dark) .entity-name {
-        color: #e4e4e4;
-    }
-
     .entity-name:hover {
-        color: #8e4ace;
+        color: var(--accent-color);
     }
 
     .location {
-        color: #181a1b;
+        color: var(--foreground-color);
         font-size: 0.875em;
         width: 100%;
     }
 
-    :global(.dark) .location {
-        color: #8e8e8e;
-    }
-
     .description {
-        color: #8e8e8e;
+        color:var(--accent-color-muted);
         font-size: 0.875em;
         line-height: 1.5;
         margin-bottom: 1em;
@@ -190,35 +174,25 @@ const {title, interval, entity, location, description, tags, certificate} =
     }
 
     .tag {
-        background: #8e8e8e;
+        background: var(--accent-color-muted);
         padding: 0.25em 0.75em;
         border-radius: 25px;
         font-size: 0.75em;
-        color: #f5f5f5;
+        color: var(--background-color);
+        cursor: pointer;
     }
 
-    :global(.dark) .tag {
-        background: #8e8e8e;
-        color: #181a1b;
+    .tag:hover,
+    .tag.highlight-tag {
+        background: var(--accent-color);
+        border-color: var(--accent-color);
     }
 
     .certificate-link {
         display: inline-flex;
         align-items: center;
-        color: #181a1b;
+        color: var(--foreground-color);
         font-size: 0.875em;
-    }
-
-    :global(.dark) .certificate-link {
-        color: #8e8e8e;
-    }
-
-    .certificate-link:hover {
-        color: #8e4ace;
-    }
-
-    :global(.dark) .timeline-content {
-        background-color: #181a1b;
     }
 
     @media screen and (min-width: 992px) {

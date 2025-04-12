@@ -83,9 +83,18 @@
     }
 
     .btn.active {
-        border: solid 1px var(--foreground-color);
+        border: solid 1px var(--accent-color);
         opacity: 1;
     }
+
+    .btn.active svg,
+    .btn.active .light,
+    .btn.active .dark,
+    .btn.active .system {
+        fill: var(--accent-color);
+        opacity: 1;
+    }
+
 
     .btn.active:hover {
         border: solid 1px var(--foreground-color);

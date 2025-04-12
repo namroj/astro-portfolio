@@ -97,16 +97,11 @@ const {entity, interval, location, positions, tags} = item.data;
     .timeline-dot {
         width: 1em;
         height: 1em;
-        background: #8e4ace;
-        border: 1px solid #f5f5f5;
+        background: var(--accent-color);
+        border: 1px solid var(--border-color);
         border-radius: 50%;
-        box-shadow: 0 0 0 2px #8e8e8e;
+        box-shadow: 0 0 0 2px var(--border-color);
         z-index: 2;
-    }
-
-    :global(.dark) .timeline-dot {
-        border: 1px solid #181a1b;
-        box-shadow: 0 0 0 1px #8e8e8e;
     }
 
     .timeline-line {
@@ -114,24 +109,15 @@ const {entity, interval, location, positions, tags} = item.data;
         top: 1em;
         width: 1px;
         height: calc(100% + 2rem);
-        background: #8e8e8e;
-    }
-
-    :global(.dark) .timeline-line {
-        background: #4f4f58;
+        background: var(--border-color);
     }
 
     .timeline-content {
-        background: #e4e4e4;
+        background: var(--background-color);
+        border: 1px solid var(--border-color);
         border-radius: 0.5em;
         padding: 1em;
-        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-        border: 1px solid #8e8e8e;
-    }
-
-    :global(.dark) .timeline-content {
-        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-        border: 1px solid #4f4f58;
+        box-shadow: 0 1px 3px rgba(var(--background-color), 0.1);
     }
 
     .timeline-header {
@@ -143,15 +129,13 @@ const {entity, interval, location, positions, tags} = item.data;
 
     .timeline-date {
         font-size: 0.875em;
-        color: #181a1b;
-    }
-
-    :global(.dark) .timeline-date {
-        color: #8e8e8e;
+        color: var(--foreground-color);
     }
 
     .timeline-title {
-        color: #181a1b;
+        font-size: 1em;
+        font-weight: 600;
+        color: var(--accent-color);
         margin: 0;
     }
 
@@ -169,77 +153,59 @@ const {entity, interval, location, positions, tags} = item.data;
     }
 
     .entity-name {
-        color: #181a1b;
+        color: var(--foreground-color);
         font-weight: 500;
     }
 
-    :global(.dark) .entity-name {
-        color: #e4e4e4;
-    }
-
     .entity-name:hover {
-        color: #8e4ace;
+        color: var(--accent-color);
     }
 
     .location {
-        color: #181a1b;
+        color: var(--accent-color-muted);
         font-size: 0.875em;
         width: 100%;
     }
-    
-    :global(.dark) .location {
-        color: #8e8e8e;
-    }
 
     .description {
-        color: #181a1b;
+        color: var(--accent-color-muted);
         font-size: 0.875em;
         margin-bottom: 1em;
-    }
-
-    :global(.dark) .description {
-        color: #8e8e8e;
     }
 
     .position {
         padding: 1em;
-        border: 1px solid #8e8e8e;
+        border: 1px solid var(--border-color);
         border-radius: 0.5em;
         margin-bottom: 1em;
-        background: #f9fafb;
-    }
-
-    :global(.dark) .position{
-        background-color: transparent;
+        background: var(--background-color);
+        color: var(--foreground-color);
     }
 
     .position-title {
         font-size: 1.1em;
         font-weight: 600;
-        color: #8e8e8e;
+        color: var(--foreground-color);
         margin: 0 0 0.5rem 0;
     }
 
     .position-description {
-        color: #181a1b;
+        color: var(--accent-color-muted);
         font-size: 0.875em;
         margin-bottom: 0.5em;
-    }
 
-    :global(.dark) .position-description {
-        color: #8e8e8e;
+        li {
+            list-style: disclosure-closed;
+            margin-left: 1em;
+        }
     }
 
     .position-highlight {
-        background: #e4e4e4;
-        color: #181a1b;
+        background: var(--accent-color-muted);
+        color: var(--background-color);
         padding: 0.5em;
         border-radius: 0.25em;
         font-style: italic;
-    }
-
-    :global(.dark) .position-highlight {
-        background: #8e8e8e;
     }
 
     .tags-list {
@@ -252,35 +218,30 @@ const {entity, interval, location, positions, tags} = item.data;
     }
 
     .tag {
-        background: #8e8e8e;
+        background: var(--accent-color-muted);
         padding: 0.25em 0.75em;
         border-radius: 25px;
+        border: 1px solid var(--accent-color-muted);
         font-size: 0.75em;
-        color: #f5f5f5;
+        color: var(--background-color);
+        cursor: pointer;
     }
 
-    :global(.dark) .tag {
-        color: #181a1b;
-    }
-
-    :global(.dark) .tag:hover {
-        background: #8e4ace;
-        color: #181a1b;
+    .tag:hover,
+    .tag.highlight-tag {
+        background: var(--accent-color);
+        border-color: var(--accent-color);
     }
 
     .certificate-link {
         display: inline-flex;
         align-items: center;
-        color: #8e4ace;
+        color: var(--foreground-color);
         font-size: 0.875em;
     }
 
     .certificate-link:hover {
         text-decoration: underline;
-    }
-
-    :global(.dark) .timeline-content {
-        background-color: #181a1b;
     }
 
     @media screen and (min-width: 992px) {
