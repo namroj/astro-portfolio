@@ -29,22 +29,43 @@ const title = {
 ---
 
 <Layout title={title}>
-    <p>Artículo etiquetados con <i>{tag}</i></p>
-    <ul>
-        {
-            posts.map((post: any) => (
-                    <BlogPost url={post.id} title={post.data.title}/>
-            ))
-        }
+    <p>Artículos etiquetados como <i>{tag}</i></p>
+    <ul class="posts">
+        {posts.map((post: any) => (
+            <BlogPost
+                url={post.id}
+                title={post.data.title}
+                date={post.data.pubDate}
+            />
+        ))}
     </ul>
 
-    <a href="/blog/tags">Tags</a>
+    <a class="blog-tags" href="/blog/tags">Tags</a>
 </Layout>
 
-<style>
+<style is:inline>
+    .posts {
+        margin-top: 1em;
+    }
+
     i {
         border-radius: 25px;
         color: var(--accent-color);
         cursor: pointer;
+    }
+
+    a {
+        display: inline-flex;
+        align-items: center;
+        color: var(--foreground-color);
+        font-size: 0.875em;
+
+        &:hover {
+            color: var(--accent-color);
+        }
+
+        &.blog-tags {
+            margin-top: calc(1em * 2);
+        }
     }
 </style>
