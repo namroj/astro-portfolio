@@ -8,17 +8,16 @@ const currentPath = Astro.url.pathname;
     </div>
     <div class="links">
         <a href="/about" class={currentPath === "/about" ? "active" : ""}>
-            About
-        </a
-        >
+            Sobre mí
+        </a>
         <a href="/education" class={currentPath === "/education" ? "active" : ""}>
-            Education
+            Educación
         </a>
         <a href="/experience" class={currentPath === "/experience" ? "active" : ""}>
-            Experience
+            Experiencia
         </a>
         <a href="/projects" class={currentPath === "/projects" ? "active" : ""}>
-            Projects
+            Proyectos
         </a>
         <a href="/blog"
            class={
@@ -62,7 +61,6 @@ const currentPath = Astro.url.pathname;
 
                 &:first-of-type {
                     align-self: flex-start;
-
                 }
 
                 &:hover {
