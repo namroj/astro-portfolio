@@ -1,0 +1,16 @@
+.timeline {
+    list {
+        padding: 0;
+        margin: 2rem 0;
+        position: relative;
+
+        & > :last-child::before {
+            height: 2em;
+        }
+    }
+
+    @media screen and (min-width: 992px) {
+        max-width: 880px;
+        margin: 0 auto;
+    }
+}
