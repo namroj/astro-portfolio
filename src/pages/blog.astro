@@ -13,12 +13,34 @@ const title = {
 
 <Layout title={title}>
     <ul>
-        {
-            allPosts
-                .filter((post: any) => !post.data.draft)
-                .map((post: any) => (<BlogPost url={post.id} title={post.data.title}/>))
+        {allPosts
+            .filter((post: any) => !post.data.draft)
+            .map((post: any) => (
+                    <BlogPost
+                            url={post.id}
+                            title={post.data.title}
+                            date={post.data.pubDate}
+                    />
+            ))
         }
     </ul>
 
-    <a href="/tags">Tags</a>
+    <a class="post-tags" href="/blog/tags">Tags</a>
 </Layout>
+
+<style is:inline>
+    a {
+        display: inline-flex;
+        align-items: center;
+        color: var(--foreground-color);
+        font-size: 0.875em;
+
+        &:hover {
+            color: var(--accent-color);
+        }
+
+        &.post-tags {
+            margin-top: calc(1em * 2);
+        }
+    }
+</style>

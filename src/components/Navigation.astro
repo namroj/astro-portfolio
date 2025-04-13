@@ -21,10 +21,7 @@ const currentPath = Astro.url.pathname;
         </a>
         <a href="/blog"
            class={
-               currentPath === "/blog"
-               || currentPath.startsWith("/blog")
-               || currentPath.startsWith("/tags")
-                   ? "active" : ""
+               currentPath === "/blog" || currentPath.startsWith("/blog") ? "active" : ""
            }
         >
             Blog

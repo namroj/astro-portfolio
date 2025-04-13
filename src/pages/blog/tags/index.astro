@@ -1,0 +1,44 @@
+---
+import {getCollection} from "astro:content";
+import Layout from "../../../layouts/Layout.astro";
+
+const allPosts = await getCollection("blog");
+const tags = [...new Set(allPosts.map((post: any) => post.data.tags).flat())];
+
+const title = {
+    tab: "Tags",
+    page: "Etiquetas",
+};
+---
+
+<Layout title={title}>
+    <div class="tags">
+        {tags.map((tag) => (
+            <p class="tag">
+                <a href={`/blog/tags/${tag}`}>{tag}</a>
+            </p>
+        ))}
+    </div>
+</Layout>
+
+<style>
+    .tags {
+        display: flex;
+        gap: 0.5em;
+    }
+
+    .tag {
+        background: var(--accent-color-muted);
+        padding: 0.25em 0.75em;
+        border-radius: 25px;
+        font-size: 0.75em;
+        color: var(--background-color);
+        cursor: pointer;
+    }
+
+    .tag:hover,
+    .tag.highlight-tag {
+        background: var(--accent-color);
+        border-color: var(--accent-color);
+    }
+</style>

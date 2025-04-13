@@ -9,6 +9,8 @@
     --scrollbar-track-color: #8e8e8e;
     --scrollbar-thumb-color: #8e4ace;
     --border-color: #8e8e8e;
+    --font: "Cascadia Code";
+    --line-height: 1;
 }
 
 :root[data-theme="system"],
