@@ -1,6 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import VenezuelaToArgentinaMap from "../components/VenezuelaToArgentinaMap";
+
 const title = {
     tab: "De Venezuela a Argentina",
     page: "De Venezuela a Argentina",
@@ -8,5 +9,5 @@ const title = {
 ---
 
 <Layout title={title}>
-    <VenezuelaToArgentinaMap client:load/>
+    <VenezuelaToArgentinaMap client:only/>
 </Layout>

@@ -1,0 +1,6 @@
+.google-map {
+    width: 100%;
+    border: 1px solid var(--border-color);
+    border-bottom-right-radius: 1em;
+    border-top-left-radius: 1em;
+}
