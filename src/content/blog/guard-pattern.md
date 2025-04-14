@@ -3,8 +3,8 @@ title: Guard pattern
 author: Jorman Espinoza
 description: "Guard pattern simplifies and improve code reading!"
 image:
-    url: "https://docs.astro.build/assets/rays.webp"
-    alt: "The Astro logo on a dark background with rainbow rays."
+  url: "https://docs.astro.build/assets/rays.webp"
+  alt: "The Astro logo on a dark background with rainbow rays."
 pubDate: 2025-03-23
 tags: ["java", "desing-pattern", "guard", "clean-code"]
 draft: false
@@ -24,6 +24,7 @@ The guard pattern (also known as guard clauses or early returns) is a coding pra
 ## Examples in Practice
 
 ### Basic Example: User Registration Validation
+
 ```java
 // Without guard pattern - nested conditions
 public String validateUserRegistration(User user) {
@@ -52,29 +53,30 @@ public String validateUserRegistration(User user) {
 ```
 
 With guard pattern - clear and flat structure
+
 ```java
 public String validateUserRegistration(User user) {
     // Guard clauses for null checks and basic validation
     if (user == null) {
         return "User object cannot be null";
     }
-    
+
     if (user.getUsername() == null || user.getUsername().isEmpty()) {
         return "Username cannot be empty";
     }
-    
+
     if (user.getPassword() == null || user.getPassword().length() < 8) {
         return "Password must be at least 8 characters";
     }
-    
+
     if (user.getEmail() == null || !user.getEmail().contains("@")) {
         return "Invalid email format";
     }
-    
+
     if (user.getAge() < 18) {
         return "Age must be 18 or older";
     }
-    
+
     // If all validations pass
     return "VALID";
 }
@@ -91,6 +93,7 @@ This example demonstrates several key advantages of the guard pattern:
 The guard pattern transforms what would be a complex nested structure into a linear sequence of validations, making the code much easier to read and maintain.
 
 ### Real-world Example: Discount Calculator
+
 ```java
 // Without guard pattern - deeply nested
 public double calculateDiscount(Customer customer, Order order) {
@@ -115,6 +118,7 @@ public double calculateDiscount(Customer customer, Order order) {
 ```
 
 With guard pattern - clear and flat structure
+
 ```java
 // With guard pattern - flat and clear
 public double calculateDiscount(Customer customer, Order order) {
@@ -122,7 +126,7 @@ public double calculateDiscount(Customer customer, Order order) {
     if (customer == null) return 0;
     if (order == null) return 0;
     if (order.getTotal() <= 0) return 0;
-    
+
     // Main business logic
     if (customer.isVIP()) {
         return order.getTotal() * 0.2;

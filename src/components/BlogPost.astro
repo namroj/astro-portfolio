@@ -1,25 +1,27 @@
 ---
-const {url, title, date} = Astro.props;
+const { url, title, date } = Astro.props;
 
-const language = 'es-ES';
+const language = "es-ES";
 ---
 
 <a class="blog-post-link" href={`/blog/${url}`}>
-    <span>{title}</span>
-    <span>
-           {new Date(date).toLocaleDateString(language, {
-               day: "2-digit",
-               month: "long",
-               year: "numeric",
-           })}
-    </span>
+  <span>{title}</span>
+  <span>
+    {
+      new Date(date).toLocaleDateString(language, {
+        day: "2-digit",
+        month: "long",
+        year: "numeric",
+      })
+    }
+  </span>
 </a>
 
 <style is:inline>
-    a.blog-post-link {
-        display: inline-flex;
-        justify-content: space-between;
-        width: 100%;
-        border-bottom: 1px solid var(--border-color);
-    }
+  a.blog-post-link {
+    display: inline-flex;
+    justify-content: space-between;
+    width: 100%;
+    border-bottom: 1px solid var(--border-color);
+  }
 </style>

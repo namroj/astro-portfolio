@@ -1,71 +1,73 @@
 ---
-import {getCollection} from "astro:content";
+import { getCollection } from "astro:content";
 import Layout from "../../../layouts/Layout.astro";
 import BlogPost from "../../../components/BlogPost.astro";
 
 export async function getStaticPaths() {
-    const allPosts = await getCollection("blog");
-    const uniqueTags = [
-        ...new Set(allPosts.map((post: any) => post.data.tags).flat()),
-    ];
+  const allPosts = await getCollection("blog");
+  const uniqueTags = [
+    ...new Set(allPosts.map((post: any) => post.data.tags).flat()),
+  ];
 
-    return uniqueTags.map((tag) => {
-        const filteredPosts = allPosts.filter((post: any) =>
-            post.data.tags.includes(tag),
-        );
-        return {
-            params: {tag},
-            props: {posts: filteredPosts},
-        };
-    });
+  return uniqueTags.map((tag) => {
+    const filteredPosts = allPosts.filter((post: any) =>
+      post.data.tags.includes(tag),
+    );
+    return {
+      params: { tag },
+      props: { posts: filteredPosts },
+    };
+  });
 }
 
-const {tag} = Astro.params;
-const {posts} = Astro.props;
+const { tag } = Astro.params;
+const { posts } = Astro.props;
 const title = {
-    tab: `Etiqueta: ${tag}`,
-    page: tag,
+  tab: `Etiqueta: ${tag}`,
+  page: tag,
 };
 ---
 
 <Layout title={title}>
-    <p>Artículos etiquetados como <i>{tag}</i></p>
-    <ul class="posts">
-        {posts.map((post: any) => (
-            <BlogPost
-                url={post.id}
-                title={post.data.title}
-                date={post.data.pubDate}
-            />
-        ))}
-    </ul>
+  <p>Artículos etiquetados como <i>{tag}</i></p>
+  <ul class="posts">
+    {
+      posts.map((post: any) => (
+        <BlogPost
+          url={post.id}
+          title={post.data.title}
+          date={post.data.pubDate}
+        />
+      ))
+    }
+  </ul>
 
-    <a class="blog-tags" href="/blog/tags">Tags</a>
+  <a class="blog-tags" href="/blog/tags">Tags</a>
 </Layout>
 
 <style is:inline>
-    .posts {
-        margin-top: 1em;
+  .posts {
+    margin-top: 1em;
+  }
+
+  i {
+    border-radius: 25px;
+    color: var(--accent-color);
+    cursor: pointer;
+  }
+
+  a {
+    display: inline-flex;
+    align-items: center;
+    color: var(--foreground-color);
+    font-size: 0.875em;
+
+    &:hover {
+      color: var(--accent-color);
     }
 
-    i {
-        border-radius: 25px;
-        color: var(--accent-color);
-        cursor: pointer;
+    &.blog-tags {
+      margin-top: calc(1em * 2);
     }
-
-    a {
-        display: inline-flex;
-        align-items: center;
-        color: var(--foreground-color);
-        font-size: 0.875em;
-
-        &:hover {
-            color: var(--accent-color);
-        }
-
-        &.blog-tags {
-            margin-top: calc(1em * 2);
-        }
-    }
+  }
 </style>

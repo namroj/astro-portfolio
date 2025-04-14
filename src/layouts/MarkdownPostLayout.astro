@@ -2,67 +2,73 @@
 import Layout from "./Layout.astro";
 import "../styles/blog-post.css";
 
-const {frontmatter} = Astro.props;
+const { frontmatter } = Astro.props;
 
 const tags: string[] = [
-    ...new Set(frontmatter.tags.map((tag: string) => tag.toLowerCase())),
+  ...new Set(frontmatter.tags.map((tag: string) => tag.toLowerCase())),
 ];
 
 const title = {
-    tab: `Blog: ${frontmatter.title}`,
-    page: frontmatter.title,
+  tab: `Blog: ${frontmatter.title}`,
+  page: frontmatter.title,
 };
 ---
 
 <Layout title={title}>
-    <p>{frontmatter.pubDate.toString().slice(0, 10)}</p>
-    <p><em>{frontmatter.description}</em></p>
-    <p>Written by: {frontmatter.author}</p>
-    <img src={frontmatter.image.url} width="300" alt={frontmatter.image.alt}/>
-    <slot/>
-    <div class="tags">
-        {tags.map((tag: any) => (
-            <p class="tag">
-                <a href={`/blog/tags/${tag}`}>{tag}</a>
-            </p>
-        ))}
-    </div>
+  <p>{frontmatter.pubDate.toString().slice(0, 10)}</p>
+  <p><em>{frontmatter.description}</em></p>
+  <p>Written by: {frontmatter.author}</p>
+  <img src={frontmatter.image.url} width="300" alt={frontmatter.image.alt} />
+  <slot />
+  <div class="tags">
+    {
+      tags.map((tag: any) => (
+        <p class="tag">
+          <a href={`/blog/tags/${tag}`}>{tag}</a>
+        </p>
+      ))
+    }
+  </div>
 </Layout>
 
 <style is:inline>
-    .tags {
-        margin-top: 1em;
-        display: flex;
-        gap: 0.5em;
+  .tags {
+    margin-top: 1em;
+    display: flex;
+    gap: 0.5em;
 
-        .tag {
-            background: var(--accent-color-muted);
-            padding: 0.25em 0.75em;
-            border-radius: 25px;
-            border: 1px solid var(--accent-color-muted);
-            font-size: 0.75em;
-            color: var(--background-color);
-            cursor: pointer;
-            font-style: italic;
+    .tag {
+      background: var(--accent-color-muted);
+      padding: 0.25em 0.75em;
+      border-radius: 25px;
+      border: 1px solid var(--accent-color-muted);
+      font-size: 0.75em;
+      color: var(--background-color);
+      cursor: pointer;
+      font-style: italic;
 
-            &:hover,
-            &.highlight-tag {
-                background: var(--accent-color);
-                border-color: var(--accent-color);
-            }
-        }
+      &:hover,
+      &.highlight-tag {
+        background: var(--accent-color);
+        border-color: var(--accent-color);
+      }
     }
+  }
 
-    code, pre, .code {
-        font-family: var(--font), monospace;
-        font-feature-settings: "calt" 1, "liga" 1;
-        line-height: 2.25;
-        /* opcional: */
-        font-size: 1rem;
-        background: #1e1e1e;
-        color: #d4d4d4;
-        padding: 0.5em;
-        border-radius: 6px;
-        overflow-x: auto;
-    }
+  code,
+  pre,
+  .code {
+    font-family: var(--font), monospace;
+    font-feature-settings:
+      "calt" 1,
+      "liga" 1;
+    line-height: 2.25;
+    /* opcional: */
+    font-size: 1rem;
+    background: #1e1e1e;
+    color: #d4d4d4;
+    padding: 0.5em;
+    border-radius: 6px;
+    overflow-x: auto;
+  }
 </style>

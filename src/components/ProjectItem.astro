@@ -1,153 +1,164 @@
 ---
-import "../styles/timeline-item.css"
-const {item, isLast} = Astro.props;
-const {name, year, logo, location, summary, description, url, bg_color, tags} = item.data;
+import "../styles/timeline-item.css";
+const { item, isLast } = Astro.props;
+const {
+  name,
+  year,
+  logo,
+  location,
+  summary,
+  description,
+  url,
+  bg_color,
+  tags,
+} = item.data;
 ---
 
 <li class="timeline-item" data-tags={tags.join(",")}>
-    <div class="timeline-connector">
-        <div class="timeline-dot"></div>
-        {!isLast &&
-                <div class="timeline-line"/>}
+  <div class="timeline-connector">
+    <div class="timeline-dot"></div>
+    {!isLast && <div class="timeline-line" />}
+  </div>
+
+  <article class="timeline-content">
+    <header class="timeline-header">
+      <time class="timeline-date">{year}</time>
+      <h3 class="timeline-title">{name}</h3>
+    </header>
+
+    <div class="entity-info">
+      <img
+        src={logo}
+        alt={`${name} logo`}
+        class="entity-logo"
+        width="200"
+        height="200"
+        style={`background-color: ${bg_color}`}
+      />
+      <a
+        href={url}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="entity-name"
+      >
+        {name}
+      </a>
+      <span class="location">{location}</span>
     </div>
 
-    <article class="timeline-content">
-        <header class="timeline-header">
-            <time class="timeline-date">{year}</time>
-            <h3 class="timeline-title">{name}</h3>
-        </header>
+    <p class="summary">{summary}</p>
 
-        <div class="entity-info">
-            <img
-                    src={logo}
-                    alt={`${name} logo`}
-                    class="entity-logo"
-                    width="200"
-                    height="200"
-                    style={`background-color: ${bg_color}`}
-            />
-            <a
-                    href={url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="entity-name"
-            >
-                {name}
-            </a>
-            <span class="location">{location}</span>
-        </div>
+    <p class="description">{description}</p>
 
-        <p class="summary">{summary}</p>
-
-        <p class="description">{description}</p>
-
-        {tags && (
-                <ul class="tags-list">
-                    {tags.map((tag: string) => (
-                            <li class="tag">{tag}</li>
-                    ))}
-                </ul>
-        )}
-    </article>
+    {
+      tags && (
+        <ul class="tags-list">
+          {tags.map((tag: string) => (
+            <li class="tag">{tag}</li>
+          ))}
+        </ul>
+      )
+    }
+  </article>
 </li>
 
 <style>
-    .entity-info {
-        display: flex;
-        flex-wrap: wrap;
-        align-items: center;
-        gap: 0.5em;
-        margin-bottom: 1em;
+  .entity-info {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5em;
+    margin-bottom: 1em;
+  }
+
+  .entity-logo {
+    border-radius: 4px;
+    border: 1px solid var(--border-color);
+    object-fit: contain;
+    padding: 1em;
+  }
+
+  .entity-name {
+    color: var(--foreground-color);
+    font-weight: 500;
+  }
+
+  .entity-name:hover {
+    color: #8e4ace;
+  }
+
+  .location {
+    color: var(--accent-color-muted);
+    font-size: 0.875em;
+    width: 100%;
+  }
+
+  .summary {
+    color: var(--foreground-color);
+    font-size: 0.875em;
+    line-height: 1.5;
+    margin-bottom: 1em;
+  }
+
+  .description {
+    color: var(--accent-color-muted);
+    font-size: 0.875em;
+    line-height: 1.5;
+    margin-bottom: 1em;
+  }
+
+  .tags-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5em;
+    list-style: none;
+    padding: 0;
+    margin-bottom: 1em;
+  }
+
+  .tag {
+    background: var(--accent-color-muted);
+    padding: 0.25em 0.75em;
+    border-radius: 25px;
+    border: 1px solid var(--accent-color-muted);
+    font-size: 0.75em;
+    color: var(--background-color);
+    cursor: pointer;
+  }
+
+  .tag:hover,
+  .tag.highlight-tag {
+    background: var(--accent-color);
+    border-color: var(--accent-color);
+  }
+
+  @media screen and (min-width: 992px) {
+    .timeline-item {
+      grid-template-columns: 1em 1fr;
+      gap: 1em;
+      padding-bottom: 1em;
     }
 
-    .entity-logo {
-        border-radius: 4px;
-        border: 1px solid var(--border-color);
-        object-fit: contain;
-        padding: 1em;
+    .timeline-content {
+      padding: 1em;
     }
 
-    .entity-name {
-        color: var(--foreground-color);
-        font-weight: 500;
+    .timeline-header {
+      flex-direction: row;
+      align-items: baseline;
+      gap: 1em;
     }
 
-    .entity-name:hover {
-        color: #8e4ace;
+    .timeline-title {
+      font-size: 1em;
     }
 
     .location {
-        color: var(--accent-color-muted);
-        font-size: 0.875em;
-        width: 100%;
-    }
-
-    .summary {
-        color: var(--foreground-color);
-        font-size: 0.875em;
-        line-height: 1.5;
-        margin-bottom: 1em;
+      width: auto;
     }
 
     .description {
-        color: var(--accent-color-muted);
-        font-size: 0.875em;
-        line-height: 1.5;
-        margin-bottom: 1em;
+      font-size: 0.89em;
     }
-
-    .tags-list {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.5em;
-        list-style: none;
-        padding: 0;
-        margin-bottom: 1em;
-    }
-
-    .tag {
-        background: var(--accent-color-muted);
-        padding: 0.25em 0.75em;
-        border-radius: 25px;
-        border: 1px solid var(--accent-color-muted);
-        font-size: 0.75em;
-        color: var(--background-color);
-        cursor: pointer;
-    }
-
-    .tag:hover,
-    .tag.highlight-tag {
-        background: var(--accent-color);
-        border-color: var(--accent-color);
-    }
-
-    @media screen and (min-width: 992px) {
-        .timeline-item {
-            grid-template-columns: 1em 1fr;
-            gap: 1em;
-            padding-bottom: 1em;
-        }
-
-        .timeline-content {
-            padding: 1em;
-        }
-
-        .timeline-header {
-            flex-direction: row;
-            align-items: baseline;
-            gap: 1em;
-        }
-
-        .timeline-title {
-            font-size: 1em;
-        }
-
-        .location {
-            width: auto;
-        }
-
-        .description {
-            font-size: 0.89em;
-        }
-    }
+  }
 </style>

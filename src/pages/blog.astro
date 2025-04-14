@@ -1,46 +1,47 @@
 ---
-import {getCollection} from "astro:content";
+import { getCollection } from "astro:content";
 
 import Layout from "../layouts/Layout.astro";
 import BlogPost from "../components/BlogPost.astro";
 
 const allPosts = await getCollection("blog");
 const title = {
-    tab: "Blog",
-    page: "Blog",
+  tab: "Blog",
+  page: "Blog",
 };
 ---
 
 <Layout title={title}>
-    <ul>
-        {allPosts
-            .filter((post: any) => !post.data.draft)
-            .map((post: any) => (
-                    <BlogPost
-                            url={post.id}
-                            title={post.data.title}
-                            date={post.data.pubDate}
-                    />
-            ))
-        }
-    </ul>
+  <ul>
+    {
+      allPosts
+        .filter((post: any) => !post.data.draft)
+        .map((post: any) => (
+          <BlogPost
+            url={post.id}
+            title={post.data.title}
+            date={post.data.pubDate}
+          />
+        ))
+    }
+  </ul>
 
-    <a class="blog-tags" href="/blog/tags">Tags</a>
+  <a class="blog-tags" href="/blog/tags">Tags</a>
 </Layout>
 
 <style is:inline>
-    a {
-        display: inline-flex;
-        align-items: center;
-        color: var(--foreground-color);
-        font-size: 0.875em;
+  a {
+    display: inline-flex;
+    align-items: center;
+    color: var(--foreground-color);
+    font-size: 0.875em;
 
-        &:hover {
-            color: var(--accent-color);
-        }
-
-        &.blog-tags {
-            margin-top: calc(1em * 2);
-        }
+    &:hover {
+      color: var(--accent-color);
     }
+
+    &.blog-tags {
+      margin-top: calc(1em * 2);
+    }
+  }
 </style>

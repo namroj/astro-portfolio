@@ -4,43 +4,43 @@ import Navigation from "./Navigation.astro";
 ---
 
 <header>
-    <nav>
-        <Navigation/>
-        <Hamburger/>
-    </nav>
+  <nav>
+    <Navigation />
+    <Hamburger />
+  </nav>
 </header>
 
 <style>
-    nav {
-        position: fixed;
-        top: 0;
-        left: 0;
-        display: flex;
-        justify-content: flex-end;
-        width: 100%;
-        height: 60px;
-        padding: 0 1em;
-        z-index: 4;
-        background-color: var(--background-color);
-        border-bottom: 1px solid var(--border-color);
+  nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    height: 60px;
+    padding: 0 1em;
+    z-index: 4;
+    background-color: var(--background-color);
+    border-bottom: 1px solid var(--border-color);
 
-        &.expanded {
-            height: 100dvh;
-            flex-direction: column;
-            z-index: 3;
-            backdrop-filter: blur(25px);
-            border-bottom-color: transparent;
-            background-color: rgba(var(--background-color), 0.1);
-            background-image: var(--navigation-background-image);
-            background-repeat: repeat;
-        }
-
-        @media screen and (min-width: 992px) {
-            height: auto;
-        }
+    &.expanded {
+      height: 100dvh;
+      flex-direction: column;
+      z-index: 3;
+      backdrop-filter: blur(25px);
+      border-bottom-color: transparent;
+      background-color: rgba(var(--background-color), 0.1);
+      background-image: var(--navigation-background-image);
+      background-repeat: repeat;
     }
+
+    @media screen and (min-width: 992px) {
+      height: auto;
+    }
+  }
 </style>
 
 <script>
-    import "../scripts/navigation.js";
+  import "../scripts/navigation.js";
 </script>

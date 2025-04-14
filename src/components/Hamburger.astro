@@ -3,59 +3,60 @@
 ---
 
 <div class="hamburger">
-    <div class="line"></div>
-    <div class="line"></div>
+  <div class="line"></div>
+  <div class="line"></div>
 </div>
 
 <style>
-    .hamburger {
-        position: absolute;
-        top: 0.25em;
-        right: 1em;
+  .hamburger {
+    position: absolute;
+    top: 0.25em;
+    right: 1em;
 
-        /* Box model */
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        width: 40px;
-        height: 40px;
-        margin-left: auto;
-        margin-top: 0.5em;
-        /* Visual styles */
-        cursor: pointer;
+    /* Box model */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    margin-left: auto;
+    margin-top: 0.5em;
+    /* Visual styles */
+    cursor: pointer;
 
-        .line {
-            width: 40px;
-            height: 5px;
-            background-color: #8e4ace;
-            transition: transform 0.2s ease-in-out,
-            opacity 0.1s ease-in-out;
-            position: absolute;
+    .line {
+      width: 40px;
+      height: 5px;
+      background-color: #8e4ace;
+      transition:
+        transform 0.2s ease-in-out,
+        opacity 0.1s ease-in-out;
+      position: absolute;
 
-            &:nth-of-type(1) {
-                top: 12px;
-            }
+      &:nth-of-type(1) {
+        top: 12px;
+      }
 
-            &:nth-of-type(2) {
-                bottom: 12px;
-            }
-        }
-
-        &.expanded {
-            .line {
-                &:nth-of-type(1) {
-                    transform: rotate(45deg) translateY(8px);
-                }
-
-                &:nth-of-type(2) {
-                    transform: rotate(-45deg) translateY(-8px);
-                }
-            }
-        }
-
-        @media screen and (min-width: 992px) {
-            display: none;
-        }
+      &:nth-of-type(2) {
+        bottom: 12px;
+      }
     }
+
+    &.expanded {
+      .line {
+        &:nth-of-type(1) {
+          transform: rotate(45deg) translateY(8px);
+        }
+
+        &:nth-of-type(2) {
+          transform: rotate(-45deg) translateY(-8px);
+        }
+      }
+    }
+
+    @media screen and (min-width: 992px) {
+      display: none;
+    }
+  }
 </style>

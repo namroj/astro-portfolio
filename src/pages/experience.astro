@@ -1,15 +1,15 @@
 ---
-import {getCollection} from "astro:content";
+import { getCollection } from "astro:content";
 
 import Layout from "../layouts/Layout.astro";
 import Item from "../components/ExperienceItem.astro";
 import Filter from "../components/Filter.astro";
 
-import "../styles/timeline.css"
+import "../styles/timeline.css";
 
 const title = {
-    tab: "Experiencia",
-    page: "Experiencia",
+  tab: "Experiencia",
+  page: "Experiencia",
 };
 
 const items = await getCollection("experience");
@@ -17,23 +17,25 @@ const tags = [...new Set(items.flatMap((item) => item.data.tags))];
 ---
 
 <Layout title={title}>
-    <p>
-        A lo largo de mi carrera he tenido la oportunidad de trabajar con diversas empresas, desde startups hasta
-        corporaciones multinacionales. Mi trayectoria comenzó en 2010 brindando soporte técnico en BBVA Provincial, y ha
-        evolucionado hasta convertirme en desarrollador full-stack en Accenture, donde actualmente lidero proyectos. He
-        adquirido una amplia experiencia en desarrollo web, integración de APIs y liderazgo de equipos, contribuyendo en
-        proyectos diversos de distintas industrias. A continuación, se muestra una línea de tiempo con mis experiencias
-        profesionales.
-    </p>
+  <p>
+    A lo largo de mi carrera he tenido la oportunidad de trabajar con diversas
+    empresas, desde startups hasta corporaciones multinacionales. Mi trayectoria
+    comenzó en 2010 brindando soporte técnico en BBVA Provincial, y ha
+    evolucionado hasta convertirme en desarrollador full-stack en Accenture,
+    donde actualmente lidero proyectos. He adquirido una amplia experiencia en
+    desarrollo web, integración de APIs y liderazgo de equipos, contribuyendo en
+    proyectos diversos de distintas industrias. A continuación, se muestra una
+    línea de tiempo con mis experiencias profesionales.
+  </p>
 
-    <section class="timeline">
-        <Filter tags={tags}/>
-        <ul class="list">
-            {
-                items.map((item, index) => (
-                        <Item item={item} isLast={index === items.length - 1}/>
-                ))
-            }
-        </ul>
-    </section>
+  <section class="timeline">
+    <Filter tags={tags} />
+    <ul class="list">
+      {
+        items.map((item, index) => (
+          <Item item={item} isLast={index === items.length - 1} />
+        ))
+      }
+    </ul>
+  </section>
 </Layout>

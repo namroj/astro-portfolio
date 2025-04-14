@@ -1,13 +1,13 @@
 const mapDarkStyles = [
   {
-    featureType: 'all',
-    elementType: 'labels.text.fill',
+    featureType: "all",
+    elementType: "labels.text.fill",
     stylers: [
       {
         saturation: 36,
       },
       {
-        color: '#000000',
+        color: "#000000",
       },
       {
         lightness: 40,
@@ -15,14 +15,14 @@ const mapDarkStyles = [
     ],
   },
   {
-    featureType: 'all',
-    elementType: 'labels.text.stroke',
+    featureType: "all",
+    elementType: "labels.text.stroke",
     stylers: [
       {
-        visibility: 'on',
+        visibility: "on",
       },
       {
-        color: '#000000',
+        color: "#000000",
       },
       {
         lightness: 16,
@@ -30,20 +30,20 @@ const mapDarkStyles = [
     ],
   },
   {
-    featureType: 'all',
-    elementType: 'labels.icon',
+    featureType: "all",
+    elementType: "labels.icon",
     stylers: [
       {
-        visibility: 'off',
+        visibility: "off",
       },
     ],
   },
   {
-    featureType: 'administrative',
-    elementType: 'geometry.fill',
+    featureType: "administrative",
+    elementType: "geometry.fill",
     stylers: [
       {
-        color: '#000000',
+        color: "#000000",
       },
       {
         lightness: 20,
@@ -51,11 +51,11 @@ const mapDarkStyles = [
     ],
   },
   {
-    featureType: 'administrative',
-    elementType: 'geometry.stroke',
+    featureType: "administrative",
+    elementType: "geometry.stroke",
     stylers: [
       {
-        color: '#000000',
+        color: "#000000",
       },
       {
         lightness: 17,
@@ -66,11 +66,11 @@ const mapDarkStyles = [
     ],
   },
   {
-    featureType: 'landscape',
-    elementType: 'geometry',
+    featureType: "landscape",
+    elementType: "geometry",
     stylers: [
       {
-        color: '#000000',
+        color: "#000000",
       },
       {
         lightness: 20,
@@ -78,11 +78,11 @@ const mapDarkStyles = [
     ],
   },
   {
-    featureType: 'poi',
-    elementType: 'geometry',
+    featureType: "poi",
+    elementType: "geometry",
     stylers: [
       {
-        color: '#000000',
+        color: "#000000",
       },
       {
         lightness: 21,
@@ -90,11 +90,11 @@ const mapDarkStyles = [
     ],
   },
   {
-    featureType: 'road.highway',
-    elementType: 'geometry.fill',
+    featureType: "road.highway",
+    elementType: "geometry.fill",
     stylers: [
       {
-        color: '#000000',
+        color: "#000000",
       },
       {
         lightness: 17,
@@ -102,11 +102,11 @@ const mapDarkStyles = [
     ],
   },
   {
-    featureType: 'road.highway',
-    elementType: 'geometry.stroke',
+    featureType: "road.highway",
+    elementType: "geometry.stroke",
     stylers: [
       {
-        color: '#000000',
+        color: "#000000",
       },
       {
         lightness: 29,
@@ -117,11 +117,11 @@ const mapDarkStyles = [
     ],
   },
   {
-    featureType: 'road.arterial',
-    elementType: 'geometry',
+    featureType: "road.arterial",
+    elementType: "geometry",
     stylers: [
       {
-        color: '#000000',
+        color: "#000000",
       },
       {
         lightness: 18,
@@ -129,11 +129,11 @@ const mapDarkStyles = [
     ],
   },
   {
-    featureType: 'road.local',
-    elementType: 'geometry',
+    featureType: "road.local",
+    elementType: "geometry",
     stylers: [
       {
-        color: '#000000',
+        color: "#000000",
       },
       {
         lightness: 16,
@@ -141,11 +141,11 @@ const mapDarkStyles = [
     ],
   },
   {
-    featureType: 'transit',
-    elementType: 'geometry',
+    featureType: "transit",
+    elementType: "geometry",
     stylers: [
       {
-        color: '#000000',
+        color: "#000000",
       },
       {
         lightness: 19,
@@ -153,11 +153,11 @@ const mapDarkStyles = [
     ],
   },
   {
-    featureType: 'water',
-    elementType: 'geometry',
+    featureType: "water",
+    elementType: "geometry",
     stylers: [
       {
-        color: '#000000',
+        color: "#000000",
       },
       {
         lightness: 17,

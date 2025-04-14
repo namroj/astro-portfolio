@@ -1,338 +1,340 @@
 ---
-const {tags} = Astro.props;
+const { tags } = Astro.props;
 ---
 
 <div class="filters">
-    <form id="searchForm" class="search-form">
-        <div class="search-wrapper">
-            <input
-                    type="search"
-                    id="searchInput"
-                    placeholder="Buscar por palabra clave"
-                    class="search-input"
-            />
-            <button
-                    type="button"
-                    class="clear-search"
-                    id="clearSearch"
-                    style="display: none;"
-            >
-                ✕
-            </button>
-        </div>
-    </form>
-
-    <div class="tags-filter">
-        <button class="tag-btn active" data-tag="all">Todas</button>
-        {tags.map((tag: string) => (
-                <button class="tag-btn" data-tag={tag}>
-                    {tag}
-                </button>
-        ))}
+  <form id="searchForm" class="search-form">
+    <div class="search-wrapper">
+      <input
+        type="search"
+        id="searchInput"
+        placeholder="Buscar por palabra clave"
+        class="search-input"
+      />
+      <button
+        type="button"
+        class="clear-search"
+        id="clearSearch"
+        style="display: none;"
+      >
+        ✕
+      </button>
     </div>
+  </form>
+
+  <div class="tags-filter">
+    <button class="tag-btn active" data-tag="all">Todas</button>
+    {
+      tags.map((tag: string) => (
+        <button class="tag-btn" data-tag={tag}>
+          {tag}
+        </button>
+      ))
+    }
+  </div>
 </div>
 
 <div class="no-results" style="display: none;">
-    <p>No se encontraron resultados que coincidan con tus criterios de búsqueda.</p>
-    <button class="reset-search-btn">Limpiar búsqueda</button>
+  <p>
+    No se encontraron resultados que coincidan con tus criterios de búsqueda.
+  </p>
+  <button class="reset-search-btn">Limpiar búsqueda</button>
 </div>
 
 <style>
-    .filters {
-        margin: 2em 0;
-        display: flex;
-        flex-direction: column;
-        gap: 1em;
-    }
+  .filters {
+    margin: 2em 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+  }
 
-    .search-wrapper {
-        position: relative;
-        width: 100%;
-    }
+  .search-wrapper {
+    position: relative;
+    width: 100%;
+  }
 
-    .search-input {
-        width: 100%;
-        padding: 0.5em 2.5em 0.5em 0.5em;
-        border-radius: 4px;
-        background-color: var(--background-color);
-        color: var(--foreground-color);
-        border: 1px solid var(--border-color);
-    }
+  .search-input {
+    width: 100%;
+    padding: 0.5em 2.5em 0.5em 0.5em;
+    border-radius: 4px;
+    background-color: var(--background-color);
+    color: var(--foreground-color);
+    border: 1px solid var(--border-color);
+  }
 
-    .tags-filter {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.5em;
-    }
+  .tags-filter {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5em;
+  }
 
-    .tag-btn {
-        padding: 0.5em 1em;
-        border: 1px solid var(--border-color);
-        border-radius: 4px;
-        background: var(--background-color);
-        color: var(--foreground-color);
-        cursor: pointer;
-        transition: all 0.3s ease;
-    }
+  .tag-btn {
+    padding: 0.5em 1em;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    background: var(--background-color);
+    color: var(--foreground-color);
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
 
-    .tag-btn.active {
-        background: var(--accent-color);
-        color: var(--foreground-color);
-    }
+  .tag-btn.active {
+    background: var(--accent-color);
+    color: var(--foreground-color);
+  }
 
-    @keyframes highlightFade {
-        from {
-            background-color: var(--accent-color);
-        }
-        to {
-            background-color: var(--accent-color-muted);
-        }
+  @keyframes highlightFade {
+    from {
+      background-color: var(--accent-color);
     }
+    to {
+      background-color: var(--accent-color-muted);
+    }
+  }
 
-    .tag-btn:hover {
-        background: var(--accent-color);
-        color: var(--background-color);
-    }
+  .tag-btn:hover {
+    background: var(--accent-color);
+    color: var(--background-color);
+  }
 
-    .tag-btn.active {
-        background: var(--accent-color);
-        color: var(--background-color);
-        border-color: var(--accent-color);
-    }
+  .tag-btn.active {
+    background: var(--accent-color);
+    color: var(--background-color);
+    border-color: var(--accent-color);
+  }
 
-    .no-results {
-        text-align: center;
-        padding: 2em;
-        border-radius: 0.5em;
-        margin: 2em 0;
-    }
+  .no-results {
+    text-align: center;
+    padding: 2em;
+    border-radius: 0.5em;
+    margin: 2em 0;
+  }
 
-    .no-results p {
-        color: var(--accent-color-muted);
-        margin-bottom: 1em;
-    }
+  .no-results p {
+    color: var(--accent-color-muted);
+    margin-bottom: 1em;
+  }
 
-    .reset-search-btn {
-        padding: 0.5em 1em;
-        background: transparent;
-        border-radius: 0.5em;
-        cursor: pointer;
-        font-size: 0.875em;
-        transition: all 0.3s ease;
-    }
+  .reset-search-btn {
+    padding: 0.5em 1em;
+    background: transparent;
+    border-radius: 0.5em;
+    cursor: pointer;
+    font-size: 0.875em;
+    transition: all 0.3s ease;
+  }
 
-    .reset-search-btn:hover {
-        color: var(--accent-color);
-    }
+  .reset-search-btn:hover {
+    color: var(--accent-color);
+  }
 
-    .clear-search {
-        position: absolute;
-        right: 0.5em;
-        top: 50%;
-        transform: translateY(-50%);
-        background: none;
-        border: none;
-        padding: 0.25em 0.5em;
-        cursor: pointer;
-        transition: all 0.2s ease;
-        color: var(--accent-color-muted);
-    }
+  .clear-search {
+    position: absolute;
+    right: 0.5em;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    padding: 0.25em 0.5em;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    color: var(--accent-color-muted);
+  }
 
-    .clear-search:hover {
-        color: var(--accent-color);
-    }
+  .clear-search:hover {
+    color: var(--accent-color);
+  }
 </style>
 
 <script>
-    const searchInput = document.getElementById(
-        "searchInput",
-    ) as HTMLInputElement;
-    const tagButtons = document.querySelectorAll(".tag-btn");
-    const educationItems = document.querySelectorAll(".timeline-item");
-    const noResultsDiv = document.querySelector(".no-results") as HTMLElement;
-    const resetSearchButton = document.querySelector(".reset-search-btn");
-    const clearSearchBtn = document.getElementById("clearSearch");
+  const searchInput = document.getElementById(
+    "searchInput",
+  ) as HTMLInputElement;
+  const tagButtons = document.querySelectorAll(".tag-btn");
+  const educationItems = document.querySelectorAll(".timeline-item");
+  const noResultsDiv = document.querySelector(".no-results") as HTMLElement;
+  const resetSearchButton = document.querySelector(".reset-search-btn");
+  const clearSearchBtn = document.getElementById("clearSearch");
 
-    let activeTag = "all";
-    let searchTerm = "";
+  let activeTag = "all";
+  let searchTerm = "";
 
-    // Function to normalize text (remove accents and convert to lowercase)
-    function normalizeText(text: string): string {
-        return text
-            .normalize("NFD")
-            .replace(/[\u0300-\u036f]/g, "") // Remove accents
-            .toLowerCase()
-            .trim();
+  // Function to normalize text (remove accents and convert to lowercase)
+  function normalizeText(text: string): string {
+    return text
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "") // Remove accents
+      .toLowerCase()
+      .trim();
+  }
+
+  function highlightText(element: Element, term: string) {
+    if (!term.trim()) {
+      // Restore original text by removing highlight spans
+      element.innerHTML = element.innerHTML.replace(
+        /<mark class="highlight">|<\/mark>/g,
+        "",
+      );
+      return;
     }
 
-    function highlightText(element: Element, term: string) {
-        if (!term.trim()) {
-            // Restore original text by removing highlight spans
-            element.innerHTML = element.innerHTML.replace(
-                /<mark class="highlight">|<\/mark>/g,
-                "",
-            );
-            return;
+    const originalText = element.innerHTML.replace(
+      /<mark class="highlight">|<\/mark>/g,
+      "",
+    );
+
+    // Create a regex pattern that matches the normalized version of the search term
+    const normalizedTerm = normalizeText(term);
+
+    // Use a regex pattern that matches accented and non-accented characters
+    const accentInsensitivePattern = normalizedTerm
+      .split("")
+      .map((char) => {
+        const accentedVariants: Record<string, string> = {
+          a: "[aáà]",
+          e: "[eéè]",
+          i: "[iíì]",
+          o: "[oóò]",
+          u: "[uúù]",
+          n: "[nñ]",
+        };
+        return accentedVariants[char] || char;
+      })
+      .join("");
+
+    const regex = new RegExp(`(${accentInsensitivePattern})`, "gi");
+
+    // Replace while preserving the original case and accents
+    let lastIndex = 0;
+    let result = "";
+    let match;
+
+    while ((match = regex.exec(originalText)) !== null) {
+      const matchedText = match[0];
+      result += originalText.substring(lastIndex, match.index);
+      result += `<mark class="highlight">${matchedText}</mark>`;
+      lastIndex = regex.lastIndex;
+    }
+    result += originalText.substring(lastIndex);
+
+    element.innerHTML = result;
+  }
+
+  function filterItems() {
+    const normalizedSearchTerm = normalizeText(searchTerm);
+    let visibleItems = 0;
+
+    educationItems.forEach((item) => {
+      const itemElement = item as HTMLElement;
+      const itemTags = itemElement.dataset.tags?.split(",") || [];
+      const titleElement = itemElement.querySelector("h3");
+      const descriptionElement = itemElement.querySelector(".description");
+
+      const title = titleElement?.textContent || "";
+      const description = descriptionElement?.textContent || "";
+
+      const normalizedTitle = normalizeText(title);
+      const normalizedDescription = normalizeText(description);
+
+      const matchesTag = activeTag === "all" || itemTags.includes(activeTag);
+      const matchesSearch =
+        !normalizedSearchTerm ||
+        normalizedTitle.includes(normalizedSearchTerm) ||
+        normalizedDescription.includes(normalizedSearchTerm);
+
+      const isVisible = matchesTag && matchesSearch;
+
+      // Change display to opacity/visibility
+      itemElement.style.opacity = isVisible ? "1" : "0";
+      itemElement.style.visibility = isVisible ? "visible" : "hidden";
+      itemElement.style.position = isVisible ? "relative" : "absolute";
+      itemElement.style.pointerEvents = isVisible ? "auto" : "none";
+
+      if (isVisible) {
+        visibleItems++;
+        // Highlight matching text if item is visible
+        if (searchTerm && titleElement && descriptionElement) {
+          highlightText(titleElement, searchTerm);
+          highlightText(descriptionElement, searchTerm);
         }
-
-        const originalText = element.innerHTML.replace(
-            /<mark class="highlight">|<\/mark>/g,
-            "",
-        );
-
-        // Create a regex pattern that matches the normalized version of the search term
-        const normalizedTerm = normalizeText(term);
-
-        // Use a regex pattern that matches accented and non-accented characters
-        const accentInsensitivePattern = normalizedTerm
-            .split("")
-            .map((char) => {
-                const accentedVariants: Record<string, string> = {
-                    a: "[aáà]",
-                    e: "[eéè]",
-                    i: "[iíì]",
-                    o: "[oóò]",
-                    u: "[uúù]",
-                    n: "[nñ]",
-                };
-                return accentedVariants[char] || char;
-            })
-            .join("");
-
-        const regex = new RegExp(`(${accentInsensitivePattern})`, "gi");
-
-        // Replace while preserving the original case and accents
-        let lastIndex = 0;
-        let result = "";
-        let match;
-
-        while ((match = regex.exec(originalText)) !== null) {
-            const matchedText = match[0];
-            result += originalText.substring(lastIndex, match.index);
-            result += `<mark class="highlight">${matchedText}</mark>`;
-            lastIndex = regex.lastIndex;
-        }
-        result += originalText.substring(lastIndex);
-
-        element.innerHTML = result;
-    }
-
-    function filterItems() {
-        const normalizedSearchTerm = normalizeText(searchTerm);
-        let visibleItems = 0;
-
-        educationItems.forEach((item) => {
-            const itemElement = item as HTMLElement;
-            const itemTags = itemElement.dataset.tags?.split(",") || [];
-            const titleElement = itemElement.querySelector("h3");
-            const descriptionElement =
-                itemElement.querySelector(".description");
-
-            const title = titleElement?.textContent || "";
-            const description = descriptionElement?.textContent || "";
-
-            const normalizedTitle = normalizeText(title);
-            const normalizedDescription = normalizeText(description);
-
-            const matchesTag =
-                activeTag === "all" || itemTags.includes(activeTag);
-            const matchesSearch =
-                !normalizedSearchTerm ||
-                normalizedTitle.includes(normalizedSearchTerm) ||
-                normalizedDescription.includes(normalizedSearchTerm);
-
-            const isVisible = matchesTag && matchesSearch;
-
-            // Change display to opacity/visibility
-            itemElement.style.opacity = isVisible ? "1" : "0";
-            itemElement.style.visibility = isVisible ? "visible" : "hidden";
-            itemElement.style.position = isVisible ? "relative" : "absolute";
-            itemElement.style.pointerEvents = isVisible ? "auto" : "none";
-
-            if (isVisible) {
-                visibleItems++;
-                // Highlight matching text if item is visible
-                if (searchTerm && titleElement && descriptionElement) {
-                    highlightText(titleElement, searchTerm);
-                    highlightText(descriptionElement, searchTerm);
-                }
-            }
-        });
-
-        // Show/hide no results message
-        noResultsDiv.style.display = visibleItems === 0 ? "block" : "none";
-    }
-
-    function highlightMatchingTags(activeTagValue: string) {
-        document.querySelectorAll(".tag").forEach((tagElement: Element) => {
-            const tag = tagElement as HTMLElement;
-            if (activeTagValue === "all") {
-                tag.classList.emove("highlight-tag");
-            } else {
-                const matches = tag.textContent?.trim() === activeTagValue;
-                tag.classList.toggle("highlight-tag", matches);
-            }
-        });
-    }
-
-    function setActiveTag(newTag: string) {
-        activeTag = newTag;
-
-        // Update filter buttons UI
-        tagButtons.forEach((btn) => {
-            const button = btn as HTMLElement;
-            button.classList.toggle("active", button.dataset.tag === newTag);
-        });
-
-        // Highlight matching tags
-        highlightMatchingTags(newTag);
-
-        // Filter items
-        filterItems();
-    }
-
-    function resetSearch() {
-        searchInput.value = "";
-        searchTerm = "";
-        clearSearchBtn!.style.display = "none";
-        filterItems();
-    }
-
-    // Update existing click handlers
-    tagButtons.forEach((button) => {
-        button.addEventListener("click", () => {
-            const buttonElement = button as HTMLButtonElement;
-            setActiveTag(buttonElement.dataset.tag || "all");
-        });
+      }
     });
 
-    // Add click handler for item tags
-    document.addEventListener("click", (e) => {
-        const target = e.target as HTMLElement;
-        if (target.classList.contains("tag")) {
-            const tagText = target.textContent?.trim() || "";
-            setActiveTag(tagText);
-        }
+    // Show/hide no results message
+    noResultsDiv.style.display = visibleItems === 0 ? "block" : "none";
+  }
+
+  function highlightMatchingTags(activeTagValue: string) {
+    document.querySelectorAll(".tag").forEach((tagElement: Element) => {
+      const tag = tagElement as HTMLElement;
+      if (activeTagValue === "all") {
+        tag.classList.emove("highlight-tag");
+      } else {
+        const matches = tag.textContent?.trim() === activeTagValue;
+        tag.classList.toggle("highlight-tag", matches);
+      }
+    });
+  }
+
+  function setActiveTag(newTag: string) {
+    activeTag = newTag;
+
+    // Update filter buttons UI
+    tagButtons.forEach((btn) => {
+      const button = btn as HTMLElement;
+      button.classList.toggle("active", button.dataset.tag === newTag);
     });
 
-    // Update reset button click handler
-    resetSearchButton?.addEventListener("click", resetSearch);
+    // Highlight matching tags
+    highlightMatchingTags(newTag);
 
-    // Show/hide clear button based on input content
-    searchInput?.addEventListener("input", (e) => {
-        clearTimeout(debounceTimeout);
+    // Filter items
+    filterItems();
+  }
 
-        const hasValue = (e.target as HTMLInputElement).value.length > 0;
-        clearSearchBtn!.style.display = hasValue ? "block" : "none";
+  function resetSearch() {
+    searchInput.value = "";
+    searchTerm = "";
+    clearSearchBtn!.style.display = "none";
+    filterItems();
+  }
 
-        debounceTimeout = setTimeout(() => {
-            searchTerm = (e.target as HTMLInputElement).value;
-            filterItems();
-        }, 300);
+  // Update existing click handlers
+  tagButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const buttonElement = button as HTMLButtonElement;
+      setActiveTag(buttonElement.dataset.tag || "all");
     });
+  });
 
-    // Clear search on button click
-    clearSearchBtn?.addEventListener("click", resetSearch);
+  // Add click handler for item tags
+  document.addEventListener("click", (e) => {
+    const target = e.target as HTMLElement;
+    if (target.classList.contains("tag")) {
+      const tagText = target.textContent?.trim() || "";
+      setActiveTag(tagText);
+    }
+  });
 
-    let debounceTimeout: number;
+  // Update reset button click handler
+  resetSearchButton?.addEventListener("click", resetSearch);
+
+  // Show/hide clear button based on input content
+  searchInput?.addEventListener("input", (e) => {
+    clearTimeout(debounceTimeout);
+
+    const hasValue = (e.target as HTMLInputElement).value.length > 0;
+    clearSearchBtn!.style.display = hasValue ? "block" : "none";
+
+    debounceTimeout = setTimeout(() => {
+      searchTerm = (e.target as HTMLInputElement).value;
+      filterItems();
+    }, 300);
+  });
+
+  // Clear search on button click
+  clearSearchBtn?.addEventListener("click", resetSearch);
+
+  let debounceTimeout: number;
 </script>

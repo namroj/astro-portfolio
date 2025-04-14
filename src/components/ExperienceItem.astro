@@ -1,217 +1,212 @@
 ---
-import type {CollectionEntry} from "astro:content";
-import "../styles/timeline-item.css"
+import type { CollectionEntry } from "astro:content";
+import "../styles/timeline-item.css";
 
 type Experience = CollectionEntry<"experience">;
 
 interface Props {
-    item: Experience;
-    isLast: boolean;
+  item: Experience;
+  isLast: boolean;
 }
 
-const {item, isLast} = Astro.props;
-const {entity, interval, location, positions, tags} = item.data;
+const { item, isLast } = Astro.props;
+const { entity, interval, location, positions, tags } = item.data;
 ---
 
 <li class="timeline-item" data-tags={tags.join(",")}>
-    <div class="timeline-connector">
-        <div class="timeline-dot"></div>
-        {!isLast &&
-                <div class="timeline-line"/>}
+  <div class="timeline-connector">
+    <div class="timeline-dot"></div>
+    {!isLast && <div class="timeline-line" />}
+  </div>
+
+  <article class="timeline-content">
+    <header class="timeline-header">
+      <time class="timeline-date">{interval}</time>
+      <h3 class="timeline-title">{entity.name}</h3>
+    </header>
+
+    <div class="entity-info">
+      <img
+        src={entity.image.path}
+        alt={entity.image.alt}
+        class="entity-logo"
+        width="30"
+        height="30"
+      />
+      <a
+        href={entity.url}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="entity-name"
+      >
+        {entity.name}
+      </a>
+      <span class="location">{location}</span>
     </div>
 
-    <article class="timeline-content">
-        <header class="timeline-header">
-            <time class="timeline-date">{interval}</time>
-            <h3 class="timeline-title">{entity.name}</h3>
-        </header>
+    {
+      positions && (
+        <ul class="positions-list">
+          {positions.map((position) => (
+            <li class="position">
+              <h4 class="position-title">{position.title}</h4>
+              <ul class="position-description">
+                {position.description.split("||").map((description) => (
+                  <li>{description}</li>
+                ))}
+              </ul>
+              <p class="position-highlight">{position.highlight}</p>
+            </li>
+          ))}
+        </ul>
+      )
+    }
 
-        <div class="entity-info">
-            <img
-                    src={entity.image.path}
-                    alt={entity.image.alt}
-                    class="entity-logo"
-                    width="30"
-                    height="30"
-            />
-            <a
-                    href={entity.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="entity-name"
-            >
-                {entity.name}
-            </a>
-            <span class="location">{location}</span>
-        </div>
-
-        {
-            positions && (
-                        <ul class="positions-list">
-                            {positions.map((position) => (
-                                    <li class="position">
-                                        <h4 class="position-title">{position.title}</h4>
-                                        <ul class="position-description">
-                                            {position.description
-                                                .split("||")
-                                                .map((description) => (
-                                                        <li>{description}</li>
-                                                ))}
-                                        </ul>
-                                        <p class="position-highlight">
-                                            {position.highlight}
-                                        </p>
-                                    </li>
-                            ))}
-                        </ul>
-            )
-        }
-
-        {
-            tags && (
-                        <ul class="tags-list">
-                            {tags.map((tag) => (
-                                    <li class="tag">{tag}</li>
-                            ))}
-                        </ul>
-            )
-        }
-    </article>
+    {
+      tags && (
+        <ul class="tags-list">
+          {tags.map((tag) => (
+            <li class="tag">{tag}</li>
+          ))}
+        </ul>
+      )
+    }
+  </article>
 </li>
 
 <style>
-    .entity-info {
-        display: flex;
-        flex-wrap: wrap;
-        align-items: center;
-        gap: 0.5em;
-        margin-bottom: 1em;
+  .entity-info {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5em;
+    margin-bottom: 1em;
+  }
+
+  .entity-logo {
+    border-radius: 4px;
+    object-fit: cover;
+  }
+
+  .entity-name {
+    color: var(--foreground-color);
+    font-weight: 500;
+  }
+
+  .entity-name:hover {
+    color: var(--accent-color);
+  }
+
+  .location {
+    color: var(--accent-color-muted);
+    font-size: 0.875em;
+    width: 100%;
+  }
+
+  .description {
+    color: var(--accent-color-muted);
+    font-size: 0.875em;
+    margin-bottom: 1em;
+  }
+
+  .position {
+    padding: 1em;
+    border: 1px solid var(--border-color);
+    border-radius: 0.5em;
+    margin-bottom: 1em;
+    background: var(--background-color);
+    color: var(--foreground-color);
+  }
+
+  .position-title {
+    font-size: 1.1em;
+    font-weight: 600;
+    color: var(--foreground-color);
+    margin: 0 0 0.5rem 0;
+  }
+
+  .position-description {
+    color: var(--accent-color-muted);
+    font-size: 0.875em;
+    margin-bottom: 0.5em;
+
+    li {
+      list-style: disclosure-closed;
+      margin-left: 1em;
+    }
+  }
+
+  .position-highlight {
+    background: var(--accent-color-muted);
+    color: var(--background-color);
+    padding: 0.5em;
+    border-radius: 0.25em;
+    font-style: italic;
+  }
+
+  .tags-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5em;
+    list-style: none;
+    padding: 0;
+    margin-bottom: 1em;
+  }
+
+  .tag {
+    background: var(--accent-color-muted);
+    padding: 0.25em 0.75em;
+    border-radius: 25px;
+    border: 1px solid var(--accent-color-muted);
+    font-size: 0.75em;
+    color: var(--background-color);
+    cursor: pointer;
+  }
+
+  .tag:hover,
+  .tag.highlight-tag {
+    background: var(--accent-color);
+    border-color: var(--accent-color);
+  }
+
+  .certificate-link {
+    display: inline-flex;
+    align-items: center;
+    color: var(--foreground-color);
+    font-size: 0.875em;
+  }
+
+  .certificate-link:hover {
+    text-decoration: underline;
+  }
+
+  @media screen and (min-width: 992px) {
+    .timeline-item {
+      grid-template-columns: 1em 1fr;
+      gap: 1em;
+      padding-bottom: 1em;
     }
 
-    .entity-logo {
-        border-radius: 4px;
-        object-fit: cover;
+    .timeline-content {
+      padding: 1em;
     }
 
-    .entity-name {
-        color: var(--foreground-color);
-        font-weight: 500;
+    .timeline-header {
+      flex-direction: row;
+      align-items: baseline;
+      gap: 1rem;
     }
 
-    .entity-name:hover {
-        color: var(--accent-color);
+    .timeline-title {
+      font-size: 1.25em;
     }
 
     .location {
-        color: var(--accent-color-muted);
-        font-size: 0.875em;
-        width: 100%;
+      width: auto;
     }
 
     .description {
-        color: var(--accent-color-muted);
-        font-size: 0.875em;
-        margin-bottom: 1em;
+      font-size: 1em;
     }
-
-    .position {
-        padding: 1em;
-        border: 1px solid var(--border-color);
-        border-radius: 0.5em;
-        margin-bottom: 1em;
-        background: var(--background-color);
-        color: var(--foreground-color);
-    }
-
-    .position-title {
-        font-size: 1.1em;
-        font-weight: 600;
-        color: var(--foreground-color);
-        margin: 0 0 0.5rem 0;
-    }
-
-    .position-description {
-        color: var(--accent-color-muted);
-        font-size: 0.875em;
-        margin-bottom: 0.5em;
-
-        li {
-            list-style: disclosure-closed;
-            margin-left: 1em;
-        }
-    }
-
-    .position-highlight {
-        background: var(--accent-color-muted);
-        color: var(--background-color);
-        padding: 0.5em;
-        border-radius: 0.25em;
-        font-style: italic;
-    }
-
-    .tags-list {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.5em;
-        list-style: none;
-        padding: 0;
-        margin-bottom: 1em;
-    }
-
-    .tag {
-        background: var(--accent-color-muted);
-        padding: 0.25em 0.75em;
-        border-radius: 25px;
-        border: 1px solid var(--accent-color-muted);
-        font-size: 0.75em;
-        color: var(--background-color);
-        cursor: pointer;
-    }
-
-    .tag:hover,
-    .tag.highlight-tag {
-        background: var(--accent-color);
-        border-color: var(--accent-color);
-    }
-
-    .certificate-link {
-        display: inline-flex;
-        align-items: center;
-        color: var(--foreground-color);
-        font-size: 0.875em;
-    }
-
-    .certificate-link:hover {
-        text-decoration: underline;
-    }
-
-    @media screen and (min-width: 992px) {
-        .timeline-item {
-            grid-template-columns: 1em 1fr;
-            gap: 1em;
-            padding-bottom: 1em;
-        }
-
-        .timeline-content {
-            padding: 1em;
-        }
-
-        .timeline-header {
-            flex-direction: row;
-            align-items: baseline;
-            gap: 1rem;
-        }
-
-        .timeline-title {
-            font-size: 1.25em;
-        }
-
-        .location {
-            width: auto;
-        }
-
-        .description {
-            font-size: 1em;
-        }
-    }
+  }
 </style>
