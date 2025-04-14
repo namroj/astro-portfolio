@@ -5,8 +5,6 @@ import "../styles/google-map.css"
 import mapDarkStyles from '../assets/dark';
 import mapLightStyles from '../assets/light';
 
-
-
 export default function VenezuelaToArgentinaMap() {
     const [theme, setTheme] = useState<string | null>('system');
 
@@ -90,7 +88,7 @@ export default function VenezuelaToArgentinaMap() {
                     new google.maps.Marker({position: point, map});
                 });
 
-                // Create Polylines between points
+                // Create Poly lines between points
                 const createPolyline = (path: google.maps.LatLngLiteral[]) => {
                     const polyline = new google.maps.Polyline({
                         path,
