@@ -5,3 +5,5 @@ declare global {
     google: typeof google;
   }
 }
+
+export type Theme = "light" | "dark" | "system";
