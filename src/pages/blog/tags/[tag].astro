@@ -22,13 +22,29 @@ export async function getStaticPaths() {
 
 const { tag } = Astro.params;
 const { posts } = Astro.props;
+
 const title = {
   tab: `Etiqueta: ${tag}`,
   page: tag,
 };
+
+const breadCrumbs = [
+  {
+    url: "/blog",
+    label: "Blog"
+  },
+  {
+    url: "/blog/tags",
+    label: "Etiquetas"
+  },
+  {
+    url: "",
+    label: tag
+  }
+]
 ---
 
-<Layout title={title}>
+<Layout title={title} breadCrumbs={breadCrumbs}>
   <p>Artículos etiquetados como <i>{tag}</i></p>
   <ul class="posts">
     {

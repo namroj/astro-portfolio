@@ -7,3 +7,8 @@ declare global {
 }
 
 export type Theme = "light" | "dark" | "system";
+
+export interface BreadCrumbProp {
+  url: string;
+  label: string;
+}

@@ -12,11 +12,18 @@ const title = {
   page: "Experiencia",
 };
 
+const breadCrumbs = [
+  {
+    url: "",
+    label: "Experiencia"
+  }
+];
+
 const items = await getCollection("experience");
 const tags = [...new Set(items.flatMap((item) => item.data.tags))];
 ---
 
-<Layout title={title}>
+<Layout title={title} breadCrumbs={breadCrumbs}>
   <p>
     A lo largo de mi carrera he tenido la oportunidad de trabajar con diversas
     empresas, desde startups hasta corporaciones multinacionales. Mi trayectoria

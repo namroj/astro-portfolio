@@ -1,12 +1,16 @@
 code,
 pre,
 .code {
-  font-family: var(--main-font), monospace;
-  font-feature-settings:
-    "calt" 1,
-    "liga" 1;
+  font-family: var(--code-font), monospace;
+  font-feature-settings: "calt" 1,
+  "liga" 1;
   line-height: calc(var(--line-height) * 1.5);
   font-size: 1em;
   padding: 0.5em;
   border-radius: 6px;
+  overflow-x: auto;
+}
+
+pre.astro-code {
+  white-space: pre !important;
 }

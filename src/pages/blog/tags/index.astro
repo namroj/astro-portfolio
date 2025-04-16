@@ -2,16 +2,27 @@
 import { getCollection } from "astro:content";
 import Layout from "../../../layouts/Layout.astro";
 
-const allPosts = await getCollection("blog");
-const tags = [...new Set(allPosts.map((post: any) => post.data.tags).flat())];
-
 const title = {
   tab: "Etiquetas",
-  page: "Etiquetas",
+  page: "Etiquetas"
 };
+
+const breadCrumbs = [
+  {
+    url: "/",
+    label: "Blog"
+  },
+  {
+    url: "",
+    label: "Etiquetas"
+  }
+];
+
+const allPosts = await getCollection("blog");
+const tags = [...new Set(allPosts.map((post: any) => post.data.tags).flat())];
 ---
 
-<Layout title={title}>
+<Layout title={title} breadCrumbs={breadCrumbs}>
   <div class="tags">
     {
       tags.map((tag) => (
@@ -23,7 +34,7 @@ const title = {
   </div>
 </Layout>
 
-<style>
+<style is:raw>
   .tags {
     display: flex;
     gap: 0.5em;
@@ -42,5 +53,9 @@ const title = {
   .tag.highlight-tag {
     background: var(--accent-color);
     border-color: var(--accent-color);
+
+    & > a {
+      color: var(--foreground-color);
+    }
   }
 </style>

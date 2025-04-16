@@ -3,8 +3,8 @@ import { GOOGLE_MAPS_API_KEY } from "astro:env/client";
 import { useStore } from "@nanostores/preact";
 
 import "../styles/google-map.css";
-import mapDarkStyles from "../assets/dark";
-import mapLightStyles from "../assets/light";
+import mapDarkStyles from "../assets/map/dark.ts";
+import mapLightStyles from "../assets/map/light.ts";
 import { activeTheme } from "../stores/activeThemeStore.ts";
 
 export default function VenezuelaToArgentinaMap() {

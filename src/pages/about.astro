@@ -5,8 +5,15 @@ const title = {
   tab: "Sobre mí",
   page: "Sobre mí",
 };
+
+const breadCrumbs = [
+  {
+    "url": "",
+    "label": "Sobre mí"
+  }
+];
 ---
 
-<Layout title={title}>
+<Layout title={title} breadCrumbs={breadCrumbs}>
   <a href="/from-venezuela-to-argentina">De Argentina a Venezuela</a>
 </Layout>

@@ -3,8 +3,9 @@ import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import "../styles/variables.css";
 import "../styles/global.css";
+import Socials from "../components/Socials.astro";
 
-const { title } = Astro.props;
+const { title, breadCrumbs } = Astro.props;
 ---
 
 <html lang="es">
@@ -38,8 +39,9 @@ const { title } = Astro.props;
       <main>
         <h1>{title.page}</h1>
         <slot />
+        <Socials />
       </main>
-      <Footer />
+      <Footer breadCrumbs={breadCrumbs} />
     </div>
   </body>
 </html>

@@ -22,15 +22,15 @@ main {
   position: relative;
   z-index: 2;
   width: 100%;
-  padding: calc(60px + 1em) 1em 2em 1em;
+  padding: calc(45px + 1em) 1em 2em 1em;
 }
 
 .wrapper {
-  height: calc(100dvh - 60px);
+  height: calc(100dvh - 45px);
   overflow-y: auto;
 
   @media screen and (min-width: 992px) {
-    height: calc((100dvh - 90px) + 1em);
+    height: calc(100dvh - 45px);
     margin: 0 auto;
     padding: 0 15dvw;
   }
@@ -39,6 +39,10 @@ main {
 h1 {
   font-size: 1.89em;
   margin-bottom: 0.5em;
+}
+
+h2 {
+  color: var(--accent-color-muted);
 }
 
 a {

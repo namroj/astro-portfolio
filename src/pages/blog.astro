@@ -4,14 +4,22 @@ import { getCollection } from "astro:content";
 import Layout from "../layouts/Layout.astro";
 import BlogPost from "../components/BlogPost.astro";
 
-const allPosts = await getCollection("blog");
 const title = {
   tab: "Blog",
   page: "Blog",
 };
+
+const breadCrumbs = [
+  {
+    url: "",
+    label: "Blog"
+  }
+];
+
+const allPosts = await getCollection("blog");
 ---
 
-<Layout title={title}>
+<Layout title={title} breadCrumbs={breadCrumbs}>
   <ul>
     {
       allPosts

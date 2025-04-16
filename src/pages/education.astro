@@ -9,14 +9,21 @@ import "../styles/timeline.css";
 
 const title = {
   tab: "Educación",
-  page: "Educación",
+  page: "Educación"
 };
+
+const breadCrumbs = [
+  {
+    url: "",
+    label: "Educación"
+  }
+];
 
 const items = await getCollection("education");
 const tags = [...new Set(items.flatMap((item) => item.data.tags))];
 ---
 
-<Layout title={title}>
+<Layout title={title} breadCrumbs={breadCrumbs}>
   <p>
     Aquí encontrarás un recorrido por mi formación académica y profesional. Esta
     línea de tiempo muestra los cursos, certificaciones y estudios que he
@@ -49,7 +56,6 @@ const tags = [...new Set(items.flatMap((item) => item.data.tags))];
       grid-template-columns: 3fr 1fr;
       gap: 1em;
       grid-template-areas: "first second"; /* Force the second column to appear before the first */
-
       .timeline-filters {
         position: sticky;
         top: calc(60px + 1em);

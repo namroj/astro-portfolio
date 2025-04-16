@@ -12,11 +12,18 @@ const title = {
   title: "Proyectos"
 };
 
+const breadCrumbs = [
+  {
+    url: "",
+    label: "Proyectos"
+  }
+];
+
 const items = await getCollection("projects", ({ data }) => data.visible);
 const tags = [...new Set(items.flatMap((item) => item.data.tags))];
 ---
 
-<Layout title={title}>
+<Layout title={title} breadCrumbs={breadCrumbs}>
   <p>
     Aquí encontrarás una variedad de proyectos innovadores y creativos que
     destacan mi experiencia en desarrollo web, diseño y experiencia de usuario.

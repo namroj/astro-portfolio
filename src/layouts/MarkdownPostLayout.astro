@@ -1,23 +1,42 @@
 ---
 import Layout from "./Layout.astro";
 import "../styles/blog-post.css";
+const language = "es-ES";
 
 const { frontmatter } = Astro.props;
 
+
 const tags: string[] = [
-  ...new Set(frontmatter.tags.map((tag: string) => tag.toLowerCase())),
+  ...new Set(frontmatter.tags.map((tag: string) => tag.toLowerCase()))
 ];
 
 const title = {
   tab: `Blog: ${frontmatter.title}`,
-  page: frontmatter.title,
+  page: frontmatter.title
 };
+
+const breadCrumbs = [
+  {
+    url: "/blog",
+    label: "Blog"
+  },
+  {
+    url: "",
+    label: frontmatter.title
+  }
+];
 ---
 
-<Layout title={title}>
-  <p>{frontmatter.pubDate.toString().slice(0, 10)}</p>
+<Layout title={title} breadCrumbs={breadCrumbs}>
+  <p>{
+    new Date(frontmatter.pubDate).toLocaleDateString(language, {
+      day: "2-digit",
+      month: "long",
+      year: "numeric"
+    })
+  }</p>
   <p><em>{frontmatter.description}</em></p>
-  <p>Written by: {frontmatter.author}</p>
+  <p>Escrito por: {frontmatter.author}</p>
   <img src={frontmatter.image.url} width="300" alt={frontmatter.image.alt} />
   <slot />
   <div class="tags">
@@ -31,7 +50,7 @@ const title = {
   </div>
 </Layout>
 
-<style is:inline>
+<style is:raw>
   .tags {
     margin-top: 1em;
     display: flex;
@@ -51,6 +70,7 @@ const title = {
       &.highlight-tag {
         background: var(--accent-color);
         border-color: var(--accent-color);
+        color: var(--foreground-color);
       }
     }
   }

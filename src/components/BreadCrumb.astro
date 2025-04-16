@@ -1,0 +1,28 @@
+---
+const { url, label } = Astro.props;
+---
+
+{url != ""? <><a href={url}>{label}</a> <span class="separator"> > </span> </>: <span>{label}</span>}
+
+<style is:raw>
+  a {
+    font-size: 0.8em;
+
+    @media screen and (min-width: 992px) {
+      font-size: inherit;
+    }
+  }
+
+  span {
+    color: var(--accent-color-muted);
+    font-size: 0.8em;
+
+    &.separator {
+      color: var(--accent-color);
+    }
+
+    @media screen and (min-width: 992px) {
+      font-size: inherit;
+    }
+  }
+</style>

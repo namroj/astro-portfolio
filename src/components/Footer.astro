@@ -1,15 +1,20 @@
 ---
-import Socials from "./Socials.astro";
 import ThemeSwitcher from "./ThemeSwitcher";
+import BreadCrumbs from "./BreadCrumbs.astro";
+
+const { breadCrumbs } = Astro.props;
 ---
 
 <footer>
-  <div class="wrapper">
-    <Socials />
-    <div class="bottom">
-      <p>© {new Date().getFullYear()}. Jorman Espinoza</p>
-      <ThemeSwitcher client:load />
+  {breadCrumbs && (
+    <div class="left">
+      <BreadCrumbs breadCrumbs={breadCrumbs} />
     </div>
+  )}
+
+  <div class="right">
+    <ThemeSwitcher client:load />
+    <p>© {new Date().getFullYear()}. <a href="/">Jorman Espinoza</a></p>
   </div>
 </footer>
 
@@ -20,23 +25,13 @@ import ThemeSwitcher from "./ThemeSwitcher";
     bottom: 0;
     left: 0;
     width: 100%;
-    height: 80px;
+    height: 35px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: center;
     border-top: 1px solid var(--border-color);
     background-color: var(--background-color);
-
-    .wrapper {
-      padding: 0.5em;
-    }
-
-    .bottom {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-      color: var(--accent-color-muted);
-    }
+    padding: 0 0.5em;
 
     &.expanded {
       z-index: 4;
@@ -45,10 +40,41 @@ import ThemeSwitcher from "./ThemeSwitcher";
     }
 
     @media screen and (min-width: 992px) {
-      .wrapper {
-        width: 100%;
-        margin: 0 auto;
-        padding: 1em calc(15dvw + 0.5em);
+      height: 45px;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .left {
+      position: absolute;
+      background-color: var(--background-color);
+      padding: 0.25em 0.5em 0.5em;
+      border-top: 1px solid var(--border-color);
+      width: 100%;
+      top: -30px;
+      left: 0;
+
+      @media screen and (min-width: 992px) {
+        position: initial;
+        top: unset;
+        left: unset;
+        padding: 0.5em;
+        border: none;
+        width: auto;
+      }
+    }
+
+    .right {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1em;
+
+      @media screen and (min-width: 992px) {
+        align-items: center;
+        justify-content: flex-end;
+        position: initial;
       }
     }
   }

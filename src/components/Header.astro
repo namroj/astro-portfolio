@@ -15,13 +15,13 @@ import Navigation from "./Navigation.astro";
     position: fixed;
     top: 0;
     left: 0;
+    width: 100%;
     display: flex;
     justify-content: flex-end;
-    width: 100%;
-    height: 60px;
     padding: 0 1em;
     z-index: 4;
-    background-color: var(--background-color);
+    background-color: rgba(var(--background-color), 0.89);
+    backdrop-filter: blur(25px);
     border-bottom: 1px solid var(--border-color);
 
     &.expanded {
@@ -33,10 +33,6 @@ import Navigation from "./Navigation.astro";
       background-color: rgba(var(--background-color), 0.1);
       background-image: var(--navigation-background-image);
       background-repeat: repeat;
-    }
-
-    @media screen and (min-width: 992px) {
-      height: auto;
     }
   }
 </style>
