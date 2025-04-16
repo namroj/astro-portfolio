@@ -89,10 +89,10 @@ document.addEventListener("DOMContentLoaded", () => {
       const normalizedTitle = normalizeText(title);
       const normalizedDescription = normalizeText(description);
 
-      // Determine if the item matches any of the active tags or the search term
+      // Determine if the item matches ALL of the active tags or the search term
       const matchesTag =
         activeTags.length === 0 ||
-        itemTags.some((tag) => activeTags.includes(tag));
+        activeTags.every((tag) => itemTags.includes(tag));
       const matchesSearch =
         !normalizedSearchTerm ||
         normalizedTitle.includes(normalizedSearchTerm) ||
