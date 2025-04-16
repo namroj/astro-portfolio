@@ -1,5 +1,4 @@
 ---
-import ThemeSwitcher from "./ThemeSwitcher";
 import BreadCrumbs from "./BreadCrumbs.astro";
 
 const { breadCrumbs } = Astro.props;
@@ -13,7 +12,6 @@ const { breadCrumbs } = Astro.props;
   )}
 
   <div class="right">
-    <ThemeSwitcher client:load />
     <p>© {new Date().getFullYear()}. <a href="/">Jorman Espinoza</a></p>
   </div>
 </footer>
@@ -37,6 +35,10 @@ const { breadCrumbs } = Astro.props;
       z-index: 4;
       background-color: transparent;
       border-top-color: transparent;
+
+      .left {
+        background-color: transparent;
+      }
     }
 
     @media screen and (min-width: 992px) {
@@ -76,6 +78,7 @@ const { breadCrumbs } = Astro.props;
         justify-content: flex-end;
         position: initial;
       }
+
     }
   }
 </style>
