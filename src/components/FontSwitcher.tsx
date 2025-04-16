@@ -20,7 +20,8 @@ const FontSwitcher = () => {
   // Synchronize the font on component mount
   useEffect(() => {
     // Get the stored font from localStorage
-    const storedFont = (localStorage.getItem("font") || "Cascadia Code") as Font;
+    const storedFont = (localStorage.getItem("font") ||
+      "Cascadia Code") as Font;
 
     // Set the initial font
     activeFont.set(storedFont);

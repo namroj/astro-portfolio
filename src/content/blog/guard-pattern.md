@@ -6,8 +6,8 @@ image:
   url: "https://docs.astro.build/assets/rays.webp"
   alt: "El logo de Astro sobre un fondo oscuro con rayos de colores."
 pubDate: 2025-03-23
-tags: [ "java", "patrón de diseño", "guardia", "código limpio" ]
-draft: false  
+tags: ["java", "patrón de diseño", "guardia", "código limpio"]
+draft: false
 ---
 
 # Comprendiendo el Patrón Guardia

@@ -11,17 +11,17 @@ export default defineConfig({
     schema: {
       GOOGLE_MAPS_API_KEY: envField.string({
         context: "client",
-        access: "public"
-      })
-    }
+        access: "public",
+      }),
+    },
   },
   markdown: {
     shikiConfig: {
       themes: {
         light: "github-light",
-        dark: 'material-theme-darker'
+        dark: "material-theme-darker",
       },
-      wrap: true
-    }
-  }
+      wrap: true,
+    },
+  },
 });

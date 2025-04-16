@@ -99,29 +99,7 @@ const { title, interval, entity, location, description, tags, certificate } =
     margin-bottom: 1em;
   }
 
-  .tags-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5em;
-    list-style: none;
-    padding: 0;
-    margin-bottom: 1em;
-  }
-
-  .tag {
-    background: var(--accent-color-muted);
-    padding: 0.25em 0.75em;
-    border-radius: 25px;
-    font-size: 0.75em;
-    color: var(--background-color);
-    cursor: pointer;
-  }
-
-  .tag:hover,
-  .tag.highlight-tag {
-    background: var(--accent-color);
-    border-color: var(--accent-color);
-  }
+  /* Tag styles moved to timeline-item.css */
 
   .certificate-link {
     display: inline-flex;

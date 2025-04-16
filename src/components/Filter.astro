@@ -31,6 +31,9 @@ const { tags } = Astro.props;
         </button>
       ))
     }
+    <button id="clearTags" class="clear-tags-btn" style="display: none;"
+      >Reiniciar selección</button
+    >
   </div>
 </div>
 
@@ -42,112 +45,128 @@ const { tags } = Astro.props;
 </div>
 
 <style is:inline>
-    .filters {
-        margin: 0;
-        display: flex;
-        flex-direction: column;
-        gap: 1em;
-    }
+  .filters {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+  }
 
-    .search-wrapper {
-        position: relative;
-        width: 100%;
-    }
+  .search-wrapper {
+    position: relative;
+    width: 100%;
+  }
 
-    .search-input {
-        width: 100%;
-        padding: 0.5em 1em 0.5em 0.5em;
-        border-radius: 4px;
-        background-color: var(--background-color);
-        color: var(--foreground-color);
-        border: 1px solid var(--border-color);
-        font-size: 0.75em;
-    }
+  .search-input {
+    width: 100%;
+    padding: 0.5em 1em 0.5em 0.5em;
+    border-radius: 4px;
+    background-color: var(--background-color);
+    color: var(--foreground-color);
+    border: 1px solid var(--border-color);
+    font-size: 0.75em;
+  }
 
-    .tags-filter {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.5em;
-    }
+  .tags-filter {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5em;
+  }
 
-    .tag-btn {
-        padding: 0.25em 0.25em;
-        border: 1px solid var(--border-color);
-        border-radius: 4px;
-        background: var(--background-color);
-        color: var(--foreground-color);
-        cursor: pointer;
-        transition: all 0.3s ease;
-    }
+  .tag-btn {
+    padding: 0.25em 0.25em;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    background: var(--background-color);
+    color: var(--foreground-color);
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
 
-    .tag-btn.active {
-        background: var(--accent-color);
-        color: var(--foreground-color);
-    }
+  .tag-btn.active {
+    background: var(--accent-color);
+    color: var(--foreground-color);
+  }
 
-    @keyframes highlightFade {
-        from {
-            background-color: var(--accent-color);
-        }
-        to {
-            background-color: var(--accent-color-muted);
-        }
+  @keyframes highlightFade {
+    from {
+      background-color: var(--accent-color);
     }
+    to {
+      background-color: var(--accent-color-muted);
+    }
+  }
 
-    .tag-btn:hover {
-        background: var(--accent-color);
-        color: var(--background-color);
-    }
+  .tag-btn:hover {
+    background: var(--accent-color);
+    color: var(--background-color);
+  }
 
-    .tag-btn.active {
-        background: var(--accent-color);
-        color: var(--background-color);
-        border-color: var(--accent-color);
-    }
+  .tag-btn.active {
+    background: var(--accent-color);
+    color: var(--background-color);
+    border-color: var(--accent-color);
+  }
 
-    .no-results {
-        text-align: center;
-        padding: 2em;
-        border-radius: 0.5em;
-        margin: 2em 0;
-    }
+  .no-results {
+    text-align: center;
+    padding: 2em;
+    border-radius: 0.5em;
+    margin: 2em 0;
+  }
 
-    .no-results p {
-        color: var(--accent-color-muted);
-        margin-bottom: 1em;
-    }
+  .no-results p {
+    color: var(--accent-color-muted);
+    margin-bottom: 1em;
+  }
 
-    .reset-search-btn {
-        padding: 0.5em 1em;
-        background: transparent;
-        border-radius: 0.5em;
-        cursor: pointer;
-        font-size: 0.875em;
-        transition: all 0.3s ease;
-    }
+  .reset-search-btn {
+    padding: 0.5em 1em;
+    background: transparent;
+    border-radius: 0.5em;
+    cursor: pointer;
+    font-size: 0.875em;
+    transition: all 0.3s ease;
+  }
 
-    .reset-search-btn:hover {
-        color: var(--accent-color);
-    }
+  .reset-search-btn:hover {
+    color: var(--accent-color);
+  }
 
-    .clear-search {
-        position: absolute;
-        right: 0.5em;
-        top: 50%;
-        transform: translateY(-50%);
-        background: none;
-        border: none;
-        padding: 0.25em 0.5em;
-        cursor: pointer;
-        transition: all 0.2s ease;
-        color: var(--accent-color-muted);
-    }
+  .clear-search {
+    position: absolute;
+    right: 0.5em;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    padding: 0.25em 0.5em;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    color: var(--accent-color-muted);
+  }
 
-    .clear-search:hover {
-        color: var(--accent-color);
-    }
+  .clear-search:hover {
+    color: var(--accent-color);
+  }
+
+  .clear-tags-btn {
+    padding: 0.25em 0.5em;
+    border: 1px solid var(--accent-color);
+    border-radius: 4px;
+    background: var(--background-color);
+    color: var(--accent-color);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-left: auto;
+  }
+
+  .clear-tags-btn:hover {
+    background: var(--accent-color);
+    color: var(--background-color);
+  }
 </style>
 
 <script>
-  import '../scripts/filter.ts'
+  import "../scripts/filter.ts";
 </script>

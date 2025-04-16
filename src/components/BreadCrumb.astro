@@ -2,7 +2,15 @@
 const { url, label } = Astro.props;
 ---
 
-{url != ""? <><a href={url}>{label}</a> <span class="separator"> > </span> </>: <span>{label}</span>}
+{
+  url != "" ? (
+    <>
+      <a href={url}>{label}</a> <span class="separator"> > </span>{" "}
+    </>
+  ) : (
+    <span>{label}</span>
+  )
+}
 
 <style is:raw>
   a {

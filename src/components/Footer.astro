@@ -5,11 +5,13 @@ const { breadCrumbs } = Astro.props;
 ---
 
 <footer>
-  {breadCrumbs && (
-    <div class="left">
-      <BreadCrumbs breadCrumbs={breadCrumbs} />
-    </div>
-  )}
+  {
+    breadCrumbs && (
+      <div class="left">
+        <BreadCrumbs breadCrumbs={breadCrumbs} />
+      </div>
+    )
+  }
 
   <div class="right">
     <p>© {new Date().getFullYear()}. <a href="/">Jorman Espinoza</a></p>
@@ -79,7 +81,6 @@ const { breadCrumbs } = Astro.props;
         justify-content: flex-end;
         position: initial;
       }
-
     }
   }
 </style>

@@ -15,8 +15,8 @@ const title = {
 const breadCrumbs = [
   {
     url: "",
-    label: "Experiencia"
-  }
+    label: "Experiencia",
+  },
 ];
 
 const items = await getCollection("experience");
@@ -50,26 +50,29 @@ const tags = [...new Set(items.flatMap((item) => item.data.tags))];
 </Layout>
 
 <style is:inline>
-    .timeline {
-        position: relative;
-        margin: 1em 0 0 0;
+  .timeline {
+    position: relative;
+    margin: 1em 0 0 0;
 
-        @media screen and (min-width: 993px) {
-            display: grid;
-            grid-template-columns: 3fr 1fr;
-            gap: 1em;
-            grid-template-areas: "first second"; /* Force the second column to appear before the first */
-
-            .timeline-filters {
-                position: sticky;
-                top: calc(60px + 1em);
-                align-self: start;
-                grid-area: second;
-            }
-
-            .timeline-list {
-                grid-area: first;
-            }
-        }
+    .timeline-list {
+      margin-top: 1em;
     }
+
+    @media screen and (min-width: 993px) {
+      display: grid;
+      grid-template-columns: 3fr 1fr;
+      gap: 1em;
+      grid-template-areas: "first second"; /* Force the second column to appear before the first */
+      .timeline-filters {
+        position: sticky;
+        top: calc(45px + 1em);
+        align-self: start;
+        grid-area: second;
+      }
+
+      .timeline-list {
+        grid-area: first;
+      }
+    }
+  }
 </style>

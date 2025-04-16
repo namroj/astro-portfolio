@@ -4,17 +4,18 @@ import { BreadCrumbProp } from "../env";
 
 const HOME_BREAD_CRUMB = {
   url: "/",
-  label: "Inicio"
+  label: "Inicio",
 };
 
 const { breadCrumbs: rawBreadCrumbs = [] }: BreadCrumbProp[] = Astro.props;
 
-const breadCrumbs: BreadCrumbProp[] = rawBreadCrumbs.length > 0
-  ? [HOME_BREAD_CRUMB, ...rawBreadCrumbs] :
-  [];
+const breadCrumbs: BreadCrumbProp[] =
+  rawBreadCrumbs.length > 0 ? [HOME_BREAD_CRUMB, ...rawBreadCrumbs] : [];
 ---
 
 <div class="bread-crumbs">
-  {breadCrumbs && breadCrumbs.map((breadCrumb) =>
-    <BreadCrumb {...breadCrumb} />)}
+  {
+    breadCrumbs &&
+      breadCrumbs.map((breadCrumb) => <BreadCrumb {...breadCrumb} />)
+  }
 </div>

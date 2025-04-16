@@ -1,17 +1,18 @@
 document.addEventListener("DOMContentLoaded", () => {
   const searchInput = document.getElementById(
-    "searchInput"
+    "searchInput",
   ) as HTMLInputElement;
   const tagButtons = document.querySelectorAll(".tag-btn");
   const educationItems = document.querySelectorAll(".timeline-item");
   const noResultsDiv = document.querySelector(".no-results") as HTMLElement;
   const resetSearchButton = document.querySelector(".reset-search-btn");
   const clearSearchBtn = document.getElementById("clearSearch");
+  const clearTagsBtn = document.getElementById("clearTags");
 
-  let activeTag = "all";
+  let activeTags: string[] = [];
   let searchTerm = "";
 
-// Function to normalize text (remove accents and convert to lowercase)
+  // Function to normalize text (remove accents and convert to lowercase)
   function normalizeText(text: string): string {
     return text
       .normalize("NFD")
@@ -25,14 +26,14 @@ document.addEventListener("DOMContentLoaded", () => {
       // Restore original text by removing highlight spans
       element.innerHTML = element.innerHTML.replace(
         /<mark class="highlight">|<\/mark>/g,
-        ""
+        "",
       );
       return;
     }
 
     const originalText = element.innerHTML.replace(
       /<mark class="highlight">|<\/mark>/g,
-      ""
+      "",
     );
 
     // Create a regex pattern that matches the normalized version of the search term
@@ -48,7 +49,7 @@ document.addEventListener("DOMContentLoaded", () => {
           i: "[iíì]",
           o: "[oóò]",
           u: "[uúù]",
-          n: "[nñ]"
+          n: "[nñ]",
         };
         return accentedVariants[char] || char;
       })
@@ -88,9 +89,12 @@ document.addEventListener("DOMContentLoaded", () => {
       const normalizedTitle = normalizeText(title);
       const normalizedDescription = normalizeText(description);
 
-      // Determine if the item matches the active tag or the search term
-      const matchesTag = activeTag === "all" || itemTags.includes(activeTag);
-      const matchesSearch = !normalizedSearchTerm ||
+      // Determine if the item matches any of the active tags or the search term
+      const matchesTag =
+        activeTags.length === 0 ||
+        itemTags.some((tag) => activeTags.includes(tag));
+      const matchesSearch =
+        !normalizedSearchTerm ||
         normalizedTitle.includes(normalizedSearchTerm) ||
         normalizedDescription.includes(normalizedSearchTerm);
 
@@ -109,8 +113,10 @@ document.addEventListener("DOMContentLoaded", () => {
           highlightText(descriptionElement, searchTerm);
         } else {
           // Remove existing highlights if no search term is provided
-          if (titleElement) titleElement.innerHTML = titleElement.textContent || "";
-          if (descriptionElement) descriptionElement.innerHTML = descriptionElement.textContent || "";
+          if (titleElement)
+            titleElement.innerHTML = titleElement.textContent || "";
+          if (descriptionElement)
+            descriptionElement.innerHTML = descriptionElement.textContent || "";
         }
       }
     });
@@ -120,21 +126,62 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function setActiveTag(newTag: string) {
-    if (activeTag === newTag) {
-      // If the newly clicked tag is the same as the current one, no need to re-filter
-      return;
+    if (newTag === "all") {
+      // If "all" is clicked, clear all active tags
+      activeTags = [];
+
+      // Remove active class from all tag buttons except "all"
+      tagButtons.forEach((btn) => {
+        const button = btn as HTMLElement;
+        button.classList.toggle("active", button.dataset.tag === "all");
+      });
+
+      // Remove active class from all tags in timeline items
+      document.querySelectorAll(".tag").forEach((tag) => {
+        tag.classList.remove("active");
+      });
+    } else {
+      // If the tag is already active, remove it
+      const tagIndex = activeTags.indexOf(newTag);
+      if (tagIndex > -1) {
+        activeTags.splice(tagIndex, 1);
+      } else {
+        // Otherwise, add it to active tags
+        activeTags.push(newTag);
+      }
+
+      // Update the "all" button (active only when no other tags are selected)
+      const allButton = document.querySelector(
+        '.tag-btn[data-tag="all"]',
+      ) as HTMLElement;
+      if (allButton) {
+        allButton.classList.toggle("active", activeTags.length === 0);
+      }
+
+      // Update the styling of the tag buttons to reflect the active state
+      tagButtons.forEach((btn) => {
+        const button = btn as HTMLElement;
+        if (button.dataset.tag !== "all") {
+          button.classList.toggle(
+            "active",
+            activeTags.includes(button.dataset.tag || ""),
+          );
+        }
+      });
+
+      // Update active class on timeline item tags
+      document.querySelectorAll(".tag").forEach((tag) => {
+        const tagText = tag.textContent?.trim() || "";
+        tag.classList.toggle("active", activeTags.includes(tagText));
+      });
     }
 
-    // Update the active tag
-    activeTag = newTag;
+    // Show/hide the clear tags button based on whether any tags are selected
+    if (clearTagsBtn) {
+      clearTagsBtn.style.display = activeTags.length > 0 ? "block" : "none";
+    }
 
-    // Update the styling of the tag buttons to reflect the active state
-    tagButtons.forEach((btn) => {
-      const button = btn as HTMLElement;
-      button.classList.toggle("active", button.dataset.tag === newTag);
-    });
-
-    // Reapply the filtering logic to show/hide items based on the new tag
+    // Reapply the filtering logic to show/hide items based on the active tags
     filterItems();
   }
 
@@ -142,8 +189,66 @@ document.addEventListener("DOMContentLoaded", () => {
   function resetSearch() {
     searchInput.value = ""; // Reset search input field
     searchTerm = ""; // Clear search term
-    activeTag = "all"; // Reset the active tag to "all"
+    activeTags = []; // Clear all active tags
     clearSearchBtn!.style.display = "none"; // Hide the clear search button
+
+    if (clearTagsBtn) {
+      clearTagsBtn.style.display = "none"; // Hide the clear tags button
+    }
+
+    // Update the "all" button to active
+    const allButton = document.querySelector(
+      '.tag-btn[data-tag="all"]',
+    ) as HTMLElement;
+    if (allButton) {
+      allButton.classList.add("active");
+    }
+
+    // Remove active class from all tag buttons except "all"
+    tagButtons.forEach((btn) => {
+      const button = btn as HTMLElement;
+      if (button.dataset.tag !== "all") {
+        button.classList.remove("active");
+      }
+    });
+
+    // Remove active class from all tags
+    document.querySelectorAll(".tag").forEach((tag) => {
+      tag.classList.remove("active");
+    });
+
+    filterItems(); // Apply filter logic to reset visibility for all items
+  }
+
+  // Function to clear all active tags
+  function clearAllTags() {
+    activeTags = []; // Clear all active tags
+
+    if (clearTagsBtn) {
+      clearTagsBtn.style.display = "none"; // Hide the clear tags button
+    }
+
+    // Update the "all" button to active
+    const allButton = document.querySelector(
+      '.tag-btn[data-tag="all"]',
+    ) as HTMLElement;
+    if (allButton) {
+      allButton.classList.add("active");
+    }
+
+    // Remove active class from all tag buttons except "all"
+    tagButtons.forEach((btn) => {
+      const button = btn as HTMLElement;
+      if (button.dataset.tag !== "all") {
+        button.classList.remove("active");
+      }
+    });
+
+    // Remove active class from all tags
+    document.querySelectorAll(".tag").forEach((tag) => {
+      tag.classList.remove("active");
+    });
+
     filterItems(); // Apply filter logic to reset visibility for all items
   }
 
@@ -172,6 +277,9 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
+  // Add click handler for clear tags button
+  clearTagsBtn?.addEventListener("click", clearAllTags);
+
   // Update reset button click handler
   resetSearchButton?.addEventListener("click", resetSearch);
 
@@ -190,23 +298,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
   tagButtons.forEach((button) => {
     button.addEventListener("click", (event) => {
-      activeTag = (event.currentTarget as HTMLElement).dataset.tag || "all";
+      const newTag = (event.currentTarget as HTMLElement).dataset.tag || "all";
 
-      // Update the active class for buttons in the Filter
-      tagButtons.forEach((btn) => btn.classList.remove("active"));
-      (event.currentTarget as HTMLElement).classList.add("active");
-
-      // Trigger the main filter logic
-      filterItems();
+      // Set the active tag (this will handle updating the active class on timeline item tags)
+      setActiveTag(newTag);
 
       // OPTIONAL: Trigger a custom event to notify the rest of the application
       document.dispatchEvent(
-        new CustomEvent("tagChange", { detail: { activeTag } })
+        new CustomEvent("tagChange", { detail: { activeTag } }),
       );
     });
   });
 
-// Clear search on button click
+  // Clear search on button click
   clearSearchBtn?.addEventListener("click", resetSearch);
 
   let debounceTimeout: number;
