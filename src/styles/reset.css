@@ -2,21 +2,3 @@
 
 
 
-
-ul,
-ol {
-  list-style: none;
-}
-
-img,
-video {
-  max-width: 100%;
-  height: auto;
-}
-
-button,
-input,
-textarea {
-  border: none;
-  outline: none;
-}
