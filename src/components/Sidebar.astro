@@ -1,0 +1,138 @@
+---
+import ThemeSwitcher from "./ThemeSwitcher";
+import FontSwitcher from "./FontSwitcher";
+---
+
+<div class="sidebar-toggle">
+  <button id="sidebar-toggle-btn" aria-label="Toggle Sidebar">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+      <path fill="currentColor" d="M3 4h18v2H3V4zm0 7h18v2H3v-2zm0 7h18v2H3v-2z" />
+    </svg>
+  </button>
+</div>
+
+<aside id="sidebar" class="sidebar">
+  <div class="sidebar-content">
+    <h3>Personalizaciones</h3>
+    <div class="switchers">
+      <div class="switcher-group">
+        <h4>Tema</h4>
+        <ThemeSwitcher client:load />
+      </div>
+      <div class="switcher-group">
+        <h4>Tipografía</h4>
+        <FontSwitcher client:load />
+      </div>
+    </div>
+  </div>
+</aside>
+
+<style>
+  .sidebar-toggle {
+    position: fixed;
+    z-index: 10;
+    top: 50px;
+    right: 10px;
+  }
+
+  #sidebar-toggle-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: var(--accent-color-muted);
+    color: white;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+  }
+
+  #sidebar-toggle-btn.active {
+    transform: rotate(90deg);
+  }
+
+  #sidebar-toggle-btn:hover {
+    background-color: var(--accent-color);
+  }
+
+  .sidebar {
+    position: fixed;
+    top: 46px;
+    right: -300px;
+    width: 300px;
+    height: calc(100vh - 110px);
+    background-color: var(--background-color);
+    border-left: 1px solid var(--border-color);
+    z-index: 9;
+    transition: right 0.3s ease;
+    overflow-y: auto;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+
+    @media screen and (min-width: 992px) {
+      height: calc(100vh - 91px);
+    }
+  }
+
+  .sidebar.active {
+    right: 0;
+  }
+
+  .sidebar-content {
+    padding: 20px;
+  }
+
+  h3 {
+    margin-bottom: 20px;
+    color: var(--accent-color);
+  }
+
+  .switchers {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .switcher-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  h4 {
+    margin-bottom: 5px;
+    color: var(--foreground-color);
+  }
+
+  @media screen and (max-width: 768px) {
+    .sidebar {
+      width: 250px;
+    }
+  }
+</style>
+
+<script>
+  // Toggle sidebar visibility
+  const sidebarToggleBtn = document.getElementById("sidebar-toggle-btn");
+  const sidebar = document.getElementById("sidebar");
+
+  sidebarToggleBtn?.addEventListener("click", () => {
+    sidebar?.classList.toggle("active");
+    sidebarToggleBtn.classList.toggle("active");
+  });
+
+  // Close the sidebar when clicking outside
+  document.addEventListener("click", (event) => {
+    const target = event.target as HTMLElement;
+    if (
+      sidebar?.classList.contains("active") &&
+      !sidebar.contains(target) &&
+      !sidebarToggleBtn?.contains(target)
+    ) {
+      sidebar.classList.remove("active");
+      sidebarToggleBtn?.classList.remove("active");
+    }
+  });
+</script>

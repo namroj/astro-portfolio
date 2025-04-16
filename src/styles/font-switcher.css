@@ -1,0 +1,65 @@
+.font-switcher {
+  display: flex;
+  gap: 0.089em;
+}
+
+.font-btn {
+  width: 25px;
+  height: 25px;
+  border: solid 1px var(--border-color);
+  border-radius: 0.5em;
+  background: none;
+  cursor: pointer;
+  opacity: 0.5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  @media screen and (min-width: 993px) {
+    width: 35px;
+    height: 35px;
+  }
+}
+
+.font-btn.cascadia,
+.font-btn.dankmono,
+.font-btn.firacode,
+.font-btn.writter,
+.font-btn.jetbrains {
+  fill: var(--foreground-color);
+}
+
+.font-btn:hover {
+  border: solid 1px var(--foreground-color);
+  opacity: 1;
+}
+
+.font-btn:hover svg,
+.font-btn:hover .cascadia,
+.font-btn:hover .dankmono,
+.font-btn:hover .firacode,
+.font-btn:hover .writter,
+.font-btn:hover .jetbrains {
+  fill: var(--foreground-color);
+  opacity: 1;
+}
+
+.font-btn.active {
+  border: solid 1px var(--accent-color);
+  opacity: 1;
+}
+
+.font-btn.active svg,
+.font-btn.active .cascadia,
+.font-btn.active .dankmono,
+.font-btn.active .firacode,
+.font-btn.active .writter,
+.font-btn.active .jetbrains {
+  fill: var(--accent-color);
+  opacity: 1;
+}
+
+.font-btn.active:hover {
+  border: solid 1px var(--foreground-color);
+  opacity: 1;
+}
