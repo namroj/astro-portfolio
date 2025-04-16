@@ -41,115 +41,116 @@ const { tags } = Astro.props;
   <button class="reset-search-btn">Limpiar búsqueda</button>
 </div>
 
-<style>
-  .filters {
-    margin: 2em 0;
-    display: flex;
-    flex-direction: column;
-    gap: 1em;
-  }
-
-  .search-wrapper {
-    position: relative;
-    width: 100%;
-  }
-
-  .search-input {
-    width: 100%;
-    padding: 0.5em 2.5em 0.5em 0.5em;
-    border-radius: 4px;
-    background-color: var(--background-color);
-    color: var(--foreground-color);
-    border: 1px solid var(--border-color);
-  }
-
-  .tags-filter {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5em;
-  }
-
-  .tag-btn {
-    padding: 0.5em 1em;
-    border: 1px solid var(--border-color);
-    border-radius: 4px;
-    background: var(--background-color);
-    color: var(--foreground-color);
-    cursor: pointer;
-    transition: all 0.3s ease;
-  }
-
-  .tag-btn.active {
-    background: var(--accent-color);
-    color: var(--foreground-color);
-  }
-
-  @keyframes highlightFade {
-    from {
-      background-color: var(--accent-color);
+<style is:inline>
+    .filters {
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 1em;
     }
-    to {
-      background-color: var(--accent-color-muted);
+
+    .search-wrapper {
+        position: relative;
+        width: 100%;
     }
-  }
 
-  .tag-btn:hover {
-    background: var(--accent-color);
-    color: var(--background-color);
-  }
+    .search-input {
+        width: 100%;
+        padding: 0.5em 1em 0.5em 0.5em;
+        border-radius: 4px;
+        background-color: var(--background-color);
+        color: var(--foreground-color);
+        border: 1px solid var(--border-color);
+        font-size: 0.75em;
+    }
 
-  .tag-btn.active {
-    background: var(--accent-color);
-    color: var(--background-color);
-    border-color: var(--accent-color);
-  }
+    .tags-filter {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5em;
+    }
 
-  .no-results {
-    text-align: center;
-    padding: 2em;
-    border-radius: 0.5em;
-    margin: 2em 0;
-  }
+    .tag-btn {
+        padding: 0.25em 0.25em;
+        border: 1px solid var(--border-color);
+        border-radius: 4px;
+        background: var(--background-color);
+        color: var(--foreground-color);
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
 
-  .no-results p {
-    color: var(--accent-color-muted);
-    margin-bottom: 1em;
-  }
+    .tag-btn.active {
+        background: var(--accent-color);
+        color: var(--foreground-color);
+    }
 
-  .reset-search-btn {
-    padding: 0.5em 1em;
-    background: transparent;
-    border-radius: 0.5em;
-    cursor: pointer;
-    font-size: 0.875em;
-    transition: all 0.3s ease;
-  }
+    @keyframes highlightFade {
+        from {
+            background-color: var(--accent-color);
+        }
+        to {
+            background-color: var(--accent-color-muted);
+        }
+    }
 
-  .reset-search-btn:hover {
-    color: var(--accent-color);
-  }
+    .tag-btn:hover {
+        background: var(--accent-color);
+        color: var(--background-color);
+    }
 
-  .clear-search {
-    position: absolute;
-    right: 0.5em;
-    top: 50%;
-    transform: translateY(-50%);
-    background: none;
-    border: none;
-    padding: 0.25em 0.5em;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    color: var(--accent-color-muted);
-  }
+    .tag-btn.active {
+        background: var(--accent-color);
+        color: var(--background-color);
+        border-color: var(--accent-color);
+    }
 
-  .clear-search:hover {
-    color: var(--accent-color);
-  }
+    .no-results {
+        text-align: center;
+        padding: 2em;
+        border-radius: 0.5em;
+        margin: 2em 0;
+    }
+
+    .no-results p {
+        color: var(--accent-color-muted);
+        margin-bottom: 1em;
+    }
+
+    .reset-search-btn {
+        padding: 0.5em 1em;
+        background: transparent;
+        border-radius: 0.5em;
+        cursor: pointer;
+        font-size: 0.875em;
+        transition: all 0.3s ease;
+    }
+
+    .reset-search-btn:hover {
+        color: var(--accent-color);
+    }
+
+    .clear-search {
+        position: absolute;
+        right: 0.5em;
+        top: 50%;
+        transform: translateY(-50%);
+        background: none;
+        border: none;
+        padding: 0.25em 0.5em;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        color: var(--accent-color-muted);
+    }
+
+    .clear-search:hover {
+        color: var(--accent-color);
+    }
 </style>
 
 <script>
   const searchInput = document.getElementById(
-    "searchInput",
+    "searchInput"
   ) as HTMLInputElement;
   const tagButtons = document.querySelectorAll(".tag-btn");
   const educationItems = document.querySelectorAll(".timeline-item");
@@ -174,14 +175,14 @@ const { tags } = Astro.props;
       // Restore original text by removing highlight spans
       element.innerHTML = element.innerHTML.replace(
         /<mark class="highlight">|<\/mark>/g,
-        "",
+        ""
       );
       return;
     }
 
     const originalText = element.innerHTML.replace(
       /<mark class="highlight">|<\/mark>/g,
-      "",
+      ""
     );
 
     // Create a regex pattern that matches the normalized version of the search term
@@ -197,7 +198,7 @@ const { tags } = Astro.props;
           i: "[iíì]",
           o: "[oóò]",
           u: "[uúù]",
-          n: "[nñ]",
+          n: "[nñ]"
         };
         return accentedVariants[char] || char;
       })
@@ -222,8 +223,8 @@ const { tags } = Astro.props;
   }
 
   function filterItems() {
-    const normalizedSearchTerm = normalizeText(searchTerm);
-    let visibleItems = 0;
+    const normalizedSearchTerm = normalizeText(searchTerm); // Normalize the search term
+    let visibleItems = 0; // To track how many items should be visible
 
     educationItems.forEach((item) => {
       const itemElement = item as HTMLElement;
@@ -231,74 +232,78 @@ const { tags } = Astro.props;
       const titleElement = itemElement.querySelector("h3");
       const descriptionElement = itemElement.querySelector(".description");
 
+      // Extract the title & description and normalize for matching
       const title = titleElement?.textContent || "";
       const description = descriptionElement?.textContent || "";
-
       const normalizedTitle = normalizeText(title);
       const normalizedDescription = normalizeText(description);
 
+      // Determine if the item matches the active tag or the search term
       const matchesTag = activeTag === "all" || itemTags.includes(activeTag);
-      const matchesSearch =
-        !normalizedSearchTerm ||
+      const matchesSearch = !normalizedSearchTerm ||
         normalizedTitle.includes(normalizedSearchTerm) ||
         normalizedDescription.includes(normalizedSearchTerm);
 
+      // The item is visible if it matches both the tag and the search
       const isVisible = matchesTag && matchesSearch;
 
-      // Change display to opacity/visibility
-      itemElement.style.opacity = isVisible ? "1" : "0";
-      itemElement.style.visibility = isVisible ? "visible" : "hidden";
-      itemElement.style.position = isVisible ? "relative" : "absolute";
-      itemElement.style.pointerEvents = isVisible ? "auto" : "none";
+      // Update visible/hidden styles
+      itemElement.style.display = isVisible ? "flex" : "none";
 
       if (isVisible) {
         visibleItems++;
-        // Highlight matching text if item is visible
+
+        // Highlight matching terms if the search term exists
         if (searchTerm && titleElement && descriptionElement) {
           highlightText(titleElement, searchTerm);
           highlightText(descriptionElement, searchTerm);
+        } else {
+          // Remove existing highlights if no search term is provided
+          if (titleElement) titleElement.innerHTML = titleElement.textContent || "";
+          if (descriptionElement) descriptionElement.innerHTML = descriptionElement.textContent || "";
         }
       }
     });
 
-    // Show/hide no results message
+    // Show or hide the "No Results" message
     noResultsDiv.style.display = visibleItems === 0 ? "block" : "none";
   }
 
-  function highlightMatchingTags(activeTagValue: string) {
-    document.querySelectorAll(".tag").forEach((tagElement: Element) => {
-      const tag = tagElement as HTMLElement;
-      if (activeTagValue === "all") {
-        tag.classList.emove("highlight-tag");
-      } else {
-        const matches = tag.textContent?.trim() === activeTagValue;
-        tag.classList.toggle("highlight-tag", matches);
-      }
-    });
-  }
-
   function setActiveTag(newTag: string) {
+    if (activeTag === newTag) {
+      // If the newly clicked tag is the same as the current one, no need to re-filter
+      return;
+    }
+
+    // Update the active tag
     activeTag = newTag;
 
-    // Update filter buttons UI
+    // Update the styling of the tag buttons to reflect the active state
     tagButtons.forEach((btn) => {
       const button = btn as HTMLElement;
       button.classList.toggle("active", button.dataset.tag === newTag);
     });
 
-    // Highlight matching tags
-    highlightMatchingTags(newTag);
-
-    // Filter items
+    // Reapply the filtering logic to show/hide items based on the new tag
     filterItems();
   }
 
+  // Reset the search and tag filters
   function resetSearch() {
-    searchInput.value = "";
-    searchTerm = "";
-    clearSearchBtn!.style.display = "none";
-    filterItems();
+    searchInput.value = ""; // Reset search input field
+    searchTerm = ""; // Clear search term
+    activeTag = "all"; // Reset the active tag to "all"
+    clearSearchBtn!.style.display = "none"; // Hide the clear search button
+    filterItems(); // Apply filter logic to reset visibility for all items
   }
+
+  // Attach event listeners to tag buttons
+  tagButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const buttonElement = button as HTMLButtonElement;
+      setActiveTag(buttonElement.dataset.tag || "all");
+    });
+  });
 
   // Update existing click handlers
   tagButtons.forEach((button) => {

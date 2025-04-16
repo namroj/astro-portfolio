@@ -9,45 +9,54 @@ const { title } = Astro.props;
 ---
 
 <html lang="es">
-<head>
-  <script>
-    (function() {
-      const savedTheme = localStorage.getItem("theme") || "system";
-      let themeToApply = savedTheme;
+  <head>
+    <script>
+      (function () {
+        const savedTheme = localStorage.getItem("theme") || "system";
+        let themeToApply = savedTheme;
 
-      if (savedTheme === "system") {
-        const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-        themeToApply = prefersDark ? "dark" : "light";
-      }
+        if (savedTheme === "system") {
+          const prefersDark = window.matchMedia(
+            "(prefers-color-scheme: dark)",
+          ).matches;
+          themeToApply = prefersDark ? "dark" : "light";
+        }
 
-      document.documentElement.setAttribute("data-theme", themeToApply);
-    })();
-  </script>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-  <meta name="generator" content={Astro.generator} />
-  <title>
-    {title.tab && `[${title.tab}]`} Jorman Espinoza | Software Engineer
-  </title>
-</head>
-<body>
-<div class="wrapper">
-  <Header />
-  <main>
-    <h1>{title.page}</h1>
-    <slot />
-  </main>
-  <Footer />
-</div>
-</body>
+        document.documentElement.setAttribute("data-theme", themeToApply);
+      })();
+    </script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>
+      {title.tab && `[${title.tab}]`} Jorman Espinoza | Software Engineer
+    </title>
+  </head>
+  <body>
+    <div class="wrapper">
+      <Header />
+      <main>
+        <h1>{title.page}</h1>
+        <slot />
+      </main>
+      <Footer />
+    </div>
+  </body>
 </html>
 
 <style>
-    @font-face {
-        font-family: "Cascadia Code";
-        src: url("/fonts/CascadiaCode.ttf") format("truetype");
-        font-weight: normal;
-        font-style: normal;
-    }
+  @font-face {
+    font-family: "Cascadia Code";
+    src: url("/fonts/CascadiaCode.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+  }
+
+  @font-face {
+      font-family: "Writter";
+      src: url("/fonts/Writer-Regular.ttf") format("truetype");
+      font-weight: normal;
+      font-style: normal;
+  }
 </style>

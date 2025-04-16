@@ -1,54 +1,54 @@
 .theme-switcher {
-    display: flex;
-    gap: 0.089em;
+  display: flex;
+  gap: 0.089em;
 }
 
 .btn {
-    width: 30px;
-    height: 30px;
-    border: solid 1px var(--border-color);
-    border-radius: 0.5em;
-    background: none;
-    cursor: pointer;
-    opacity: 0.5;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  width: 30px;
+  height: 30px;
+  border: solid 1px var(--border-color);
+  border-radius: 0.5em;
+  background: none;
+  cursor: pointer;
+  opacity: 0.5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .btn.light,
 .btn.dark,
 .btn.system {
-    fill: var(--foreground-color);
+  fill: var(--foreground-color);
 }
 
 .btn:hover {
-    border: solid 1px var(--foreground-color);
-    opacity: 1;
+  border: solid 1px var(--foreground-color);
+  opacity: 1;
 }
 
 .btn:hover svg,
 .btn:hover .light,
 .btn:hover .dark,
 .btn:hover .system {
-    fill: var(--foreground-color);
-    opacity: 1;
+  fill: var(--foreground-color);
+  opacity: 1;
 }
 
 .btn.active {
-    border: solid 1px var(--accent-color);
-    opacity: 1;
+  border: solid 1px var(--accent-color);
+  opacity: 1;
 }
 
 .btn.active svg,
 .btn.active .light,
 .btn.active .dark,
 .btn.active .system {
-    fill: var(--accent-color);
-    opacity: 1;
+  fill: var(--accent-color);
+  opacity: 1;
 }
 
 .btn.active:hover {
-    border: solid 1px var(--foreground-color);
-    opacity: 1;
+  border: solid 1px var(--foreground-color);
+  opacity: 1;
 }

@@ -1,11 +1,11 @@
-import { useEffect, useCallback } from "preact/hooks";
+import { useCallback, useEffect } from "preact/hooks";
 import { GOOGLE_MAPS_API_KEY } from "astro:env/client";
-import "../styles/google-map.css";
+import { useStore } from "@nanostores/preact";
 
+import "../styles/google-map.css";
 import mapDarkStyles from "../assets/dark";
 import mapLightStyles from "../assets/light";
-import { useStore } from "@nanostores/preact";
-import { activeTheme } from "../themeStore.ts";
+import { activeTheme } from "../stores/activeThemeStore.ts";
 
 export default function VenezuelaToArgentinaMap() {
   const theme = useStore(activeTheme); // Subscribes to the theme state
@@ -44,7 +44,7 @@ export default function VenezuelaToArgentinaMap() {
 
   // Function to get the corresponding map styles based on the theme
   const getMapStyles = useCallback(() => {
-    if (typeof window === "undefined") return mapLightStyles;
+    if (typeof window === "undefined") return mapDarkStyles;
 
     let activeTheme = theme;
     if (theme === "system") {

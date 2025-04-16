@@ -13,7 +13,7 @@
     },
     "location": "En línea",
     "description": "Curso de certificación en MongoDB abarcado: arquitectura, operaciones CRUD, modelado de datos, consultas, rendimiento, replicación y seguridad.",
-    "tags": ["Desarrollo", "BD", "Base de datos", "MongoDB", "NoSQL", "2024"],
+    "tags": ["Desarrollo", "Base de datos", "MongoDB", "NoSQL", "2024"],
     "certificate": "/certificates/certificado-mongodb-si-associate.pdf"
   },
   {
@@ -47,7 +47,7 @@
     },
     "location": "En línea",
     "description": "Curso de Next.js 15 & React --con 40.5 horas de duración.",
-    "tags": ["Desarrollo", "JS", "Javascript", "React", "Next.js", "En curso"],
+    "tags": ["Desarrollo", "JS", "Javascript", "React", "Next", "En curso"],
     "certificate": ""
   },
   {
@@ -242,7 +242,7 @@
     },
     "location": "En línea",
     "description": "Curso Profesional de Git y GitHub --con 22 horas de teoría y práctica.",
-    "tags": ["Desarrollo", "Git", "GitHub", "2021"],
+    "tags": ["Desarrollo", "GIT", "GitHub", "2021"],
     "certificate": "/certificates/certificado-git-github.pdf"
   },
   {

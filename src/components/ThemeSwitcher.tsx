@@ -1,6 +1,6 @@
 import { useStore } from "@nanostores/preact";
 import { useEffect } from "preact/hooks";
-import { activeTheme } from "../themeStore";
+import { activeTheme } from "../stores/activeThemeStore.ts";
 import type { Theme } from "../env";
 import "../styles/theme-switcher.css";
 
@@ -14,7 +14,11 @@ const ThemeSwitcher = () => {
 
     if (selectedTheme === "system") {
       // Apply system theme
-      const preferredColorScheme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+      const preferredColorScheme = window.matchMedia(
+        "(prefers-color-scheme: dark)",
+      ).matches
+        ? "dark"
+        : "light";
       document.documentElement.setAttribute("data-theme", preferredColorScheme);
     } else {
       // Apply explicit theme
@@ -32,7 +36,11 @@ const ThemeSwitcher = () => {
 
     if (storedTheme === "system") {
       // Apply the system theme based on user preference
-      const preferredColorScheme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+      const preferredColorScheme = window.matchMedia(
+        "(prefers-color-scheme: dark)",
+      ).matches
+        ? "dark"
+        : "light";
       document.documentElement.setAttribute("data-theme", preferredColorScheme);
     } else {
       // Apply the stored theme directly
@@ -47,7 +55,11 @@ const ThemeSwitcher = () => {
         class={`btn light ${theme === "light" ? "active" : ""}`}
         onClick={() => handleThemeChange("light")}
       >
-        <svg width="20px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <svg
+          width="20px"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+        >
           <path
             className="sun"
             fill-rule="evenodd"
@@ -61,7 +73,11 @@ const ThemeSwitcher = () => {
         class={`btn dark ${theme === "dark" ? "active" : ""}`}
         onClick={() => handleThemeChange("dark")}
       >
-        <svg width="20px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <svg
+          width="20px"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+        >
           <path
             className="moon"
             fill-rule="evenodd"
@@ -75,7 +91,11 @@ const ThemeSwitcher = () => {
         class={`btn system ${theme === "system" ? "active" : ""}`}
         onClick={() => handleThemeChange("system")}
       >
-        <svg width="20px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <svg
+          width="20px"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+        >
           <path
             className="system"
             fill-rule="evenodd"
