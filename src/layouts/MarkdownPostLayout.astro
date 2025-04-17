@@ -1,14 +1,10 @@
 ---
 import Layout from "./Layout.astro";
-import "../styles/blog-post.css";
 import { slugify } from "../utils/slugify";
-const language = "es-ES";
+
+const LANGUAGE = "es-ES";
 
 const { frontmatter } = Astro.props;
-
-const tags: string[] = [
-  ...new Set(frontmatter.tags.map((tag: string) => tag.toLowerCase())),
-];
 
 const title = {
   tab: `Blog: ${frontmatter.title}`,
@@ -25,61 +21,95 @@ const breadCrumbs = [
     label: frontmatter.title,
   },
 ];
-console.log(frontmatter);
+
+const tags = [
+  ...new Set(frontmatter.tags.map((tag: string) => tag.toLowerCase())),
+];
 ---
 
 <Layout title={title} breadCrumbs={breadCrumbs}>
-  <span>{frontmatter.id}</span>
-  <p>
-    {
-      new Date(frontmatter.pubDate).toLocaleDateString(language, {
-        day: "2-digit",
-        month: "long",
-        year: "numeric",
-      })
-    }
-  </p>
-  <p><em>{frontmatter.description}</em></p>
-  <img src={frontmatter.image.url} width="300" alt={frontmatter.image.alt} />
-  <slot />
-  <div class="tags">
-    {
-      tags.map((tag: any) => (
-        <p class="tag">
-          <a href={`/blog/tags/${slugify(tag)}`}>{tag}</a>
-        </p>
-      ))
-    }
+  <div class="post">
+    <span>{frontmatter.id}</span>
+    <p>
+      {
+        new Date(frontmatter.pubDate).toLocaleDateString(LANGUAGE, {
+          day: "2-digit",
+          month: "long",
+          year: "numeric",
+        })
+      }
+    </p>
+    <p><em>{frontmatter.description}</em></p>
+    <img src={frontmatter.image.url} width="300" alt={frontmatter.image.alt} />
+    <slot />
+    <div class="tags">
+      {
+        tags.map((tag: any) => (
+          <p class="tag">
+            <a href={`/blog/tags/${slugify(tag)}`}>{tag}</a>
+          </p>
+        ))
+      }
+    </div>
+    <p>Escrito por: {frontmatter.author}</p>
   </div>
-  <p>Escrito por: {frontmatter.author}</p>
 </Layout>
 
 <style is:raw>
-  .tags {
-    margin-top: 1em;
-    display: flex;
-    gap: 0.5em;
+  .post {
+    .tags {
+      margin-top: 1em;
+      display: flex;
+      gap: 0.5em;
 
-    .tag {
-      background: var(--accent-color-muted);
-      padding: 0.25em 0.75em;
-      border-radius: 25px;
-      border: 1px solid var(--accent-color-muted);
-      font-size: 0.75em;
-      color: var(--background-color);
-      cursor: pointer;
-      font-style: italic;
+      .tag {
+        background: var(--accent-color-muted);
+        padding: 0.25em 0.75em;
+        border-radius: 25px;
+        border: 1px solid var(--accent-color-muted);
+        font-size: 0.75em;
+        color: var(--background-color);
+        cursor: pointer;
+        font-style: italic;
 
-      a:hover {
-        color: var(--foreground-color);
+        a:hover {
+          color: var(--background-color);
+        }
+
+        &:hover,
+        &.highlight-tag {
+          background: var(--accent-color);
+          border-color: var(--accent-color);
+        }
       }
+    }
 
-      &:hover,
-      &.highlight-tag {
-        background: var(--accent-color);
-        border-color: var(--accent-color);
-        color: var(--foreground-color);
+    * {
+      margin-bottom: 0.5em;
+    }
+
+    code,
+    pre,
+    .code {
+      font-family: var(--code-font), monospace;
+      font-feature-settings:
+        "calt" 1,
+        "liga" 1;
+      line-height: calc(var(--line-height) * 1.5);
+      font-size: 1em;
+      padding: 0.5em;
+      margin: 0.5em 0;
+      border-radius: 6px;
+      overflow-x: auto;
+
+      &.astro-code {
+        white-space: pre !important;
       }
+    }
+
+    li {
+      list-style: disclosure-closed;
+      margin-left: 1em;
     }
   }
 </style>
