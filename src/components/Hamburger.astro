@@ -27,7 +27,7 @@
     .line {
       width: 30px;
       height: 3px;
-      background-color: #8e4ace;
+      background-color: var(--accent-color);
       transition:
         transform 0.4s cubic-bezier(0.68, -0.6, 0.32, 1.6),
         opacity 0.3s ease-in-out,
@@ -36,6 +36,7 @@
       position: absolute;
       border-radius: 4px;
       will-change: transform, opacity, width;
+      opacity: 0.9;
 
       &:nth-of-type(1) {
         top: 10px;
@@ -45,7 +46,6 @@
       &:nth-of-type(2) {
         top: 50%;
         transform: translateY(-50%);
-        opacity: 1;
       }
 
       &:nth-of-type(3) {
@@ -55,7 +55,8 @@
     }
 
     &:hover .line {
-      background-color: #9f5bd5;
+      background-color: var(--accent-color);
+      opacity: 1;
       box-shadow: 0 0 5px rgba(159, 91, 213, 0.5);
     }
 
@@ -63,7 +64,8 @@
       transform: rotate(90deg) scale(0.95);
 
       .line {
-        background-color: #9f5bd5;
+        background-color: var(--accent-color);
+        opacity: 1;
         box-shadow: 0 0 8px rgba(159, 91, 213, 0.7);
 
         &:nth-of-type(1) {
