@@ -2,21 +2,18 @@ const hamburger = document.querySelector(".hamburger");
 const nav = document.querySelector("nav");
 const navLinks = document.querySelector(".navigation");
 const footer = document.querySelector("footer");
+const sidebar = document.querySelector(".sidebar");
+
+const items = [hamburger, nav, navLinks, footer, sidebar];
 
 hamburger.addEventListener("click", () => {
-  navLinks.classList.toggle("expanded");
-  hamburger.classList.toggle("expanded");
-  nav.classList.toggle("expanded");
-  footer.classList.toggle("expanded");
+  items.forEach((item) => item.classList.toggle("expanded"));
 });
 
 window.addEventListener("resize", () => {
   setTimeout(() => {
     if (window.innerWidth >= 880) {
-      navLinks.classList.remove("expanded");
-      hamburger.classList.remove("expanded");
-      nav.classList.remove("expanded");
-      footer.classList.remove("expanded");
+      items.forEach((item) => item.classList.remove("expanded"));
     }
   }, 250);
 });

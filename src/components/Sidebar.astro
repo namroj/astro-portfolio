@@ -70,6 +70,7 @@ import FontSwitcher from "./FontSwitcher";
     right: -302px;
     width: 302px;
     height: calc(100vh - 81px);
+    border-left: 1px solid var(--border-color);
     background-color: rgba(var(--background-color), 0.9);
     background-image: var(--navigation-background-image);
     background-repeat: repeat;
@@ -78,6 +79,10 @@ import FontSwitcher from "./FontSwitcher";
     transition: right 0.3s ease;
     overflow-y: auto;
     box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+
+    &.expanded {
+      border-left: none;
+    }
 
     @media screen and (min-width: 992px) {
       height: calc(100vh - 91px);
