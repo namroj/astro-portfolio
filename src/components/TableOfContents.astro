@@ -1,0 +1,227 @@
+---
+---
+
+<div class="toc-toggle">
+  <button
+    id="toc-toggle-btn"
+    aria-label="Toggle Table of Contents"
+    title="Tabla de Contenidos"
+  >
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      width="24"
+      height="24"
+      class="toc-icon"
+    >
+      <rect x="3" y="4" width="18" height="2" rx="1" fill="currentColor"></rect>
+      <rect x="3" y="9" width="12" height="2" rx="1" fill="currentColor"></rect>
+      <rect x="3" y="14" width="18" height="2" rx="1" fill="currentColor"></rect>
+      <rect x="3" y="19" width="12" height="2" rx="1" fill="currentColor"></rect>
+    </svg>
+  </button>
+</div>
+
+<aside id="toc" class="toc">
+  <div class="toc-content">
+    <h3>Tabla de Contenidos</h3>
+    <div id="toc-list" class="toc-list">
+      <!-- Table of contents will be generated here -->
+    </div>
+  </div>
+</aside>
+
+<style>
+  .toc-toggle {
+    position: fixed;
+    z-index: 10;
+    top: 100px;
+    right: 10px;
+  }
+
+  #toc-toggle-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: var(--accent-color);
+    color: white;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    transition:
+      transform 0.3s ease,
+      background-color 0.3s ease,
+      box-shadow 0.3s ease;
+  }
+
+  #toc-toggle-btn:hover {
+    background-color: var(--accent-color);
+    box-shadow: 0 0 5px rgba(159, 91, 213, 0.5);
+  }
+
+  #toc-toggle-btn.active {
+    transform: rotate(90deg);
+    background-color: var(--accent-color-muted);
+  }
+
+  .toc {
+    position: fixed;
+    top: 46px;
+    right: -302px;
+    width: 302px;
+    height: calc(100vh - 81px);
+    border-left: 1px solid var(--border-color);
+    background-image: var(--navigation-background-image);
+    background-repeat: repeat;
+    backdrop-filter: blur(10px);
+    z-index: 9;
+    transition: right 0.3s ease;
+    overflow-y: auto;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+
+    @media screen and (min-width: 992px) {
+      height: calc(100vh - 92px);
+      right: 0;
+      transform: translateX(100%);
+      transition: transform 0.3s ease;
+    }
+  }
+
+  .toc.active {
+    right: 0;
+
+    @media screen and (min-width: 992px) {
+      transform: translateX(0);
+    }
+  }
+
+  .toc-content {
+    padding: 20px;
+  }
+
+  h3 {
+    margin-bottom: 20px;
+    color: var(--accent-color);
+  }
+
+  .toc-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .toc-list a {
+    color: var(--foreground-color);
+    text-decoration: none;
+    padding: 5px 0;
+    display: block;
+    transition: color 0.2s ease;
+  }
+
+  .toc-list a:hover {
+    color: var(--accent-color);
+  }
+
+  .toc-list .toc-h2 {
+    margin-left: 0;
+  }
+
+  .toc-list .toc-h3 {
+    margin-left: 15px;
+    font-size: 0.95em;
+  }
+
+  .toc-list .toc-h4 {
+    margin-left: 30px;
+    font-size: 0.9em;
+  }
+
+  @media screen and (max-width: 880px) {
+    .toc {
+      width: 256px;
+    }
+  }
+
+  @media screen and (min-width: 992px) {
+    .toc-toggle {
+      display: none;
+    }
+  }
+</style>
+
+<script>
+  // Function to extract headings from the page
+  function generateTableOfContents() {
+    const headings = document.querySelectorAll('main h2, main h3, main h4');
+    const tocList = document.getElementById('toc-list');
+    
+    if (!tocList || headings.length === 0) return;
+    
+    tocList.innerHTML = '';
+    
+    headings.forEach((heading) => {
+      const level = heading.tagName.toLowerCase();
+      const text = heading.textContent;
+      
+      // Create an ID for the heading if it doesn't have one
+      if (!heading.id) {
+        heading.id = text
+          ?.toLowerCase()
+          .replace(/[^a-z0-9]+/g, '-')
+          .replace(/(^-|-$)/g, '');
+      }
+      
+      const link = document.createElement('a');
+      link.href = `#${heading.id}`;
+      link.textContent = text;
+      link.classList.add(`toc-${level}`);
+      
+      // Add click event to scroll to the heading
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        
+        // Close the TOC on mobile
+        if (window.innerWidth < 992) {
+          document.getElementById('toc')?.classList.remove('active');
+          document.getElementById('toc-toggle-btn')?.classList.remove('active');
+        }
+        
+        // Scroll to the heading
+        const targetHeading = document.getElementById(heading.id);
+        if (targetHeading) {
+          targetHeading.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+      
+      tocList.appendChild(link);
+    });
+  }
+
+  // Toggle TOC visibility
+  const tocToggleBtn = document.getElementById("toc-toggle-btn");
+  const toc = document.getElementById("toc");
+
+  tocToggleBtn?.addEventListener("click", () => {
+    toc?.classList.toggle("active");
+    tocToggleBtn.classList.toggle("active");
+  });
+
+  // Close the TOC when clicking outside
+  document.addEventListener("click", (event) => {
+    const target = event.target as HTMLElement;
+    if (
+      toc?.classList.contains("active") &&
+      !toc.contains(target) &&
+      !tocToggleBtn?.contains(target)
+    ) {
+      toc.classList.remove("active");
+      tocToggleBtn?.classList.remove("active");
+    }
+  });
+
+  // Generate TOC when the page loads
+  document.addEventListener('DOMContentLoaded', generateTableOfContents);
+</script>
