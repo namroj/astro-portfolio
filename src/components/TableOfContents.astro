@@ -123,6 +123,11 @@
     color: var(--accent-color);
   }
 
+  .toc-list a.active {
+    color: var(--accent-color);
+    font-weight: bold;
+  }
+
   a.toc-h2 {
     margin-left: 15px;
   }
@@ -213,5 +218,47 @@
   });
 
   // Generate TOC when the page loads
-  document.addEventListener("DOMContentLoaded", generateTableOfContents);
+  document.addEventListener("DOMContentLoaded", () => {
+    generateTableOfContents();
+    setupScrollSpy();
+  });
+
+  // Function to highlight the active heading in the TOC
+  function setupScrollSpy() {
+    const headings = document.querySelectorAll("main h2, main h3, main h4");
+    const tocLinks = document.querySelectorAll(".toc-list a");
+
+    if (headings.length === 0 || tocLinks.length === 0) return;
+
+    // Create an IntersectionObserver to detect when headings are in view
+    const observer = new IntersectionObserver(
+      (entries) => {
+        // Get all entries that are currently intersecting
+        const visibleEntries = entries.filter(entry => entry.isIntersecting);
+
+        if (visibleEntries.length > 0) {
+          // Get the first visible heading (closest to the top)
+          const visibleHeading = visibleEntries[0].target;
+
+          // Remove active class from all TOC links
+          tocLinks.forEach(link => link.classList.remove("active"));
+
+          // Find the corresponding TOC link and add an active class
+          const activeLink = document.querySelector(`.toc-list a[href="#${visibleHeading.id}"]`);
+          if (activeLink) {
+            activeLink.classList.add("active");
+          }
+        }
+      },
+      {
+        rootMargin: "-100px 0px -80% 0px", // Adjust these values as needed
+        threshold: 0
+      }
+    );
+
+    // Observe all headings
+    headings.forEach(heading => {
+      observer.observe(heading);
+    });
+  }
 </script>
