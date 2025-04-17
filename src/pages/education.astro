@@ -9,14 +9,14 @@ import "../styles/timeline.css";
 
 const title = {
   tab: "Educación",
-  page: "Educación",
+  page: "Educación"
 };
 
 const breadCrumbs = [
   {
     url: "",
-    label: "Educación",
-  },
+    label: "Educación"
+  }
 ];
 
 const items = await getCollection("education");
@@ -36,7 +36,14 @@ const tags = [...new Set(items.flatMap((item) => item.data.tags))];
     <div class="timeline-filters">
       <Filter tags={tags} />
     </div>
+
     <ul class="timeline-list">
+      <div class="no-results" style="display: none;">
+        <p>
+          No se encontraron resultados que coincidan con tus criterios de búsqueda.
+        </p>
+        <button class="reset-search-btn">Limpiar búsqueda</button>
+      </div>
       {
         items.map((item, index) => (
           <Item item={item} isLast={index === items.length - 1} />
@@ -60,7 +67,6 @@ const tags = [...new Set(items.flatMap((item) => item.data.tags))];
       grid-template-columns: 3fr 1fr;
       gap: 1em;
       grid-template-areas: "first second"; /* Force the second column to appear before the first */
-
       .timeline-filters {
         position: sticky;
         top: calc(45px + 1em);

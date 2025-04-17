@@ -17,7 +17,7 @@ const FontSwitcher = () => {
     document.documentElement.style.setProperty("--code-font", selectedFont);
   };
 
-  // Synchronize the font on component mount
+  // Synchronize the font on the component mount
   useEffect(() => {
     // Get the stored font from localStorage
     const storedFont = (localStorage.getItem("font") ||
@@ -33,49 +33,49 @@ const FontSwitcher = () => {
 
   return (
     <div class="font-switcher">
+      {/* JetBrains Mono Button */}
+      <button
+        class={`font-btn jetbrains-mono ${font === "JetBrains Mono" ? "active" : ""}`}
+        onClick={() => handleFontChange("JetBrains Mono")}
+        title="JetBrains Mono"
+      >
+        J
+      </button>
+
       {/* Cascadia Code Button */}
       <button
-        class={`font-btn cascadia ${font === "Cascadia Code" ? "active" : ""}`}
+        class={`font-btn cascadia-code ${font === "Cascadia Code" ? "active" : ""}`}
         onClick={() => handleFontChange("Cascadia Code")}
         title="Cascadia Code"
       >
         C
       </button>
 
-      {/* DankMono Button */}
+      {/* Dank Mono Button */}
       <button
-        class={`font-btn dankmono ${font === "DankMono" ? "active" : ""}`}
-        onClick={() => handleFontChange("DankMono")}
-        title="DankMono"
+        class={`font-btn dank-mono ${font === "Dank Mono" ? "active" : ""}`}
+        onClick={() => handleFontChange("Dank Mono")}
+        title="Dank Mono"
       >
         D
       </button>
 
       {/* Fira Code Button */}
       <button
-        class={`font-btn firacode ${font === "Fira Code" ? "active" : ""}`}
+        class={`font-btn fira-code ${font === "Fira Code" ? "active" : ""}`}
         onClick={() => handleFontChange("Fira Code")}
         title="Fira Code"
       >
         F
       </button>
 
-      {/* Writter Button */}
+      {/* Writer Button */}
       <button
-        class={`font-btn writter ${font === "Writter" ? "active" : ""}`}
-        onClick={() => handleFontChange("Writter")}
-        title="Writter"
+        class={`font-btn writer ${font === "Writer" ? "active" : ""}`}
+        onClick={() => handleFontChange("Writer")}
+        title="Wrtter"
       >
         W
-      </button>
-
-      {/* JetBrains Mono Button */}
-      <button
-        class={`font-btn jetbrains ${font === "JetBrains Mono" ? "active" : ""}`}
-        onClick={() => handleFontChange("JetBrains Mono")}
-        title="JetBrains Mono"
-      >
-        J
       </button>
     </div>
   );

@@ -1,6 +1,7 @@
 ---
 import Layout from "./Layout.astro";
 import "../styles/blog-post.css";
+import { slugify } from "../utils/slugify";
 const language = "es-ES";
 
 const { frontmatter } = Astro.props;
@@ -24,9 +25,11 @@ const breadCrumbs = [
     label: frontmatter.title,
   },
 ];
+console.log(frontmatter);
 ---
 
 <Layout title={title} breadCrumbs={breadCrumbs}>
+  <span>{frontmatter.id}</span>
   <p>
     {
       new Date(frontmatter.pubDate).toLocaleDateString(language, {
@@ -44,7 +47,7 @@ const breadCrumbs = [
     {
       tags.map((tag: any) => (
         <p class="tag">
-          <a href={`/blog/tags/${tag}`}>{tag}</a>
+          <a href={`/blog/tags/${slugify(tag)}`}>{tag}</a>
         </p>
       ))
     }
@@ -66,6 +69,10 @@ const breadCrumbs = [
       color: var(--background-color);
       cursor: pointer;
       font-style: italic;
+
+      a:hover {
+        color: var(--foreground-color);
+      }
 
       &:hover,
       &.highlight-tag {

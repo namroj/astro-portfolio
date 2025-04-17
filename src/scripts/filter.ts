@@ -236,7 +236,7 @@ document.addEventListener("DOMContentLoaded", () => {
       allButton.classList.add("active");
     }
 
-    // Remove active class from all tag buttons except "all"
+    // Remove the active class from all tag buttons except "all"
     tagButtons.forEach((btn) => {
       const button = btn as HTMLElement;
       if (button.dataset.tag !== "all") {
@@ -244,7 +244,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
 
-    // Remove active class from all tags
+    // Remove the active class from all tags
     document.querySelectorAll(".tag").forEach((tag) => {
       tag.classList.remove("active");
     });
@@ -305,12 +305,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
       // OPTIONAL: Trigger a custom event to notify the rest of the application
       document.dispatchEvent(
-        new CustomEvent("tagChange", { detail: { activeTag } }),
+        new CustomEvent("tagChange", { detail: { activeTags } }),
       );
     });
   });
 
-  // Clear search on button click
+  // Clear search on the button click
   clearSearchBtn?.addEventListener("click", resetSearch);
 
   let debounceTimeout: number;

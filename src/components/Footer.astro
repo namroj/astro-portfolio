@@ -30,7 +30,10 @@ const { breadCrumbs } = Astro.props;
     flex-direction: column;
     justify-content: center;
     border-top: 1px solid var(--border-color);
-    background-color: var(--background-color);
+    background-color: rgba(var(--background-color), 0.1);
+    background-image: var(--navigation-background-image);
+    background-repeat: repeat;
+    backdrop-filter: blur(25px);
     padding: 0 0.5em;
 
     &.expanded {
@@ -53,8 +56,11 @@ const { breadCrumbs } = Astro.props;
 
     .left {
       position: absolute;
-      background-color: var(--background-color);
       padding: 0.25em 0.5em 0.5em;
+      background-color: rgba(var(--background-color), 0.9);
+      background-image: var(--navigation-background-image);
+      background-repeat: repeat;
+      backdrop-filter: blur(25px);
       border-top: 1px solid var(--border-color);
       width: 100%;
       top: -30px;
@@ -64,9 +70,10 @@ const { breadCrumbs } = Astro.props;
         position: initial;
         top: unset;
         left: unset;
-        padding: 0.5em;
-        border: none;
         width: auto;
+        border: none;
+        padding: 0.5em;
+        background: transparent;
       }
     }
 

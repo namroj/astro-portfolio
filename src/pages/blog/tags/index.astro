@@ -1,6 +1,7 @@
 ---
 import { getCollection } from "astro:content";
 import Layout from "../../../layouts/Layout.astro";
+import { slugify } from "../../../utils/slugify";
 
 const title = {
   tab: "Etiquetas",
@@ -27,7 +28,7 @@ const tags = [...new Set(allPosts.map((post: any) => post.data.tags).flat())];
     {
       tags.map((tag) => (
         <p class="tag">
-          <a href={`/blog/tags/${tag}`}>{tag}</a>
+          <a href={`/blog/tags/${slugify(tag)}`}>{tag}</a>
         </p>
       ))
     }

@@ -2,6 +2,7 @@
 import { getCollection } from "astro:content";
 import Layout from "../../../layouts/Layout.astro";
 import BlogPost from "../../../components/BlogPost.astro";
+import { slugify } from "../../../utils/slugify";
 
 export async function getStaticPaths() {
   const allPosts = await getCollection("blog");
@@ -14,18 +15,18 @@ export async function getStaticPaths() {
       post.data.tags.includes(tag),
     );
     return {
-      params: { tag },
-      props: { posts: filteredPosts },
+      params: { tag: slugify(tag) },
+      props: { posts: filteredPosts, originalTag: tag },
     };
   });
 }
 
 const { tag } = Astro.params;
-const { posts } = Astro.props;
+const { posts, originalTag } = Astro.props;
 
 const title = {
-  tab: `Etiqueta: ${tag}`,
-  page: tag,
+  tab: `Etiqueta: ${originalTag}`,
+  page: originalTag,
 };
 
 const breadCrumbs = [
@@ -39,13 +40,13 @@ const breadCrumbs = [
   },
   {
     url: "",
-    label: tag,
+    label: originalTag,
   },
 ];
 ---
 
 <Layout title={title} breadCrumbs={breadCrumbs}>
-  <p>Artículos etiquetados como <i>{tag}</i></p>
+  <p>Artículos etiquetados como <i>{originalTag}</i></p>
   <ul class="posts">
     {
       posts.map((post: any) => (
@@ -58,7 +59,7 @@ const breadCrumbs = [
     }
   </ul>
 
-  <a class="blog-tags" href="/blog/tags">Tags</a>
+  <a class="blog-tags" href="/blog/tags">Etiquetas</a>
 </Layout>
 
 <style is:inline>

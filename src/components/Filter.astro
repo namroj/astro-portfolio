@@ -37,13 +37,6 @@ const { tags } = Astro.props;
   </div>
 </div>
 
-<div class="no-results" style="display: none;">
-  <p>
-    No se encontraron resultados que coincidan con tus criterios de búsqueda.
-  </p>
-  <button class="reset-search-btn">Limpiar búsqueda</button>
-</div>
-
 <style is:inline>
   .filters {
     margin: 0;
@@ -109,10 +102,8 @@ const { tags } = Astro.props;
   }
 
   .no-results {
-    text-align: center;
-    padding: 2em;
-    border-radius: 0.5em;
-    margin: 2em 0;
+    text-align: left;
+    border: 1px dot-dash var(--border-color);
   }
 
   .no-results p {

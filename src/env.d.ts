@@ -9,11 +9,11 @@ declare global {
 export type Theme = "light" | "dark" | "system";
 
 export type Font =
+  | "JetBrains Mono"
   | "Cascadia Code"
-  | "DankMono"
+  | "Dank Mono"
   | "Fira Code"
-  | "Writter"
-  | "JetBrains Mono";
+  | "Writer";
 
 export interface BreadCrumbProp {
   url: string;

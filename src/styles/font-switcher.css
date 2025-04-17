@@ -21,11 +21,11 @@
   }
 }
 
-.font-btn.cascadia,
-.font-btn.dankmono,
-.font-btn.firacode,
-.font-btn.writter,
-.font-btn.jetbrains {
+.font-btn.cascadia-code,
+.font-btn.dank-mono,
+.font-btn.fira-code,
+.font-btn.writer,
+.font-btn.jetbrains-mono {
   fill: var(--foreground-color);
 }
 
@@ -35,11 +35,11 @@
 }
 
 .font-btn:hover svg,
-.font-btn:hover .cascadia,
-.font-btn:hover .dankmono,
-.font-btn:hover .firacode,
-.font-btn:hover .writter,
-.font-btn:hover .jetbrains {
+.font-btn:hover .cascadia-code,
+.font-btn:hover .dank-mono,
+.font-btn:hover .fira-code,
+.font-btn:hover .writer,
+.font-btn:hover .jetbrains-mono {
   fill: var(--foreground-color);
   opacity: 1;
 }
@@ -50,11 +50,11 @@
 }
 
 .font-btn.active svg,
-.font-btn.active .cascadia,
-.font-btn.active .dankmono,
-.font-btn.active .firacode,
-.font-btn.active .writter,
-.font-btn.active .jetbrains {
+.font-btn.active .cascadia-code,
+.font-btn.active .dank-mono,
+.font-btn.active .fira-code,
+.font-btn.active .writer,
+.font-btn.active .jetbrains-mono {
   fill: var(--accent-color);
   opacity: 1;
 }

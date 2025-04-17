@@ -26,7 +26,7 @@ import FontSwitcher from "./FontSwitcher";
         <ThemeSwitcher client:load />
       </div>
       <div class="switcher-group">
-        <h4>Tipografía</h4>
+        <h4>Fuente</h4>
         <FontSwitcher client:load />
       </div>
     </div>
@@ -70,7 +70,10 @@ import FontSwitcher from "./FontSwitcher";
     right: -300px;
     width: 300px;
     height: calc(100vh - 110px);
-    background-color: var(--background-color);
+    background-color: rgba(var(--background-color), 0.9);
+    background-image: var(--navigation-background-image);
+    background-repeat: repeat;
+    backdrop-filter: blur(25px);
     border-left: 1px solid var(--border-color);
     z-index: 9;
     transition: right 0.3s ease;
