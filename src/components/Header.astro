@@ -1,41 +1,10 @@
 ---
-import Hamburger from "./Hamburger.astro";
-import Navigation from "./Navigation.astro";
+import Nav from "./Nav.astro";
 ---
 
 <header>
-  <nav>
-    <Navigation />
-    <Hamburger />
-  </nav>
+  <Nav />
 </header>
-
-<style>
-  nav {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    display: flex;
-    justify-content: flex-end;
-    padding: 0 1em;
-    z-index: 4;
-    background-color: rgba(var(--background-color), 0.89);
-    backdrop-filter: blur(25px);
-    border-bottom: 1px solid var(--border-color);
-
-    &.expanded {
-      height: 100dvh;
-      flex-direction: column;
-      z-index: 3;
-      backdrop-filter: blur(25px);
-      border-bottom-color: transparent;
-      background-color: rgba(var(--background-color), 0.1);
-      background-image: var(--navigation-background-image);
-      background-repeat: repeat;
-    }
-  }
-</style>
 
 <script>
   import "../scripts/navigation.js";

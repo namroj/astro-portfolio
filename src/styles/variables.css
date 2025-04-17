@@ -2,7 +2,7 @@
   /* theme */
   color-scheme: light dark;
   --accent-color: #8e4ace;
-  --accent-secondary-color: #89ddff;
+  --accent-secondary-color: rgb(137 221 255);
   --accent-color-muted: #8e8e8e;
   --background-color: #e4e4e4;
   --foreground-color: #4f4f58;

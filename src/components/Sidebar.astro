@@ -4,7 +4,11 @@ import FontSwitcher from "./FontSwitcher";
 ---
 
 <div class="sidebar-toggle">
-  <button id="sidebar-toggle-btn" aria-label="Toggle Sidebar">
+  <button
+    id="sidebar-toggle-btn"
+    aria-label="Toggle Sidebar"
+    title="Personalizaciones"
+  >
     <svg
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -71,10 +75,9 @@ import FontSwitcher from "./FontSwitcher";
     width: 302px;
     height: calc(100vh - 81px);
     border-left: 1px solid var(--border-color);
-    background-color: rgba(var(--background-color), 0.9);
     background-image: var(--navigation-background-image);
     background-repeat: repeat;
-    backdrop-filter: blur(25px);
+    backdrop-filter: blur(10px);
     z-index: 9;
     transition: right 0.3s ease;
     overflow-y: auto;
@@ -85,7 +88,7 @@ import FontSwitcher from "./FontSwitcher";
     }
 
     @media screen and (min-width: 992px) {
-      height: calc(100vh - 91px);
+      height: calc(100vh - 92px);
     }
   }
 
@@ -119,9 +122,9 @@ import FontSwitcher from "./FontSwitcher";
     color: var(--foreground-color);
   }
 
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 880px) {
     .sidebar {
-      width: 253px;
+      width: 256px;
     }
   }
 </style>
