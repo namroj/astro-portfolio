@@ -6,7 +6,9 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "test": "vitest run",
+    "test:watch": "vitest"
   },
   "dependencies": {
     "@astrojs/preact": "^4.0.8",
@@ -19,7 +21,8 @@
   "devDependencies": {
     "@types/google.maps": "^3.58.1",
     "prettier": "3.5.3",
-    "prettier-plugin-astro": "0.14.1"
+    "prettier-plugin-astro": "0.14.1",
+    "vitest": "^3.1.1"
   },
   "overrides": {
     "react": "npm:@preact/compat@latest",
