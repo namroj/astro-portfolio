@@ -14,9 +14,65 @@ import FontSwitcher from "./FontSwitcher";
       viewBox="0 0 24 24"
       width="24"
       height="24"
+      class="sidebar-icon"
     >
-      <path fill="currentColor" d="M3 4h18v2H3V4zm0 7h18v2H3v-2zm0 7h18v2H3v-2z"
-      ></path>
+      <!-- Gear/settings icon that can transform to X -->
+      <circle
+        class="gear-circle"
+        cx="12"
+        cy="12"
+        r="4"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"></circle>
+      <path
+        class="gear-tooth top"
+        d="M12 2v4"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"></path>
+      <path
+        class="gear-tooth right"
+        d="M22 12h-4"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"></path>
+      <path
+        class="gear-tooth bottom"
+        d="M12 22v-4"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"></path>
+      <path
+        class="gear-tooth left"
+        d="M2 12h4"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"></path>
+      <path
+        class="gear-tooth top-right"
+        d="M18.36 5.64l-2.83 2.83"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"></path>
+      <path
+        class="gear-tooth bottom-right"
+        d="M18.36 18.36l-2.83-2.83"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"></path>
+      <path
+        class="gear-tooth bottom-left"
+        d="M5.64 18.36l2.83-2.83"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"></path>
+      <path
+        class="gear-tooth top-left"
+        d="M5.64 5.64l2.83 2.83"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"></path>
     </svg>
   </button>
 </div>
@@ -49,7 +105,7 @@ import FontSwitcher from "./FontSwitcher";
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    background-color: var(--accent-color-muted);
+    background-color: var(--accent-color);
     color: white;
     border: none;
     cursor: pointer;
@@ -57,15 +113,86 @@ import FontSwitcher from "./FontSwitcher";
     align-items: center;
     justify-content: center;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    transition: transform 0.3s ease;
+    transition:
+      transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+      background-color 0.3s ease,
+      box-shadow 0.3s ease;
+    will-change: transform;
+  }
+
+  .sidebar-icon {
+    transition: transform 0.4s ease;
+  }
+
+  .sidebar-icon path,
+  .sidebar-icon circle {
+    transition:
+      transform 0.4s cubic-bezier(0.68, -0.6, 0.32, 1.6),
+      opacity 0.3s ease-in-out,
+      stroke-width 0.3s ease;
+    transform-origin: center;
   }
 
   #sidebar-toggle-btn.active {
-    transform: rotate(90deg);
+    transform: rotate(90deg) scale(0.95);
+    background-color: transparent;
+    box-shadow: 0 0 8px rgba(159, 91, 213, 0.7);
+  }
+
+  /* Hide all gear teeth when active */
+  #sidebar-toggle-btn.active .gear-tooth {
+    opacity: 0;
+  }
+
+  /* Hide the circle when active */
+  #sidebar-toggle-btn.active .gear-circle {
+    opacity: 0;
+  }
+
+  #sidebar-toggle-btn.active .gear-tooth {
+    background-color: transparent;
+    color: var(--accent-color-muted);
+  }
+
+  #sidebar-toggle-btn.active:hover .gear-tooth {
+    background-color: transparent;
+    color: var(--foreground-color);
+  }
+
+  /* Transform top-right and bottom-left teeth into the X */
+  #sidebar-toggle-btn.active .gear-tooth.top-right {
+    opacity: 1;
+    transform: translate(-6px, 6px) scale(2) rotate(0);
+    stroke-width: 2;
+  }
+
+  #sidebar-toggle-btn.active .gear-tooth.bottom-left {
+    opacity: 1;
+    transform: translate(6px, -6px) scale(2) rotate(0);
+    stroke-width: 2;
+  }
+
+  /* Transform top-left and bottom-right teeth into the X */
+  #sidebar-toggle-btn.active .gear-tooth.top-left {
+    opacity: 1;
+    transform: translate(6px, 6px) scale(2) rotate(0);
+    stroke-width: 2;
+  }
+
+  #sidebar-toggle-btn.active .gear-tooth.bottom-right {
+    opacity: 1;
+    transform: translate(-6px, -6px) scale(2) rotate(0);
+    stroke-width: 2;
   }
 
   #sidebar-toggle-btn:hover {
     background-color: var(--accent-color);
+    box-shadow: 0 0 5px rgba(159, 91, 213, 0.5);
+  }
+
+  #sidebar-toggle-btn:hover .sidebar-icon path,
+  #sidebar-toggle-btn:hover .sidebar-icon circle {
+    stroke-width: 2.5;
   }
 
   .sidebar {
