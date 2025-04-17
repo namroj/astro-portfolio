@@ -1,4 +1,5 @@
 ---
+
 ---
 
 <div class="toc-toggle">
@@ -16,8 +17,10 @@
     >
       <rect x="3" y="4" width="18" height="2" rx="1" fill="currentColor"></rect>
       <rect x="3" y="9" width="12" height="2" rx="1" fill="currentColor"></rect>
-      <rect x="3" y="14" width="18" height="2" rx="1" fill="currentColor"></rect>
-      <rect x="3" y="19" width="12" height="2" rx="1" fill="currentColor"></rect>
+      <rect x="3" y="14" width="18" height="2" rx="1" fill="currentColor"
+      ></rect>
+      <rect x="3" y="19" width="12" height="2" rx="1" fill="currentColor"
+      ></rect>
     </svg>
   </button>
 </div>
@@ -31,7 +34,7 @@
   </div>
 </aside>
 
-<style>
+<style is:inline>
   .toc-toggle {
     position: fixed;
     z-index: 10;
@@ -81,21 +84,10 @@
     transition: right 0.3s ease;
     overflow-y: auto;
     box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
-
-    @media screen and (min-width: 992px) {
-      height: calc(100vh - 92px);
-      right: 0;
-      transform: translateX(100%);
-      transition: transform 0.3s ease;
-    }
   }
 
   .toc.active {
     right: 0;
-
-    @media screen and (min-width: 992px) {
-      transform: translateX(0);
-    }
   }
 
   .toc-content {
@@ -125,6 +117,10 @@
     color: var(--accent-color);
   }
 
+  a.toc-h2 {
+    margin-left: 15px;
+  }
+
   .toc-list .toc-h2 {
     margin-left: 0;
   }
@@ -132,70 +128,56 @@
   .toc-list .toc-h3 {
     margin-left: 15px;
     font-size: 0.95em;
+    color: var(--accent-color-muted);
   }
 
   .toc-list .toc-h4 {
     margin-left: 30px;
     font-size: 0.9em;
   }
-
-  @media screen and (max-width: 880px) {
-    .toc {
-      width: 256px;
-    }
-  }
-
-  @media screen and (min-width: 992px) {
-    .toc-toggle {
-      display: none;
-    }
-  }
 </style>
 
 <script>
   // Function to extract headings from the page
   function generateTableOfContents() {
-    const headings = document.querySelectorAll('main h2, main h3, main h4');
-    const tocList = document.getElementById('toc-list');
-    
+    const headings = document.querySelectorAll("main h2, main h3, main h4");
+    const tocList = document.getElementById("toc-list");
+
     if (!tocList || headings.length === 0) return;
-    
-    tocList.innerHTML = '';
-    
+
+    tocList.innerHTML = "";
+
     headings.forEach((heading) => {
       const level = heading.tagName.toLowerCase();
       const text = heading.textContent;
-      
+
       // Create an ID for the heading if it doesn't have one
       if (!heading.id) {
         heading.id = text
           ?.toLowerCase()
-          .replace(/[^a-z0-9]+/g, '-')
-          .replace(/(^-|-$)/g, '');
+          .replace(/[^a-z0-9]+/g, "-")
+          .replace(/(^-|-$)/g, "");
       }
-      
-      const link = document.createElement('a');
+
+      const link = document.createElement("a");
       link.href = `#${heading.id}`;
       link.textContent = text;
       link.classList.add(`toc-${level}`);
-      
+
       // Add click event to scroll to the heading
-      link.addEventListener('click', (e) => {
+      link.addEventListener("click", (e) => {
         e.preventDefault();
-        
-        // Close the TOC on mobile
-        if (window.innerWidth < 992) {
-          document.getElementById('toc')?.classList.remove('active');
-          document.getElementById('toc-toggle-btn')?.classList.remove('active');
-        }
-        
+
+        document.getElementById("toc")?.classList.remove("active");
+        document.getElementById("toc-toggle-btn")?.classList.remove("active");
+
         // Scroll to the heading
         const targetHeading = document.getElementById(heading.id);
         if (targetHeading) {
-          targetHeading.scrollIntoView({ behavior: 'smooth' });
+          targetHeading.scrollIntoView({ behavior: "smooth" });
         }
       });
-      
+
       tocList.appendChild(link);
     });
   }
@@ -223,5 +205,5 @@
   });
 
   // Generate TOC when the page loads
-  document.addEventListener('DOMContentLoaded', generateTableOfContents);
+  document.addEventListener("DOMContentLoaded", generateTableOfContents);
 </script>
