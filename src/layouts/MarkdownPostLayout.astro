@@ -40,7 +40,6 @@ console.log(frontmatter);
     }
   </p>
   <p><em>{frontmatter.description}</em></p>
-  <p>Escrito por: {frontmatter.author}</p>
   <img src={frontmatter.image.url} width="300" alt={frontmatter.image.alt} />
   <slot />
   <div class="tags">
@@ -52,6 +51,7 @@ console.log(frontmatter);
       ))
     }
   </div>
+  <p>Escrito por: {frontmatter.author}</p>
 </Layout>
 
 <style is:raw>

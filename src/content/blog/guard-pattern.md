@@ -10,7 +10,7 @@ tags: ["java", "patrón de diseño", "guardia", "código limpio"]
 draft: false
 ---
 
-# Comprendiendo el Patrón Guardia
+## Comprendiendo el Patrón Guardia
 
 El patrón guardia (también conocido como cláusulas de guardia o retornos tempranos) es una práctica de programación que
 mejora la legibilidad y mantenibilidad del código al manejar los casos límite y las condiciones inválidas al inicio de

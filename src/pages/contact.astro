@@ -1,0 +1,52 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "../layouts/Layout.astro";
+
+const title = {
+  tab: "Contacto",
+  page: "Contacto",
+};
+
+const breadCrumbs = [
+  {
+    url: "",
+    label: "Contacto",
+  },
+];
+
+const socials = await getCollection("socials");
+---
+
+<Layout title={title} breadCrumbs={breadCrumbs}>
+  <h2>Redes Sociales</h2>
+  <ul>
+    {
+      socials
+        .map((social) => social.data)
+        .map((social) => (
+          <li>
+            {social.platform}:
+            <a href={`${social.url}/${social.username}`} target="_blank">
+              {`${social.url}/${social.username}`
+                .replace("https://", "")
+                .replace("www.", "")}
+            </a>
+          </li>
+        ))
+    }
+  </ul>
+</Layout>
+
+<style is:raw>
+  li {
+    margin-bottom: 0.5em;
+  }
+
+  a {
+    color: var(--accent-color);
+
+    &:hover {
+      color: var(--accent-secondary-color);
+    }
+  }
+</style>

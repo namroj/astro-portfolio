@@ -5,7 +5,7 @@ describe("slugify function", () => {
   it("should handle accented characters", () => {
     expect(slugify("patrón de diseño")).toBe("patron-de-diseno");
     expect(slugify("Programación Orientada a Objetos")).toBe(
-      "programacion-orientada-a-objetos",
+      "programacion-orientada-a-objetos"
     );
     expect(slugify("¡Hola Mundo!")).toBe("hola-mundo");
   });
