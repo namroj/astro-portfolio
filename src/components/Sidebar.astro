@@ -112,7 +112,7 @@ import FontSwitcher from "./FontSwitcher";
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 0 5px rgba(159, 91, 213, 0.5);
+    box-shadow: 0 0 5px rgba(var(--accent-color-rgb), 0.5);
     transition:
       transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275),
       background-color 0.3s ease,
@@ -140,7 +140,7 @@ import FontSwitcher from "./FontSwitcher";
   #sidebar-toggle-btn.active {
     transform: rotate(90deg) scale(0.95);
     background-color: transparent;
-    box-shadow: 0 0 8px rgba(159, 91, 213, 0.7);
+    box-shadow: 0 0 8px rgba(var(--accent-color-rgb), 0.7);
   }
 
   /* Hide all gear teeth when active */
@@ -191,12 +191,12 @@ import FontSwitcher from "./FontSwitcher";
 
   #sidebar-toggle-btn:hover {
     background-color: var(--accent-color);
-    box-shadow: 0 0 5px rgba(159, 91, 213, 0.5);
+    box-shadow: 0 0 5px rgba(var(--accent-color-rgb), 0.5);
   }
 
   #sidebar-toggle-btn.active:hover {
     background-color: var(--accent-color-muted);
-    box-shadow: 0 0 5px rgba(159, 91, 213, 0.5);
+    box-shadow: 0 0 5px rgba(var(--accent-color-rgb), 0.5);
   }
 
   #sidebar-toggle-btn:hover .sidebar-icon path,

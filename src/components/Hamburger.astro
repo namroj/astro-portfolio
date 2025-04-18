@@ -57,7 +57,7 @@
     &:hover .line {
       background-color: var(--accent-color);
       opacity: 1;
-      box-shadow: 0 0 5px rgba(159, 91, 213, 0.5);
+      box-shadow: 0 0 5px rgba(var(--accent-color-rgb), 0.5);
     }
 
     &.expanded {
@@ -66,7 +66,7 @@
       .line {
         background-color: var(--accent-color);
         opacity: 1;
-        box-shadow: 0 0 8px rgba(159, 91, 213, 0.7);
+        box-shadow: 0 0 8px rgba(var(--accent-color-rgb), 0.7);
 
         &:nth-of-type(1) {
           transform: translateY(6px) rotate(45deg);
