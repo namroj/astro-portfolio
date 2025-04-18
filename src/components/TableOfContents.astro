@@ -61,7 +61,7 @@
     height: 40px;
     border-radius: 50%;
     background-color: transparent;
-    color: white;
+    color: var(--foreground-color);
     border: none;
     cursor: pointer;
     display: flex;
@@ -98,6 +98,7 @@
     transform: rotate(90deg) scale(0.95);
     background-color: transparent;
     box-shadow: 0 0 8px rgba(159, 91, 213, 0.7);
+    color: var(--accent-color-muted);
   }
 
   /* Hide list lines when active */
@@ -122,7 +123,6 @@
 
   #toc-toggle-btn.active:hover {
     background-color: var(--accent-color-muted);
-    box-shadow: 0 0 5px rgba(159, 91, 213, 0.5);
   }
 
   #toc-toggle-btn.active:hover .x-line {
@@ -148,7 +148,6 @@
     z-index: 9;
     transition: right 0.3s ease;
     overflow-y: auto;
-    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
 
     @media screen and (min-width: 880px) {
       right: -35dvw;

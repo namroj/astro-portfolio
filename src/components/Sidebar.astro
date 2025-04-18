@@ -159,7 +159,6 @@ import FontSwitcher from "./FontSwitcher";
   }
 
   #sidebar-toggle-btn.active:hover .gear-tooth {
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
     background-color: var(--accent-color);
     color: var(--foreground-color);
   }
@@ -168,26 +167,26 @@ import FontSwitcher from "./FontSwitcher";
   #sidebar-toggle-btn.active .gear-tooth.top-right {
     opacity: 1;
     transform: translate(-6px, 6px) scale(2) rotate(0);
-    stroke-width: 2;
+    stroke-width: 1.5;
   }
 
   #sidebar-toggle-btn.active .gear-tooth.bottom-left {
     opacity: 1;
     transform: translate(6px, -6px) scale(2) rotate(0);
-    stroke-width: 2;
+    stroke-width: 1.5;
   }
 
   /* Transform top-left and bottom-right teeth into the X */
   #sidebar-toggle-btn.active .gear-tooth.top-left {
     opacity: 1;
     transform: translate(6px, 6px) scale(2) rotate(0);
-    stroke-width: 2;
+    stroke-width: 1.5;
   }
 
   #sidebar-toggle-btn.active .gear-tooth.bottom-right {
     opacity: 1;
     transform: translate(-6px, -6px) scale(2) rotate(0);
-    stroke-width: 2;
+    stroke-width: 1.5;
   }
 
   #sidebar-toggle-btn:hover {
@@ -202,7 +201,8 @@ import FontSwitcher from "./FontSwitcher";
 
   #sidebar-toggle-btn:hover .sidebar-icon path,
   #sidebar-toggle-btn:hover .sidebar-icon circle {
-    stroke-width: 2.5;
+    color: var(--foreground-color);
+    stroke-width: 1.5;
   }
 
   .sidebar {
