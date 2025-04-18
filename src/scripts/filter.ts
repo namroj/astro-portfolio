@@ -130,13 +130,13 @@ document.addEventListener("DOMContentLoaded", () => {
       // If "all" is clicked, clear all active tags
       activeTags = [];
 
-      // Remove active class from all tag buttons except "all"
+      // Remove the active class from all tag buttons except "all"
       tagButtons.forEach((btn) => {
         const button = btn as HTMLElement;
         button.classList.toggle("active", button.dataset.tag === "all");
       });
 
-      // Remove active class from all tags in timeline items
+      // Remove the active class from all tags in timeline items
       document.querySelectorAll(".tag").forEach((tag) => {
         tag.classList.remove("active");
       });
