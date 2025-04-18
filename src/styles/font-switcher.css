@@ -46,6 +46,7 @@
 
 .font-btn.active {
   border: solid 1px var(--accent-color);
+  color: var(--accent-color);
   opacity: 1;
 }
 

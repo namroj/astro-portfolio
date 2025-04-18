@@ -79,7 +79,7 @@ import FontSwitcher from "./FontSwitcher";
 
 <aside id="sidebar" class="sidebar">
   <div class="sidebar-content">
-    <h3>Personalizaciones</h3>
+    <h3 class="sidebar-title">Personalizaciones</h3>
     <div class="switchers">
       <div class="switcher-group">
         <h4>Tema</h4>
@@ -105,14 +105,14 @@ import FontSwitcher from "./FontSwitcher";
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    background-color: var(--accent-color);
+    background-color: transparent;
     color: white;
     border: none;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 5px rgba(159, 91, 213, 0.5);
     transition:
       transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275),
       background-color 0.3s ease,
@@ -122,6 +122,10 @@ import FontSwitcher from "./FontSwitcher";
 
   .sidebar-icon {
     transition: transform 0.4s ease;
+  }
+
+  .sidebar-title {
+    color: var(--foreground-color);
   }
 
   .sidebar-icon path,
@@ -155,7 +159,8 @@ import FontSwitcher from "./FontSwitcher";
   }
 
   #sidebar-toggle-btn.active:hover .gear-tooth {
-    background-color: transparent;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    background-color: var(--accent-color);
     color: var(--foreground-color);
   }
 
@@ -187,6 +192,11 @@ import FontSwitcher from "./FontSwitcher";
 
   #sidebar-toggle-btn:hover {
     background-color: var(--accent-color);
+    box-shadow: 0 0 5px rgba(159, 91, 213, 0.5);
+  }
+
+  #sidebar-toggle-btn.active:hover {
+    background-color: var(--accent-color-muted);
     box-shadow: 0 0 5px rgba(159, 91, 213, 0.5);
   }
 

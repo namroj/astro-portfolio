@@ -15,19 +15,33 @@
       height="24"
       class="toc-icon"
     >
-      <rect x="3" y="4" width="18" height="2" rx="1" fill="currentColor"></rect>
-      <rect x="3" y="9" width="12" height="2" rx="1" fill="currentColor"></rect>
-      <rect x="3" y="14" width="18" height="2" rx="1" fill="currentColor"
-      ></rect>
-      <rect x="3" y="19" width="12" height="2" rx="1" fill="currentColor"
-      ></rect>
+      <!-- List icon that can transform to X -->
+      <rect class="list-line top" x="3" y="4" width="18" height="2" rx="1" fill="currentColor"></rect>
+      <rect class="list-line middle-top" x="3" y="9" width="12" height="2" rx="1" fill="currentColor"></rect>
+      <rect class="list-line middle-bottom" x="3" y="14" width="18" height="2" rx="1" fill="currentColor"></rect>
+      <rect class="list-line bottom" x="3" y="19" width="12" height="2" rx="1" fill="currentColor"></rect>
+      <!-- X lines (hidden by default) -->
+      <path
+        class="x-line top-right"
+        d="M18.36 5.64l-12.72 12.72"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        opacity="0"></path>
+      <path
+        class="x-line top-left"
+        d="M5.64 5.64l12.72 12.72"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        opacity="0"></path>
     </svg>
   </button>
 </div>
 
 <aside id="toc" class="toc">
   <div class="toc-content">
-    <h3>Tabla de Contenidos</h3>
+    <h3 class="toc-title">Tabla de Contenidos</h3>
     <div id="toc-list" class="toc-list">
       <!-- Table of contents will be generated here -->
     </div>
@@ -46,35 +60,86 @@
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    background-color: var(--accent-color);
+    background-color: transparent;
     color: white;
     border: none;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 5px rgba(159, 91, 213, 0.5);
     transition:
-      transform 0.3s ease,
+      transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+      fill 0.3s ease,
       background-color 0.3s ease,
       box-shadow 0.3s ease;
+    will-change: transform;
+  }
+
+  .toc-icon {
+    transition: transform 0.4s ease;
+  }
+
+  .toc-icon rect,
+  .toc-icon path {
+    transition:
+      transform 0.4s cubic-bezier(0.68, -0.6, 0.32, 1.6),
+      opacity 0.3s ease-in-out,
+      stroke-width 0.3s ease;
+    transform-origin: center;
   }
 
   #toc-toggle-btn:hover {
     background-color: var(--accent-color);
-    box-shadow: 0 0 5px rgba(159, 91, 213, 0.5);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
   }
 
   #toc-toggle-btn.active {
-    transform: rotate(90deg);
+    transform: rotate(90deg) scale(0.95);
+    background-color: transparent;
+    box-shadow: 0 0 8px rgba(159, 91, 213, 0.7);
+  }
+
+  /* Hide list lines when active */
+  #toc-toggle-btn.active .list-line {
+    opacity: 0;
+  }
+
+  /* Show and position X lines when active */
+  #toc-toggle-btn.active .x-line {
+    opacity: 1;
+  }
+
+  #toc-toggle-btn.active .x-line.top-right {
+    transform: scale(1.2);
+    stroke-width: 2;
+  }
+
+  #toc-toggle-btn.active .x-line.top-left {
+    transform: scale(1.2);
+    stroke-width: 2;
+  }
+
+  #toc-toggle-btn.active:hover {
     background-color: var(--accent-color-muted);
+    box-shadow: 0 0 5px rgba(159, 91, 213, 0.5);
+  }
+
+  #toc-toggle-btn.active:hover .x-line {
+    stroke: var(--foreground-color);
+    stroke-width: 2.5;
+  }
+
+  #toc-toggle-btn:hover .toc-icon rect,
+  #toc-toggle-btn:hover .toc-icon path {
+    stroke-width: 2.5;
   }
 
   .toc {
     position: fixed;
     top: 46px;
-    right: -302px;
-    width: 302px;
+    right: -256px;
+    width: 256px;
     height: calc(100vh - 81px);
     border-left: 1px solid var(--border-color);
     background-image: var(--navigation-background-image);
@@ -84,10 +149,20 @@
     transition: right 0.3s ease;
     overflow-y: auto;
     box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+
+    @media screen and (min-width: 880px) {
+      right: -35dvw;
+      width: 35dvw;
+      height: calc(100vh - 91px);
+    }
   }
 
   .toc.active {
     right: 0;
+  }
+
+  .toc-title {
+    color: var(--foreground-color);
   }
 
   .toc-content {
@@ -97,12 +172,7 @@
   main h2,
   main h3,
   main h4 {
-    scroll-margin-top: calc(46px + 0.25em);
-  }
-
-  h3 {
-    margin-bottom: 20px;
-    color: var(--accent-color);
+    scroll-margin-top: calc(46px + 1em);
   }
 
   .toc-list {
@@ -251,7 +321,7 @@
         }
       },
       {
-        rootMargin: "-100px 0px -80% 0px", // Adjust these values as needed
+        rootMargin: "-48px 0px -80% 0px", // Approximating scroll-margin-top: calc(46px + 0.25em)
         threshold: 0
       }
     );
