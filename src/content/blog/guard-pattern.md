@@ -6,7 +6,7 @@ image:
   url: "https://docs.astro.build/assets/rays.webp"
   alt: "El logo de Astro sobre un fondo oscuro con rayos de colores."
 pubDate: 2025-03-23
-tags: ["java", "patrón de diseño", "guardia", "código limpio"]
+tags: [ "java", "patrón de diseño", "guardia", "código limpio" ]
 draft: false
 ---
 
@@ -127,12 +127,10 @@ public double calculateDiscount(Customer customer, Order order) {
     if (customer == null) return 0;
     if (order == null) return 0;
     if (order.getTotal() <= 0) return 0;
-
     // Lógica principal
-    if (customer.isVIP()) {
-        return order.getTotal() * 0.2;
-    }
-    return order.getTotal() * 0.1;
+    return customer.isVIP()
+      ? order.getTotal() * 0.2;
+      : order.getTotal() * 0.1;
 }
 ```
 
