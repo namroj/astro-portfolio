@@ -1,0 +1,73 @@
+/* Line Number Toggle Styles */
+
+.line-number-toggle {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.toggle-btn {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 8px 12px;
+  background-color: transparent;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.toggle-btn:hover {
+  border-color: var(--accent-color);
+}
+
+.toggle-btn.active:hover {
+  border-color: var(--accent-color);
+}
+
+.toggle-label {
+  font-size: 0.9rem;
+  color: var(--foreground-color);
+}
+
+.toggle-switch {
+  position: relative;
+  display: inline-block;
+  width: 36px;
+  height: 20px;
+  background-color: var(--border-color);
+  border-radius: 10px;
+  transition: all 0.3s;
+}
+
+.toggle-btn.active .toggle-switch {
+  background-color: var(--accent-color);
+}
+
+.toggle-slider {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 16px;
+  height: 16px;
+  background-color: var(--foreground-color);
+  border-radius: 50%;
+  transition: all 0.3s;
+}
+
+.toggle-btn.active .toggle-slider {
+  transform: translateX(16px);
+  background-color: var(--background-color);
+}
+
+/* CSS for hiding line numbers */
+:root.hide-line-numbers pre code .line-number {
+  display: none;
+}
+
+/* Adjust padding when line numbers are hidden */
+:root.hide-line-numbers pre code .line {
+  padding-left: 0.5em;
+}

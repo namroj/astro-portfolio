@@ -1,6 +1,7 @@
 ---
 import ThemeSwitcher from "./ThemeSwitcher";
 import FontSwitcher from "./FontSwitcher";
+import LineNumberToggle from "./LineNumberToggle";
 ---
 
 <div class="sidebar-toggle">
@@ -88,6 +89,10 @@ import FontSwitcher from "./FontSwitcher";
       <div class="switcher-group">
         <h4>Fuente</h4>
         <FontSwitcher client:load />
+      </div>
+      <div class="switcher-group">
+        <h4>Código</h4>
+        <LineNumberToggle client:load />
       </div>
     </div>
   </div>

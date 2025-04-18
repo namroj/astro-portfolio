@@ -1,6 +1,7 @@
 ---
 import Layout from "./Layout.astro";
 import { slugify } from "../utils/slugify";
+import "../styles/codeBlock.css";
 
 const LANGUAGE = "es-ES";
 
@@ -84,10 +85,6 @@ const tags = [
       }
     }
 
-    * {
-      margin-bottom: 0.5em;
-    }
-
     code,
     pre,
     .code {
@@ -109,3 +106,5 @@ const tags = [
     }
   }
 </style>
+
+<script src="../scripts/codeBlock.js"></script>

@@ -77,7 +77,6 @@ textarea {
   outline: none;
 }
 
-::-webkit-scrollbar,
 ::-webkit-scrollbar {
   width: 2px;
   height: 3px;

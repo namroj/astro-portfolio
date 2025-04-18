@@ -1,0 +1,81 @@
+/* Code Block Enhancements */
+
+/* Container for code blocks */
+pre {
+  position: relative;
+  padding-top: 2.5em !important; /* Space for language label */
+  padding-left: 1em !important; /* Reduced padding as line numbers are now inside */
+}
+
+/* Language indicator */
+pre::before {
+  content: attr(data-language);
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: var(--code-header-bg, rgba(0, 0, 0, 0.2));
+  color: var(--code-header-color, #abb2bf);
+  padding: 0.25em 1em;
+  font-family: var(--code-font), monospace;
+  font-size: 0.9em;
+  font-weight: bold;
+  border-bottom: 1px solid var(--code-border-color, rgba(0, 0, 0, 0.3));
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Line numbers */
+pre code {
+  display: block;
+  line-height: 1.5;
+}
+
+pre code .line {
+  display: inline-block;
+  width: 100%;
+  position: relative;
+}
+
+pre code .line-number {
+  display: inline-block;
+  min-width: 2.5em;
+  margin-right: 1em;
+  color: var(--line-number-color, #636d83);
+  text-align: right;
+  font-size: 0.9em;
+  user-select: none;
+  border-right: 1px solid var(--code-border-color, rgba(0, 0, 0, 0.3));
+  padding-right: 0.5em;
+}
+
+/* Copy button */
+.copy-button {
+  position: absolute;
+  top: 0.25em;
+  right: 1em;
+  background: transparent;
+  border: none;
+  color: var(--code-header-color, #abb2bf);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  font-size: 0.9em;
+  padding: 0.25em 0.5em;
+  border-radius: 4px;
+  transition: background-color 0.2s;
+  z-index: 10;
+}
+
+.copy-button:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.copy-button svg {
+  width: 16px;
+  height: 16px;
+}
+
+/* No need for a vertical line between line numbers and code as it's now part of the line-number element */
