@@ -21,7 +21,6 @@ export default defineConfig({
         light: "github-light",
         dark: "material-theme-darker",
       },
-      wrap: true,
     },
   },
 });
