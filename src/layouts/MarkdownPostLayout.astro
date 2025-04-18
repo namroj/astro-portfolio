@@ -30,6 +30,15 @@ const tags = [
 
 <Layout title={title} breadCrumbs={breadCrumbs}>
   <div class="post">
+    <div class="tags">
+      {
+        tags.map((tag: any) => (
+          <p class="tag">
+            <a href={`/blog/tags/${slugify(tag)}`}>{tag}</a>
+          </p>
+        ))
+      }
+    </div>
     <span>{frontmatter.id}</span>
     <p>
       {
@@ -43,23 +52,14 @@ const tags = [
     <p><em>{frontmatter.description}</em></p>
     <img src={frontmatter.image.url} width="300" alt={frontmatter.image.alt} />
     <slot />
-    <div class="tags">
-      {
-        tags.map((tag: any) => (
-          <p class="tag">
-            <a href={`/blog/tags/${slugify(tag)}`}>{tag}</a>
-          </p>
-        ))
-      }
-    </div>
-    <p>Escrito por: {frontmatter.author}</p>
+    <p class="written-by">Escrito por: {frontmatter.author}</p>
   </div>
 </Layout>
 
 <style is:raw>
   .post {
     .tags {
-      margin-top: 1em;
+      margin-bottom: 1em;
       display: flex;
       gap: 0.5em;
 
@@ -85,8 +85,14 @@ const tags = [
       }
     }
 
-    p, li {
+    p,
+    li {
       margin-bottom: 0.5em;
+    }
+
+    p.written-by {
+      margin-top: 1em;
+      text-align: right;
     }
 
     code,
