@@ -14,13 +14,13 @@ pre::before {
   top: 0;
   left: 0;
   right: 0;
-  background: var(--code-header-bg, rgba(0, 0, 0, 0.2));
-  color: var(--code-header-color, #abb2bf);
+  background: var(--background-color);
+  color: var(--foreground-color);
   padding: 0.25em 1em;
   font-family: var(--code-font), monospace;
   font-size: 0.9em;
   font-weight: bold;
-  border-bottom: 1px solid var(--code-border-color, rgba(0, 0, 0, 0.3));
+  border-bottom: 1px solid var(--border-color);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -29,7 +29,7 @@ pre::before {
 /* Line numbers */
 pre code {
   display: block;
-  line-height: 1.5;
+  line-height: var(--line-height);
 }
 
 pre code .line {
@@ -42,11 +42,11 @@ pre code .line-number {
   display: inline-block;
   min-width: 2.5em;
   margin-right: 1em;
-  color: var(--line-number-color, #636d83);
+  color: var(--accent-color);
   text-align: right;
   font-size: 0.9em;
   user-select: none;
-  border-right: 1px solid var(--code-border-color, rgba(0, 0, 0, 0.3));
+  border-right: 1px solid var(--border-color, rgba(0, 0, 0, 0.3));
   padding-right: 0.5em;
 }
 
@@ -57,7 +57,7 @@ pre code .line-number {
   right: 1em;
   background: transparent;
   border: none;
-  color: var(--code-header-color, #abb2bf);
+  color: var(--accent-color);
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -69,13 +69,16 @@ pre code .line-number {
   z-index: 10;
 }
 
-.copy-button:hover {
-  background-color: rgba(255, 255, 255, 0.1);
+.copy-button:hover svg {
+  color: var(--accent-secondary-color);
+}
+
+.copy-button.copied svg {
+  color: var(--accent-secondary-color);
+  fill: var(--accent-secondary-color);
 }
 
 .copy-button svg {
   width: 16px;
   height: 16px;
 }
-
-/* No need for a vertical line between line numbers and code as it's now part of the line-number element */

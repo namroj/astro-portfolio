@@ -20,15 +20,16 @@ const LineNumberToggle = () => {
     }
   };
 
-  // Synchronize the line numbers visibility on component mount
+  // Synchronize the line numbers visibility on the component mount
   useEffect(() => {
     // Get the stored preference from localStorage, default to true if not set
     const storedPreference = localStorage.getItem("showLineNumbers");
-    const shouldShowLineNumbers = storedPreference === null ? true : storedPreference === "true";
-    
+    const shouldShowLineNumbers =
+      storedPreference === null ? true : storedPreference === "true";
+
     // Set the initial state
     showLineNumbers.set(shouldShowLineNumbers);
-    
+
     // Apply the stored preference
     if (!shouldShowLineNumbers) {
       document.documentElement.classList.add("hide-line-numbers");
@@ -42,7 +43,11 @@ const LineNumberToggle = () => {
       <button
         class={`toggle-btn ${lineNumbersVisible ? "active" : ""}`}
         onClick={handleLineNumbersToggle}
-        title={lineNumbersVisible ? "Ocultar números de línea" : "Mostrar números de línea"}
+        title={
+          lineNumbersVisible
+            ? "Ocultar números de línea"
+            : "Mostrar números de línea"
+        }
       >
         <span class="toggle-label">Mostrar números de línea</span>
         <span class="toggle-switch">
