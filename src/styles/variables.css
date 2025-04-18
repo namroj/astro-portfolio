@@ -1,20 +1,53 @@
+/*
+ * CSS Variables for Theming
+ * 
+ * This file defines CSS variables for consistent theming across the site.
+ * 
+ * To add a new theme:
+ * 1. Create a new selector like `:root[data-theme="your-theme-name"]`
+ * 2. Override the variables you want to change
+ * 3. Variables not overridden will inherit from the default theme (root)
+ * 4. Make sure to include RGB versions of colors that need alpha transparency
+ */
+
 :root {
-  /* theme */
+  /* Color scheme setting */
   color-scheme: light dark;
+
+  /* 
+   * Theme Colors
+   * Some colors are defined in RGB format to allow for alpha transparency
+   * when used with rgba() function
+   */
+
+  /* Primary colors */
   --accent-color: #8e4ace;
-  --accent-secondary-color: rgb(137 221 255);
+  --accent-color-rgb: 142, 74, 206;
+  --accent-secondary-color: rgb(137, 221, 255);
+  --accent-secondary-color-rgb: 137, 221, 255;
   --accent-color-muted: #8e8e8e;
+  --accent-color-muted-rgb: 142, 142, 142;
+
+  /* Background and foreground */
   --background-color: #e4e4e4;
+  --background-color-rgb: 228, 228, 228;
   --foreground-color: #4f4f58;
-  --background-image: url("data:image/svg+xml,%3Csvg width='6' height='6' viewBox='0 0 6 6' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.4' fill-rule='evenodd'%3E%3Cpath d='M5 0h1L0 6V5zM6 5v1H5z'/%3E%3C/g%3E%3C/svg%3E");
-  --navigation-background-image: url("data:image/svg+xml,%3Csvg width='6' height='6' viewBox='0 0 6 6' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%238e4ace' fill-opacity='0.4' fill-rule='evenodd'%3E%3Cpath d='M5 0h1L0 6V5zM6 5v1H5z'/%3E%3C/g%3E%3C/svg%3E");
+  --foreground-color-rgb: 79, 79, 88;
+
+  /* Borders and UI elements */
   --border-color: #8e8e8e;
   --scrollbar-track-color: #4f4f58;
   --scrollbar-thumb-color: #8e4ace;
-  /* fonts */
+
+  /* Background patterns */
+  --background-image: url("data:image/svg+xml,%3Csvg width='6' height='6' viewBox='0 0 6 6' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.4' fill-rule='evenodd'%3E%3Cpath d='M5 0h1L0 6V5zM6 5v1H5z'/%3E%3C/g%3E%3C/svg%3E");
+  --navigation-background-image: url("data:image/svg+xml,%3Csvg width='6' height='6' viewBox='0 0 6 6' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%238e4ace' fill-opacity='0.4' fill-rule='evenodd'%3E%3Cpath d='M5 0h1L0 6V5zM6 5v1H5z'/%3E%3C/g%3E%3C/svg%3E");
+
+  /* Typography */
   --main-font: "Cascadia Code";
   --code-font: "Cascadia Code";
-  /* sizes */
+
+  /* Layout */
   --font-size: 14px;
   --line-height: 1.25;
   --navbar-height: 45px;
@@ -33,13 +66,27 @@
 :root[data-theme="dark"],
 :root:has(button[class="btn dark active"]) {
   color-scheme: dark;
+
+  /* 
+   * Dark Theme
+   * Only overrides specific variables from the light theme (root)
+   * Variables not listed here are inherited from the light theme
+   */
+
+  /* Background and foreground - Dark Theme */
   --background-color: #181a1b;
+  --background-color-rgb: 24, 26, 27;
   --foreground-color: #e4e4e4;
-  --background-image: url("data:image/svg+xml,%3Csvg width='6' height='6' viewBox='0 0 6 6' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%234f4f58' fill-opacity='0.4' fill-rule='evenodd'%3E%3Cpath d='M5 0h1L0 6V5zM6 5v1H5z'/%3E%3C/g%3E%3C/svg%3E");
-  --navigation-background-image: url("data:image/svg+xml,%3Csvg width='6' height='6' viewBox='0 0 6 6' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%238e4ace' fill-opacity='0.4' fill-rule='evenodd'%3E%3Cpath d='M5 0h1L0 6V5zM6 5v1H5z'/%3E%3C/g%3E%3C/svg%3E");
+  --foreground-color-rgb: 228, 228, 228;
+
+  /* Borders and UI elements - Dark Theme */
+  --border-color: #2a3033;
   --scrollbar-track-color: #181a1b;
   --scrollbar-thumb-color: #8e4ace;
-  --border-color: #2a3033;
+
+  /* Background patterns - Dark Theme */
+  --background-image: url("data:image/svg+xml,%3Csvg width='6' height='6' viewBox='0 0 6 6' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%234f4f58' fill-opacity='0.4' fill-rule='evenodd'%3E%3Cpath d='M5 0h1L0 6V5zM6 5v1H5z'/%3E%3C/g%3E%3C/svg%3E");
+  --navigation-background-image: url("data:image/svg+xml,%3Csvg width='6' height='6' viewBox='0 0 6 6' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%238e4ace' fill-opacity='0.4' fill-rule='evenodd'%3E%3Cpath d='M5 0h1L0 6V5zM6 5v1H5z'/%3E%3C/g%3E%3C/svg%3E");
 
   .astro-code,
   .astro-code span {
