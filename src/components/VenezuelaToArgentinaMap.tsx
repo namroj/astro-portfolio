@@ -25,7 +25,7 @@ export default function VenezuelaToArgentinaMap() {
         const footerHeight = footer.offsetHeight;
 
         let calculatedMapHeight =
-          wrapperHeight - headerHeight - footerHeight - 80;
+          wrapperHeight - headerHeight - footerHeight - 110;
         map.style.height = `${calculatedMapHeight < 300 ? 300 : calculatedMapHeight}px`;
       }
     }
@@ -45,7 +45,6 @@ export default function VenezuelaToArgentinaMap() {
   // Function to get the corresponding map styles based on the theme
   const getMapStyles = useCallback(() => {
     if (typeof window === "undefined") return mapDarkStyles;
-
     let activeTheme = theme;
     if (theme === "system") {
       const prefersDarkMode =
@@ -72,12 +71,32 @@ export default function VenezuelaToArgentinaMap() {
     const map = new google.maps.Map(mapElement, {
       zoom: 4,
       center: { lat: -12.5, lng: -65.0 },
-      styles: getMapStyles(), // Get current styles based on theme
+      styles: getMapStyles(), // Get current styles based on a theme
     });
 
-    // Create Markers
-    points.forEach((point) => {
-      new google.maps.Marker({ position: point, map });
+    // Create Markers with custom icons
+    points.forEach((point, index) => {
+      let iconUrl;
+      if (index === 0) {
+        // Starting point (Venezuela)
+        iconUrl = "/images/map/start-marker.svg";
+      } else if (index === points.length - 1) {
+        // End point (Argentina)
+        iconUrl = "/images/map/end-marker.svg";
+      } else {
+        // Transit points
+        iconUrl = "/images/map/transit-marker.svg";
+      }
+
+      new google.maps.Marker({
+        position: point,
+        map,
+        icon: {
+          url: iconUrl,
+          scaledSize: new google.maps.Size(32, 32),
+          anchor: new google.maps.Point(16, 32),
+        },
+      });
     });
 
     // Create Poly lines between points
@@ -85,7 +104,7 @@ export default function VenezuelaToArgentinaMap() {
       const polyline = new google.maps.Polyline({
         path,
         geodesic: true,
-        strokeColor: "#6087cf",
+        strokeColor: "#8e4ace",
         strokeOpacity: 1.0,
         strokeWeight: 2,
       });
