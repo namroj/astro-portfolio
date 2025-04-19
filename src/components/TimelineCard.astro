@@ -116,11 +116,11 @@ if (type === "education") {
     {
       type === "experience" && item.data.positions && (
         <ul class="positions-list">
-          {item.data.positions.map((position) => (
+          {item.data.positions.map((position) => ( // TODO type
             <li class="position">
               <h4 class="position-title">{position.title}</h4>
               <ul class="position-description">
-                {position.description.split("||").map((desc) => (
+                {position.description.split("||").map((desc: string) => (
                   <li>{desc}</li>
                 ))}
               </ul>
@@ -230,13 +230,13 @@ if (type === "education") {
   }
 
   .position-description li {
-    list-style: disclosure-closed;
-    margin-left: 1em;
+    list-style: disc;
+    margin-left: 2em;
   }
 
   .position-highlight {
-    background: var(--accent-color-muted);
-    color: var(--background-color);
+    background: transparent;
+    color: var(--accent-secondary-color);
     padding: 0.5em;
     border-radius: 0.25em;
     font-style: italic;
