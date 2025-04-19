@@ -23,7 +23,7 @@
   /* Primary colors */
   --accent-color: #8e4ace;
   --accent-color-rgb: 142, 74, 206;
-  --accent-secondary-color: rgb(137, 221, 255);
+  --accent-secondary-color: rgb(1, 184, 253);
   --accent-secondary-color-rgb: 137, 221, 255;
   --accent-color-muted: #8e8e8e;
   --accent-color-muted-rgb: 142, 142, 142;
@@ -72,6 +72,9 @@
    * Only overrides specific variables from the light theme (root)
    * Variables not listed here are inherited from the light theme
    */
+
+  /* Primary colors */
+  --accent-secondary-color: rgb(137, 221, 255);
 
   /* Background and foreground - Dark Theme */
   --background-color: #181a1b;
