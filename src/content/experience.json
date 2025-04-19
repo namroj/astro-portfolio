@@ -316,7 +316,7 @@
       {
         "title": "Gestor de Requerimientos Especiales",
         "description": "Atención telefónica a todo el personal interno a nivel nacional en las áreas de Diseño y Desarrollo (D&D).||Gestión, canalización y escalamiento de requerimientos vía web de parte del personal de D&D  hacia las distintas Áreas Resolutorias.||Coordinación y planificación de proyectos en conjunto con las áreas de D&D, Implantación, Homologación y Producción.||Canalización de pases emergentes (programas, modificaciones, scripts) hacia el entorno de producción.||Auditoría y seguimiento de proyectos de D&D, llevados al ambiente de producción.",
-        "highlight": "Capacidad de organización, planificación y comunicación. Redacción y envío de emails -debido a constante comunicación con personal de D&D y áreas resolutorias tanto telefónica, remota y presencial.",
+        "highlight": "Capacidad de organización, planificación y comunicación. Redacción y envío de emails -debido a constante comunicación con personal de Diseño y Desarrollo así como áreas resolutorias tanto telefónica, remota y presencial.",
         "interval": "Mar 2010 - Mar 2011"
       }
     ],
@@ -356,7 +356,14 @@
         "interval": "Ene 2010 - Mar 2010"
       }
     ],
-    "tags": ["CANTV", "Comunicación", "Atención", "Cliente", "Gestión", "2010"]
+    "tags": [
+      "CANTV",
+      "Comunicación",
+      "Atención",
+      "Cliente",
+      "Gestión",
+      "2010"
+    ]
   },
   {
     "id": "directv",
@@ -384,6 +391,13 @@
         "interval": "Ene 2009 - Jun 2009"
       }
     ],
-    "tags": ["DIRECTV", "Comunicación", "Atención", "Cliente", "2009", "2010"]
+    "tags": [
+      "DIRECTV",
+      "Comunicación",
+      "Atención",
+      "Cliente",
+      "2009",
+      "2010"
+    ]
   }
 ]
