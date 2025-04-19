@@ -21,11 +21,11 @@
    */
 
   /* Primary colors */
-  --accent-color: #8e4ace;
+  --accent-color: #7545ff;
   --accent-color-rgb: 142, 74, 206;
-  --accent-secondary-color: rgb(1, 184, 253);
+  --accent-secondary-color: rgb(137, 200, 255);
   --accent-secondary-color-rgb: 137, 221, 255;
-  --accent-color-muted: #8e8e8e;
+  --accent-muted-color: #8e8e8e;
   --accent-color-muted-rgb: 142, 142, 142;
 
   /* Background and foreground */
@@ -74,6 +74,7 @@
    */
 
   /* Primary colors */
+  --accent-color: #7545ff;
   --accent-secondary-color: rgb(137, 221, 255);
 
   /* Background and foreground - Dark Theme */

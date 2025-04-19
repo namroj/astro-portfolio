@@ -27,10 +27,7 @@ const currentPath = Astro.url.pathname;
     >
       Blog
     </a>
-    <a
-      href="/contact"
-      class={currentPath === "/contact" ? "active" : ""}
-    >
+    <a href="/contact" class={currentPath === "/contact" ? "active" : ""}>
       Contacto
     </a>
   </div>
@@ -54,14 +51,13 @@ const currentPath = Astro.url.pathname;
     }
 
     .links {
-      justify-content: flex-end;
-      gap: 1em;
       display: none;
+      gap: 1em;
 
       a {
         display: none;
         font-size: 1.489em;
-        color: var(--accent-color-muted);
+        color: var(--accent-muted-color);
 
         &:first-of-type {
           align-self: flex-start;
@@ -72,7 +68,7 @@ const currentPath = Astro.url.pathname;
         }
 
         &.active {
-          color: var(--foreground-color);
+          color: var(--accent-secondary-color);
         }
       }
     }
@@ -87,7 +83,9 @@ const currentPath = Astro.url.pathname;
       }
 
       .links {
-        display: unset;
+        display: flex;
+        flex-direction: column;
+        gap: 3em;
 
         a {
           display: flex;

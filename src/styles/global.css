@@ -47,7 +47,7 @@ h1 {
 }
 
 h2 {
-  color: var(--accent-color-muted);
+  color: var(--accent-muted-color);
 }
 
 a {
