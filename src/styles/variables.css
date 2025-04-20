@@ -51,6 +51,7 @@
   --font-size: 14px;
   --line-height: 1.25;
   --navbar-height: 45px;
+  --control-size: 40px;
 }
 
 :root[data-theme="system"],

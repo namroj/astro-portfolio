@@ -68,9 +68,9 @@
 </div>
 
 <aside id="toc" class="toc">
-  <div class="toc-content">
-    <h3 class="toc-title">Tabla de Contenidos</h3>
-    <div id="toc-list" class="toc-list">
+  <div class="content">
+    <h3 class="title">Tabla de Contenidos</h3>
+    <div id="headings" class="headings">
       <!-- Table of contents will be generated here -->
     </div>
   </div>
@@ -80,28 +80,28 @@
   .toc-toggle {
     position: fixed;
     z-index: 10;
-    top: calc(var(--navbar-height) + 40px + 1.5em);
+    top: calc(var(--navbar-height) + var(--control-size) + 1.5em);
     right: 10px;
-  }
 
-  #toc-toggle-btn {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background-color: transparent;
-    color: var(--foreground-color);
-    border: none;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 0 5px rgba(var(--accent-color-rgb), 0.5);
-    transition:
-      transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275),
-      fill 0.3s ease,
-      background-color 0.3s ease,
-      box-shadow 0.3s ease;
-    will-change: transform;
+    #toc-toggle-btn {
+      width: var(--control-size);
+      height: var(--control-size);
+      border-radius: 50%;
+      background-color: transparent;
+      color: var(--foreground-color);
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 5px rgba(var(--accent-color-rgb), 0.5);
+      transition:
+        transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+        fill 0.3s ease,
+        background-color 0.3s ease,
+        box-shadow 0.3s ease;
+      will-change: transform;
+    }
   }
 
   .toc-icon {
@@ -181,66 +181,64 @@
       width: 28dvw;
       height: calc(100vh - 91px);
     }
-  }
 
-  .toc.active {
-    right: 0;
-  }
+    &.active {
+      right: 0;
+    }
 
-  .toc-title {
-    color: var(--foreground-color);
-  }
+    .title {
+      color: var(--foreground-color);
+      margin-bottom: 2em;
+    }
 
-  .toc-content {
-    padding: 20px;
-  }
+    .content {
+      padding: 1em;
+    }
 
-  main h2,
-  main h3,
-  main h4 {
-    scroll-margin-top: calc(46px + 1em);
-  }
+    .headings {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5em;
 
-  .toc-list {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
+      a {
+        color: var(--foreground-color);
+        text-decoration: none;
+        padding: 5px 0;
+        display: block;
+        transition: color 0.2s ease;
 
-  .toc-list a {
-    color: var(--foreground-color);
-    text-decoration: none;
-    padding: 5px 0;
-    display: block;
-    transition: color 0.2s ease;
-  }
+        &:hover {
+          color: var(--accent-color);
+        }
 
-  .toc-list a:hover {
-    color: var(--accent-color);
-  }
+        &.active {
+          color: var(--accent-color);
+          font-weight: bold;
 
-  .toc-list a.active {
-    color: var(--accent-color);
-    font-weight: bold;
-  }
+          &.toc-h2,
+          &.toc-h3,
+          &.toc-h4 {
+            color: var(--accent-color);
+            font-weight: normal;
+          }
+        }
 
-  a.toc-h2 {
-    margin-left: 15px;
-  }
+        &.toc-h2 {
+          margin-left: 0;
+        }
 
-  .toc-list .toc-h2 {
-    margin-left: 0;
-  }
+        &.toc-h3 {
+          margin-left: 15px;
+          font-size: 0.95em;
+          color: var(--accent-muted-color);
+        }
 
-  .toc-list .toc-h3 {
-    margin-left: 15px;
-    font-size: 0.95em;
-    color: var(--accent-muted-color);
-  }
-
-  .toc-list .toc-h4 {
-    margin-left: 45px;
-    font-size: 0.9em;
+        &.toc-h4 {
+          margin-left: 45px;
+          font-size: 0.9em;
+        }
+      }
+    }
   }
 </style>
 
@@ -248,7 +246,7 @@
   // Function to extract headings from the page
   function generateTableOfContents() {
     const headings = document.querySelectorAll("main h2, main h3, main h4");
-    const tocList = document.getElementById("toc-list");
+    const tocList = document.getElementById("headings");
 
     if (!tocList || headings.length === 0) return;
 
@@ -322,7 +320,7 @@
   // Function to highlight the active heading in the TOC
   function setupScrollSpy() {
     const headings = document.querySelectorAll("main h2, main h3, main h4");
-    const tocLinks = document.querySelectorAll(".toc-list a");
+    const tocLinks = document.querySelectorAll(".headings a");
 
     if (headings.length === 0 || tocLinks.length === 0) return;
 
@@ -341,7 +339,7 @@
 
           // Find the corresponding TOC link and add an active class
           const activeLink = document.querySelector(
-            `.toc-list a[href="#${visibleHeading.id}"]`,
+            `.headings a[href="#${visibleHeading.id}"]`,
           );
           if (activeLink) {
             activeLink.classList.add("active");
