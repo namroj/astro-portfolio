@@ -4,22 +4,22 @@ import FontSwitcher from "./FontSwitcher";
 import LineNumberToggle from "./LineNumberToggle";
 ---
 
-<div class="sidebar-toggle">
+<div class="preferences-toggle">
   <button
-    id="sidebar-toggle-btn"
-    aria-label="Toggle Sidebar"
-    title="Personalizaciones"
+    id="preferences-toggle-btn"
+    aria-label="Mostrar/ocultar preferencias"
+    title="Preferencias"
   >
     <svg
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
       width="24"
       height="24"
-      class="sidebar-icon"
+      class="preferences-icon"
     >
       <!-- Gear/settings icon that can transform to X -->
       <circle
-        class="gear-circle"
+        class="preferences-icon-circle"
         cx="12"
         cy="12"
         r="4"
@@ -27,49 +27,49 @@ import LineNumberToggle from "./LineNumberToggle";
         stroke="currentColor"
         stroke-width="2"></circle>
       <path
-        class="gear-tooth top"
+        class="preferences-icon-tooth preferences-icon-tooth-top"
         d="M12 2v4"
         stroke="currentColor"
         stroke-width="2"
         stroke-linecap="round"></path>
       <path
-        class="gear-tooth right"
+        class="preferences-icon-tooth preferences-icon-tooth-right"
         d="M22 12h-4"
         stroke="currentColor"
         stroke-width="2"
         stroke-linecap="round"></path>
       <path
-        class="gear-tooth bottom"
+        class="preferences-icon-tooth preferences-icon-tooth-bottom"
         d="M12 22v-4"
         stroke="currentColor"
         stroke-width="2"
         stroke-linecap="round"></path>
       <path
-        class="gear-tooth left"
+        class="preferences-icon-tooth preferences-icon-tooth-left"
         d="M2 12h4"
         stroke="currentColor"
         stroke-width="2"
         stroke-linecap="round"></path>
       <path
-        class="gear-tooth top-right"
+        class="preferences-icon-tooth preferences-icon-tooth-top-right"
         d="M18.36 5.64l-2.83 2.83"
         stroke="currentColor"
         stroke-width="2"
         stroke-linecap="round"></path>
       <path
-        class="gear-tooth bottom-right"
+        class="preferences-icon-tooth preferences-icon-tooth-bottom-right"
         d="M18.36 18.36l-2.83-2.83"
         stroke="currentColor"
         stroke-width="2"
         stroke-linecap="round"></path>
       <path
-        class="gear-tooth bottom-left"
+        class="preferences-icon-tooth preferences-icon-tooth-bottom-left"
         d="M5.64 18.36l2.83-2.83"
         stroke="currentColor"
         stroke-width="2"
         stroke-linecap="round"></path>
       <path
-        class="gear-tooth top-left"
+        class="preferences-icon-tooth preferences-icon-tooth-top-left"
         d="M5.64 5.64l2.83 2.83"
         stroke="currentColor"
         stroke-width="2"
@@ -78,19 +78,19 @@ import LineNumberToggle from "./LineNumberToggle";
   </button>
 </div>
 
-<aside id="sidebar" class="sidebar">
-  <div class="sidebar-content">
-    <h3 class="sidebar-title">Personalizaciones</h3>
-    <div class="switchers">
-      <div class="switcher-group">
+<aside id="preferences" class="preferences">
+  <div class="preferences-content">
+    <h3 class="preferences-title">Preferencias</h3>
+    <div class="preferences-switchers">
+      <div class="preferences-group">
         <h4>Tema</h4>
         <ThemeSwitcher client:load />
       </div>
-      <div class="switcher-group">
+      <div class="preferences-group">
         <h4>Fuente</h4>
         <FontSwitcher client:load />
       </div>
-      <div class="switcher-group">
+      <div class="preferences-group">
         <h4>Código</h4>
         <LineNumberToggle client:load />
       </div>
@@ -99,14 +99,14 @@ import LineNumberToggle from "./LineNumberToggle";
 </aside>
 
 <style>
-  .sidebar-toggle {
+  .preferences-toggle {
     position: fixed;
     z-index: 10;
-    top: 50px;
+    top: calc(var(--navbar-height) + 1em);
     right: 10px;
   }
 
-  #sidebar-toggle-btn {
+  #preferences-toggle-btn {
     width: 40px;
     height: 40px;
     border-radius: 50%;
@@ -125,16 +125,16 @@ import LineNumberToggle from "./LineNumberToggle";
     will-change: transform;
   }
 
-  .sidebar-icon {
+  .preferences-icon {
     transition: transform 0.4s ease;
   }
 
-  .sidebar-title {
+  .preferences-title {
     color: var(--foreground-color);
   }
 
-  .sidebar-icon path,
-  .sidebar-icon circle {
+  .preferences-icon path,
+  .preferences-icon circle {
     transition:
       transform 0.4s cubic-bezier(0.68, -0.6, 0.32, 1.6),
       opacity 0.3s ease-in-out,
@@ -142,75 +142,75 @@ import LineNumberToggle from "./LineNumberToggle";
     transform-origin: center;
   }
 
-  #sidebar-toggle-btn.active {
+  #preferences-toggle-btn.active {
     transform: rotate(90deg) scale(0.95);
     background-color: transparent;
     box-shadow: 0 0 8px rgba(var(--accent-color-rgb), 0.7);
   }
 
   /* Hide all gear teeth when active */
-  #sidebar-toggle-btn.active .gear-tooth {
+  #preferences-toggle-btn.active .preferences-icon-tooth {
     opacity: 0;
   }
 
   /* Hide the circle when active */
-  #sidebar-toggle-btn.active .gear-circle {
+  #preferences-toggle-btn.active .preferences-icon-circle {
     opacity: 0;
   }
 
-  #sidebar-toggle-btn.active .gear-tooth {
+  #preferences-toggle-btn.active .preferences-icon-tooth {
     background-color: transparent;
     color: var(--accent-muted-color);
   }
 
-  #sidebar-toggle-btn.active:hover .gear-tooth {
+  #preferences-toggle-btn.active:hover .preferences-icon-tooth {
     background-color: var(--accent-color);
     color: var(--foreground-color);
   }
 
   /* Transform top-right and bottom-left teeth into the X */
-  #sidebar-toggle-btn.active .gear-tooth.top-right {
+  #preferences-toggle-btn.active .preferences-icon-tooth-top-right {
     opacity: 1;
     transform: translate(-6px, 6px) scale(2) rotate(0);
     stroke-width: 1.5;
   }
 
-  #sidebar-toggle-btn.active .gear-tooth.bottom-left {
+  #preferences-toggle-btn.active .preferences-icon-tooth-bottom-left {
     opacity: 1;
     transform: translate(6px, -6px) scale(2) rotate(0);
     stroke-width: 1.5;
   }
 
   /* Transform top-left and bottom-right teeth into the X */
-  #sidebar-toggle-btn.active .gear-tooth.top-left {
+  #preferences-toggle-btn.active .preferences-icon-tooth-top-left {
     opacity: 1;
     transform: translate(6px, 6px) scale(2) rotate(0);
     stroke-width: 1.5;
   }
 
-  #sidebar-toggle-btn.active .gear-tooth.bottom-right {
+  #preferences-toggle-btn.active .preferences-icon-tooth-bottom-right {
     opacity: 1;
     transform: translate(-6px, -6px) scale(2) rotate(0);
     stroke-width: 1.5;
   }
 
-  #sidebar-toggle-btn:hover {
+  #preferences-toggle-btn:hover {
     background-color: var(--accent-color);
     box-shadow: 0 0 5px rgba(var(--accent-color-rgb), 0.5);
   }
 
-  #sidebar-toggle-btn.active:hover {
+  #preferences-toggle-btn.active:hover {
     background-color: var(--accent-muted-color);
     box-shadow: 0 0 5px rgba(var(--accent-color-rgb), 0.5);
   }
 
-  #sidebar-toggle-btn:hover .sidebar-icon path,
-  #sidebar-toggle-btn:hover .sidebar-icon circle {
+  #preferences-toggle-btn:hover .preferences-icon path,
+  #preferences-toggle-btn:hover .preferences-icon circle {
     color: var(--foreground-color);
     stroke-width: 1.5;
   }
 
-  .sidebar {
+  .preferences {
     position: fixed;
     top: 46px;
     right: -302px;
@@ -233,11 +233,11 @@ import LineNumberToggle from "./LineNumberToggle";
     }
   }
 
-  .sidebar.active {
+  .preferences.active {
     right: 0;
   }
 
-  .sidebar-content {
+  .preferences-content {
     padding: 20px;
   }
 
@@ -246,13 +246,13 @@ import LineNumberToggle from "./LineNumberToggle";
     color: var(--accent-color);
   }
 
-  .switchers {
+  .preferences-switchers {
     display: flex;
     flex-direction: column;
     gap: 20px;
   }
 
-  .switcher-group {
+  .preferences-group {
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -264,32 +264,34 @@ import LineNumberToggle from "./LineNumberToggle";
   }
 
   @media screen and (max-width: 992px) {
-    .sidebar {
+    .preferences {
       width: 256px;
     }
   }
 </style>
 
 <script>
-  // Toggle sidebar visibility
-  const sidebarToggleBtn = document.getElementById("sidebar-toggle-btn");
-  const sidebar = document.getElementById("sidebar");
+  // Toggle preferences visibility
+  const preferencesToggleBtn = document.getElementById(
+    "preferences-toggle-btn",
+  );
+  const preferences = document.getElementById("preferences");
 
-  sidebarToggleBtn?.addEventListener("click", () => {
-    sidebar?.classList.toggle("active");
-    sidebarToggleBtn.classList.toggle("active");
+  preferencesToggleBtn?.addEventListener("click", () => {
+    preferences?.classList.toggle("active");
+    preferencesToggleBtn.classList.toggle("active");
   });
 
-  // Close the sidebar when clicking outside
+  // Close the preferences when clicking outside
   document.addEventListener("click", (event) => {
     const target = event.target as HTMLElement;
     if (
-      sidebar?.classList.contains("active") &&
-      !sidebar.contains(target) &&
-      !sidebarToggleBtn?.contains(target)
+      preferences?.classList.contains("active") &&
+      !preferences.contains(target) &&
+      !preferencesToggleBtn?.contains(target)
     ) {
-      sidebar.classList.remove("active");
-      sidebarToggleBtn?.classList.remove("active");
+      preferences.classList.remove("active");
+      preferencesToggleBtn?.classList.remove("active");
     }
   });
 </script>

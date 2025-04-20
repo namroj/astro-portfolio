@@ -28,7 +28,7 @@
 }
 
 .toggle-label {
-  font-size: 0.6rem;
+  font-size: 0.89em;
   font-family: var(--main-font), monospace;
   color: var(--foreground-color);
 }

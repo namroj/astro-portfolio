@@ -2,9 +2,9 @@ const hamburger = document.querySelector(".hamburger");
 const nav = document.querySelector("nav");
 const navLinks = document.querySelector(".navigation");
 const footer = document.querySelector("footer");
-const sidebar = document.querySelector(".sidebar");
+const preferences = document.querySelector(".preferences");
 
-const items = [hamburger, nav, navLinks, footer, sidebar];
+const items = [hamburger, nav, navLinks, footer, preferences];
 
 hamburger.addEventListener("click", () => {
   items.forEach((item) => item.classList.toggle("expanded"));

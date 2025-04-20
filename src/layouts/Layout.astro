@@ -1,7 +1,7 @@
 ---
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
-import Sidebar from "../components/Sidebar.astro";
+import Preferences from "../components/Preferences.astro";
 import TableOfContents from "../components/TableOfContents.astro";
 import "../styles/variables.css";
 import "../styles/global.css";
@@ -43,7 +43,7 @@ const { title, breadCrumbs } = Astro.props;
       </main>
       <Footer breadCrumbs={breadCrumbs} />
     </div>
-    <Sidebar />
+    <Preferences />
     <TableOfContents />
   </body>
 </html>
