@@ -1,6 +1,6 @@
 ---
 import type { CollectionEntry } from "astro:content";
-import "../styles/timeline-item.css";
+import "../styles/timeline-item.scss";
 
 type Experience = CollectionEntry<"experience">;
 
@@ -14,22 +14,22 @@ const { entity, interval, location, positions, tags } = item.data;
 ---
 
 <li class="timeline-item" data-tags={tags.join(",")}>
-  <div class="timeline-connector">
-    <div class="timeline-dot"></div>
-    {!isLast && <div class="timeline-line" />}
+  <div class="timeline-item__connector">
+    <div class="timeline-item__dot"></div>
+    {!isLast && <div class="timeline-item__line" />}
   </div>
 
-  <article class="timeline-content">
-    <header class="timeline-header">
-      <time class="timeline-date">{interval}</time>
-      <h3 class="timeline-title">{entity.name}</h3>
+  <article class="timeline-item__content">
+    <header class="timeline-item__header">
+      <time class="timeline-item__date">{interval}</time>
+      <h3 class="timeline-item__title">{entity.name}</h3>
     </header>
 
-    <div class="entity-info">
+    <div class="timeline-item__entity">
       <img
         src={entity.image.path}
         alt={entity.image.alt}
-        class="entity-logo"
+        class="timeline-item__entity-logo"
         width="30"
         height="30"
       />
@@ -37,25 +37,25 @@ const { entity, interval, location, positions, tags } = item.data;
         href={entity.url}
         target="_blank"
         rel="noopener noreferrer"
-        class="entity-name"
+        class="timeline-item__entity-name"
       >
         {entity.name}
       </a>
-      <span class="location">{location}</span>
+      <span class="timeline-item__location">{location}</span>
     </div>
 
     {
       positions && (
-        <ul class="positions-list">
+        <ul class="timeline-item__positions">
           {positions.map((position) => (
-            <li class="position">
-              <h4 class="position-title">{position.title}</h4>
-              <ul class="position-description">
+            <li class="timeline-item__position">
+              <h4 class="timeline-item__position-title">{position.title}</h4>
+              <ul class="timeline-item__position-description">
                 {position.description.split("||").map((description) => (
                   <li>{description}</li>
                 ))}
               </ul>
-              <p class="position-highlight">{position.highlight}</p>
+              <p class="timeline-item__position-highlight">{position.highlight}</p>
             </li>
           ))}
         </ul>
@@ -64,9 +64,9 @@ const { entity, interval, location, positions, tags } = item.data;
 
     {
       tags && (
-        <ul class="tags-list">
+        <ul class="timeline-item__tags">
           {tags.map((tag) => (
-            <li class="tag">{tag}</li>
+            <li class="timeline-item__tag">{tag}</li>
           ))}
         </ul>
       )

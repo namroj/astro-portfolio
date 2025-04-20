@@ -81,7 +81,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const itemElement = item as HTMLElement;
       const itemTags = itemElement.dataset.tags?.split(",") || [];
       const titleElement = itemElement.querySelector("h3");
-      const descriptionElement = itemElement.querySelector(".description");
+      const descriptionElement = itemElement.querySelector(".timeline-item__description");
 
       // Extract the title & description and normalize for matching
       const title = titleElement?.textContent || "";
@@ -137,7 +137,7 @@ document.addEventListener("DOMContentLoaded", () => {
       });
 
       // Remove the active class from all tags in timeline items
-      document.querySelectorAll(".tag").forEach((tag) => {
+      document.querySelectorAll(".timeline-item__tag").forEach((tag) => {
         tag.classList.remove("active");
       });
     } else {
@@ -164,14 +164,14 @@ document.addEventListener("DOMContentLoaded", () => {
         if (button.dataset.tag !== "all") {
           button.classList.toggle(
             "active",
-            activeTags.includes(button.dataset.tag || ""),
+            activeTags.includes(button.dataset.tag ?? ""),
           );
         }
       });
 
       // Update active class on timeline item tags
-      document.querySelectorAll(".tag").forEach((tag) => {
-        const tagText = tag.textContent?.trim() || "";
+      document.querySelectorAll(".timeline-item__tag").forEach((tag) => {
+        const tagText = tag.textContent?.trim() ?? "";
         tag.classList.toggle("active", activeTags.includes(tagText));
       });
     }
@@ -213,7 +213,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     // Remove active class from all tags
-    document.querySelectorAll(".tag").forEach((tag) => {
+    document.querySelectorAll(".timeline-item__tag").forEach((tag) => {
       tag.classList.remove("active");
     });
 
@@ -245,7 +245,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     // Remove the active class from all tags
-    document.querySelectorAll(".tag").forEach((tag) => {
+    document.querySelectorAll(".timeline-item__tag").forEach((tag) => {
       tag.classList.remove("active");
     });
 
@@ -271,7 +271,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // Add click handler for item tags
   document.addEventListener("click", (e) => {
     const target = e.target as HTMLElement;
-    if (target.classList.contains("tag")) {
+    if (target.classList.contains("timeline-item__tag")) {
       const tagText = target.textContent?.trim() || "";
       setActiveTag(tagText);
     }

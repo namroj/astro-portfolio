@@ -1,0 +1,164 @@
+---
+import "../styles/timeline-item.scss";
+
+const { item, isLast, type } = Astro.props;
+
+let title, date, entity, location, description, tags, logo, url;
+
+if (type === "education") {
+  const {
+    title: eduTitle,
+    interval,
+    entity: eduEntity,
+    location: eduLocation,
+    description: eduDescription,
+    tags: eduTags,
+  } = item.data;
+  title = eduTitle;
+  date = interval;
+  entity = eduEntity;
+  location = eduLocation;
+  description = eduDescription;
+  tags = eduTags;
+  logo = entity.image.path;
+  url = entity.url;
+} else if (type === "experience") {
+  const {
+    entity: expEntity,
+    interval,
+    location: expLocation,
+    tags: expTags,
+  } = item.data;
+  title = expEntity.name;
+  date = interval;
+  entity = expEntity;
+  location = expLocation;
+  tags = expTags;
+  logo = entity.image.path;
+  url = entity.url;
+} else if (type === "project") {
+  const {
+    name,
+    year,
+    logo: projLogo,
+    location: projLocation,
+    description: projDescription,
+    url: projUrl,
+    tags: projTags,
+  } = item.data;
+  title = name;
+  date = year;
+  location = projLocation;
+  description = projDescription;
+  tags = projTags;
+  logo = projLogo;
+  url = projUrl;
+}
+---
+
+<li class="timeline-item" data-tags={tags.join(",")}>
+  <div class="timeline-item__connector">
+    <div class="timeline-item__dot"></div>
+    {!isLast && <div class="timeline-item__line" />}
+  </div>
+
+  <article class="timeline-item__content">
+    <header class="timeline-item__header">
+      <time class="timeline-item__date">{date}</time>
+      <h3 class="timeline-item__title">{title}</h3>
+    </header>
+
+    <div class="timeline-item__entity">
+      {
+        type === "project" ? (
+          <img
+            src={logo}
+            alt={`${title} logo`}
+            class="timeline-item__entity-logo timeline-item__entity-logo--project"
+            width="200"
+            height="200"
+            style={
+              item.data.bg_color
+                ? `background-color: ${item.data.bg_color}`
+                : ""
+            }
+          />
+        ) : (
+          <img
+            src={logo}
+            alt={entity.image?.alt || `${title} logo`}
+            class="timeline-item__entity-logo"
+            width="30"
+            height="30"
+          />
+        )
+      }
+
+      <a
+        href={url}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="timeline-item__entity-name"
+      >
+        {type === "project" ? title : entity.name}
+      </a>
+      <span class="timeline-item__location">{location}</span>
+    </div>
+
+    {
+      type === "project" && item.data.summary && (
+        <p class="timeline-item__summary">{item.data.summary}</p>
+      )
+    }
+
+    {description && <p class="timeline-item__description">{description}</p>}
+
+    {
+      type === "experience" && item.data.positions && (
+        <ul class="timeline-item__positions">
+          {item.data.positions.map(
+            (
+              position, // TODO type
+            ) => (
+              <li class="timeline-item__position">
+                <h4 class="timeline-item__position-title">{position.title}</h4>
+                <ul class="timeline-item__position-description">
+                  {position.description.split("||").map((desc: string) => (
+                    <li>{desc}</li>
+                  ))}
+                </ul>
+                {position.highlight && (
+                  <p class="timeline-item__position-highlight">{position.highlight}</p>
+                )}
+              </li>
+            ),
+          )}
+        </ul>
+      )
+    }
+
+    {
+      tags && (
+        <ul class="timeline-item__tags">
+          {tags.map((tag: string) => (
+            <li class="timeline-item__tag">{tag}</li>
+          ))}
+        </ul>
+      )
+    }
+
+    {
+      type === "education" && item.data.certificate && (
+        <a
+          href={item.data.certificate}
+          class="timeline-item__certificate"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Ver certificado
+        </a>
+      )
+    }
+  </article>
+</li>
+

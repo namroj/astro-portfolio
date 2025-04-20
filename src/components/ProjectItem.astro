@@ -1,5 +1,5 @@
 ---
-import "../styles/timeline-item.css";
+import "../styles/timeline-item.scss";
 const { item, isLast } = Astro.props;
 const {
   name,
@@ -15,22 +15,22 @@ const {
 ---
 
 <li class="timeline-item" data-tags={tags.join(",")}>
-  <div class="timeline-connector">
-    <div class="timeline-dot"></div>
-    {!isLast && <div class="timeline-line" />}
+  <div class="timeline-item__connector">
+    <div class="timeline-item__dot"></div>
+    {!isLast && <div class="timeline-item__line" />}
   </div>
 
-  <article class="timeline-content">
-    <header class="timeline-header">
-      <time class="timeline-date">{year}</time>
-      <h3 class="timeline-title">{name}</h3>
+  <article class="timeline-item__content">
+    <header class="timeline-item__header">
+      <time class="timeline-item__date">{year}</time>
+      <h3 class="timeline-item__title">{name}</h3>
     </header>
 
-    <div class="entity-info">
+    <div class="timeline-item__entity">
       <img
         src={logo}
         alt={`${name} logo`}
-        class="entity-logo"
+        class="timeline-item__entity-logo timeline-item__entity-logo--project"
         width="200"
         height="200"
         style={`background-color: ${bg_color}`}
@@ -39,22 +39,22 @@ const {
         href={url}
         target="_blank"
         rel="noopener noreferrer"
-        class="entity-name"
+        class="timeline-item__entity-name"
       >
         {name}
       </a>
-      <span class="location">{location}</span>
+      <span class="timeline-item__location">{location}</span>
     </div>
 
-    <p class="summary">{summary}</p>
+    <p class="timeline-item__summary">{summary}</p>
 
-    <p class="description">{description}</p>
+    <p class="timeline-item__description">{description}</p>
 
     {
       tags && (
-        <ul class="tags-list">
+        <ul class="timeline-item__tags">
           {tags.map((tag: string) => (
-            <li class="tag">{tag}</li>
+            <li class="timeline-item__tag">{tag}</li>
           ))}
         </ul>
       )

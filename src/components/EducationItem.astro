@@ -1,27 +1,27 @@
 ---
-import "../styles/timeline-item.css";
+import "../styles/timeline-item.scss";
 const { item, isLast } = Astro.props;
 const { title, interval, entity, location, description, tags, certificate } =
   item.data;
 ---
 
 <li class="timeline-item" data-tags={tags.join(",")}>
-  <div class="timeline-connector">
-    <div class="timeline-dot"></div>
-    {!isLast && <div class="timeline-line" />}
+  <div class="timeline-item__connector">
+    <div class="timeline-item__dot"></div>
+    {!isLast && <div class="timeline-item__line" />}
   </div>
 
-  <article class="timeline-content">
-    <header class="timeline-header">
-      <time class="timeline-date">{interval}</time>
-      <h3 class="timeline-title">{title}</h3>
+  <article class="timeline-item__content">
+    <header class="timeline-item__header">
+      <time class="timeline-item__date">{interval}</time>
+      <h3 class="timeline-item__title">{title}</h3>
     </header>
 
-    <div class="entity-info">
+    <div class="timeline-item__entity">
       <img
         src={entity.image.path}
         alt={entity.image.alt}
-        class="entity-logo"
+        class="timeline-item__entity-logo"
         width="30"
         height="30"
       />
@@ -29,20 +29,20 @@ const { title, interval, entity, location, description, tags, certificate } =
         href={entity.url}
         target="_blank"
         rel="noopener noreferrer"
-        class="entity-name"
+        class="timeline-item__entity-name"
       >
         {entity.name}
       </a>
-      <span class="location">{location}</span>
+      <span class="timeline-item__location">{location}</span>
     </div>
 
-    <p class="description">{description}</p>
+    <p class="timeline-item__description">{description}</p>
 
     {
       tags && (
-        <ul class="tags-list">
+        <ul class="timeline-item__tags">
           {tags.map((tag: string) => (
-            <li class="tag">{tag}</li>
+            <li class="timeline-item__tag">{tag}</li>
           ))}
         </ul>
       )
@@ -52,7 +52,7 @@ const { title, interval, entity, location, description, tags, certificate } =
       certificate && (
         <a
           href={certificate}
-          class="certificate-link"
+          class="timeline-item__certificate"
           target="_blank"
           rel="noopener noreferrer"
         >
