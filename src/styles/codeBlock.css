@@ -5,55 +5,57 @@ pre {
   position: relative;
   padding-top: 2.5em !important; /* Space for language label */
   padding-left: 1em !important; /* Reduced padding as line numbers are now inside */
-}
 
-/* Language indicator */
-pre::before {
-  content: attr(data-language);
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  background: var(--background-color);
-  color: var(--foreground-color);
-  padding: 0.75em 0.5em 0.5em;
-  font-family: var(--code-font), monospace;
-  font-size: 0.9em;
-  font-weight: bold;
-  border-bottom: 1px solid var(--border-color);
-  border-top: 1px solid var(--border-color);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
+  /* Language indicator */
 
-/* Line numbers */
-pre code {
-  display: block;
-  line-height: var(--line-height);
-}
+  &::before {
+    content: attr(data-language);
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: var(--background-color);
+    color: var(--foreground-color);
+    padding: 0.75em 0.5em 0.5em;
+    font-family: var(--code-font), monospace;
+    font-size: 0.9em;
+    font-weight: bold;
+    border-bottom: 1px solid var(--border-color);
+    border-top: 1px solid var(--border-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
 
-pre code .line {
-  display: inline-block;
-  width: 100%;
-  position: relative;
-}
+  /* Line numbers */
 
-pre code .line-number {
-  display: inline-block;
-  min-width: 2.5em;
-  margin-right: 1em;
-  text-align: right;
-  font-size: 0.9em;
-  user-select: none;
-  padding-right: 0.5em;
+  code {
+    display: block;
+    line-height: var(--line-height);
+
+    .line {
+      display: inline-block;
+      width: 100%;
+      position: relative;
+    }
+
+    .line-number {
+      display: inline-block;
+      min-width: 2.5em;
+      margin-right: 1em;
+      text-align: right;
+      font-size: 0.9em;
+      user-select: none;
+      padding-right: 0.5em;
+    }
+  }
 }
 
 /* Copy button */
 .copy-button {
   position: absolute;
   top: 0.5em;
-  right: 1em;
+  right: 0.5em;
   background-color: transparent;
   border: none;
   color: var(--accent-muted-color);
@@ -62,22 +64,22 @@ pre code .line-number {
   align-items: center;
   gap: 0.5em;
   font-size: 0.9em;
-  padding: 0.5em;
+  padding: 0.5em 0;
   border-radius: 4px;
   transition: background-color 0.2s;
   z-index: 10;
-}
 
-.copy-button:hover svg {
-  color: var(--accent-color);
-}
+  &:hover svg {
+    color: var(--accent-color);
+  }
 
-.copy-button.copied svg {
-  color: var(--accent-color);
-  fill: var(--accent-color);
-}
+  &.copied svg {
+    color: var(--accent-color);
+    fill: var(--accent-color);
+  }
 
-.copy-button svg {
-  width: 16px;
-  height: 16px;
+  svg {
+    width: 16px;
+    height: 16px;
+  }
 }
