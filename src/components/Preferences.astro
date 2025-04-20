@@ -102,7 +102,7 @@ import LineNumberToggle from "./LineNumberToggle";
   .preferences-toggle {
     position: fixed;
     z-index: 10;
-    top: calc(var(--navbar-height) + 1em);
+    top: calc(var(--navbar-height) + 0.75em);
     right: 10px;
   }
 
@@ -212,7 +212,7 @@ import LineNumberToggle from "./LineNumberToggle";
 
   .preferences {
     position: fixed;
-    top: 46px;
+    top: calc(var(--navbar-height) + 1px);
     right: -302px;
     width: 302px;
     height: calc(100vh - 81px);
@@ -229,9 +229,9 @@ import LineNumberToggle from "./LineNumberToggle";
     }
 
     @media screen and (min-width: 992px) {
-      right: -35dvw;
-      width: 35dvw;
-      height: calc(100vh - 92px);
+      right: -28dvw;
+      width: 28dvw;
+      height: calc(100vh - 91px);
     }
   }
 

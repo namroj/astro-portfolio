@@ -80,7 +80,7 @@
   .toc-toggle {
     position: fixed;
     z-index: 10;
-    top: calc(var(--navbar-height) * 2 + 1.5em);
+    top: calc(var(--navbar-height) + 40px + 1.5em);
     right: 10px;
   }
 
@@ -165,7 +165,7 @@
 
   .toc {
     position: fixed;
-    top: 46px;
+    top: calc(var(--navbar-height) + 1px);
     right: -302px;
     width: 302px;
     height: calc(100vh - 81px);
@@ -177,9 +177,9 @@
     overflow-y: auto;
 
     @media screen and (min-width: 992px) {
-      right: -35dvw;
-      width: 35dvw;
-      height: calc(100vh - 92px);
+      right: -28dvw;
+      width: 28dvw;
+      height: calc(100vh - 91px);
     }
   }
 
