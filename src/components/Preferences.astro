@@ -2,6 +2,8 @@
 import ThemeSwitcher from "./ThemeSwitcher";
 import FontSwitcher from "./FontSwitcher";
 import LineNumberToggle from "./LineNumberToggle";
+
+const currentPath = Astro.url.pathname;
 ---
 
 <div class="preferences-toggle">
@@ -90,10 +92,15 @@ import LineNumberToggle from "./LineNumberToggle";
         <h4 class="title">Fuente</h4>
         <FontSwitcher client:load />
       </div>
-      <div class="group">
-        <h4 class="title">Código</h4>
-        <LineNumberToggle client:load />
-      </div>
+      {
+        currentPath === "/blog" ||
+          (currentPath.startsWith("/blog") && (
+            <div class="group">
+              <h4 class="title">Código</h4>
+              <LineNumberToggle client:load />
+            </div>
+          ))
+      }
     </div>
   </div>
 </aside>

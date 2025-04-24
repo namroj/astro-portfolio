@@ -5,13 +5,9 @@ const { breadCrumbs } = Astro.props;
 ---
 
 <footer>
-  {
-    breadCrumbs && (
-      <div class="left">
-        <BreadCrumbs breadCrumbs={breadCrumbs} />
-      </div>
-    )
-  }
+  <div class={`left ${breadCrumbs && "visible"}`}>
+    <BreadCrumbs breadCrumbs={breadCrumbs} />
+  </div>
 
   <div class="right">
     <p>© {new Date().getFullYear()}. <a href="/">Jorman Espinoza</a></p>
@@ -54,6 +50,7 @@ const { breadCrumbs } = Astro.props;
     }
 
     .left {
+      display: none;
       position: absolute;
       padding: 0.5em;
       background-color: rgba(var(--background-color-rgb), 1);
@@ -63,6 +60,10 @@ const { breadCrumbs } = Astro.props;
       width: 100%;
       top: -33px;
       left: 0;
+
+      &.visible {
+        display: inherit;
+      }
 
       @media screen and (min-width: 992px) {
         position: initial;
@@ -83,12 +84,6 @@ const { breadCrumbs } = Astro.props;
       justify-content: flex-end;
       align-items: center;
       gap: 1em;
-
-      @media screen and (min-width: 992px) {
-        align-items: center;
-        justify-content: flex-end;
-        position: initial;
-      }
     }
   }
 </style>
