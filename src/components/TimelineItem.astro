@@ -57,24 +57,24 @@ if (type === "education") {
 ---
 
 <li class="timeline-item" data-tags={tags.join(",")}>
-  <div class="timeline-item__connector">
-    <div class="timeline-item__dot"></div>
-    {!isLast && <div class="timeline-item__line" />}
+  <div class="connector">
+    <div class="dot"></div>
+    {!isLast && <div class="line" />}
   </div>
 
-  <article class="timeline-item__content">
-    <header class="timeline-item__header">
-      <time class="timeline-item__date">{date}</time>
-      <h3 class="timeline-item__title">{title}</h3>
+  <article class="content">
+    <header class="header">
+      <time class="date">{date}</time>
+      <h3 class="title">{title}</h3>
     </header>
 
-    <div class="timeline-item__entity">
+    <div class="entity">
       {
         type === "project" ? (
           <img
             src={logo}
             alt={`${title} logo`}
-            class="timeline-item__entity-logo timeline-item__entity-logo--project"
+            class="entity-logo entity-logo--project"
             width="200"
             height="200"
             style={
@@ -87,7 +87,7 @@ if (type === "education") {
           <img
             src={logo}
             alt={entity.image?.alt || `${title} logo`}
-            class="timeline-item__entity-logo"
+            class="entity-logo"
             width="30"
             height="30"
           />
@@ -98,37 +98,37 @@ if (type === "education") {
         href={url}
         target="_blank"
         rel="noopener noreferrer"
-        class="timeline-item__entity-name"
+        class="entity-name"
       >
         {type === "project" ? title : entity.name}
       </a>
-      <span class="timeline-item__location">{location}</span>
+      <span class="location">{location}</span>
     </div>
 
     {
       type === "project" && item.data.summary && (
-        <p class="timeline-item__summary">{item.data.summary}</p>
+        <p class="summary">{item.data.summary}</p>
       )
     }
 
-    {description && <p class="timeline-item__description">{description}</p>}
+    {description && <p class="description">{description}</p>}
 
     {
       type === "experience" && item.data.positions && (
-        <ul class="timeline-item__positions">
+        <ul class="positions">
           {item.data.positions.map(
             (
               position, // TODO type
             ) => (
-              <li class="timeline-item__position">
-                <h4 class="timeline-item__position-title">{position.title}</h4>
-                <ul class="timeline-item__position-description">
+              <li class="position">
+                <h4 class="position-title">{position.title}</h4>
+                <ul class="position-description">
                   {position.description.split("||").map((desc: string) => (
                     <li>{desc}</li>
                   ))}
                 </ul>
                 {position.highlight && (
-                  <p class="timeline-item__position-highlight">{position.highlight}</p>
+                  <p class="position-highlight">{position.highlight}</p>
                 )}
               </li>
             ),
@@ -139,9 +139,9 @@ if (type === "education") {
 
     {
       tags && (
-        <ul class="timeline-item__tags">
+        <ul class="tags">
           {tags.map((tag: string) => (
-            <li class="timeline-item__tag">{tag}</li>
+            <li class="tag">{tag}</li>
           ))}
         </ul>
       )
@@ -151,7 +151,7 @@ if (type === "education") {
       type === "education" && item.data.certificate && (
         <a
           href={item.data.certificate}
-          class="timeline-item__certificate"
+          class="certificate"
           target="_blank"
           rel="noopener noreferrer"
         >
@@ -161,4 +161,3 @@ if (type === "education") {
     }
   </article>
 </li>
-

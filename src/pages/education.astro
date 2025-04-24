@@ -4,6 +4,7 @@ import { getCollection } from "astro:content";
 import Layout from "../layouts/Layout.astro";
 import TimelineItem from "../components/TimelineItem.astro";
 import Filter from "../components/Filter.astro";
+import NoMatchItems from "../components/NoMatchItems.astro";
 
 const title = {
   tab: "Educación",
@@ -36,19 +37,18 @@ const tags = [...new Set(items.flatMap((item) => item.data.tags))];
     </div>
 
     <ul class="timeline-list">
-      <div class="no-results" style="display: none;">
-        <p>
-          No se encontraron resultados que coincidan con tus criterios de
-          búsqueda.
-        </p>
-        <button class="reset-search-btn">Limpiar búsqueda</button>
-      </div>
       {
         items.map((item, index) => (
-          <TimelineItem item={item} isLast={index === items.length - 1} type="education" />
+          <TimelineItem
+            item={item}
+            isLast={index === items.length - 1}
+            type="education"
+          />
         ))
       }
     </ul>
+
+    <NoMatchItems />
   </section>
 </Layout>
 
@@ -65,7 +65,8 @@ const tags = [...new Set(items.flatMap((item) => item.data.tags))];
       display: grid;
       grid-template-columns: 3fr 1fr;
       gap: 1em;
-      grid-template-areas: "first second"; /* Force the second column to appear before the first */
+      grid-template-areas: "first second";
+
       .timeline-filters {
         position: sticky;
         top: calc(45px + 1em);

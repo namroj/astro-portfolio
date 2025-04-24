@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
   ) as HTMLInputElement;
   const tagButtons = document.querySelectorAll(".tag-btn");
   const educationItems = document.querySelectorAll(".timeline-item");
-  const noResultsDiv = document.querySelector(".no-results") as HTMLElement;
+  const noMatchItemsElement = document.querySelector(".no-match-items") as HTMLElement;
   const resetSearchButton = document.querySelector(".reset-search-btn");
   const clearSearchBtn = document.getElementById("clearSearch");
   const clearTagsBtn = document.getElementById("clearTags");
@@ -57,7 +57,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const regex = new RegExp(`(${accentInsensitivePattern})`, "gi");
 
-    // Replace while preserving the original case and accents
+    // Replace it while preserving the original case and accents
     let lastIndex = 0;
     let result = "";
     let match;
@@ -84,12 +84,12 @@ document.addEventListener("DOMContentLoaded", () => {
       const descriptionElement = itemElement.querySelector(".timeline-item__description");
 
       // Extract the title & description and normalize for matching
-      const title = titleElement?.textContent || "";
-      const description = descriptionElement?.textContent || "";
+      const title = titleElement?.textContent ?? "";
+      const description = descriptionElement?.textContent ?? "";
       const normalizedTitle = normalizeText(title);
       const normalizedDescription = normalizeText(description);
 
-      // Determine if the item matches ALL of the active tags or the search term
+      // Determine if the item matches ALL the active tags or the search term
       const matchesTag =
         activeTags.length === 0 ||
         activeTags.every((tag) => itemTags.includes(tag));
@@ -114,15 +114,18 @@ document.addEventListener("DOMContentLoaded", () => {
         } else {
           // Remove existing highlights if no search term is provided
           if (titleElement)
-            titleElement.innerHTML = titleElement.textContent || "";
+            titleElement.innerHTML = titleElement.textContent ?? "";
           if (descriptionElement)
-            descriptionElement.innerHTML = descriptionElement.textContent || "";
+            descriptionElement.innerHTML = descriptionElement.textContent ?? "";
         }
       }
     });
 
-    // Show or hide the "No Results" message
-    noResultsDiv.style.display = visibleItems === 0 ? "block" : "none";
+    console.log(noMatchItemsElement);
+    if (noMatchItemsElement) {
+      // Show or hide the "No Results" message
+      noMatchItemsElement.style.display = visibleItems === 0 ? "block" : "none";
+    }
   }
 
   function setActiveTag(newTag: string) {
@@ -137,7 +140,7 @@ document.addEventListener("DOMContentLoaded", () => {
       });
 
       // Remove the active class from all tags in timeline items
-      document.querySelectorAll(".timeline-item__tag").forEach((tag) => {
+      document.querySelectorAll(".tag").forEach((tag) => {
         tag.classList.remove("active");
       });
     } else {
@@ -170,7 +173,7 @@ document.addEventListener("DOMContentLoaded", () => {
       });
 
       // Update active class on timeline item tags
-      document.querySelectorAll(".timeline-item__tag").forEach((tag) => {
+      document.querySelectorAll(".tag").forEach((tag) => {
         const tagText = tag.textContent?.trim() ?? "";
         tag.classList.toggle("active", activeTags.includes(tagText));
       });
@@ -204,7 +207,7 @@ document.addEventListener("DOMContentLoaded", () => {
       allButton.classList.add("active");
     }
 
-    // Remove active class from all tag buttons except "all"
+    // Remove the active class from all tag buttons except "all"
     tagButtons.forEach((btn) => {
       const button = btn as HTMLElement;
       if (button.dataset.tag !== "all") {
@@ -212,8 +215,8 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
 
-    // Remove active class from all tags
-    document.querySelectorAll(".timeline-item__tag").forEach((tag) => {
+    // Remove an active class from all tags
+    document.querySelectorAll(".tag").forEach((tag) => {
       tag.classList.remove("active");
     });
 
@@ -245,7 +248,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     // Remove the active class from all tags
-    document.querySelectorAll(".timeline-item__tag").forEach((tag) => {
+    document.querySelectorAll(".tag").forEach((tag) => {
       tag.classList.remove("active");
     });
 
@@ -256,7 +259,7 @@ document.addEventListener("DOMContentLoaded", () => {
   tagButtons.forEach((button) => {
     button.addEventListener("click", () => {
       const buttonElement = button as HTMLButtonElement;
-      setActiveTag(buttonElement.dataset.tag || "all");
+      setActiveTag(buttonElement.dataset.tag ?? "all");
     });
   });
 
@@ -264,15 +267,15 @@ document.addEventListener("DOMContentLoaded", () => {
   tagButtons.forEach((button) => {
     button.addEventListener("click", () => {
       const buttonElement = button as HTMLButtonElement;
-      setActiveTag(buttonElement.dataset.tag || "all");
+      setActiveTag(buttonElement.dataset.tag ?? "all");
     });
   });
 
   // Add click handler for item tags
   document.addEventListener("click", (e) => {
     const target = e.target as HTMLElement;
-    if (target.classList.contains("timeline-item__tag")) {
-      const tagText = target.textContent?.trim() || "";
+    if (target.classList.contains("tag")) {
+      const tagText = target.textContent?.trim() ?? "";
       setActiveTag(tagText);
     }
   });
@@ -298,7 +301,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   tagButtons.forEach((button) => {
     button.addEventListener("click", (event) => {
-      const newTag = (event.currentTarget as HTMLElement).dataset.tag || "all";
+      const newTag = (event.currentTarget as HTMLElement).dataset.tag ?? "all";
 
       // Set the active tag (this will handle updating the active class on timeline item tags)
       setActiveTag(newTag);

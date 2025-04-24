@@ -4,6 +4,7 @@ import { getCollection } from "astro:content";
 import Layout from "../layouts/Layout.astro";
 import TimelineItem from "../components/TimelineItem.astro";
 import Filter from "../components/Filter.astro";
+import NoMatchItems from "../components/NoMatchItems.astro";
 
 const title = {
   tab: "Experiencia",
@@ -48,6 +49,7 @@ const tags = [...new Set(items.flatMap((item) => item.data.tags))];
         ))
       }
     </ul>
+    <NoMatchItems />
   </section>
 </Layout>
 
