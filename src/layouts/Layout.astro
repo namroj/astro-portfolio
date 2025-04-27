@@ -4,62 +4,12 @@ import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import Preferences from "../components/Preferences.astro";
 import TableOfContents from "../components/TableOfContents.astro";
+import "../styles/fonts.css"
 import "../styles/variables.css";
 import "../styles/global.css";
 
 const { title, breadCrumbs } = Astro.props;
 ---
-
-<style>
-  @font-face {
-    font-family: "JetBrains Mono";
-    src: url("/fonts/JetBrainsMono-Regular.ttf") format("truetype");
-    font-weight: normal;
-    font-style: normal;
-  }
-
-  @font-face {
-    font-family: "Cascadia Code";
-    src: url("/fonts/CascadiaCode.ttf") format("truetype");
-    font-weight: normal;
-    font-style: normal;
-  }
-
-  @font-face {
-    font-family: "Dank Mono";
-    src: url("/fonts/DankMono-Regular.ttf") format("truetype");
-    font-weight: normal;
-    font-style: normal;
-  }
-
-  @font-face {
-    font-family: "Dank Mono";
-    src: url("/fonts/DankMono-Italic.ttf") format("truetype");
-    font-weight: normal;
-    font-style: italic;
-  }
-
-  @font-face {
-    font-family: "Dank Mono";
-    src: url("/fonts/DankMono-Bold.ttf") format("truetype");
-    font-weight: bold;
-    font-style: normal;
-  }
-
-  @font-face {
-    font-family: "Fira Code";
-    src: url("/fonts/FiraCode-Regular.ttf") format("truetype");
-    font-weight: normal;
-    font-style: normal;
-  }
-
-  @font-face {
-    font-family: "Writer";
-    src: url("/fonts/Writer-Regular.ttf") format("truetype");
-    font-weight: normal;
-    font-style: normal;
-  }
-</style>
 
 <html lang="es">
   <head>
