@@ -2,42 +2,6 @@
 const { tags } = Astro.props;
 ---
 
-<div class="filters">
-  <form id="searchForm" class="search-form">
-    <div class="search-wrapper">
-      <label for="searchInput"></label>
-      <input
-        type="search"
-        id="searchInput"
-        placeholder="Buscar por palabra clave"
-        class="search-input"
-      />
-      <button
-        type="button"
-        class="clear-search"
-        id="clearSearch"
-        style="display: none;"
-      >
-        ✕
-      </button>
-    </div>
-  </form>
-
-  <div class="tags-filter">
-    <button class="tag-btn active" data-tag="all">Todas</button>
-    {
-      tags.map((tag: string) => (
-        <button class="tag-btn" data-tag={tag}>
-          {tag}
-        </button>
-      ))
-    }
-    <button id="clearTags" class="clear-tags-btn" style="display: none;"
-      >Reiniciar selección
-    </button>
-  </div>
-</div>
-
 <style is:inline>
   .filters {
     margin: 0;
@@ -53,7 +17,7 @@ const { tags } = Astro.props;
 
   .search-input {
     width: 100%;
-    padding: 0.5em 1em 0.5em 0.5em;
+    padding: 1em;
     border-radius: 4px;
     background-color: var(--background-color);
     color: var(--foreground-color);
@@ -64,7 +28,7 @@ const { tags } = Astro.props;
   .tags-filter {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.5em;
+    gap: 1em;
   }
 
   .tag-btn {
@@ -128,7 +92,7 @@ const { tags } = Astro.props;
 
   .clear-search {
     position: absolute;
-    right: 0.5em;
+    right: 1em;
     top: 50%;
     transform: translateY(-50%);
     background: none;
@@ -157,6 +121,42 @@ const { tags } = Astro.props;
     color: var(--accent-color);
   }
 </style>
+
+<div class="filters">
+  <form id="searchForm" class="search-form">
+    <div class="search-wrapper">
+      <label for="searchInput"></label>
+      <input
+        type="search"
+        id="searchInput"
+        placeholder="Buscar por palabra clave"
+        class="search-input"
+      />
+      <button
+        type="button"
+        class="clear-search"
+        id="clearSearch"
+        style="display: none;"
+      >
+        ✕
+      </button>
+    </div>
+  </form>
+
+  <div class="tags-filter">
+    <button class="tag-btn active" data-tag="all">Todas</button>
+    {
+      tags.map((tag: string) => (
+        <button class="tag-btn" data-tag={tag}>
+          {tag}
+        </button>
+      ))
+    }
+    <button id="clearTags" class="clear-tags-btn" style="display: none;"
+      >Reiniciar selección
+    </button>
+  </div>
+</div>
 
 <script>
   import "../scripts/filter.ts";

@@ -22,23 +22,10 @@ main {
   position: relative;
   z-index: 2;
   width: 100%;
-  padding: calc(var(--navbar-height) + 1em) 1em 2em 1em;
+  padding: calc(var(--navbar-height) + var(--gap)) var(--gap) calc(var(--footer-height) + var(--footer-breadcrump-height) + var(--gap)) var(--gap);
 
-  h2,
-  h3,
-  h4 {
-    scroll-margin-top: calc(var(--navbar-height) + 0.5em);
-  }
-}
-
-.wrapper {
-  height: calc(100dvh - 45px);
-  overflow-y: auto;
-
-  @media screen and (min-width: 992px) {
-    height: calc(100dvh - 45px);
-    margin: 0 auto;
-    padding: 0 15dvw;
+  h2, h3, h4 {
+    scroll-margin-top: calc(var(--navbar-height) + calc(var(--gap) / 2));
   }
 }
 

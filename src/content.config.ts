@@ -54,7 +54,7 @@ export const socials = defineCollection({
     id: z.string(),
     url: z.string().url(),
     username: z.string(),
-    platform: z.string(),
+    network: z.string(),
   }),
 });
 

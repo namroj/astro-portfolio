@@ -1,6 +1,7 @@
 ---
 import { getCollection } from "astro:content";
 import Layout from "../layouts/Layout.astro";
+import Socials from "../components/Socials.astro";
 
 const title = {
   tab: "Contacto",
@@ -18,35 +19,5 @@ const socials = await getCollection("socials");
 ---
 
 <Layout title={title} breadCrumbs={breadCrumbs}>
-  <h2>Redes Sociales</h2>
-  <ul>
-    {
-      socials
-        .map((social) => social.data)
-        .map((social) => (
-          <li>
-            {social.platform}:
-            <a href={`${social.url}/${social.username}`} target="_blank">
-              {`${social.url}/${social.username}`
-                .replace("https://", "")
-                .replace("www.", "")}
-            </a>
-          </li>
-        ))
-    }
-  </ul>
+  <Socials />
 </Layout>
-
-<style is:raw>
-  li {
-    margin-bottom: 1em;
-  }
-
-  a {
-    color: var(--accent-secondary-color);
-
-    &:hover {
-      color: var(--accent-color);
-    }
-  }
-</style>

@@ -1,4 +1,5 @@
 ---
+import { ClientRouter } from "astro:transitions";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import Preferences from "../components/Preferences.astro";
@@ -8,45 +9,6 @@ import "../styles/global.css";
 
 const { title, breadCrumbs } = Astro.props;
 ---
-
-<html lang="es">
-  <head>
-    <script>
-      (function () {
-        const savedTheme = localStorage.getItem("theme") || "system";
-        let themeToApply = savedTheme;
-
-        if (savedTheme === "system") {
-          const prefersDark = window.matchMedia(
-            "(prefers-color-scheme: dark)",
-          ).matches;
-          themeToApply = prefersDark ? "dark" : "light";
-        }
-
-        document.documentElement.setAttribute("data-theme", themeToApply);
-      })();
-    </script>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="generator" content={Astro.generator} />
-    <title>
-      {title.tab && `[${title.tab}]`} Jorman Espinoza | Software Engineer
-    </title>
-  </head>
-  <body>
-    <div class="wrapper">
-      <Header />
-      <main>
-        <h1>{title.page}</h1>
-        <slot />
-      </main>
-      <Footer breadCrumbs={breadCrumbs} />
-    </div>
-    <Preferences />
-    <TableOfContents />
-  </body>
-</html>
 
 <style>
   @font-face {
@@ -98,3 +60,39 @@ const { title, breadCrumbs } = Astro.props;
     font-style: normal;
   }
 </style>
+
+<html lang="es">
+  <head>
+    <script>
+      (function () {
+        const savedTheme = localStorage.getItem("theme") || "system";
+        let themeToApply = savedTheme;
+        if (savedTheme === "system") {
+          const prefersDark = window.matchMedia(
+            "(prefers-color-scheme: dark)",
+          ).matches;
+          themeToApply = prefersDark ? "dark" : "light";
+        }
+        document.documentElement.setAttribute("data-theme", themeToApply);
+      })();
+    </script>
+    <ClientRouter />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>
+      {title.tab && `[${title.tab}]`} Jorman Espinoza | Desarrollador de Software
+    </title>
+  </head>
+  <body>
+    <Header />
+    <main>
+      <h1>{title.page}</h1>
+      <slot />
+    </main>
+    <Footer breadCrumbs={breadCrumbs} />
+    <Preferences />
+    <TableOfContents />
+  </body>
+</html>

@@ -26,15 +26,18 @@ const ThemeSwitcher = () => {
     }
   };
 
-  // Synchronize the theme on component mount
+  // Synchronize the theme on a component mount
   useEffect(() => {
     // Get the stored theme from localStorage
-    const storedTheme = (localStorage.getItem("theme") || "system") as Theme;
+    const storedTheme = (localStorage.getItem("theme") ?? "system") as Theme;
 
     // Set the initial theme
     activeTheme.set(storedTheme);
 
-    if (storedTheme === "system") {
+    if (storedTheme !== "system") {
+      // Apply the stored theme directly
+      document.documentElement.setAttribute("data-theme", storedTheme);
+    } else {
       // Apply the system theme based on user preference
       const preferredColorScheme = window.matchMedia(
         "(prefers-color-scheme: dark)",
@@ -42,11 +45,8 @@ const ThemeSwitcher = () => {
         ? "dark"
         : "light";
       document.documentElement.setAttribute("data-theme", preferredColorScheme);
-    } else {
-      // Apply the stored theme directly
-      document.documentElement.setAttribute("data-theme", storedTheme);
     }
-  }, []); // Runs only once on mount
+  }, []);
 
   return (
     <div class="theme-switcher">

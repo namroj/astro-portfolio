@@ -3,36 +3,36 @@
     "id": "github",
     "url": "https://github.com",
     "username": "namroj",
-    "platform": "GitHub"
+    "network": "GitHub"
   },
   {
     "id": "linkedin",
     "url": "https://www.linkedin.com/in",
     "username": "jormanespinoza",
-    "platform": "LinkedIn"
+    "network": "LinkedIn"
   },
   {
     "id": "x",
     "url": "https://x.com",
     "username": "jormandev",
-    "platform": "X"
+    "network": "X"
   },
   {
     "id": "instagram",
     "url": "https://instagram.com",
     "username": "jorman.dev",
-    "platform": "Instagram"
+    "network": "Instagram"
   },
   {
     "id": "threads",
     "url": "https://www.threads.net",
     "username": "@jorman.dev",
-    "platform": "Threads"
+    "network": "Threads"
   },
   {
     "id": "bluesky",
     "url": "https://bsky.app/profile",
     "username": "jormandev.bsky.social",
-    "platform": "Bluesky"
+    "network": "Bluesky"
   }
 ]

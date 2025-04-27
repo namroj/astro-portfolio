@@ -1,16 +1,40 @@
 ---
 import { getCollection } from "astro:content";
-import Social from "./Social.astro";
-
 const socials = await getCollection("socials");
 ---
 
-<div class="socials">
-  {socials.map((social) => <Social {...social.data} />)}
-</div>
+<>
+  <h2>Redes Sociales</h2>
+  <ul class="socials">
+    {
+      socials
+        .map((social) => social.data)
+        .map((social) => (
+          <li>
+            {social.network}:
+            <a href={`${social.url}/${social.username}`} target="_blank">
+              {`${social.url}/${social.username}`
+                .replace("https://", "")
+                .replace("www.", "")}
+            </a>
+          </li>
+        ))
+    }
+  </ul>
+</>
 
 <style>
   .socials {
     display: flex;
+    flex-direction: column;
+    gap: var(--gap);
+
+    a {
+      color: var(--accent-secondary-color);
+
+      &:hover {
+        color: var(--accent-color);
+      }
+    }
   }
 </style>
