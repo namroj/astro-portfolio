@@ -12,20 +12,28 @@ export default function VenezuelaToArgentinaMap() {
 
   const adjustMapHeight = useCallback((): void => {
     if (typeof window !== "undefined") {
-      const wrapper = document.querySelector(".wrapper") as HTMLElement;
-      const header = document.querySelector("header") as HTMLElement;
+      const nav = document.querySelector("nav") as HTMLElement;
       const footer = document.querySelector("footer") as HTMLElement;
+      const footerBreadcrumb = document.querySelector(
+        "footer > .left",
+      ) as HTMLElement;
       const map = document.querySelector(
         "#venezuela-to-argentina-map",
       ) as HTMLElement;
 
-      if (wrapper && header && footer && map) {
-        const wrapperHeight = wrapper.offsetHeight;
-        const headerHeight = header.offsetHeight;
+      if (nav && footer && map) {
+        const navHeight = nav.offsetHeight;
         const footerHeight = footer.offsetHeight;
+        const footerBreadcrumbHeight = footerBreadcrumb.offsetHeight;
+        const fontSize = parseFloat(getComputedStyle(document.documentElement).fontSize);
+        const emInPixels = fontSize * 5;
 
-        let calculatedMapHeight =
-          wrapperHeight - headerHeight - footerHeight - 110;
+        const calculatedMapHeight =
+          window.innerHeight -
+          navHeight -
+          footerHeight -
+          footerBreadcrumbHeight - emInPixels;
+
         map.style.height = `${calculatedMapHeight < 300 ? 300 : calculatedMapHeight}px`;
       }
     }
@@ -156,7 +164,7 @@ export default function VenezuelaToArgentinaMap() {
     }
   }, [initMap]);
 
-  // Reload map when theme changes
+  // Reload a map when theme changes
   useEffect(() => {
     if (typeof window !== "undefined" && window.google && window.google.maps) {
       initMap();

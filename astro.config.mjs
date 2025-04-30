@@ -5,7 +5,7 @@ import preact from "@astrojs/preact";
 // https://astro.build/config
 export default defineConfig({
   // TODO change to https://jorman.dev
-  site: "https://namroj-astro-portfolio.netlify.app/",
+  site: "https://namroj-astro-portfolio.netlify.app",
   integrations: [preact()],
   env: {
     schema: {
