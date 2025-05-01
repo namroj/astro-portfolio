@@ -1,10 +1,12 @@
 import { atom } from "nanostores";
 
-let initialShowLineNumbers: boolean = true;
-if (typeof window !== "undefined") {
-  initialShowLineNumbers =
-    (localStorage.getItem("showLineNumbers") as unknown as boolean) ?? true;
-}
+const getInitialShowLineNumbers = () => {
+  if (typeof window !== "undefined") {
+    return (
+      (localStorage.getItem("showLineNumbers") as unknown as boolean) ?? true
+    );
+  }
+  return true;
+};
 
-// Store for line number visibility state
-export const showLineNumbers = atom<boolean>(initialShowLineNumbers);
+export const showLineNumbers = atom<boolean>(getInitialShowLineNumbers());

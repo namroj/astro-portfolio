@@ -1,16 +1,20 @@
 import { useStore } from "@nanostores/preact";
-import { useEffect } from "preact/hooks";
+import { useEffect, useState } from "preact/hooks";
 import { showLineNumbers } from "../stores/lineNumbersStore.ts";
 import "../styles/line-number-toggle.css";
 
 const LineNumberToggle = () => {
   const lineNumbersVisible = useStore(showLineNumbers); // Subscribe to the line numbers state
+  const [preferredLineVisibility, setPreferredLineVisibility] =
+    useState<boolean>(true);
 
   // Function to handle the line numbers visibility toggle
   const handleLineNumbersToggle = () => {
     const newValue = !lineNumbersVisible;
+
     showLineNumbers.set(newValue); // Update the state
     localStorage.setItem("showLineNumbers", newValue.toString()); // Save to localStorage
+    setPreferredLineVisibility(newValue);
 
     // Apply the visibility setting to the document
     if (newValue) {
@@ -36,12 +40,14 @@ const LineNumberToggle = () => {
     } else {
       document.documentElement.classList.remove("hide-line-numbers");
     }
+
+    setPreferredLineVisibility(lineNumbersVisible);
   }, []); // Runs only once on mount
 
   return (
     <div class="line-number-toggle">
       <button
-        class={`toggle-btn ${lineNumbersVisible ? "active" : ""}`}
+        class={`toggle-btn ${preferredLineVisibility ? "active" : ""}`}
         onClick={handleLineNumbersToggle}
         title={
           lineNumbersVisible

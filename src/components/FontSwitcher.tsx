@@ -11,6 +11,7 @@ const FontSwitcher = () => {
   const handleFontChange = (selectedFont: Font) => {
     activeFont.set(selectedFont); // Update the state
     localStorage.setItem("font", selectedFont); // Save to localStorage
+    setPreferredFont(selectedFont);
 
     document.documentElement.style.setProperty("--main-font", selectedFont);
     document.documentElement.style.setProperty("--code-font", selectedFont);
