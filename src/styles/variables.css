@@ -51,9 +51,10 @@
   --font-size: 14px;
   --line-height: 1.25;
   --navbar-height: 45px;
-  --footer-height: 35px;
+  --footer-height: 45px;
   --footer-breadcrump-height: 33px;
-  --control-size: 40px;
+  --hamburguer-size: 35px;
+  --control-size: 30px;
   --gap: 1em;
 }
 

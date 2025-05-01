@@ -1,10 +1,12 @@
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("astro:page-load", () => {
   const searchInput = document.getElementById(
     "searchInput",
   ) as HTMLInputElement;
   const tagButtons = document.querySelectorAll(".tag-btn");
   const educationItems = document.querySelectorAll(".timeline-item");
-  const noMatchItemsElement = document.querySelector(".no-match-items") as HTMLElement;
+  const noMatchItemsElement = document.querySelector(
+    ".no-match-items",
+  ) as HTMLElement;
   const resetSearchButton = document.querySelector(".reset-search-btn");
   const clearSearchBtn = document.getElementById("clearSearch");
   const clearTagsBtn = document.getElementById("clearTags");
@@ -81,7 +83,9 @@ document.addEventListener("DOMContentLoaded", () => {
       const itemElement = item as HTMLElement;
       const itemTags = itemElement.dataset.tags?.split(",") || [];
       const titleElement = itemElement.querySelector("h3");
-      const descriptionElement = itemElement.querySelector(".timeline-item__description");
+      const descriptionElement = itemElement.querySelector(
+        ".timeline-item__description",
+      );
 
       // Extract the title & description and normalize for matching
       const title = titleElement?.textContent ?? "";

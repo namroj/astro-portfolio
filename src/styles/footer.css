@@ -65,4 +65,10 @@ footer {
     align-items: center;
     gap: 1em;
   }
+
+  .controls {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1em;
+  }
 }

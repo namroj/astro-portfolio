@@ -15,7 +15,14 @@ export type Font =
   | "Fira Code"
   | "Writer";
 
-export interface BreadCrumbProp {
+export type BreadCrumb = {
   url: string;
   label: string;
-}
+};
+
+export type JobPosition = {
+  title: string;
+  description: string;
+  highlight: string;
+  interval: string;
+};

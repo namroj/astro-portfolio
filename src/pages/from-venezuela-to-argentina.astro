@@ -20,5 +20,8 @@ const breadCrumbs = [
 ---
 
 <Layout title={title} breadCrumbs={breadCrumbs}>
-  <VenezuelaToArgentinaMap client:only />
+  <VenezuelaToArgentinaMap
+    client:only
+    transition:name="from-venezuela-to-argentina"
+  />
 </Layout>

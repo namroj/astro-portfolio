@@ -1,21 +1,20 @@
 ---
 import BreadCrumb from "./BreadCrumb.astro";
-import { BreadCrumbProp } from "../env";
+import type { BreadCrumb as BreadCrumbType } from "../types/env";
 
-const HOME_BREAD_CRUMB = {
+const HOME_BREADCRUMB: BreadCrumbType = {
   url: "/",
   label: "Inicio",
 };
 
-const { breadCrumbs: rawBreadCrumbs = [] }: BreadCrumbProp[] = Astro.props;
+const { breadCrumbs = [] } = Astro.props as {
+  breadCrumbs?: BreadCrumbType[];
+};
 
-const breadCrumbs: BreadCrumbProp[] =
-  rawBreadCrumbs.length > 0 ? [HOME_BREAD_CRUMB, ...rawBreadCrumbs] : [];
+const allBreadCrumbs: BreadCrumbType[] =
+  breadCrumbs.length > 0 ? [HOME_BREADCRUMB, ...breadCrumbs] : [];
 ---
 
 <div class="bread-crumbs">
-  {
-    breadCrumbs &&
-      breadCrumbs.map((breadCrumb) => <BreadCrumb {...breadCrumb} />)
-  }
+  {allBreadCrumbs.map((crumb) => <BreadCrumb {...crumb} />)}
 </div>

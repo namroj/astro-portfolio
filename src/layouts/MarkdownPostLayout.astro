@@ -28,34 +28,6 @@ const tags = [
 ];
 ---
 
-<Layout title={title} breadCrumbs={breadCrumbs}>
-  <div class="post">
-    <div class="tags">
-      {
-        tags.map((tag: any) => (
-          <p class="tag">
-            <a href={`/blog/tags/${slugify(tag)}`}>{tag}</a>
-          </p>
-        ))
-      }
-    </div>
-    <span>{frontmatter.id}</span>
-    <p>
-      {
-        new Date(frontmatter.pubDate).toLocaleDateString(LANGUAGE, {
-          day: "2-digit",
-          month: "long",
-          year: "numeric",
-        })
-      }
-    </p>
-    <p><em>{frontmatter.description}</em></p>
-    <img src={frontmatter.image.url} width="300" alt={frontmatter.image.alt} />
-    <slot />
-    <p class="written-by">Escrito por: {frontmatter.author}</p>
-  </div>
-</Layout>
-
 <style is:raw>
   .post {
     .tags {
@@ -102,23 +74,59 @@ const tags = [
     code,
     pre,
     .code {
+      padding: 0.5em;
+      margin: 0.5em 0;
+      border-radius: 6px;
+      overflow-x: auto;
       font-family: var(--code-font), monospace;
       font-feature-settings:
         "calt" 1,
         "liga" 1;
       line-height: calc(var(--line-height) * 1.5);
       font-size: 1em;
-      padding: 0.5em;
-      margin: 0.5em 0;
-      border-radius: 6px;
-      overflow-x: auto;
     }
 
     li {
       list-style: disc;
       margin-left: 2em;
     }
+
+    pre {
+      & code {
+        & .line {
+          width: auto !important;
+        }
+      }
+    }
   }
 </style>
 
-<script src="../scripts/codeBlock.js"></script>
+<Layout title={title} breadCrumbs={breadCrumbs}>
+  <div class="post" transition:name={frontmatter.name}>
+    <div class="tags">
+      {
+        tags.map((tag: any) => (
+          <p class="tag">
+            <a href={`/blog/tags/${slugify(tag)}`}>{tag}</a>
+          </p>
+        ))
+      }
+    </div>
+    <span>{frontmatter.id}</span>
+    <p>
+      {
+        new Date(frontmatter.pubDate).toLocaleDateString(LANGUAGE, {
+          day: "2-digit",
+          month: "long",
+          year: "numeric",
+        })
+      }
+    </p>
+    <p><em>{frontmatter.description}</em></p>
+    <img src={frontmatter.image.url} width="300" alt={frontmatter.image.alt} />
+    <slot />
+    <p class="written-by">Escrito por: {frontmatter.author}</p>
+  </div>
+</Layout>
+
+<script src="../scripts/code-block.js"></script>

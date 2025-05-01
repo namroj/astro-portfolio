@@ -6,80 +6,6 @@ import LineNumberToggle from "./LineNumberToggle";
 const currentPath = Astro.url.pathname;
 ---
 
-<div class="preferences-toggle">
-  <button
-    id="preferences-toggle-btn"
-    aria-label="Mostrar/ocultar preferencias"
-    title="Preferencias"
-  >
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 24 24"
-      width="24"
-      height="24"
-      class="icon"
-    >
-      <!-- Gear/settings icon that can transform to X -->
-      <circle
-        class="circle"
-        cx="12"
-        cy="12"
-        r="4"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="2"></circle>
-      <path
-        class="tooth top"
-        d="M12 2v4"
-        stroke="currentColor"
-        stroke-width="2"
-        stroke-linecap="round"></path>
-      <path
-        class="tooth right"
-        d="M22 12h-4"
-        stroke="currentColor"
-        stroke-width="2"
-        stroke-linecap="round"></path>
-      <path
-        class="tooth bottom"
-        d="M12 22v-4"
-        stroke="currentColor"
-        stroke-width="2"
-        stroke-linecap="round"></path>
-      <path
-        class="tooth left"
-        d="M2 12h4"
-        stroke="currentColor"
-        stroke-width="2"
-        stroke-linecap="round"></path>
-      <path
-        class="tooth top-right"
-        d="M18.36 5.64l-2.83 2.83"
-        stroke="currentColor"
-        stroke-width="2"
-        stroke-linecap="round"></path>
-      <path
-        class="tooth bottom-right"
-        d="M18.36 18.36l-2.83-2.83"
-        stroke="currentColor"
-        stroke-width="2"
-        stroke-linecap="round"></path>
-      <path
-        class="tooth bottom-left"
-        d="M5.64 18.36l2.83-2.83"
-        stroke="currentColor"
-        stroke-width="2"
-        stroke-linecap="round"></path>
-      <path
-        class="tooth top-left"
-        d="M5.64 5.64l2.83 2.83"
-        stroke="currentColor"
-        stroke-width="2"
-        stroke-linecap="round"></path>
-    </svg>
-  </button>
-</div>
-
 <aside id="preferences" class="preferences">
   <div class="content">
     <h3 class="title">Preferencias</h3>
@@ -106,113 +32,6 @@ const currentPath = Astro.url.pathname;
 </aside>
 
 <style>
-  /* toggle preferences button */
-  .preferences-toggle {
-    position: fixed;
-    z-index: 10;
-    top: calc(var(--navbar-height) + 0.75em);
-    right: 10px;
-
-    #preferences-toggle-btn {
-      width: var(--control-size);
-      height: var(--control-size);
-      border-radius: 50%;
-      background-color: transparent;
-      color: var(--foreground-color);
-      border: none;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 0 5px rgba(var(--accent-color-rgb), 0.5);
-      transition:
-        transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275),
-        background-color 0.3s ease,
-        box-shadow 0.3s ease;
-      will-change: transform;
-
-      &:hover {
-        background-color: var(--accent-color);
-        box-shadow: 0 0 5px rgba(var(--accent-color-rgb), 0.5);
-
-        .icon path,
-        .icon circle {
-          color: var(--foreground-color);
-          stroke-width: 1.5;
-        }
-      }
-
-      &.active {
-        transform: rotate(90deg) scale(0.95);
-        background-color: transparent;
-        box-shadow: 0 0 8px rgba(var(--accent-color-rgb), 0.7);
-
-        &:hover {
-          background-color: var(--accent-muted-color);
-          box-shadow: 0 0 5px rgba(var(--accent-color-rgb), 0.5);
-
-          .tooth {
-            background-color: var(--accent-color);
-            color: var(--foreground-color);
-          }
-        }
-
-        /* Hide all gear teeth when active */
-
-        .tooth {
-          opacity: 0;
-        }
-
-        /* Hide the circle when active */
-
-        .circle {
-          opacity: 0;
-        }
-
-        /* Transform top-right and bottom-left teeth into the X */
-
-        .top-right {
-          opacity: 1;
-          transform: translate(-6px, 6px) scale(2) rotate(0);
-          stroke-width: 1.5;
-        }
-
-        .bottom-left {
-          opacity: 1;
-          transform: translate(6px, -6px) scale(2) rotate(0);
-          stroke-width: 1.5;
-        }
-
-        /* Transform top-left and bottom-right teeth into the X */
-
-        .top-left {
-          opacity: 1;
-          transform: translate(6px, 6px) scale(2) rotate(0);
-          stroke-width: 1.5;
-        }
-
-        .bottom-right {
-          opacity: 1;
-          transform: translate(-6px, -6px) scale(2) rotate(0);
-          stroke-width: 1.5;
-        }
-      }
-
-      .icon {
-        transition: transform 0.4s ease;
-      }
-
-      .icon path,
-      .icon circle {
-        transition:
-          transform 0.4s cubic-bezier(0.68, -0.6, 0.32, 1.6),
-          opacity 0.3s ease-in-out,
-          stroke-width 0.3s ease;
-        transform-origin: center;
-      }
-    }
-  }
-
   .preferences {
     position: fixed;
     top: calc(var(--navbar-height) + 1px);
@@ -243,6 +62,7 @@ const currentPath = Astro.url.pathname;
 
     .title {
       margin-bottom: 2em;
+      color: var(--accent-color);
     }
 
     .switchers {
@@ -262,34 +82,8 @@ const currentPath = Astro.url.pathname;
 
       .title {
         margin-bottom: 0.5em;
-        color: var(--foreground-color);
+        color: var(--accent-color);
       }
     }
   }
 </style>
-
-<script>
-  // Toggle preferences visibility
-  const preferencesToggleBtn = document.getElementById(
-    "preferences-toggle-btn",
-  );
-  const preferences = document.getElementById("preferences");
-
-  preferencesToggleBtn?.addEventListener("click", () => {
-    preferences?.classList.toggle("active");
-    preferencesToggleBtn.classList.toggle("active");
-  });
-
-  // Close the preferences when clicking outside
-  document.addEventListener("click", (event) => {
-    const target = event.target as HTMLElement;
-    if (
-      preferences?.classList.contains("active") &&
-      !preferences.contains(target) &&
-      !preferencesToggleBtn?.contains(target)
-    ) {
-      preferences.classList.remove("active");
-      preferencesToggleBtn?.classList.remove("active");
-    }
-  });
-</script>

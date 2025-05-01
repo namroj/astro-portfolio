@@ -124,7 +124,7 @@ export default function VenezuelaToArgentinaMap() {
     }
   }, [getMapStyles]);
 
-  // Load Google Maps script and initialize the map
+  // Load a Google Maps script and initialize the map
   useEffect(() => {
     if (typeof window !== "undefined") {
       const loadScript = () => {

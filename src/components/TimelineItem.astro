@@ -1,62 +1,20 @@
 ---
 import "../styles/timeline-item.css";
+import type { JobPosition } from "../types/env";
 
 const { item, isLast, type } = Astro.props;
+const data = item.data;
 
-let title, date, entity, location, description, tags, logo, url;
-
-if (type === "education") {
-  const {
-    title: eduTitle,
-    interval,
-    entity: eduEntity,
-    location: eduLocation,
-    description: eduDescription,
-    tags: eduTags,
-  } = item.data;
-  title = eduTitle;
-  date = interval;
-  entity = eduEntity;
-  location = eduLocation;
-  description = eduDescription;
-  tags = eduTags;
-  logo = entity.image.path;
-  url = entity.url;
-} else if (type === "experience") {
-  const {
-    entity: expEntity,
-    interval,
-    location: expLocation,
-    tags: expTags,
-  } = item.data;
-  title = expEntity.name;
-  date = interval;
-  entity = expEntity;
-  location = expLocation;
-  tags = expTags;
-  logo = entity.image.path;
-  url = entity.url;
-} else if (type === "project") {
-  const {
-    name,
-    year,
-    logo: projLogo,
-    location: projLocation,
-    description: projDescription,
-    url: projUrl,
-    tags: projTags,
-  } = item.data;
-  title = name;
-  date = year;
-  location = projLocation;
-  description = projDescription;
-  tags = projTags;
-  logo = projLogo;
-  url = projUrl;
-}
+const title = type === "project" ? data.name : data.entity?.name || data.title;
+const date = type === "project" ? data.year : data.interval;
+const location = data.location;
+const description = type !== "experience" ? data.description : undefined;
+const tags = data.tags || data.projTags;
+const logo = type === "project" ? data.logo : data.entity?.image;
+const url = type === "project" ? data.url : data.entity?.url;
 ---
 
-<li class="timeline-item" data-tags={tags.join(",")}>
+<li class="timeline-item" data-tags={tags?.join(",")}>
   <div class="connector">
     <div class="dot"></div>
     {!isLast && <div class="line" />}
@@ -70,69 +28,55 @@ if (type === "education") {
 
     <div class="entity">
       {
-        type === "project" ? (
+        logo && (
           <img
-            src={logo}
-            alt={`${title} logo`}
-            class="entity-logo entity-logo--project"
-            width="200"
-            height="200"
+            src={logo.path}
+            alt={logo.alt || `${title} logo`}
+            class={type === "project" ? "logo" : "entity-logo"}
+            width={type === "project" ? "200" : "30"}
+            height={type === "project" ? "200" : "30"}
             style={
-              item.data.bg_color
-                ? `background-color: ${item.data.bg_color}`
+              logo.bg_color && type === "project"
+                ? `background-color: ${logo.bg_color}`
                 : ""
             }
           />
-        ) : (
-          <img
-            src={logo}
-            alt={entity.image?.alt || `${title} logo`}
-            class="entity-logo"
-            width="30"
-            height="30"
-          />
         )
       }
-
       <a
         href={url}
         target="_blank"
         rel="noopener noreferrer"
         class="entity-name"
       >
-        {type === "project" ? title : entity.name}
+        {title}
       </a>
       <span class="location">{location}</span>
     </div>
 
     {
-      type === "project" && item.data.summary && (
-        <p class="summary">{item.data.summary}</p>
+      type === "project" && data.summary && (
+        <p class="summary">{data.summary}</p>
       )
     }
-
     {description && <p class="description">{description}</p>}
 
     {
-      type === "experience" && item.data.positions && (
+      type === "experience" && data.positions && (
         <ul class="positions">
-          {item.data.positions.map(
-            (
-              position, // TODO type
-            ) => (
-              <li class="position">
-                <h4 class="position-title">{position.title}</h4>
-                <ul class="position-description">
-                  {position.description.split("||").map((desc: string) => (
-                    <li>{desc}</li>
-                  ))}
-                </ul>
-                {position.highlight && (
-                  <p class="position-highlight">{position.highlight}</p>
-                )}
-              </li>
-            ),
-          )}
+          {data.positions.map((position: JobPosition) => (
+            <li class="position">
+              <h4 class="position-title">{position.title}</h4>
+              <ul class="position-description">
+                {position.description.split("||").map((desc: string) => (
+                  <li>{desc}</li>
+                ))}
+              </ul>
+              {position.highlight && (
+                <p class="position-highlight">{position.highlight}</p>
+              )}
+            </li>
+          ))}
         </ul>
       )
     }
@@ -148,9 +92,9 @@ if (type === "education") {
     }
 
     {
-      type === "education" && item.data.certificate && (
+      type === "education" && data.certificate && (
         <a
-          href={item.data.certificate}
+          href={data.certificate}
           class="certificate"
           target="_blank"
           rel="noopener noreferrer"

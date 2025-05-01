@@ -159,10 +159,10 @@
     .tags {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.5em;
+      gap: calc(var(--gap) /2);
       list-style: none;
       padding: 0;
-      margin-bottom: 1em;
+      margin: var(--gap) 0;
 
       .tag {
         font-size: 0.75em;

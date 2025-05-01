@@ -1,0 +1,26 @@
+.timeline {
+  position: relative;
+  margin: 1em 0 0 0;
+
+  .timeline-list {
+    margin-top: 1em;
+  }
+
+  @media screen and (min-width: 993px) {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    gap: 1em;
+    grid-template-areas: "first second"; /* Force the second column to appear before the first */
+    .timeline-filters {
+      position: sticky;
+      top: calc(45px + 1em);
+      align-self: start;
+      grid-area: second;
+    }
+
+    .timeline-list {
+      grid-area: first;
+      margin-top: unset;
+    }
+  }
+}

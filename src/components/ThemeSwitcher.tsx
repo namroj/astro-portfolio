@@ -1,16 +1,26 @@
 import { useStore } from "@nanostores/preact";
-import { useEffect } from "preact/hooks";
+import { useEffect, useState } from "preact/hooks";
 import { activeTheme } from "../stores/activeThemeStore.ts";
-import type { Theme } from "../env";
+import type { Theme } from "../types/env";
 import "../styles/theme-switcher.css";
 
 const ThemeSwitcher = () => {
   const theme = useStore(activeTheme); // Subscribes to the current theme state
+  const [preferredTheme, setPreferredTheme] = useState<Theme>("system");
+
+  useEffect(() => {
+    const savedTheme = (localStorage.getItem("theme") as Theme) ?? "system";
+    setPreferredTheme(savedTheme);
+    if (savedTheme !== theme) {
+      activeTheme.set(savedTheme);
+    }
+  }, []);
 
   // Function to handle the theme change
   const handleThemeChange = (selectedTheme: Theme) => {
     activeTheme.set(selectedTheme); // Update the state
     localStorage.setItem("theme", selectedTheme); // Save to localStorage
+    setPreferredTheme(selectedTheme);
 
     if (selectedTheme === "system") {
       // Apply system theme
@@ -26,33 +36,36 @@ const ThemeSwitcher = () => {
     }
   };
 
-  // Synchronize the theme on a component mount
   useEffect(() => {
-    // Get the stored theme from localStorage
-    const storedTheme = (localStorage.getItem("theme") ?? "system") as Theme;
+    if (theme === "system") {
+      const updateSystemTheme = () => {
+        const preferredColorScheme = window.matchMedia(
+          "(prefers-color-scheme: dark)",
+        ).matches
+          ? "dark"
+          : "light";
+        document.documentElement.setAttribute(
+          "data-theme",
+          preferredColorScheme,
+        );
+      };
 
-    // Set the initial theme
-    activeTheme.set(storedTheme);
+      const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+      mediaQuery.addEventListener("change", updateSystemTheme);
 
-    if (storedTheme !== "system") {
-      // Apply the stored theme directly
-      document.documentElement.setAttribute("data-theme", storedTheme);
+      updateSystemTheme();
+
+      return () => mediaQuery.removeEventListener("change", updateSystemTheme);
     } else {
-      // Apply the system theme based on user preference
-      const preferredColorScheme = window.matchMedia(
-        "(prefers-color-scheme: dark)",
-      ).matches
-        ? "dark"
-        : "light";
-      document.documentElement.setAttribute("data-theme", preferredColorScheme);
+      document.documentElement.setAttribute("data-theme", theme);
     }
-  }, []);
+  }, [preferredTheme]);
 
   return (
     <div class="theme-switcher">
       {/* Light Theme Button */}
       <button
-        class={`btn light ${theme === "light" ? "active" : ""}`}
+        class={`btn light ${preferredTheme === "light" ? "active" : ""}`}
         onClick={() => handleThemeChange("light")}
       >
         <svg
@@ -70,7 +83,7 @@ const ThemeSwitcher = () => {
 
       {/* Dark Theme Button */}
       <button
-        class={`btn dark ${theme === "dark" ? "active" : ""}`}
+        class={`btn dark ${preferredTheme === "dark" ? "active" : ""}`}
         onClick={() => handleThemeChange("dark")}
       >
         <svg
@@ -88,7 +101,7 @@ const ThemeSwitcher = () => {
 
       {/* System Theme Button */}
       <button
-        class={`btn system ${theme === "system" ? "active" : ""}`}
+        class={`btn system ${preferredTheme === "system" ? "active" : ""}`}
         onClick={() => handleThemeChange("system")}
       >
         <svg

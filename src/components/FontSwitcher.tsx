@@ -1,7 +1,7 @@
 import { useStore } from "@nanostores/preact";
 import { useEffect } from "preact/hooks";
 import { activeFont } from "../stores/activeFontStore.ts";
-import type { Font } from "../env";
+import type { Font } from "../types/env";
 import "../styles/font-switcher.css";
 
 const FontSwitcher = () => {
@@ -20,8 +20,8 @@ const FontSwitcher = () => {
   // Synchronize the font on the component mount
   useEffect(() => {
     // Get the stored font from localStorage
-    const storedFont = (localStorage.getItem("font") ||
-      "Cascadia Code") as Font;
+    const storedFont = (localStorage.getItem("font") ??
+      "JetBrains Mono") as Font;
 
     // Set the initial font
     activeFont.set(storedFont);

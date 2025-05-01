@@ -7,6 +7,44 @@ const title = {
 };
 ---
 
+<style>
+  .intro {
+    display: none;
+    align-items: center;
+    gap: var(--gap);
+  }
+
+  h2 {
+    font-style: italic;
+  }
+
+  img {
+    width: 225px;
+    height: 225px;
+    margin-bottom: 1em;
+    border: 3px solid var(--border-color);
+    border-inline-start: 3px solid var(--accent-color);
+    border-radius: 50%;
+  }
+
+  p {
+    text-wrap: pretty;
+    max-width: 50dvw;
+  }
+</style>
+
 <Layout title={title}>
   <h2>Desarrollador de Software</h2>
+  <div class="intro">
+    <img src="/images/jorman.jpeg" alt="Foto: Jorman Espinoza" />
+    <div>
+      <h1>Jorman Espinoza</h1>
+
+      <p>
+        Me he desempeñado en distintos equipos tanto como Backend como Frontend,
+        soy un apasionado del código limpio, siempre buscando generar soluciones
+        que cumplan y superen las expectativas de clientes.
+      </p>
+    </div>
+  </div>
 </Layout>
