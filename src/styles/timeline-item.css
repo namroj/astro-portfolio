@@ -65,7 +65,9 @@
 
       .logo {
         border-radius: 4px;
-        object-fit: cover;
+        aspect-ratio: 3/2;
+        object-fit: contain;
+        mix-blend-mode: color;
 
         &.project {
           object-fit: contain;
@@ -129,7 +131,7 @@
       .position-description {
         font-size: 0.875em;
         color: var(--accent-muted-color);
-        margin-bottom: 0.5em;
+        margin-bottom: calc(var(--gap) / 2);
 
         li {
           list-style: disc;
@@ -159,7 +161,7 @@
     .tags {
       display: flex;
       flex-wrap: wrap;
-      gap: calc(var(--gap) /2);
+      gap: calc(var(--gap) / 2);
       list-style: none;
       padding: 0;
       margin: var(--gap) 0;

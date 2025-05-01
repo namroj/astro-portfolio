@@ -1,41 +1,38 @@
 import { useStore } from "@nanostores/preact";
-import { useEffect } from "preact/hooks";
+import { useEffect, useState } from "preact/hooks";
 import { activeFont } from "../stores/activeFontStore.ts";
 import type { Font } from "../types/env";
 import "../styles/font-switcher.css";
 
 const FontSwitcher = () => {
   const font = useStore(activeFont); // Subscribes to the current font state
+  const [preferredFont, setPreferredFont] = useState<Font>("JetBrains Mono");
 
-  // Function to handle the font change
   const handleFontChange = (selectedFont: Font) => {
     activeFont.set(selectedFont); // Update the state
     localStorage.setItem("font", selectedFont); // Save to localStorage
 
-    // Apply the font
     document.documentElement.style.setProperty("--main-font", selectedFont);
     document.documentElement.style.setProperty("--code-font", selectedFont);
   };
 
-  // Synchronize the font on the component mount
   useEffect(() => {
-    // Get the stored font from localStorage
     const storedFont = (localStorage.getItem("font") ??
       "JetBrains Mono") as Font;
 
-    // Set the initial font
     activeFont.set(storedFont);
+    setPreferredFont(storedFont);
 
     // Apply the stored font
     document.documentElement.style.setProperty("--main-font", storedFont);
     document.documentElement.style.setProperty("--code-font", storedFont);
-  }, []); // Runs only once on mount
+  }, []);
 
   return (
     <div class="font-switcher">
       {/* JetBrains Mono Button */}
       <button
-        class={`font-btn jetbrains-mono ${font === "JetBrains Mono" ? "active" : ""}`}
+        class={`font-btn jetbrains-mono ${preferredFont === "JetBrains Mono" ? "active" : ""}`}
         onClick={() => handleFontChange("JetBrains Mono")}
         title="JetBrains Mono"
       >
@@ -44,7 +41,7 @@ const FontSwitcher = () => {
 
       {/* Cascadia Code Button */}
       <button
-        class={`font-btn cascadia-code ${font === "Cascadia Code" ? "active" : ""}`}
+        class={`font-btn cascadia-code ${preferredFont === "Cascadia Code" ? "active" : ""}`}
         onClick={() => handleFontChange("Cascadia Code")}
         title="Cascadia Code"
       >
@@ -53,7 +50,7 @@ const FontSwitcher = () => {
 
       {/* Dank Mono Button */}
       <button
-        class={`font-btn dank-mono ${font === "Dank Mono" ? "active" : ""}`}
+        class={`font-btn dank-mono ${preferredFont === "Dank Mono" ? "active" : ""}`}
         onClick={() => handleFontChange("Dank Mono")}
         title="Dank Mono"
       >
@@ -62,7 +59,7 @@ const FontSwitcher = () => {
 
       {/* Fira Code Button */}
       <button
-        class={`font-btn fira-code ${font === "Fira Code" ? "active" : ""}`}
+        class={`font-btn fira-code ${preferredFont === "Fira Code" ? "active" : ""}`}
         onClick={() => handleFontChange("Fira Code")}
         title="Fira Code"
       >

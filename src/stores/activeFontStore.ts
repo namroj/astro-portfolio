@@ -1,9 +1,11 @@
 import { atom } from "nanostores";
 import type { Font } from "../types/env";
 
-let initialFont: Font = "JetBrains Mono";
-if (typeof window !== "undefined") {
-  initialFont = (localStorage.getItem("font") ?? "JetBrains Mono") as Font;
-}
+const getInitialFont = (): Font => {
+  if (typeof localStorage !== "undefined") {
+    return (localStorage.getItem("font") as Font) ?? "JetBrains Mono";
+  }
+  return "JetBrains Mono";
+};
 
-export const activeFont = atom<Font>(initialFont);
+export const activeFont = atom<Font>(getInitialFont());
