@@ -3,7 +3,7 @@ document.addEventListener("astro:page-load", () => {
     "searchInput",
   ) as HTMLInputElement;
   const tagButtons = document.querySelectorAll(".tag-btn");
-  const educationItems = document.querySelectorAll(".timeline-item");
+  const items = document.querySelectorAll(".timeline-item");
   const noMatchItemsElement = document.querySelector(
     ".no-match-items",
   ) as HTMLElement;
@@ -14,18 +14,16 @@ document.addEventListener("astro:page-load", () => {
   let activeTags: string[] = [];
   let searchTerm = "";
 
-  // Function to normalize text (remove accents and convert to lowercase)
   function normalizeText(text: string): string {
     return text
       .normalize("NFD")
-      .replace(/[\u0300-\u036f]/g, "") // Remove accents
+      .replace(/[\u0300-\u036f]/g, "")
       .toLowerCase()
       .trim();
   }
 
   function highlightText(element: Element, term: string) {
     if (!term.trim()) {
-      // Restore original text by removing highlight spans
       element.innerHTML = element.innerHTML.replace(
         /<mark class="highlight">|<\/mark>/g,
         "",
@@ -37,21 +35,19 @@ document.addEventListener("astro:page-load", () => {
       /<mark class="highlight">|<\/mark>/g,
       "",
     );
-
-    // Create a regex pattern that matches the normalized version of the search term
     const normalizedTerm = normalizeText(term);
 
-    // Use a regex pattern that matches accented and non-accented characters
     const accentInsensitivePattern = normalizedTerm
       .split("")
       .map((char) => {
         const accentedVariants: Record<string, string> = {
-          a: "[aáà]",
-          e: "[eéè]",
-          i: "[iíì]",
-          o: "[oóò]",
-          u: "[uúù]",
+          a: "[aáàäâãå]",
+          e: "[eéèëê]",
+          i: "[iíìïî]",
+          o: "[oóòöôõ]",
+          u: "[uúùüû]",
           n: "[nñ]",
+          c: "[cç]",
         };
         return accentedVariants[char] || char;
       })
@@ -59,7 +55,6 @@ document.addEventListener("astro:page-load", () => {
 
     const regex = new RegExp(`(${accentInsensitivePattern})`, "gi");
 
-    // Replace it while preserving the original case and accents
     let lastIndex = 0;
     let result = "";
     let match;
@@ -76,24 +71,20 @@ document.addEventListener("astro:page-load", () => {
   }
 
   function filterItems() {
-    const normalizedSearchTerm = normalizeText(searchTerm); // Normalize the search term
-    let visibleItems = 0; // To track how many items should be visible
+    const normalizedSearchTerm = normalizeText(searchTerm);
+    let visibleItems = 0;
 
-    educationItems.forEach((item) => {
+    items.forEach((item) => {
       const itemElement = item as HTMLElement;
       const itemTags = itemElement.dataset.tags?.split(",") || [];
       const titleElement = itemElement.querySelector("h3");
-      const descriptionElement = itemElement.querySelector(
-        ".timeline-item__description",
-      );
+      const descriptionElement = itemElement.querySelector(".description");
 
-      // Extract the title & description and normalize for matching
       const title = titleElement?.textContent ?? "";
       const description = descriptionElement?.textContent ?? "";
       const normalizedTitle = normalizeText(title);
       const normalizedDescription = normalizeText(description);
 
-      // Determine if the item matches ALL the active tags or the search term
       const matchesTag =
         activeTags.length === 0 ||
         activeTags.every((tag) => itemTags.includes(tag));
@@ -102,34 +93,23 @@ document.addEventListener("astro:page-load", () => {
         normalizedTitle.includes(normalizedSearchTerm) ||
         normalizedDescription.includes(normalizedSearchTerm);
 
-      // The item is visible if it matches both the tag and the search
       const isVisible = matchesTag && matchesSearch;
-
-      // Update visible/hidden styles
       itemElement.style.display = isVisible ? "flex" : "none";
 
-      if (isVisible) {
-        visibleItems++;
+      if (titleElement) highlightText(titleElement, searchTerm);
+      if (descriptionElement) highlightText(descriptionElement, searchTerm);
 
-        // Highlight matching terms if the search term exists
-        if (searchTerm && titleElement && descriptionElement) {
-          highlightText(titleElement, searchTerm);
-          highlightText(descriptionElement, searchTerm);
-        } else {
-          // Remove existing highlights if no search term is provided
-          if (titleElement)
-            titleElement.innerHTML = titleElement.textContent ?? "";
-          if (descriptionElement)
-            descriptionElement.innerHTML = descriptionElement.textContent ?? "";
-        }
-      }
+      if (isVisible) visibleItems++;
     });
 
-    console.log(noMatchItemsElement);
-    if (noMatchItemsElement) {
-      // Show or hide the "No Results" message
-      noMatchItemsElement.style.display = visibleItems === 0 ? "block" : "none";
-    }
+    noMatchItemsElement.style.display = visibleItems === 0 ? "block" : "none";
+  }
+
+  if (searchInput) {
+    searchInput.addEventListener("input", (e) => {
+      searchTerm = (e.target as HTMLInputElement).value;
+      filterItems();
+    });
   }
 
   function setActiveTag(newTag: string) {

@@ -27,81 +27,55 @@ const url = type === "project" ? data.url : data.entity?.url;
     </header>
 
     <div class="entity">
-      {
-        logo && (
-          <img
-            src={logo.path}
-            alt={logo.alt || `${title} logo`}
-            class={type === "project" ? "logo" : "entity-logo"}
-            width={type === "project" ? "200" : "30"}
-            height={type === "project" ? "200" : "30"}
-            style={
-              logo.bg_color && type === "project"
-                ? `background-color: ${logo.bg_color}`
-                : ""
-            }
-          />
-        )
-      }
-      <a
-        href={url}
-        target="_blank"
-        rel="noopener noreferrer"
-        class="entity-name"
-      >
+      {logo && (
+        <img
+          src={logo.path}
+          alt={logo.alt || `${title} logo`}
+          class={type === "project" ? "logo" : "entity-logo"}
+          width={type === "project" ? "200" : "30"}
+          height={type === "project" ? "200" : "30"}
+          style={logo.bg_color && type === "project" ? `background-color: ${logo.bg_color}` : ""}
+        />
+      )}
+      <a href={url} target="_blank" rel="noopener noreferrer" class="entity-name">
         {title}
       </a>
       <span class="location">{location}</span>
     </div>
 
-    {
-      type === "project" && data.summary && (
-        <p class="summary">{data.summary}</p>
-      )
-    }
+    {type === "project" && data.summary && <p class="summary">{data.summary}</p>}
     {description && <p class="description">{description}</p>}
 
-    {
-      type === "experience" && data.positions && (
-        <ul class="positions">
-          {data.positions.map((position: JobPosition) => (
-            <li class="position">
-              <h4 class="position-title">{position.title}</h4>
-              <ul class="position-description">
-                {position.description.split("||").map((desc: string) => (
-                  <li>{desc}</li>
-                ))}
-              </ul>
-              {position.highlight && (
-                <p class="position-highlight">{position.highlight}</p>
-              )}
-            </li>
-          ))}
-        </ul>
-      )
-    }
+    {type === "experience" && data.positions && (
+      <ul class="positions">
+        {data.positions.map((position: JobPosition) => (
+          <li class="position">
+            <h4 class="position-title">{position.title}</h4>
+            <ul class="position-description">
+              {position.description.split("||").map((desc: string) => (
+                <li>{desc}</li>
+              ))}
+            </ul>
+            {position.highlight && (
+              <p class="position-highlight">{position.highlight}</p>
+            )}
+          </li>
+        ))}
+      </ul>
+    )}
 
-    {
-      tags && (
-        <ul class="tags">
-          {tags.map((tag: string) => (
-            <li class="tag">{tag}</li>
-          ))}
-        </ul>
-      )
-    }
+    {tags && (
+      <ul class="tags">
+        {tags.map((tag: string) => (
+          <li class="tag">{tag}</li>
+        ))}
+      </ul>
+    )}
 
-    {
-      type === "education" && data.certificate && (
-        <a
-          href={data.certificate}
-          class="certificate"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Ver certificado
-        </a>
-      )
-    }
+    {type === "education" && data.certificate && (
+      <a href={data.certificate} class="certificate" target="_blank" rel="noopener noreferrer">
+        Ver certificado
+      </a>
+    )}
   </article>
 </li>
