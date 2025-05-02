@@ -28,7 +28,7 @@ const tags = [
 ];
 ---
 
-<style is:raw>
+<style>
   .post {
     .tags {
       margin-bottom: 1em;
@@ -36,22 +36,19 @@ const tags = [
       gap: 0.5em;
 
       .tag {
-        background: var(--accent-muted-color);
         padding: 0.25em 0.75em;
         border-radius: 25px;
-        border: 1px solid var(--accent-muted-color);
         font-size: 0.75em;
-        color: var(--background-color);
+        color: var(--accent-muted-color);
         cursor: pointer;
-        font-style: italic;
 
         a:hover {
-          color: var(--background-color);
+          color: var(--accent-secondary-color);
         }
 
         &:hover,
         &.highlight-tag {
-          background: var(--accent-color);
+          background: transparent;
           border-color: var(--accent-color);
         }
       }
