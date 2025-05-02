@@ -35,9 +35,9 @@ const currentPath = Astro.url.pathname;
   .preferences {
     position: fixed;
     top: calc(var(--navbar-height) + 1px);
-    right: -302px;
-    width: 302px;
-    height: calc(100dvh - 81px);
+    right: calc(var(--sidebar-width) * -1);
+    width: var(--sidebar-width);
+    height: calc(50dvh);
     background-image: var(--navigation-background-image);
     background-repeat: repeat;
     backdrop-filter: blur(10px);
@@ -54,7 +54,7 @@ const currentPath = Astro.url.pathname;
       right: 0;
     }
 
-    @media screen and (min-width: 992px) {
+    @media screen and (min-width: 993px) {
       right: -28dvw;
       width: 28dvw;
       height: calc(100vh - 91px);

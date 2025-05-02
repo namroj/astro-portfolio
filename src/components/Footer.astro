@@ -1,7 +1,5 @@
 ---
 import BreadCrumbs from "./BreadCrumbs.astro";
-import TableOfContentsToggleButton from "./TableOfContentsToggleButton.astro";
-import PreferencesToggleButton from "./PreferecesToggleButton.astro";
 import "../styles/footer.css";
 
 const { breadCrumbs } = Astro.props;
@@ -13,10 +11,6 @@ const { breadCrumbs } = Astro.props;
   </div>
 
   <div class="right">
-    <div class="controls">
-      <PreferencesToggleButton />
-      <TableOfContentsToggleButton />
-    </div>
     <p>© {new Date().getFullYear()}. <a href="/">Jorman Espinoza</a></p>
   </div>
 </footer>

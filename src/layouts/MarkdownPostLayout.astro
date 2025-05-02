@@ -1,9 +1,8 @@
 ---
 import Layout from "./Layout.astro";
 import { slugify } from "../utils/slugify";
+import { LANGUAGE } from "../const";
 import "../styles/code-block.css";
-
-const LANGUAGE = "es-ES";
 
 const { frontmatter } = Astro.props;
 
@@ -112,7 +111,7 @@ const tags = [
     <span>{frontmatter.id}</span>
     <p>
       {
-        new Date(frontmatter.pubDate).toLocaleDateString(LANGUAGE, {
+        new Date(frontmatter.pubDate).toLocaleDateString(LANGUAGE.regional, {
           day: "2-digit",
           month: "long",
           year: "numeric",

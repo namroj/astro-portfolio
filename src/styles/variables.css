@@ -51,11 +51,16 @@
   --font-size: 14px;
   --line-height: 1.25;
   --navbar-height: 45px;
-  --footer-height: 45px;
-  --footer-breadcrump-height: 33px;
+  --footer-height: 40px;
+  --footer-breadcrump-height: 30px;
   --hamburguer-size: 35px;
   --control-size: 30px;
   --gap: 1em;
+  --sidebar-width: 300px;
+}
+
+@media screen and (min-width: 993px) {
+  --sidebar-width: 35dvw;
 }
 
 :root[data-theme="system"],
@@ -96,6 +101,8 @@
   /* Background patterns - Dark Theme */
   --background-image: url("data:image/svg+xml,%3Csvg width='6' height='6' viewBox='0 0 6 6' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='background-color' fill-opacity='0.4' fill-rule='evenodd'%3E%3Cpath d='M5 0h1L0 6V5zM6 5v1H5z'/%3E%3C/g%3E%3C/svg%3E");
   --navigation-background-image: url("data:image/svg+xml,%3Csvg width='6' height='6' viewBox='0 0 6 6' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='accent-color' fill-opacity='0.9' fill-rule='evenodd'%3E%3Cpath d='M5 0h1L0 6V5zM6 5v1H5z'/%3E%3C/g%3E%3C/svg%3E");
+
+  /* Markdown code blocks */
 
   .astro-code,
   .astro-code span {

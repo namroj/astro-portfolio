@@ -1,4 +1,6 @@
 ---
+import TableOfContentsToggleButton from "./TableOfContentsToggleButton.astro";
+import PreferencesToggleButton from "./PreferecesToggleButton.astro";
 const currentPath = Astro.url.pathname;
 ---
 
@@ -30,6 +32,10 @@ const currentPath = Astro.url.pathname;
     <a href="/contact" class={currentPath === "/contact" ? "active" : ""}>
       Contacto
     </a>
+    <div class="controls">
+      <PreferencesToggleButton />
+      <TableOfContentsToggleButton />
+    </div>
   </div>
 </div>
 
@@ -48,29 +54,6 @@ const currentPath = Astro.url.pathname;
       font-size: 1.489em;
       font-weight: 700;
       color: var(--accent-color);
-    }
-
-    .links {
-      display: none;
-      gap: 1em;
-
-      a {
-        display: none;
-        font-size: 1.489em;
-        color: var(--accent-muted-color);
-
-        &:first-of-type {
-          align-self: flex-start;
-        }
-
-        &:hover {
-          color: var(--accent-secondary-color);
-        }
-
-        &.active {
-          color: var(--accent-color);
-        }
-      }
     }
 
     &.expanded {
@@ -93,7 +76,46 @@ const currentPath = Astro.url.pathname;
       }
     }
 
-    @media screen and (min-width: 992px) {
+    .links {
+      display: none;
+      gap: 1em;
+
+      @media screen and (min-width: 993px) {
+        align-items: center;
+      }
+
+      a {
+        display: none;
+        font-size: 1.489em;
+        color: var(--accent-muted-color);
+
+        &:hover {
+          color: var(--accent-secondary-color);
+        }
+
+        &.active {
+          color: var(--accent-color);
+        }
+      }
+    }
+
+    .controls {
+      position: absolute;
+      top: 0.45em;
+      right: calc(var(--control-size) * 1.456);
+      display: flex;
+      justify-content: flex-end;
+      gap: calc(var(--gap) / 2);
+      z-index: 10;
+
+      @media screen and (min-width: 993px) {
+        position: initial;
+        top: unset;
+        right: unset;
+      }
+    }
+
+    @media screen and (min-width: 993px) {
       margin: 0 auto;
       justify-content: space-between;
 

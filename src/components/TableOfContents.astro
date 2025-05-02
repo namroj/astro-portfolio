@@ -6,21 +6,15 @@
   .toc {
     position: fixed;
     top: calc(var(--navbar-height) + 1px);
-    right: -302px;
-    width: 302px;
-    height: calc(100vh - 81px);
+    right: calc(var(--sidebar-width) * -1);
+    width: var(--sidebar-width);
+    height: 50dvh;
     background-image: var(--navigation-background-image);
     background-repeat: repeat;
     backdrop-filter: blur(10px);
     z-index: 9;
     transition: right 0.3s ease;
     overflow-y: auto;
-
-    @media screen and (min-width: 992px) {
-      right: -28dvw;
-      width: 28dvw;
-      height: calc(100vh - 91px);
-    }
 
     &.active {
       right: 0;
