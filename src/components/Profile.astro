@@ -9,6 +9,7 @@
     left: calc(var(--sidebar-width) * -1);
     width: var(--sidebar-width);
     height: calc(50dvh);
+    padding: var(--gap);
     background-image: var(--navigation-background-image);
     background-repeat: repeat;
     backdrop-filter: blur(10px);
@@ -30,8 +31,33 @@
       width: 28dvw;
       height: calc(100vh - 91px);
     }
+
+    img {
+      width: 189px;
+      height: 189px;
+      padding: calc(var(--gap) * 0.23);
+      border-radius: 50%;
+      border: 2px solid var(--accent-color);
+    }
+
+    h2 {
+      color: var(--accent-color);
+      font-style: italic;
+    }
+
+    h3 {
+      color: var(--accent-muted-color);
+    }
+
+    h4 {
+      text-align: right;
+    }
   }
 </style>
 
 <aside id="profile">
+  <img src="/images/jorman.jpeg" alt="Jorman Espinoza foto" />
+  <h3>Espinoza Torrealba</h3>
+  <h2>Jorman Daniel</h2>
+  <h4>Desarrollador de Software</h4>
 </aside>
