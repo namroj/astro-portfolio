@@ -1,0 +1,37 @@
+---
+
+---
+
+<style>
+  #profile {
+    position: fixed;
+    top: calc(var(--navbar-height) + 1px);
+    left: calc(var(--sidebar-width) * -1);
+    width: var(--sidebar-width);
+    height: calc(50dvh);
+    background-image: var(--navigation-background-image);
+    background-repeat: repeat;
+    backdrop-filter: blur(10px);
+    z-index: 9;
+    transition: left 0.3s ease;
+    overflow-y: auto;
+    box-shadow: -2px 0 5px rgba(var(--background-color-rgb), 0.1);
+
+    &.expanded {
+      border-left: none;
+    }
+
+    &.active {
+      left: 0;
+    }
+
+    @media screen and (min-width: 993px) {
+      right: -28dvw;
+      width: 28dvw;
+      height: calc(100vh - 91px);
+    }
+  }
+</style>
+
+<aside id="profile">
+</aside>

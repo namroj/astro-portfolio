@@ -4,41 +4,6 @@ import PreferencesToggleButton from "./PreferecesToggleButton.astro";
 const currentPath = Astro.url.pathname;
 ---
 
-<div class="navigation">
-  <div class="dev">
-    <a href="/">Jorman Espinoza</a>
-  </div>
-  <div class="links">
-    <a href="/about" class={currentPath === "/about" ? "active" : ""}>
-      Sobre mí
-    </a>
-    <a href="/education" class={currentPath === "/education" ? "active" : ""}>
-      Educación
-    </a>
-    <a href="/experience" class={currentPath === "/experience" ? "active" : ""}>
-      Experiencia
-    </a>
-    <a href="/projects" class={currentPath === "/projects" ? "active" : ""}>
-      Proyectos
-    </a>
-    <a
-      href="/blog"
-      class={currentPath === "/blog" || currentPath.startsWith("/blog")
-        ? "active"
-        : ""}
-    >
-      Blog
-    </a>
-    <a href="/contact" class={currentPath === "/contact" ? "active" : ""}>
-      Contacto
-    </a>
-    <div class="controls">
-      <PreferencesToggleButton />
-      <TableOfContentsToggleButton />
-    </div>
-  </div>
-</div>
-
 <style>
   .navigation {
     display: flex;
@@ -46,14 +11,20 @@ const currentPath = Astro.url.pathname;
     width: 100%;
     height: var(--navbar-height);
 
-    .dev a {
+    .dev {
       display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
       align-items: center;
-      font-size: 1.489em;
-      font-weight: 700;
-      color: var(--accent-color);
+      gap: calc(var(--gap) / 2);
+
+      a {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        align-items: center;
+        font-size: 1.489em;
+        font-weight: 700;
+        color: var(--accent-color);
+      }
     }
 
     &.expanded {
@@ -128,5 +99,85 @@ const currentPath = Astro.url.pathname;
         }
       }
     }
+
+    #profile-image {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 1px solid var(--accent-color);
+      padding: 0.15em;
+      background-color: var(--background-color);
+      cursor: pointer;
+
+      &:hover,
+      &.active {
+        background-color: var(--accent-color);
+        border-color: var(--background-color);
+      }
+    }
   }
 </style>
+
+<div class="navigation">
+  <div class="dev">
+    <img
+      id="profile-image"
+      src="/images/jorman.jpeg"
+      alt="Jorman Espinoza image"
+    />
+    <a href="/">Jorman Espinoza</a>
+  </div>
+  <div class="links">
+    <a href="/about" class={currentPath === "/about" ? "active" : ""}>
+      Sobre mí
+    </a>
+    <a href="/education" class={currentPath === "/education" ? "active" : ""}>
+      Educación
+    </a>
+    <a href="/experience" class={currentPath === "/experience" ? "active" : ""}>
+      Experiencia
+    </a>
+    <a href="/projects" class={currentPath === "/projects" ? "active" : ""}>
+      Proyectos
+    </a>
+    <a
+      href="/blog"
+      class={currentPath === "/blog" || currentPath.startsWith("/blog")
+        ? "active"
+        : ""}
+    >
+      Blog
+    </a>
+    <a href="/contact" class={currentPath === "/contact" ? "active" : ""}>
+      Contacto
+    </a>
+    <div class="controls">
+      <PreferencesToggleButton />
+      <TableOfContentsToggleButton />
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener("astro:page-load", () => {
+    const profileToggleBtn = document.getElementById("profile-image");
+    const profile = document.getElementById("profile");
+
+    profileToggleBtn?.addEventListener("click", () => {
+      profile?.classList.toggle("active");
+      profileToggleBtn.classList.toggle("active");
+    });
+
+    document.addEventListener("click", (event) => {
+      const target = event.target as HTMLElement;
+      if (
+        profile?.classList.contains("active") &&
+        !profile.contains(target) &&
+        !profileToggleBtn?.contains(target)
+      ) {
+        profile.classList.remove("active");
+        profileToggleBtn?.classList.remove("active");
+      }
+    });
+  });
+</script>

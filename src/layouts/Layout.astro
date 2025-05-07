@@ -1,11 +1,14 @@
 ---
 import { ClientRouter } from "astro:transitions";
+
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
+import Profile from "../components/Profile.astro";
 import Preferences from "../components/Preferences.astro";
 import TableOfContents from "../components/TableOfContents.astro";
 import { LANGUAGE } from "../const";
-import "../styles/fonts.css"
+
+import "../styles/fonts.css";
 import "../styles/variables.css";
 import "../styles/global.css";
 
@@ -43,6 +46,7 @@ const { title, breadCrumbs } = Astro.props;
       <slot />
     </main>
     <Footer breadCrumbs={breadCrumbs} />
+    <Profile />
     <Preferences />
     <TableOfContents />
   </body>
