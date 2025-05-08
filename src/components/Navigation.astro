@@ -1,6 +1,8 @@
 ---
+import Image from "astro/components/Image.astro";
 import TableOfContentsToggleButton from "./TableOfContentsToggleButton.astro";
 import PreferencesToggleButton from "./PreferecesToggleButton.astro";
+import profileImage from "../assets/images/profile.jpeg";
 const currentPath = Astro.url.pathname;
 ---
 
@@ -120,10 +122,10 @@ const currentPath = Astro.url.pathname;
 
 <div class="navigation">
   <div class="dev">
-    <img
+    <Image
       id="profile-image"
-      src="/images/jorman.jpeg"
-      alt="Jorman Espinoza image"
+      src={profileImage}
+      alt="Imagen de perfil de Jorman Espinoza"
     />
     <a href="/">Jorman Espinoza</a>
   </div>
