@@ -58,7 +58,13 @@ import Socials from "./Socials.astro";
 </style>
 
 <aside id="profile">
-  <Image src={profileImage} alt="Imagen de perfil de Jorman Espinoza" />
+  <Image
+    src={profileImage}
+    alt="Imagen de perfil de Jorman Espinoza"
+    loading="eager"
+    width={150}
+    height={150}
+  />
   <h3>Espinoza Torrealba</h3>
   <h2>Jorman Daniel</h2>
   <h4>Desarrollador de Software</h4>
