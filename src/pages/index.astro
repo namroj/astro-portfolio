@@ -1,15 +1,18 @@
 ---
+import { Image } from "astro:assets";
 import Layout from "../layouts/Layout.astro";
+import Socials from "../components/Socials.astro";
+import profileImage from "/src/assets/images/profile.jpeg";
 
 const title = {
   tab: "",
-  page: "Jorman Espinoza",
+  page: ""
 };
 ---
 
 <style>
   .intro {
-    display: none;
+    display: flex;
     align-items: center;
     gap: var(--gap);
   }
@@ -34,17 +37,17 @@ const title = {
 </style>
 
 <Layout title={title}>
-  <h2>Desarrollador de Software</h2>
   <div class="intro">
-    <img src="/src/assets/images/profile.jpeg" alt="Foto: Jorman Espinoza" />
+    <Image src={profileImage} alt="Imagen de perfil de Jorman Espinoza" />
     <div>
       <h1>Jorman Espinoza</h1>
-
+      <h2>Desarrollador de Software</h2>
       <p>
         Me he desempeñado en distintos equipos tanto como Backend como Frontend,
         soy un apasionado del código limpio, siempre buscando generar soluciones
         que cumplan y superen las expectativas de clientes.
       </p>
+      <Socials template="icons" />
     </div>
   </div>
 </Layout>
