@@ -54,7 +54,7 @@ const currentPath = Astro.url.pathname;
       right: 0;
     }
 
-    @media screen and (min-width: 993px) {
+    @media screen and (min-width: var(--breakpoint-lg)) {
       right: -28dvw;
       width: 28dvw;
       height: calc(100vh - 91px);

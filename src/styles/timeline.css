@@ -6,7 +6,7 @@
     margin-top: 1em;
   }
 
-  @media screen and (min-width: 993px) {
+  @media screen and (min-width: var(--breakpoint-lg)) {
     display: grid;
     grid-template-columns: 3fr 1fr;
     gap: 1em;

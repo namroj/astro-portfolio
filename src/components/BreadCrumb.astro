@@ -16,7 +16,7 @@ const { url, label } = Astro.props;
   a {
     font-size: 0.8em;
 
-    @media screen and (min-width: 993px) {
+    @media screen and (min-width: var(--breakpoint-lg)) {
       font-size: inherit;
     }
   }
@@ -29,7 +29,7 @@ const { url, label } = Astro.props;
       color: var(--accent-color);
     }
 
-    @media screen and (min-width: 993px) {
+    @media screen and (min-width: var(--breakpoint-lg)) {
       font-size: inherit;
     }
   }

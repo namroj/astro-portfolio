@@ -15,7 +15,7 @@
   align-items: center;
   justify-content: center;
 
-  @media screen and (min-width: 993px) {
+  @media screen and (min-width: var(--breakpoint-lg)) {
     width: 35px;
     height: 35px;
   }
