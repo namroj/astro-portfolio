@@ -14,7 +14,7 @@ footer {
   background-repeat: repeat;
   padding: 0 var(--gap);
 
-  @media screen and (min-width: var(--breakpoint-lg)) {
+  @media screen and (min-width: 992px) {
     height: 45px;
     flex-direction: row;
     justify-content: space-between;
@@ -45,7 +45,7 @@ footer {
       height: var(--footer-breadcrump-height);
       left: 0;
 
-      @media screen and (min-width: var(--breakpoint-lg)) {
+      @media screen and (min-width: 992px) {
         position: initial;
         top: unset;
         left: unset;

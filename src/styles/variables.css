@@ -57,16 +57,9 @@
   --control-size: 30px;
   --gap: 1em;
   --sidebar-width: 300px;
-
-  /* Responsive breakpoints */
-  --breakpoint-sm: 576px;
-  --breakpoint-md: 768px;
-  --breakpoint-lg: 992px;
-  --breakpoint-xl: 1200px;
-  --breakpoint-xxl: 1400px;
 }
 
-@media screen and (min-width: var(--breakpoint-lg)) {
+@media screen and (min-width: 992px) {
   :root {
     --sidebar-width: 35dvw;
   }

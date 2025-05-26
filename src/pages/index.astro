@@ -3,7 +3,7 @@ import { Image } from "astro:assets";
 import Layout from "../layouts/Layout.astro";
 import Socials from "../components/Socials.astro";
 import profileImage from "../assets/images/profile.jpeg";
-const title = {};
+const title = {page: 'Jorman Espinoza'};
 ---
 
 <style>
@@ -34,10 +34,7 @@ const title = {};
 
 <Layout title={title}>
   <div class="intro">
-    <Image src={profileImage} alt="Imagen de perfil de Jorman Espinoza" />
     <div>
-      <h1>Jorman Espinoza</h1>
-      <h2>Desarrollador de Software</h2>
       <p>
         Me he desempeñado en distintos equipos tanto como Backend como Frontend,
         soy un apasionado del código limpio, siempre buscando generar soluciones
