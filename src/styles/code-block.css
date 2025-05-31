@@ -3,8 +3,9 @@
 /* Container for code blocks */
 pre {
   position: relative;
-  padding-top: 2.5em !important; /* Space for language label */
-  padding-left: 1em !important; /* Reduced padding as line numbers are now inside */
+  padding-top: calc(var(--gap) * 2.5) !important;
+  padding-left: var(--gap) !important;
+  margin: var(--gap) 0 !important;
 
   /* Language indicator */
 
@@ -14,11 +15,11 @@ pre {
     top: 0;
     left: 0;
     right: 0;
-    background: var(--background-color);
-    color: var(--foreground-color);
-    padding: 0.75em 0.5em 0.5em;
+    background: var(--background-image);
+    color: var(--accent-color);
+    padding: calc(var(--gap) / 2);
     font-family: var(--code-font), monospace;
-    font-size: 0.9em;
+    font-size: calc(var(--font-size) * 0.89);
     font-weight: bold;
     border-bottom: 1px solid var(--border-color);
     border-top: 1px solid var(--border-color);
@@ -41,12 +42,11 @@ pre {
 
     .line-number {
       display: inline-block;
-      min-width: 2.5em;
+      min-width: var(--gap);
       margin-right: 1em;
-      text-align: right;
-      font-size: 0.9em;
+      font-size: calc(var(--font-size) * 0.89);
       user-select: none;
-      padding-right: 0.5em;
+      padding-right: var(--gap);
     }
   }
 }
@@ -62,8 +62,8 @@ pre {
   cursor: pointer;
   display: flex;
   align-items: center;
-  gap: 0.5em;
-  font-size: 0.9em;
+  gap: calc(var(--gap) / 2);
+  font-size: calc(var(--font-size) * 0.89);
   padding: 0.5em 0;
   border-radius: 4px;
   transition: background-color 0.2s;
@@ -79,7 +79,7 @@ pre {
   }
 
   svg {
-    width: 16px;
-    height: 16px;
+    width: var(--font-size);
+    height: var(--font-size);
   }
 }
