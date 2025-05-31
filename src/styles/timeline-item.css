@@ -148,10 +148,10 @@
     }
 
     .certificate {
-      display: inline-flex;
-      align-items: center;
+      display: block;
       font-size: 0.875em;
       color: var(--foreground-color);
+      text-align: right;
 
       &:hover {
         color: var(--accent-color);
