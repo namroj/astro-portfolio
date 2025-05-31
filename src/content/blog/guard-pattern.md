@@ -128,9 +128,7 @@ public double calculateDiscount(Customer customer, Order order) {
     if (order == null) return 0;
     if (order.getTotal() <= 0) return 0;
     // Lógica principal
-    return customer.isVIP()
-      ? order.getTotal() * 0.2;
-      : order.getTotal() * 0.1;
+    return customer.isVIP() ? order.getTotal() * 0.2 : order.getTotal() * 0.1;
 }
 ```
 
