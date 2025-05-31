@@ -95,7 +95,7 @@
     &.summary,
     &.description {
       font-size: 0.875em;
-      line-height: 1.5;
+      line-height: var(--line-height);
       margin-bottom: 1em;
     }
 
