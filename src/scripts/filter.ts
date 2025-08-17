@@ -239,22 +239,6 @@ document.addEventListener("astro:page-load", () => {
     filterItems(); // Apply filter logic to reset visibility for all items
   }
 
-  // Attach event listeners to tag buttons
-  tagButtons.forEach((button) => {
-    button.addEventListener("click", () => {
-      const buttonElement = button as HTMLButtonElement;
-      setActiveTag(buttonElement.dataset.tag ?? "all");
-    });
-  });
-
-  // Update existing click handlers
-  tagButtons.forEach((button) => {
-    button.addEventListener("click", () => {
-      const buttonElement = button as HTMLButtonElement;
-      setActiveTag(buttonElement.dataset.tag ?? "all");
-    });
-  });
-
   // Add click handler for item tags
   document.addEventListener("click", (e) => {
     const target = e.target as HTMLElement;
@@ -283,6 +267,7 @@ document.addEventListener("astro:page-load", () => {
     }, 300);
   });
 
+  // Attach click handlers to tag buttons
   tagButtons.forEach((button) => {
     button.addEventListener("click", (event) => {
       const newTag = (event.currentTarget as HTMLElement).dataset.tag ?? "all";

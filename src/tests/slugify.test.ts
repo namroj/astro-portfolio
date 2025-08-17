@@ -25,6 +25,16 @@ describe("slugify function", () => {
     expect(slugify("__init__")).toBe("__init__");
   });
 
+  it("should preserve numbers", () => {
+    expect(slugify("astro 101")).toBe("astro-101");
+    expect(slugify("version2")).toBe("version2");
+  });
+
+  it("should preserve underscores", () => {
+    expect(slugify("my_post_title")).toBe("my_post_title");
+    expect(slugify("post_2024")).toBe("post_2024");
+  });
+
   it("should trim spaces", () => {
     expect(slugify("  spaces  ")).toBe("spaces");
   });
