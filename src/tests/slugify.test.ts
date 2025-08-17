@@ -20,6 +20,11 @@ describe("slugify function", () => {
     expect(slugify("Node.js & Express")).toBe("nodejs-express");
   });
 
+  it("should retain underscores", () => {
+    expect(slugify("under_score value")).toBe("under_score-value");
+    expect(slugify("__init__")).toBe("__init__");
+  });
+
   it("should trim spaces", () => {
     expect(slugify("  spaces  ")).toBe("spaces");
   });
