@@ -1,154 +1,98 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Socials from "../components/Socials.astro";
+import { getCollection } from "astro:content";
+import { LANGUAGE } from "../const";
+import "../styles/home.css";
+
 const title = { page: "Jorman Espinoza" };
+
+const experiences = (await getCollection("experience")).slice(0, 3);
+const education = (await getCollection("education")).slice(0, 3);
+const projects = (
+  await getCollection("projects", ({ data }) => data.visible)
+).slice(0, 3);
+const posts = (await getCollection("blog"))
+  .filter((post) => !post.data.draft)
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+  .slice(0, 3);
+
+const formatDate = (d: Date) =>
+  d.toLocaleDateString(LANGUAGE.regional, {
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+  });
 ---
 
-<style>
-  .ide {
-    display: flex;
-    min-height: 60dvh;
-    background: #2b2b2b;
-    color: #a9b7c6;
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
-    font-family: var(--code-font);
-  }
-
-  .sidebar {
-    background: #3c3f41;
-    width: 50px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 0.5rem 0;
-    gap: 0.5rem;
-    user-select: none;
-  }
-
-  .sidebar span {
-    font-size: 1.2rem;
-  }
-
-  .editor {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-  }
-
-  .tabs {
-    display: flex;
-    background: #313335;
-    font-family: var(--main-font);
-  }
-
-  .tab {
-    padding: 0.4rem 1rem;
-    background: #3c3f41;
-    color: #a9b7c6;
-    border-right: 1px solid #2b2b2b;
-  }
-
-  .tab.active {
-    background: #2b2b2b;
-  }
-
-  .code {
-    flex: 1;
-    padding: 1rem;
-    display: flex;
-    flex-direction: column;
-    gap: 0.2rem;
-  }
-
-  .line {
-    display: flex;
-  }
-
-  .line-number {
-    width: 2rem;
-    text-align: right;
-    padding-right: 1rem;
-    color: #606366;
-    user-select: none;
-  }
-
-  .line-code {
-    flex: 1;
-  }
-
-  .keyword {
-    color: #cc7832;
-  }
-
-  .string {
-    color: #6a8759;
-  }
-
-  .func {
-    color: #ffc66d;
-  }
-
-  .comment {
-    color: #808080;
-  }
-</style>
-
 <Layout title={title}>
-  <div class="ide">
-    <div class="sidebar">
-      <span>📁</span>
-      <span>🔍</span>
-      <span>⚙️</span>
-    </div>
-    <div class="editor">
-      <div class="tabs">
-        <div class="tab active">home.ts</div>
-      </div>
-      <div class="code">
-        <div class="line">
-          <span class="line-number">1</span>
-          <span class="line-code"
-            ><span class="keyword">const</span> name = <span class="string"
-              >"Jorman Espinoza"</span
-            ></span
-          >
-        </div>
-        <div class="line">
-          <span class="line-number">2</span>
-          <span class="line-code"
-            ><span class="keyword">const</span> role = <span class="string"
-              >"Desarrollador de Software"</span
-            ></span
-          >
-        </div>
-        <div class="line">
-          <span class="line-number">3</span>
-          <span class="line-code"
-            ><span class="keyword">function</span>
-            <span class="func">greet</span>() {"{"}
-          </span>
-        </div>
-        <div class="line">
-          <span class="line-number">4</span>
-          <span class="line-code"
-            >&nbsp;&nbsp;<span class="keyword">return</span>
-            <span class="string">`Bienvenido a mi portafolio`</span>;</span
-          >
-        </div>
-        <div class="line">
-          <span class="line-number">5</span>
-          <span class="line-code">{"}"}</span>
-        </div>
-        <div class="line">
-          <span class="line-number">6</span>
-          <span class="line-code"
-            ><span class="comment">// {Astro.site?.href || ""}</span></span
-          >
-        </div>
-      </div>
-    </div>
-  </div>
+  <section class="hero">
+    <h2>Código con propósito</h2>
+    <p>Desarrollador Full Stack con foco en experiencias digitales.</p>
+    <a class="cta" href="/contact">Contáctame</a>
+  </section>
+
+  <section class="home-section" id="experience">
+    <h2>Experiencia</h2>
+    <ul class="item-list">
+      {
+        experiences.map((exp) => (
+          <li>
+            <strong>{exp.data.entity.name}</strong>
+            <div>{exp.data.positions[0].title}</div>
+            <div class="item-interval">{exp.data.interval}</div>
+          </li>
+        ))
+      }
+    </ul>
+    <a class="more" href="/experience">Ver toda la experiencia →</a>
+  </section>
+
+  <section class="home-section" id="education">
+    <h2>Educación</h2>
+    <ul class="item-list">
+      {
+        education.map((edu) => (
+          <li>
+            <strong>{edu.data.title}</strong>
+            <div>{edu.data.entity.name}</div>
+            <div class="item-interval">{edu.data.interval}</div>
+          </li>
+        ))
+      }
+    </ul>
+    <a class="more" href="/education">Ver educación →</a>
+  </section>
+
+  <section class="home-section" id="projects">
+    <h2>Proyectos</h2>
+    <ul class="item-list">
+      {
+        projects.map((proj) => (
+          <li>
+            <strong>{proj.data.name}</strong>
+            <div>{proj.data.summary}</div>
+          </li>
+        ))
+      }
+    </ul>
+    <a class="more" href="/projects">Ver todos los proyectos →</a>
+  </section>
+
+  <section class="home-section" id="blog">
+    <h2>Blog</h2>
+    <ul class="item-list">
+      {
+        posts.map((post) => (
+          <li>
+            <a href={`/blog/${post.id}/`}>{post.data.title}</a>
+            <div class="item-date">{formatDate(post.data.pubDate)}</div>
+          </li>
+        ))
+      }
+    </ul>
+    <a class="more" href="/blog">Ir al blog →</a>
+  </section>
+
   <Socials template="icons" />
 </Layout>
