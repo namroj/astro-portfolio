@@ -1,8 +1,7 @@
 ---
-import { Image } from "astro:assets";
 import TableOfContentsToggleButton from "./TableOfContentsToggleButton.astro";
 import PreferencesToggleButton from "./PreferecesToggleButton.astro";
-import profileImage from "../assets/images/profile.jpeg";
+import Search from "./Search";
 const currentPath = Astro.url.pathname;
 ---
 
@@ -122,15 +121,7 @@ const currentPath = Astro.url.pathname;
 
 <div class="navigation">
   <div class="dev">
-    <Image
-      id="profile-image"
-      src={profileImage}
-      alt="Imagen de perfil de Jorman Espinoza"
-      loading="eager"
-      width={40}
-      height={40}
-    />
-    <a href="/">Jorman Espinoza</a>
+    <a id="profile-image" href="/">Jorman Espinoza</a>
   </div>
   <div class="links">
     <a href="/about" class={currentPath === "/about" ? "active" : ""}>
@@ -157,6 +148,7 @@ const currentPath = Astro.url.pathname;
       Contacto
     </a>
     <div class="controls">
+      <Search client:load />
       <PreferencesToggleButton />
       <TableOfContentsToggleButton />
     </div>

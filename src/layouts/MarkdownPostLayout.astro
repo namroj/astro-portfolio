@@ -25,6 +25,32 @@ const breadCrumbs = [
 const tags = [
   ...new Set(frontmatter.tags.map((tag: string) => tag.toLowerCase())),
 ];
+
+const baseUrl = Astro.site?.toString() || "https://namroj-astro-portfolio.netlify.app";
+const articleUrl = new URL(Astro.url.pathname, baseUrl).toString();
+
+const seo = {
+  title: `${frontmatter.title} • Jorman Espinoza`,
+  description: frontmatter.description,
+  url: articleUrl,
+  image: frontmatter.image,
+  type: "article",
+};
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  headline: frontmatter.title,
+  description: frontmatter.description,
+  author: {
+    "@type": "Person",
+    name: frontmatter.author,
+  },
+  datePublished: frontmatter.pubDate.toISOString(),
+  image: frontmatter.image.url,
+  url: articleUrl,
+  keywords: frontmatter.tags.join(", "),
+};
 ---
 
 <style>
@@ -97,7 +123,7 @@ const tags = [
   }
 </style>
 
-<Layout title={title} breadCrumbs={breadCrumbs}>
+<Layout title={title} breadCrumbs={breadCrumbs} seo={seo} jsonLd={jsonLd}>
   <div class="post" transition:name={frontmatter.name}>
     <div class="tags">
       {

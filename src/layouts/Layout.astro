@@ -1,16 +1,20 @@
 ---
-import { ClientRouter } from "astro:transitions";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
+import Sidebar from "../components/Sidebar.astro";
 import Profile from "../components/Profile.astro";
 import Preferences from "../components/Preferences.astro";
 import TableOfContents from "../components/TableOfContents.astro";
+import SEO from "../components/SEO.astro";
 import { LANGUAGE } from "../const";
 import "../styles/fonts.css";
 import "../styles/variables.css";
 import "../styles/global.css";
 
-const { title, breadCrumbs } = Astro.props;
+const { title, breadCrumbs, seo, jsonLd, showSidebar = true } = Astro.props as any;
+
+const computedTitle = `${title.tab ? `[${title.tab}] ` : ""}${title.page ? `${title.page} • ` : ""}Jorman Espinoza | Desarrollador de Software`;
+const canonicalUrl = Astro.site ? new URL(Astro.url.pathname, Astro.site).toString() : Astro.url?.href;
 ---
 
 <html lang={LANGUAGE.generic}>
@@ -32,15 +36,24 @@ const { title, breadCrumbs } = Astro.props;
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
-    <title>
-      {title.tab && `[${title.tab}]`} Jorman Espinoza | Desarrollador de Software
-    </title>
-    <ClientRouter />
+    <SEO
+      title={seo?.title ?? computedTitle}
+      description={seo?.description}
+      url={seo?.url ?? canonicalUrl}
+      image={seo?.image}
+      type={seo?.type ?? "website"}
+      siteName="Jorman Espinoza"
+      twitter={seo?.twitter}
+    />
+    {jsonLd && (
+      <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+    )}
   </head>
   <body>
     <Header />
+    {showSidebar && <Sidebar />}
     <main>
-      <h1>{title.page}</h1>
+      {title.page && <h1>{title.page}</h1>}
       <slot />
     </main>
     <Footer breadCrumbs={breadCrumbs} />

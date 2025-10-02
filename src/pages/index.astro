@@ -1,44 +1,89 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Socials from "../components/Socials.astro";
-const title = { page: "Jorman Espinoza" };
+import "../styles/sections.css";
+
+const title = { page: "" }; // Empty since sidebar shows the name
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Jorman Espinoza",
+  jobTitle: "Desarrollador de Software",
+  url: Astro.site?.toString() || "https://namroj-astro-portfolio.netlify.app",
+  sameAs: [
+    // Add your social profiles here
+  ],
+};
 ---
 
 <style>
-  .intro {
-    display: flex;
-    align-items: center;
-    gap: var(--gap);
+  .content-section {
+    margin-bottom: 6rem;
   }
 
-  h2 {
-    font-style: italic;
+  .intro-text {
+    font-size: 1.125rem;
+    line-height: 1.8;
+    color: var(--accent-secondary-color);
+    margin-bottom: 2rem;
   }
 
-  img {
-    width: 225px;
-    height: 225px;
-    margin-bottom: 1em;
-    border: 3px solid var(--border-color);
-    border-inline-start: 3px solid var(--accent-color);
-    border-radius: 50%;
+  .intro-text p {
+    margin-bottom: 1rem;
   }
 
-  p {
-    text-wrap: pretty;
-    max-width: 50dvw;
+  .highlight {
+    color: var(--foreground-color);
+    font-weight: 500;
+  }
+
+  @media screen and (max-width: 1023px) {
+    .mobile-header {
+      margin-bottom: 2rem;
+    }
+
+    .mobile-header h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .mobile-header h2 {
+      font-size: 1.25rem;
+      color: var(--foreground-color);
+      margin-bottom: 1rem;
+    }
+
+    .mobile-header p {
+      color: var(--accent-secondary-color);
+      line-height: 1.6;
+    }
+  }
+
+  @media screen and (min-width: 1024px) {
+    .mobile-header {
+      display: none;
+    }
   }
 </style>
 
-<Layout title={title}>
-  <div class="intro">
-    <div>
+<Layout title={title} jsonLd={jsonLd}>
+  <div class="mobile-header">
+    <h1>Jorman Espinoza</h1>
+    <h2>Desarrollador de Software</h2>
+    <p>Construyo experiencias digitales accesibles y de alto rendimiento para la web.</p>
+  </div>
+
+  <section class="content-section">
+    <div class="intro-text">
       <p>
-        Me he desempeñado en distintos equipos tanto como Backend como Frontend,
+        Me he desempeñado en distintos equipos tanto como <span class="highlight">Backend</span> como <span class="highlight">Frontend</span>,
         soy un apasionado del código limpio, siempre buscando generar soluciones
         que cumplan y superen las expectativas de clientes.
       </p>
-      <Socials template="icons" />
+      <p>
+        Actualmente, me enfoco en construir productos digitales accesibles e inclusivos,
+        con especial atención al rendimiento y la experiencia del usuario.
+      </p>
     </div>
-  </div>
+  </section>
 </Layout>

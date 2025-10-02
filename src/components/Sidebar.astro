@@ -1,0 +1,173 @@
+---
+import Socials from "./Socials.astro";
+const currentPath = Astro.url.pathname;
+---
+
+<aside class="sidebar">
+  <div class="sidebar-content">
+    <div class="intro-section">
+      <h1 class="name">
+        <a href="/">Jorman Espinoza</a>
+      </h1>
+      <h2 class="tagline">Desarrollador de Software</h2>
+      <p class="description">
+        Construyo experiencias digitales accesibles y de alto rendimiento para la web.
+      </p>
+    </div>
+
+    <nav class="main-nav">
+      <ul>
+        <li>
+          <a href="/about" class={currentPath === "/about" ? "active" : ""}>
+            <span class="nav-indicator"></span>
+            <span class="nav-text">Sobre mí</span>
+          </a>
+        </li>
+        <li>
+          <a href="/experience" class={currentPath === "/experience" ? "active" : ""}>
+            <span class="nav-indicator"></span>
+            <span class="nav-text">Experiencia</span>
+          </a>
+        </li>
+        <li>
+          <a href="/projects" class={currentPath === "/projects" ? "active" : ""}>
+            <span class="nav-indicator"></span>
+            <span class="nav-text">Proyectos</span>
+          </a>
+        </li>
+        <li>
+          <a href="/blog" class={currentPath === "/blog" || currentPath.startsWith("/blog") ? "active" : ""}>
+            <span class="nav-indicator"></span>
+            <span class="nav-text">Blog</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="sidebar-footer">
+      <Socials template="icons" />
+    </div>
+  </div>
+</aside>
+
+<style>
+  .sidebar {
+    display: none;
+  }
+
+  @media screen and (min-width: 1024px) {
+    .sidebar {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 45%;
+      max-width: 600px;
+      padding: 6rem 4rem;
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      overflow-y: auto;
+    }
+
+    .sidebar-content {
+      display: flex;
+      flex-direction: column;
+      gap: 4rem;
+      height: 100%;
+    }
+
+    .intro-section {
+      flex-shrink: 0;
+    }
+
+    .name {
+      font-size: clamp(2.5rem, 4vw, 3.5rem);
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      line-height: 1.1;
+    }
+
+    .name a {
+      color: var(--foreground-color);
+      transition: color 0.2s ease;
+    }
+
+    .name a:hover {
+      color: var(--accent-color);
+    }
+
+    .tagline {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--foreground-color);
+      margin-bottom: 1rem;
+    }
+
+    .description {
+      font-size: 1rem;
+      line-height: 1.6;
+      color: var(--accent-secondary-color);
+      max-width: 400px;
+    }
+
+    .main-nav {
+      flex: 1;
+      display: flex;
+      align-items: center;
+    }
+
+    .main-nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      width: 100%;
+    }
+
+    .main-nav li {
+      margin-bottom: 0.5rem;
+    }
+
+    .main-nav a {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 0.75rem 0;
+      text-transform: uppercase;
+      font-size: 0.875rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      color: var(--accent-secondary-color);
+      transition: all 0.2s ease;
+      position: relative;
+    }
+
+    .nav-indicator {
+      width: 2rem;
+      height: 1px;
+      background: var(--accent-secondary-color);
+      transition: all 0.2s ease;
+    }
+
+    .main-nav a:hover .nav-indicator,
+    .main-nav a.active .nav-indicator {
+      width: 4rem;
+      background: var(--accent-color);
+    }
+
+    .main-nav a:hover .nav-text,
+    .main-nav a.active .nav-text {
+      color: var(--foreground-color);
+    }
+
+    .sidebar-footer {
+      flex-shrink: 0;
+      margin-top: auto;
+    }
+  }
+
+  @media screen and (min-width: 1280px) {
+    .sidebar {
+      padding: 6rem 6rem;
+    }
+  }
+</style>

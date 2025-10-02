@@ -3,6 +3,8 @@ import { getCollection } from "astro:content";
 
 import Layout from "../layouts/Layout.astro";
 import BlogPost from "../components/BlogPost.astro";
+import Search from "../components/Search";
+import "../styles/sections.css";
 
 const title = {
   tab: "Blog",
@@ -17,38 +19,66 @@ const breadCrumbs = [
 ];
 
 const allPosts = await getCollection("blog");
+const publishedPosts = allPosts
+  .filter((post: any) => !post.data.draft)
+  .sort((a: any, b: any) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
 ---
 
 <Layout title={title} breadCrumbs={breadCrumbs}>
-  <ul>
+  <div class="blog-header">
+    <p class="subtitle">Artículos y tutoriales sobre desarrollo de software</p>
+    <div class="search-wrapper">
+      <Search client:load />
+    </div>
+  </div>
+  
+  <div class="blog-list">
     {
-      allPosts
-        .filter((post: any) => !post.data.draft)
-        .map((post: any) => (
-          <BlogPost
-            url={post.id}
-            title={post.data.title}
-            date={post.data.pubDate}
-          />
-        ))
+      publishedPosts.map((post: any) => (
+        <BlogPost
+          url={post.id}
+          title={post.data.title}
+          date={post.data.pubDate}
+        />
+      ))
     }
-  </ul>
-  <a class="blog-tags" href="/blog/tags">Etiquetas</a>
+  </div>
+  
+  <a class="blog-tags link-with-arrow" href="/blog/tags">
+    <span>Ver todas las etiquetas</span>
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <line x1="5" y1="12" x2="19" y2="12"></line>
+      <polyline points="12 5 19 12 12 19"></polyline>
+    </svg>
+  </a>
 </Layout>
 
 <style is:inline>
-  a {
-    display: inline-flex;
+  .blog-header {
+    display: flex;
+    justify-content: space-between;
     align-items: center;
-    color: var(--foreground-color);
-    font-size: 0.875em;
+    margin-bottom: 3rem;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
 
-    &:hover {
-      color: var(--accent-color);
-    }
+  .subtitle {
+    color: var(--accent-secondary-color);
+    font-size: 1.125rem;
+    margin: 0;
+    line-height: 1.6;
+  }
 
-    &.blog-tags {
-      margin-top: calc(1em * 2);
-    }
+  .search-wrapper {
+    flex-shrink: 0;
+  }
+
+  .blog-list {
+    margin-bottom: 3rem;
+  }
+
+  .blog-tags {
+    margin-top: 2rem;
   }
 </style>
