@@ -31,9 +31,15 @@ describe("localized content migration", () => {
         ),
       ).toBe(true);
     }
-    expect(localize(experience, "en")[0].positions[0].title).toBe(
-      "Full Stack Developer",
-    );
+    const englishExperience = localize(experience, "en");
+    expect(
+      englishExperience.find((item) => item.id === "freelance")?.positions[0]
+        .title,
+    ).toBe("Full Stack Developer");
+    expect(
+      englishExperience.find((item) => item.id === "accenture-song")
+        ?.positions[0].title,
+    ).toBe("Full Stack Developer [Lead]");
     expect(localize(education, "en")[0].location).toBe("Online");
   });
   it("keeps stable IDs and optional certificates while localizing deeply", () => {
