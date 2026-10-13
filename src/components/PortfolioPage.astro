@@ -15,6 +15,47 @@ import "../styles/sections.css";
 import "../styles/home.css";
 const { locale, page = "" } = Astro.props as { locale: Locale; page?: string };
 const m = messages[locale];
+const skillGroups = [
+  {
+    title: m.webCommerce,
+    names: [
+      "React",
+      "TypeScript",
+      "JavaScript",
+      "Node.js",
+      "Next.js",
+      "Astro",
+      "VTEX",
+    ],
+  },
+  {
+    title: m.backendData,
+    names: ["Java", "Spring", "PHP", "MySQL", "PostgreSQL"],
+  },
+  {
+    title: m.mobile,
+    names: ["React Native", "Expo", "iOS", "Android"],
+  },
+].map(({ title, names }) => ({
+  title,
+  items: skills.filter((item) => names.includes(item.name)),
+}));
+const featuredSkillNames = new Set(
+  skillGroups.flatMap((group) => group.items.map((item) => item.name)),
+);
+const additionalSkills = skills.filter(
+  (item) => !featuredSkillNames.has(item.name),
+);
+const featuredToolNames = new Set([
+  "AWS",
+  "Azure",
+  "Docker",
+  "GitHub",
+  "Postman",
+  "Figma",
+]);
+const featuredTools = tools.filter((item) => featuredToolNames.has(item.name));
+const additionalTools = tools.filter((item) => !featuredToolNames.has(item.name));
 const key = page as keyof typeof m;
 const heading =
   page === ""
@@ -55,6 +96,7 @@ const homeProjects =
   page === ""
     ? (await getCollection("projects"))
         .filter((item) => item.data.visible)
+        .sort((a, b) => b.data.year - a.data.year)
         .slice(0, 3)
         .map((item) => ({ ...item, data: localize(item.data, locale) }))
     : [];
@@ -94,6 +136,45 @@ const jsonLd =
             {m.contact} →
           </a>
         </p>
+        <section class="home-section" id="projects">
+          <h2>{m.projects}</h2>
+          <ul class="item-list project-list">
+            {homeProjects.map((item) => (
+              <li class="project-card">
+                <a
+                  class="project-card-main"
+                  href={`${route(locale, "projects")}#${item.id}`}
+                >
+                  <img
+                    src={item.data.logo.path}
+                    alt=""
+                    width="88"
+                    height="88"
+                    loading="lazy"
+                  />
+                  <span class="project-card-copy">
+                    <span class="project-card-meta">{item.data.year}</span>
+                    <strong>{item.data.name}</strong>
+                    <span>{item.data.summary}</span>
+                    <span class="project-card-stack">{item.data.tags.filter((tag) => !/^\d{4}$/.test(tag)).slice(0, 3).join(" · ")}</span>
+                  </span>
+                </a>
+                <a
+                  class="project-visit"
+                  href={item.data.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`${m.visitProject}: ${item.data.name}`}
+                >
+                  {m.visitProject} ↗
+                </a>
+              </li>
+            ))}
+          </ul>
+          <a class="more" href={route(locale, "projects")}>
+            {m.projects} →
+          </a>
+        </section>
         <section class="home-section" id="experience">
           <h2>{m.experience}</h2>
           <ul class="item-list">
@@ -124,22 +205,6 @@ const jsonLd =
             {m.education} →
           </a>
         </section>
-        <section class="home-section" id="projects">
-          <h2>{m.projects}</h2>
-          <ul class="item-list">
-            {homeProjects.map((item) => (
-              <li>
-                <a href={`${route(locale, "projects")}#${item.id}`}>
-                  <strong>{item.data.name}</strong>
-                </a>
-                <div>{item.data.summary}</div>
-              </li>
-            ))}
-          </ul>
-          <a class="more" href={route(locale, "projects")}>
-            {m.projects} →
-          </a>
-        </section>
         <section class="home-section" id="blog">
           <h2>{m.blog}</h2>
           {homePosts.map((post) => (
@@ -155,10 +220,27 @@ const jsonLd =
           </a>
         </section>
         <section>
-          <>
-            <h2>{m.skills}</h2>
+          <h2>{m.skills}</h2>
+          <div class="technology-groups">
+            {skillGroups.map((group) => (
+              <div class="technology-group">
+                <h3>{group.title}</h3>
+                <ul class="technology-list">
+                  {group.items.map((item) => (
+                    <li>
+                      <a href={item.url} target="_blank" rel="noopener noreferrer">
+                        {item.name}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+          <div class="technology-group">
+            <h3>{m.platformsWorkflow}</h3>
             <ul class="technology-list">
-              {skills.map((item) => (
+              {featuredTools.map((item) => (
                 <li>
                   <a href={item.url} target="_blank" rel="noopener noreferrer">
                     {item.name}
@@ -166,13 +248,12 @@ const jsonLd =
                 </li>
               ))}
             </ul>
-          </>
-        </section>
-        <section>
-          <>
-            <h2>{m.tools}</h2>
+          </div>
+          <details class="more-technologies">
+            <summary>{m.moreSkills}</summary>
+            <h3>{m.skills}</h3>
             <ul class="technology-list">
-              {tools.map((item) => (
+              {additionalSkills.map((item) => (
                 <li>
                   <a href={item.url} target="_blank" rel="noopener noreferrer">
                     {item.name}
@@ -180,7 +261,17 @@ const jsonLd =
                 </li>
               ))}
             </ul>
-          </>
+            <h3>{m.tools}</h3>
+            <ul class="technology-list">
+              {additionalTools.map((item) => (
+                <li>
+                  <a href={item.url} target="_blank" rel="noopener noreferrer">
+                    {item.name}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </details>
         </section>
       </>
     )

@@ -1,5 +1,92 @@
 [
   {
+    "id": "accenture-song",
+    "entity": {
+      "name": "Accenture",
+      "url": "https://www.accenture.com/ar-es/services/song/commerce-transformation",
+      "image": {
+        "path": "/images/experience/accenture-song.jpeg",
+        "alt": "Accenture Song logo"
+      }
+    },
+    "location": {
+      "es": "Buenos Aires, Argentina",
+      "en": "Buenos Aires, Argentina"
+    },
+    "interval": {
+      "es": "Abr 2022 - Presente",
+      "en": "Apr 2022 - Present"
+    },
+    "positions": [
+      {
+        "title": {
+          "es": "Desarrollador Full Stack [Líder]",
+          "en": "Full Stack Developer [Lead]"
+        },
+        "description": {
+          "es": "Creación de diagramas de arquitectura, secuencia, flujo y entidad relación.||Inducción de procesos y proyectos a integrantes del equipo.||Desarrollo de una aplicación para el manejo interno de la documentación de proceso mediante una herramienta de generación de contenido estático.||Documentación de procesos.||Levantamiento/relevamiento de información con clientes y personal interno.",
+          "en": "Creation of architecture, sequence, flow, and entity-relationship diagrams.||Induction of processes and projects to team members.||Development of an application for internal handling of process documentation using a static content generation tool.||Process documentation.||Information gathering/surveying with clients and internal staff."
+        },
+        "highlight": {
+          "es": "Asumí un rol de liderazgo en 2023, cuando creció la cartera de proyectos. Coordino entregas, ayudo a destrabar el trabajo y guío el desarrollo de funcionalidades.",
+          "en": "Moved into a lead role in 2023 as the project portfolio grew. Coordinate delivery, unblock work, and guide feature development."
+        },
+        "interval": {
+          "es": "Abr 2023 - Presente",
+          "en": "Apr 2023 - Present"
+        }
+      },
+      {
+        "title": {
+          "es": "Desarrollador Full Stack",
+          "en": "Full Stack Developer"
+        },
+        "description": {
+          "es": "Desarrollo y mantenimiento de microservicios, librerías Y SDKs internas.||Optimización y actualización de aplicaciones.||Integración y documentación de APIs.||Aplicación de Arquitectura Hexagonal para la integración de módulos.",
+          "en": "Development and maintenance of microservices, internal libraries, and SDKs.||Optimization and update of applications.||API integration and documentation.||Application of Hexagonal Architecture for module integration."
+        },
+        "highlight": {
+          "es": "Desarrollé un módulo integral para gestionar el inventario de productos durante la transición de Glamit a Accenture.",
+          "en": "Built a complete product inventory management module during Glamit’s transition to Accenture."
+        },
+        "interval": {
+          "es": "Ago 2022 - Abr 2023",
+          "en": "Aug 2022 - Apr 2023"
+        }
+      }
+    ],
+    "tags": [
+      "Accenture",
+      "Desarrollo",
+      "Web",
+      "Backend",
+      "Frontend",
+      "Windows",
+      "Linux",
+      "AWS",
+      "API",
+      "Microservicio",
+      "Serverless",
+      "Lambda",
+      "HTML",
+      "WordPress",
+      "CSS",
+      "JavaScript",
+      "TypeScript",
+      "NodeJs",
+      "React",
+      "UmiJs",
+      "Java",
+      "Spring",
+      "PHP",
+      "Magento",
+      "MySQL",
+      "VTEX",
+      "2022",
+      "Presente"
+    ]
+  },
+  {
     "id": "freelance",
     "entity": {
       "name": "Freelance",
@@ -28,8 +115,8 @@
           "en": "Development of websites, landing pages, portfolios, blogs, online stores, content management systems, among others. Database modeling.||Deployment of sites at Hosting level.||Configuration of domains and DNS.||Configuration of email accounts.||Installation/configuration and application of WordPress, including theme customization and editing and application of PHP plugins.||Creation of email signatures with HTML."
         },
         "highlight": {
-          "es": "Desarrollador autónomo en paralelo -clientes generados a través de networking y recomendaciones por compañeros de trabajo y referencias de clientes previos. Maquetado|Desarrollo de API con Java|Spring Boot.",
-          "en": "Parallel freelance developer - clients generated through networking and recommendations from coworkers and previous client references. Layout|API development with Java|Spring Boot."
+          "es": "Desarrollo sitios web, tiendas online y APIs con Java y Spring Boot en paralelo al trabajo de tiempo completo. La mayoría de los clientes llegan por recomendaciones y contactos profesionales.",
+          "en": "Build websites, online stores, and Java/Spring Boot APIs alongside full-time work. Most freelance clients come through referrals and professional connections."
         },
         "interval": {
           "es": "Abr 2018 - Presente",
@@ -70,93 +157,6 @@
     ]
   },
   {
-    "id": "accenture-song",
-    "entity": {
-      "name": "Accenture",
-      "url": "https://www.accenture.com/ar-es/services/song/commerce-transformation",
-      "image": {
-        "path": "/images/experience/accenture-song.jpeg",
-        "alt": "Accenture Song logo"
-      }
-    },
-    "location": {
-      "es": "Buenos Aires, Argentina",
-      "en": "Buenos Aires, Argentina"
-    },
-    "interval": {
-      "es": "Abr 2022 - Presente",
-      "en": "Apr 2022 - Present"
-    },
-    "positions": [
-      {
-        "title": {
-          "es": "Desarrollador Full Stack [Líder]",
-          "en": "Full Stack Developer [Lead]"
-        },
-        "description": {
-          "es": "Creación de diagramas de arquitectura, secuencia, flujo y entidad relación.||Inducción de procesos y proyectos a integrantes del equipo.||Desarrollo de una aplicación para el manejo interno de la documentación de proceso mediante una herramienta de generación de contenido estático.||Documentación de procesos.||Levantamiento/relevamiento de información con clientes y personal interno.",
-          "en": "Creation of architecture, sequence, flow, and entity-relationship diagrams.||Induction of processes and projects to team members.||Development of an application for internal handling of process documentation using a static content generation tool.||Process documentation.||Information gathering/surveying with clients and internal staff."
-        },
-        "highlight": {
-          "es": "Traspaso a un nuevo equipo como líder, pasando de tener algunos proyectos a muchos en poco tiempo -requirió una rápida adaptación para el avance, resolución y desarrollo de nuevas funcionalidades, además de mejorar habilidades en cuanto a liderazgo, negociación y organización.",
-          "en": "Transfer to a new team as a leader, going from having a few projects to many in a short time - required rapid adaptation for progress, resolution, and development of new functionalities, as well as improving leadership, negotiation, and organization skills."
-        },
-        "interval": {
-          "es": "Abr 2023 - Presente",
-          "en": "Apr 2023 - Present"
-        }
-      },
-      {
-        "title": {
-          "es": "Desarrollador Full Stack",
-          "en": "Full Stack Developer"
-        },
-        "description": {
-          "es": "Desarrollo y mantenimiento de microservicios, librerías Y SDKs internas.||Optimización y actualización de aplicaciones.||Integración y documentación de APIs.||Aplicación de Arquitectura Hexagonal para la integración de módulos.",
-          "en": "Development and maintenance of microservices, internal libraries, and SDKs.||Optimization and update of applications.||API integration and documentation.||Application of Hexagonal Architecture for module integration."
-        },
-        "highlight": {
-          "es": "Glamit es adquirida por Accenture, así que marca una transición dentro de la línea de tiempo. En esta etapa destaca la elaboración de un módulo completo para la gestión de stock de productos.",
-          "en": "Glamit is acquired by Accenture, marking a transition in the timeline. This stage highlights the development of a complete module for product stock management."
-        },
-        "interval": {
-          "es": "Ago 2022 - Abr 2023",
-          "en": "Aug 2022 - Apr 2023"
-        }
-      }
-    ],
-    "tags": [
-      "Accenture",
-      "Desarrollo",
-      "Web",
-      "Backend",
-      "Frontend",
-      "Windows",
-      "Linux",
-      "AWS",
-      "API",
-      "Microservicio",
-      "Serverless",
-      "Lambda",
-      "HTML",
-      "WordPress",
-      "CSS",
-      "JavaScript",
-      "TypeScript",
-      "NodeJs",
-      "React",
-      "UmiJs",
-      "Java",
-      "Spring",
-      "PHP",
-      "Magento",
-      "MySQL",
-      "VTEX",
-      "2022",
-      "Presente"
-    ]
-  },
-  {
     "id": "glamit",
     "entity": {
       "name": "Glamit",
@@ -185,8 +185,8 @@
           "en": "Building and applying state machines <<using Spring Boot State Machine>> for handling the states of project base entities to guarantee the correct data life flow.||Internal process documentation."
         },
         "highlight": {
-          "es": "Buen desempeño en la resolución de tareas llevaron a un ascenso tras haber participado en 2 proyectos clave -uno, un sistema de gestión de envío de compras a clientes .Y dos, un sistema gestor de productos y preparación de paquetes para entregas.",
-          "en": "Good performance in task resolution led to a promotion after participating in 2 key projects - one, a customer purchase shipping management system. And two, a product manager and package preparation system for deliveries."
+          "es": "Ascendí a un rol senior tras contribuir a dos sistemas clave: la gestión de envíos de compras y la preparación de productos y paquetes para su entrega.",
+          "en": "Promoted to a senior role after contributing to two key systems: purchase shipping management and product and package preparation for delivery."
         },
         "interval": {
           "es": "Jul 2021 - Abr 2022",
@@ -203,8 +203,8 @@
           "en": "Creation of entity-relationship diagrams and database modeling/maintenance/management.||RESTful API development.||Development and maintenance of microservices using Spring Boot.||Development of serverless services and processes for AWS Lambda integrations.||Development/maintenance of web applications with NodeJs, React, and UmiJS.||Development of functions in Java, PHP, and Magento."
         },
         "highlight": {
-          "es": "La prueba técnica implicó el desarrollo de un Blog que manejará comentarios y likes, así como gestión de usuarios -esto con cualquier tecnología (la elegida fue Symfony con MySQL para el back y jQuery con Bootstrap para el front). No tenía fecha límite pero logré armarlo en 5 días y 4 largas noches.",
-          "en": "The technical test involved the development of a Blog that handles comments and likes, as well as user management - this with any technology (the chosen one was Symfony with MySQL for the back-end and jQuery with Bootstrap for the front-end). It had no deadline but I managed to build it in 5 days and 4 long nights."
+          "es": "Evaluación técnica: desarrollé en cinco días un blog con gestión de usuarios, comentarios y “me gusta”, usando Symfony y MySQL en el backend, y jQuery y Bootstrap en el frontend.",
+          "en": "Technical assessment: built a blog with user management, comments, and likes in five days, using Symfony and MySQL on the backend and jQuery and Bootstrap on the frontend."
         },
         "interval": {
           "es": "Jul 2020 - Jun 2021",
@@ -272,8 +272,8 @@
           "en": "Generation of customized websites including specific content management systems (CMS) for each project/client based on a specific organizational PHP framework, as well as the use of Symfony 4.||Layout, correction, and maintenance of the same.||Generation of email signatures (HTML).||Database design/creation/management.||Handling design tools such as Adobe Photoshop and Illustrator for managing images and design elements for the sites.||Integration with the Google Maps API along with Snazzy Maps to generate/apply customized maps.||Generation of user manuals and online/in-person induction for clients regarding the management of their respective sites."
         },
         "highlight": {
-          "es": "Primer trabajo en Argentina. Desarrollo continuo de sitios para clientes variados mayoritariamente en las áreas de Marketing/Diseño y Real Estate, tanto nacionales como internacionales -esto representó un reto por la diversidad de requerimientos y necesidades de los clientes. Al ser un equipo pequeño de desarrolladores, se requería de un alto grado de comunicación y organización para llevar a cabo los proyectos de manera exitosa - destacar el buen manejo del líder de tecnología (gracias Tomy!) quien trajo mucho aprendizaje no sólo a nivel técnico sino también en cuanto a la gestión del equipo/tiempos/priorización de tareas así como habilidades blandas.",
-          "en": "First job in Argentina. Continuous development of sites for various clients mostly in the Marketing/Design and Real Estate areas, both national and international - this represented a challenge due to the diversity of client requirements and needs. Being a small team of developers, a high degree of communication and organization was required to carry out projects successfully - highlighting the good management of the technology leader (thanks Tomy!) who brought much learning not only at a technical level but also regarding team/time management/task prioritization as well as soft skills."
+          "es": "Primer puesto de trabajo en Argentina. Desarrollé sitios para clientes locales e internacionales de marketing, diseño y real estate, adaptándome a requisitos diversos y colaborando en un equipo pequeño.",
+          "en": "My first role in Argentina. Built websites for local and international clients in marketing, design, and real estate, adapting to varied requirements within a small team."
         },
         "interval": {
           "es": "Oct 2017 - Jun 2020",
@@ -335,8 +335,8 @@
           "en": "Generation of websites using HTML, CSS, PHP, JavaScript, jQuery including WordPress and frameworks like Laravel.||Editing WordPress themes and plugins, adaptations, specific design implementations for different clients.||Implementation of websites at the server level.||In-person induction for clients regarding the management of their respective websites, as well as the generation of video tutorials and procedure manuals regarding the management of tools and websites."
         },
         "highlight": {
-          "es": "Afianzamiento en la aplicación de tecnologías y manejo de CMS -desarrollo de un gestor de tareas y asignaciones dentro del equipo <<utilizando Laravel>>.",
-          "en": "Consolidation in the application of technologies and CMS management - development of a task and assignment manager within the team <<using Laravel>>."
+          "es": "Desarrollé en Laravel un gestor interno de tareas y asignaciones, y consolidé mi experiencia con tecnologías web y CMS.",
+          "en": "Built an internal task and assignment manager with Laravel while deepening my experience with web technologies and content management systems."
         },
         "interval": {
           "es": "Ene 2017 - Dic 2018",
@@ -396,8 +396,8 @@
           "en": "Creation of websites using HTML, CSS, PHP, JavaScript including WordPress, PrestaShop, Joomla, and WIX as content management systems.||Editing WordPress themes and plugins, adaptations, specific design implementations for clients.||Implementation of websites at the server level.||Online support for users regarding the management of their respective websites.||Creation of video tutorials regarding the management of tools and websites.||Creation of user manuals."
         },
         "highlight": {
-          "es": "Primer trabajo en desarrollo web. Aprendizaje de nuevas tecnologías, manejo de CMS, creación de múltiples sitios web (desde páginas sencillas hasta tiendas virtuales) -agradecimiento siempre para esta Startup por la oportunidad brindada.",
-          "en": "First job in web development. Learning new technologies, CMS management, creation of multiple websites (from simple pages to online stores) - always grateful to this Startup for the opportunity provided."
+          "es": "Desarrollé y mantuve sitios web y tiendas online con PHP y distintos CMS, incluidos WordPress, PrestaShop, Joomla y Wix.",
+          "en": "Built and maintained websites and online stores with PHP and content management systems including WordPress, PrestaShop, Joomla, and Wix."
         },
         "interval": {
           "es": "Abr 2014 - Dic 2016",
@@ -455,8 +455,8 @@
           "en": "Telephone support for the nationwide branch network.||Remote support using the DameWare tool for computers with Windows OS.||Remote attention with Putty for Windows and Linux workstations, and office servers.||Registration, attention, and channeling of web cases through the CRM tool (Microsoft).||Activation and unlocking of user and office terminals through the 3270 Emulator.||ATM monitoring (management and distribution of the total number of ATMs to be monitored among managers, channeling and management of failures and/or queries, validation of ATM status).||First-level technical support for the branch network (activation of services, import of statistical data).||First-level support in the area of Logical Security.||Reset and unlocking of user access keys.||Monitoring of office communication equipment (routers, switches, servers).||Channeling and escalation of failures with the various resolution areas."
         },
         "highlight": {
-          "es": "Resolución de problemas variados, manejo de herramientas de soporte remoto, atención telefónica y remota, manejo de herramientas de monitoreo y gestión de fallas.",
-          "en": "Resolution of varied problems, handling remote support tools, telephone and remote attention, handling monitoring tools and fault management."
+          "es": "Resolví incidentes de soporte con herramientas de monitoreo y gestión, atención telefónica y asistencia remota.",
+          "en": "Resolved support incidents using monitoring and ticketing tools, phone support, and remote assistance."
         },
         "interval": {
           "es": "Mar 2011 - Set 2014",
@@ -473,8 +473,8 @@
           "en": "Telephone attention to all internal staff nationwide in the Design and Development (D&D) areas.||Management, channeling, and escalation of web requirements from D&D staff to the different Resolution Areas.||Coordination and planning of projects in conjunction with the areas of D&D, Implementation, Homologation, and Production.||Channeling of emergent passes (programs, modifications, scripts) to the production environment.||Auditing and monitoring of D&D projects taken to the production environment."
         },
         "highlight": {
-          "es": "Capacidad de organización, planificación y comunicación. Redacción y envío de emails -debido a constante comunicación con personal de Diseño y Desarrollo así como áreas resolutorias tanto telefónica, remota y presencial.",
-          "en": "Organization, planning, and communication skills. Drafting and sending emails - due to constant communication with D&D personnel and resolution areas by telephone, remotely, and in person."
+          "es": "Coordiné requerimientos especiales entre las áreas de Diseño, Desarrollo y Operaciones por teléfono, de forma remota y presencial.",
+          "en": "Coordinated special requests across Design, Development, and Operations by phone, remotely, and in person."
         },
         "interval": {
           "es": "Mar 2010 - Mar 2011",
@@ -527,8 +527,8 @@
           "en": "CANTV 113 service. Customer service agent. Responsible for providing data based on receipt of information requests (telephone numbers and addresses) for locations, establishments, hospitals, companies, among others."
         },
         "highlight": {
-          "es": "Velocidad en la gestión, rapidez de respuesta, seguimiento de procedimientos y metodologías -30 segundos era la cantidad máxima esperada de tiempo de respuesta de cara al cliente con una media de 300 llamadas durante la jornada.",
-          "en": "Management speed, response quickness, following procedures and methodologies - 30 seconds was the maximum expected response time for customers with an average of 300 calls during the workday."
+          "es": "Atendí jornadas de alto volumen, con un promedio de 300 llamadas y un objetivo de respuesta de 30 segundos.",
+          "en": "Handled high-volume shifts averaging 300 calls, with a 30-second response-time target."
         },
         "interval": {
           "es": "Ene 2010 - Mar 2010",
@@ -574,8 +574,8 @@
           "en": "Data updater for client portfolios, verifying and updating their information."
         },
         "highlight": {
-          "es": "Capacidad de organización y velocidad en la gestión -debido a meta diaria de actualización de datos.",
-          "en": "Organization and management speed - due to daily data update goal."
+          "es": "Cumplí objetivos diarios de actualización de datos con rapidez y organización.",
+          "en": "Met daily data-update targets efficiently."
         },
         "interval": {
           "es": "Jul 2009 - Dic 2009",
@@ -592,8 +592,8 @@
           "en": "Making calls to customers to manage the payment of their bills."
         },
         "highlight": {
-          "es": "Mejor comunicación/manejo con/de clientes -todo un reto al tener que comunicar aspectos negativos a clientes.",
-          "en": "Better communication/handling with/of customers - a challenge when having to communicate negative aspects to customers."
+          "es": "Gestioné llamadas de cobranza y desarrollé una comunicación directa y respetuosa para tratar situaciones de pago difíciles.",
+          "en": "Handled collection calls and developed clear, respectful communication for difficult payment conversations."
         },
         "interval": {
           "es": "Ene 2009 - Jun 2009",
