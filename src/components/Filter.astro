@@ -1,162 +1,79 @@
 ---
-const { tags } = Astro.props;
+import { localeFromPath, messages, type Locale } from "../i18n";
+const { tags = [], locale = localeFromPath(Astro.url.pathname) } =
+  Astro.props as { tags?: string[]; locale?: Locale };
+const m = messages[locale];
 ---
 
-<style is:inline>
-  .filters {
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 1em;
-  }
-
-  .search-wrapper {
-    position: relative;
-    width: 100%;
-  }
-
-  .search-input {
-    width: 100%;
-    padding: 1em;
-    border-radius: 4px;
-    background-color: var(--background-color);
-    color: var(--foreground-color);
-    border: 1px solid var(--border-color);
-    font-size: 0.75em;
-  }
-
-  .tags-filter {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1em;
-  }
-
-  .tag-btn {
-    padding: 0.25em 0.25em;
-    border: 1px solid var(--border-color);
-    border-radius: 4px;
-    background: var(--background-color);
-    color: var(--foreground-color);
-    cursor: pointer;
-    transition: all 0.3s ease;
-  }
-
-  .tag-btn.active {
-    background: var(--accent-color);
-    color: var(--foreground-color);
-  }
-
-  @keyframes highlightFade {
-    from {
-      background-color: var(--accent-color);
-    }
-    to {
-      background-color: var(--accent-muted-color);
-    }
-  }
-
-  .tag-btn:hover {
-    background: var(--accent-color);
-    color: var(--background-color);
-  }
-
-  .tag-btn.active {
-    background: var(--accent-color);
-    color: var(--background-color);
-    border-color: var(--accent-color);
-  }
-
-  .no-match-items {
-    text-align: left;
-    border: 1px dot-dash var(--border-color);
-    grid-area: first;
-  }
-
-  .no-match-items p {
-    color: var(--accent-muted-color);
-    margin-bottom: 1em;
-  }
-
-  .reset-search-btn {
-    background: transparent;
-    border-radius: 0.5em;
-    cursor: pointer;
-    font-size: 0.875em;
-    color: var(--foreground-color);
-    transition: all 0.3s ease;
-  }
-
-  .reset-search-btn:hover {
-    color: var(--accent-color);
-  }
-
-  .clear-search {
-    position: absolute;
-    right: 1em;
-    top: 50%;
-    transform: translateY(-50%);
-    background: none;
-    border: none;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    color: var(--accent-muted-color);
-  }
-
-  .clear-search:hover {
-    color: var(--accent-color);
-  }
-
-  .clear-tags-btn {
-    padding: 0.25em 0.5em;
-    background-color: transparent;
-    border-radius: 4px;
-    margin-left: auto;
-    color: var(--foreground-color);
-    cursor: pointer;
-    transition: all 0.3s ease;
-  }
-
-  .clear-tags-btn:hover {
-    color: var(--accent-color);
-  }
-</style>
-
 <div class="filters">
-  <form id="searchForm" class="search-form">
-    <div class="search-wrapper">
-      <label for="searchInput"></label>
-      <input
-        type="search"
-        id="searchInput"
-        placeholder="Buscar por palabra clave"
-        class="search-input"
-      />
-      <button
-        type="button"
-        class="clear-search"
-        id="clearSearch"
-        style="display: none;"
-      >
-        ✕
-      </button>
-    </div>
-  </form>
-
-  <div class="tags-filter">
-    <button class="tag-btn active" data-tag="all">Todas</button>
+  <label
+    >{m.filter}<input
+      type="search"
+      data-filter-query
+      placeholder={m.filter}
+    /></label
+  >
+  <div class="tags-filter" aria-label={m.tags}>
     {
       tags.map((tag: string) => (
-        <button class="tag-btn" data-tag={tag}>
+        <button type="button" data-filter-tag={tag} aria-pressed="false">
           {tag}
         </button>
       ))
     }
-    <button id="clearTags" class="clear-tags-btn" style="display: none;"
-      >Reiniciar selección
-    </button>
+    <button type="button" data-filter-reset>{m.clear}</button>
+  </div>
+  <p data-filter-empty hidden role="status">{m.noResults}</p>
+  <div class="pagination" data-filter-pagination hidden>
+    <button type="button" data-filter-prev>{m.previous}</button>
+    <span data-filter-count aria-live="polite"></span>
+    <button type="button" data-filter-next>{m.next}</button>
   </div>
 </div>
-
 <script>
-  import "../scripts/filter.ts";
+  import "../scripts/filter";
 </script>
+<style>
+  .filters {
+    margin: 1rem 0 2rem;
+  }
+  input {
+    display: block;
+    width: 100%;
+    margin: 0.5rem 0 1rem;
+    padding: 0.75rem;
+    background: var(--background-color);
+    color: var(--foreground-color);
+    border: 1px solid var(--border-color);
+    border-radius: 0.3rem;
+  }
+  .tags-filter,
+  .pagination {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  .pagination {
+    margin-top: 1rem;
+  }
+  button {
+    padding: 0.4rem 0.6rem;
+    border: 1px solid var(--border-color);
+    border-radius: 0.3rem;
+    background: var(--background-color);
+    color: var(--foreground-color);
+    cursor: pointer;
+  }
+  button[aria-pressed="true"] {
+    border-color: var(--accent-color);
+    color: var(--accent-color);
+  }
+  button:disabled {
+    opacity: 0.4;
+    cursor: default;
+  }
+  [hidden] {
+    display: none;
+  }
+</style>

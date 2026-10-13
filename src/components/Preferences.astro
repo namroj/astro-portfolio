@@ -3,29 +3,30 @@ import ThemeSwitcher from "./ThemeSwitcher";
 import FontSwitcher from "./FontSwitcher";
 import LineNumberToggle from "./LineNumberToggle";
 
-const currentPath = Astro.url.pathname;
+import { localeFromPath, messages, unlocalizedPath } from "../i18n";
+const m = messages[localeFromPath(Astro.url.pathname)];
+const currentPath = unlocalizedPath(Astro.url.pathname);
 ---
 
 <aside id="preferences" class="preferences">
   <div class="content">
-    <h3 class="title">Preferencias</h3>
+    <h3 class="title">{m.preferences}</h3>
     <div class="switchers">
       <div class="group">
-        <h4 class="title">Tema</h4>
+        <h4 class="title">{m.theme}</h4>
         <ThemeSwitcher client:load />
       </div>
       <div class="group">
-        <h4 class="title">Fuente</h4>
+        <h4 class="title">{m.font}</h4>
         <FontSwitcher client:load />
       </div>
       {
-        currentPath === "/blog" ||
-          (currentPath.startsWith("/blog") && (
-            <div class="group">
-              <h4 class="title">Código</h4>
-              <LineNumberToggle client:load />
-            </div>
-          ))
+        currentPath.startsWith("blog") && (
+          <div class="group">
+            <h4 class="title">{m.code}</h4>
+            <LineNumberToggle client:load />
+          </div>
+        )
       }
     </div>
   </div>

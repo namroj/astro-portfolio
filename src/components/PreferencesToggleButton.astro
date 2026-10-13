@@ -1,5 +1,6 @@
 ---
-
+import { messages, localeFromPath } from "../i18n";
+const m = messages[localeFromPath(Astro.url.pathname)];
 ---
 
 <style>
@@ -110,8 +111,10 @@
 <div class="preferences-toggle">
   <button
     id="preferences-toggle-btn"
-    aria-label="Mostrar/ocultar preferencias"
-    title="Preferencias"
+    aria-controls="preferences"
+    aria-expanded="false"
+    aria-label={m.preferences}
+    title={m.preferences}
   >
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -182,7 +185,7 @@
 </div>
 
 <script>
-  document.addEventListener("astro:page-load", () => {
+  function initialize() {
     // Toggle preferences visibility
     const preferencesToggleBtn = document.getElementById(
       "preferences-toggle-btn",
@@ -192,6 +195,10 @@
     preferencesToggleBtn?.addEventListener("click", () => {
       preferences?.classList.toggle("active");
       preferencesToggleBtn.classList.toggle("active");
+      preferencesToggleBtn.setAttribute(
+        "aria-expanded",
+        String(preferences?.classList.contains("active")),
+      );
     });
 
     // Close the preferences when clicking outside
@@ -204,7 +211,9 @@
       ) {
         preferences.classList.remove("active");
         preferencesToggleBtn?.classList.remove("active");
+        preferencesToggleBtn?.setAttribute("aria-expanded", "false");
       }
     });
-  });
+  }
+  initialize();
 </script>

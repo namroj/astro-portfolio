@@ -1,0 +1,33 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "../../../../layouts/Layout.astro";
+import { locales, messages, route } from "../../../../i18n";
+import { publishedPosts } from "../../../../utils/blog";
+import { slugify } from "../../../../utils/slugify";
+export function getStaticPaths() {
+  return locales.map((locale) => ({
+    params: { lang: locale },
+    props: { locale },
+  }));
+}
+const { locale } = Astro.props;
+const tags = [
+  ...new Set(
+    publishedPosts(await getCollection("blog"), locale).flatMap(
+      (p) => p.data.tags,
+    ),
+  ),
+].sort();
+---
+
+<Layout title={{ tab: messages[locale].tags, page: messages[locale].tags }}>
+  <ul>
+    {
+      tags.map((tag) => (
+        <li>
+          <a href={route(locale, `blog/tags/${slugify(tag)}`)}>{tag}</a>
+        </li>
+      ))
+    }
+  </ul>
+</Layout>

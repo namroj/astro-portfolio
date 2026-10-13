@@ -1,6 +1,11 @@
 import { file, glob } from "astro/loaders";
 import { z, defineCollection } from "astro:content";
 
+const text = z.union([
+  z.string(),
+  z.object({ es: z.string(), en: z.string() }),
+]);
+
 export const experience = defineCollection({
   loader: file("src/content/experience.json"),
   schema: z.object({
@@ -13,14 +18,14 @@ export const experience = defineCollection({
         alt: z.string(),
       }),
     }),
-    location: z.string(),
-    interval: z.string(),
+    location: text,
+    interval: text,
     positions: z.array(
       z.object({
-        title: z.string(),
-        description: z.string(),
-        highlight: z.string(),
-        interval: z.string(),
+        title: text,
+        description: text,
+        highlight: text,
+        interval: text,
       }),
     ),
     tags: z.array(z.string()),
@@ -31,8 +36,8 @@ export const education = defineCollection({
   loader: file("src/content/education.json"),
   schema: z.object({
     id: z.string(),
-    title: z.string(),
-    interval: z.string(),
+    title: text,
+    interval: text,
     entity: z.object({
       name: z.string(),
       image: z.object({
@@ -41,8 +46,8 @@ export const education = defineCollection({
       }),
       url: z.string().url(),
     }),
-    location: z.string(),
-    description: z.string(),
+    location: text,
+    description: text,
     tags: z.array(z.string()),
     certificate: z.string().optional(),
   }),
@@ -63,8 +68,8 @@ export const projects = defineCollection({
   schema: z.object({
     id: z.string(),
     name: z.string(),
-    summary: z.string(),
-    description: z.string(),
+    summary: text,
+    description: text,
     url: z.string().url(),
     logo: z.object({
       path: z.string(),
@@ -77,10 +82,14 @@ export const projects = defineCollection({
 });
 
 const blog = defineCollection({
-  loader: glob({ pattern: "**/[^_]*.md", base: "src/content/blog" }),
+  loader: glob({
+    pattern: "**/[^_]*.md",
+    base: "src/content/blog",
+    generateId: ({ entry }) => entry.replace(/\.md$/, ""),
+  }),
   schema: z.object({
     title: z.string(),
-    pubDate: z.date(),
+    pubDate: z.coerce.date(),
     description: z.string(),
     author: z.string(),
     image: z.object({
@@ -88,7 +97,12 @@ const blog = defineCollection({
       alt: z.string(),
     }),
     tags: z.array(z.string()),
-    draft: z.boolean(),
+    draft: z.boolean().default(false),
+    lang: z.enum(["es", "en"]).default("es"),
+    slug: z
+      .string()
+      .regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/)
+      .optional(),
   }),
 });
 

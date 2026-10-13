@@ -8,6 +8,8 @@ image:
 pubDate: 2025-03-23
 tags: [ "java", "patrón de diseño", "guardia", "código limpio" ]
 draft: false
+lang: es
+slug: guard-pattern
 ---
 
 ## Comprendiendo el Patrón Guardia

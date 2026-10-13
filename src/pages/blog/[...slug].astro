@@ -1,0 +1,22 @@
+---
+import { getCollection } from "astro:content";
+import { publishedPosts, postSlug, postUrl } from "../../utils/blog";
+import { slugify } from "../../utils/slugify";
+export async function getStaticPaths() {
+  const posts = publishedPosts(await getCollection("blog"), "es");
+  const tags = [...new Set(posts.flatMap((p) => p.data.tags.map(slugify)))];
+  return [
+    ...posts.map((post) => ({
+      params: { slug: postSlug(post) },
+      props: { target: postUrl(post) },
+    })),
+    { params: { slug: "tags" }, props: { target: "/es/blog/tags/" } },
+    ...tags.map((tag) => ({
+      params: { slug: `tags/${tag}` },
+      props: { target: `/es/blog/tags/${tag}/` },
+    })),
+    { params: { slug: "prueba" }, props: { target: "/es/blog/" } },
+  ];
+}
+return Astro.redirect(Astro.props.target, 301);
+---

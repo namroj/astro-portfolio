@@ -1,5 +1,6 @@
 ---
-
+import { messages, localeFromPath } from "../i18n";
+const m = messages[localeFromPath(Astro.url.pathname)];
 ---
 
 <style>
@@ -88,8 +89,10 @@
 <div class="toc-toggle">
   <button
     id="toc-toggle-btn"
-    aria-label="Toggle Table of Contents"
-    title="Tabla de Contenidos"
+    aria-controls="toc"
+    aria-expanded="false"
+    aria-label={m.toc}
+    title={m.toc}
   >
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -151,7 +154,7 @@
 </div>
 
 <script>
-  document.addEventListener("astro:page-load", () => {
+  function initialize() {
     // Toggle TOC visibility
     const tocToggleBtn = document.getElementById("toc-toggle-btn");
     const toc = document.getElementById("toc");
@@ -159,6 +162,10 @@
     tocToggleBtn?.addEventListener("click", () => {
       toc?.classList.toggle("active");
       tocToggleBtn.classList.toggle("active");
+      tocToggleBtn.setAttribute(
+        "aria-expanded",
+        String(toc?.classList.contains("active")),
+      );
     });
 
     // Close the TOC when clicking outside
@@ -171,7 +178,9 @@
       ) {
         toc.classList.remove("active");
         tocToggleBtn?.classList.remove("active");
+        tocToggleBtn?.setAttribute("aria-expanded", "false");
       }
     });
-  });
+  }
+  initialize();
 </script>

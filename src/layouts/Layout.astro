@@ -1,22 +1,46 @@
 ---
-import { ClientRouter } from "astro:transitions";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
-import Profile from "../components/Profile.astro";
+import Sidebar from "../components/Sidebar.astro";
+import { localeFromPath, messages, route, unlocalizedPath } from "../i18n";
+import { getCollection } from "astro:content";
+import { publishedPosts, postSlug, postUrl } from "../utils/blog";
 import Preferences from "../components/Preferences.astro";
 import TableOfContents from "../components/TableOfContents.astro";
-import { LANGUAGE } from "../const";
+import SEO from "../components/SEO.astro";
+
 import "../styles/fonts.css";
 import "../styles/variables.css";
 import "../styles/global.css";
 
-const { title, breadCrumbs } = Astro.props;
+const { title, breadCrumbs, seo, jsonLd, showSidebar = true } = Astro.props as any;
+
+const locale = localeFromPath(Astro.url.pathname);
+const m = messages[locale];
+const path = unlocalizedPath(Astro.url.pathname);
+const alternateUrls: Partial<Record<'es' | 'en', string>> = {};
+if (path === '404' || path === '404.html') {
+  // Error pages do not have translated canonical counterparts.
+} else if (path.startsWith('blog/') && !path.startsWith('blog/tags')) {
+  const posts = publishedPosts(await getCollection('blog'));
+  for (const lang of ['es', 'en'] as const) {
+    const post = posts.find(p => p.data.lang === lang && postSlug(p) === path.slice(5));
+    if (post) alternateUrls[lang] = postUrl(post);
+  }
+} else if (path.startsWith('blog/tags/')) {
+  alternateUrls[locale] = Astro.url.pathname;
+} else {
+  alternateUrls.es = route('es', path); alternateUrls.en = route('en', path);
+}
+const computedTitle = `${title.tab ? `[${title.tab}] ` : ""}${title.page ? `${title.page} • ` : ""}Jorman Espinoza | ${m.role}`;
+const canonicalUrl = Astro.site ? new URL(Astro.url.pathname, Astro.site).toString() : Astro.url?.href;
 ---
 
-<html lang={LANGUAGE.generic}>
+<html lang={locale}>
   <head>
-    <script>
+    <script is:inline>
       (function () {
+        try {
         const savedTheme = localStorage.getItem("theme") || "system";
         let themeToApply = savedTheme;
         if (savedTheme === "system") {
@@ -26,25 +50,45 @@ const { title, breadCrumbs } = Astro.props;
           themeToApply = prefersDark ? "dark" : "light";
         }
         document.documentElement.setAttribute("data-theme", themeToApply);
+        } catch { /* Keep the default theme when storage is unavailable. */ }
       })();
     </script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
-    <title>
-      {title.tab && `[${title.tab}]`} Jorman Espinoza | Desarrollador de Software
-    </title>
-    <ClientRouter />
+    <SEO
+      title={seo?.title ?? computedTitle}
+      description={seo?.description ?? m.description}
+      url={seo?.url ?? canonicalUrl}
+      image={seo?.image}
+      type={seo?.type ?? "website"}
+      siteName="Jorman Espinoza"
+      twitter={seo?.twitter}
+    />
+    {Object.entries(alternateUrls).map(([lang, path]) => <link rel="alternate" hreflang={lang} href={new URL(path, Astro.site).href} />)}
+    <link rel="alternate" type="application/rss+xml" title={`RSS (${locale})`} href={route(locale, 'rss.xml')} />
+    {import.meta.env.PUBLIC_GA_MEASUREMENT_ID && <>
+      <script is:inline async src={`https://www.googletagmanager.com/gtag/js?id=${import.meta.env.PUBLIC_GA_MEASUREMENT_ID}`}></script>
+      <script is:inline define:vars={{ measurementId: import.meta.env.PUBLIC_GA_MEASUREMENT_ID }}>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date()); gtag('config', measurementId);
+      </script>
+    </>}
+    {jsonLd && (
+      <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+    )}
   </head>
   <body>
-    <Header />
-    <main>
-      <h1>{title.page}</h1>
+    <a class="skip-link" href="#main-content">{locale === "en" ? "Skip to content" : "Ir al contenido"}</a>
+    <Header alternateUrls={alternateUrls} />
+    {showSidebar && <Sidebar />}
+    <main id="main-content" tabindex="-1">
+      {title.page && <h1>{title.page}</h1>}
       <slot />
     </main>
     <Footer breadCrumbs={breadCrumbs} />
-    <Profile />
     <Preferences />
     <TableOfContents />
   </body>

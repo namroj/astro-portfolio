@@ -1,27 +1,87 @@
 ---
 const { url, title, date } = Astro.props;
 
-const language = "es-ES";
+const language = Astro.url.pathname.startsWith("/en/") ? "en-US" : "es-AR";
 ---
 
-<a class="blog-post-link" href={`/blog/${url}`}>
-  <h3>{title}</h3>
-  <span>
-    {
-      new Date(date).toLocaleDateString(language, {
-        day: "2-digit",
-        month: "long",
-        year: "numeric",
-      })
-    }
-  </span>
+<a class="blog-post-link" href={url}>
+  <div class="post-content">
+    <h3 class="post-title">{title}</h3>
+    <span class="post-date">
+      {
+        new Date(date).toLocaleDateString(language, {
+          day: "2-digit",
+          month: "long",
+          year: "numeric",
+        })
+      }
+    </span>
+  </div>
+  <svg
+    class="arrow"
+    xmlns="http://www.w3.org/2000/svg"
+    width="20"
+    height="20"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  >
+    <line x1="5" y1="12" x2="19" y2="12"></line>
+    <polyline points="12 5 19 12 12 19"></polyline>
+  </svg>
 </a>
 
 <style is:inline>
   a.blog-post-link {
-    display: inline-flex;
+    display: flex;
     justify-content: space-between;
+    align-items: center;
     width: 100%;
-    border-bottom: 1px solid var(--border-color);
+    padding: 1.25em 0;
+    border-bottom: 1px solid rgba(var(--border-color-rgb, 142, 142, 142), 0.2);
+    transition: all 0.2s ease;
+    gap: 1em;
+  }
+
+  a.blog-post-link:hover {
+    padding-left: 0.5em;
+    border-bottom-color: var(--accent-color);
+  }
+
+  a.blog-post-link:hover .post-title {
+    color: var(--accent-color);
+  }
+
+  a.blog-post-link:hover .arrow {
+    transform: translateX(4px);
+    color: var(--accent-color);
+  }
+
+  .post-content {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .post-title {
+    font-size: 1.1em;
+    font-weight: 600;
+    margin: 0 0 0.25em 0;
+    color: var(--foreground-color);
+    transition: color 0.2s ease;
+  }
+
+  .post-date {
+    font-size: 0.875em;
+    color: var(--accent-muted-color);
+    font-family: var(--code-font);
+  }
+
+  .arrow {
+    flex-shrink: 0;
+    color: var(--accent-muted-color);
+    transition: all 0.2s ease;
   }
 </style>

@@ -1,0 +1,27 @@
+# Preserve old Astro and Next.js URLs with permanent HTTP redirects on Netlify.
+/ /es/ 301!
+/about /es/about/ 301!
+/about/ /es/about/ 301!
+/education /es/education/ 301!
+/education/ /es/education/ 301!
+/formation /es/education/ 301!
+/formation/ /es/education/ 301!
+/experience /es/experience/ 301!
+/experience/ /es/experience/ 301!
+/projects /es/projects/ 301!
+/projects/ /es/projects/ 301!
+/contact /es/contact/ 301!
+/contact/ /es/contact/ 301!
+/location /es/from-venezuela-to-argentina/ 301!
+/location/ /es/from-venezuela-to-argentina/ 301!
+/from-venezuela-to-argentina /es/from-venezuela-to-argentina/ 301!
+/from-venezuela-to-argentina/ /es/from-venezuela-to-argentina/ 301!
+/blog /es/blog/ 301!
+/blog/ /es/blog/ 301!
+# The old sample article is retained as a draft, not a public article.
+/blog/prueba /es/blog/ 301!
+/blog/prueba/ /es/blog/ 301!
+/blog/* /es/blog/:splat 301!
+/posts/* /es/blog/:splat 301!
+/rss.xml /es/rss.xml 301!
+/search.json /es/search.json 301!

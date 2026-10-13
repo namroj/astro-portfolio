@@ -2,6 +2,8 @@
 import BreadCrumbs from "./BreadCrumbs.astro";
 import "../styles/footer.css";
 
+import { localeFromPath, route } from "../i18n";
+const locale = localeFromPath(Astro.url.pathname);
 const { breadCrumbs } = Astro.props;
 ---
 
@@ -11,6 +13,8 @@ const { breadCrumbs } = Astro.props;
   </div>
 
   <div class="right">
-    <p>© {new Date().getFullYear()}. <a href="/">Jorman Espinoza</a></p>
+    <p>
+      © {new Date().getFullYear()}. <a href={route(locale)}>Jorman Espinoza</a>
+    </p>
   </div>
 </footer>
