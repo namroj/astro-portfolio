@@ -12,6 +12,7 @@ import { messages, route, localize, type Locale } from "../i18n";
 import { publishedPosts, postUrl } from "../utils/blog";
 import "../styles/timeline.css";
 import "../styles/sections.css";
+import "../styles/home.css";
 const { locale, page = "" } = Astro.props as { locale: Locale; page?: string };
 const m = messages[locale];
 const key = page as keyof typeof m;
@@ -38,6 +39,29 @@ const posts =
 const tags = [
   ...new Set((isTimeline ? items : posts).flatMap((item) => item.data.tags)),
 ].sort();
+const homeExperience =
+  page === ""
+    ? (await getCollection("experience"))
+        .slice(0, 3)
+        .map((item) => ({ ...item, data: localize(item.data, locale) }))
+    : [];
+const homeEducation =
+  page === ""
+    ? (await getCollection("education"))
+        .slice(0, 3)
+        .map((item) => ({ ...item, data: localize(item.data, locale) }))
+    : [];
+const homeProjects =
+  page === ""
+    ? (await getCollection("projects"))
+        .filter((item) => item.data.visible)
+        .slice(0, 3)
+        .map((item) => ({ ...item, data: localize(item.data, locale) }))
+    : [];
+const homePosts =
+  page === ""
+    ? publishedPosts(await getCollection("blog"), locale).slice(0, 3)
+    : [];
 const jsonLd =
   page === ""
     ? {
@@ -65,6 +89,71 @@ const jsonLd =
           <a href={route(locale, "projects")}>{m.projects} →</a> ·{" "}
           <a href={route(locale, "experience")}>{m.experience} →</a>
         </p>
+        <p>
+          <a class="cta" href={route(locale, "contact")}>
+            {m.contact} →
+          </a>
+        </p>
+        <section class="home-section" id="experience">
+          <h2>{m.experience}</h2>
+          <ul class="item-list">
+            {homeExperience.map((item) => (
+              <li>
+                <strong>{item.data.entity.name}</strong>
+                <div>{item.data.positions[0]?.title}</div>
+                <div class="item-interval">{item.data.interval}</div>
+              </li>
+            ))}
+          </ul>
+          <a class="more" href={route(locale, "experience")}>
+            {m.experience} →
+          </a>
+        </section>
+        <section class="home-section" id="education">
+          <h2>{m.education}</h2>
+          <ul class="item-list">
+            {homeEducation.map((item) => (
+              <li>
+                <strong>{item.data.title}</strong>
+                <div>{item.data.entity.name}</div>
+                <div class="item-interval">{item.data.interval}</div>
+              </li>
+            ))}
+          </ul>
+          <a class="more" href={route(locale, "education")}>
+            {m.education} →
+          </a>
+        </section>
+        <section class="home-section" id="projects">
+          <h2>{m.projects}</h2>
+          <ul class="item-list">
+            {homeProjects.map((item) => (
+              <li>
+                <a href={`${route(locale, "projects")}#${item.id}`}>
+                  <strong>{item.data.name}</strong>
+                </a>
+                <div>{item.data.summary}</div>
+              </li>
+            ))}
+          </ul>
+          <a class="more" href={route(locale, "projects")}>
+            {m.projects} →
+          </a>
+        </section>
+        <section class="home-section" id="blog">
+          <h2>{m.blog}</h2>
+          {homePosts.map((post) => (
+            <BlogPost
+              url={postUrl(post)}
+              title={post.data.title}
+              date={post.data.pubDate}
+            />
+          ))}
+          {homePosts.length === 0 && <p>{m.emptyBlog}</p>}
+          <a class="more" href={route(locale, "blog")}>
+            {m.blog} →
+          </a>
+        </section>
         <section>
           <>
             <h2>{m.skills}</h2>
