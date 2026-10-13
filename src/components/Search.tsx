@@ -1,130 +1,127 @@
-import { h } from 'preact';
-import { useEffect, useMemo, useRef, useState } from 'preact/hooks';
-
-type Item = {
-  id: string;
-  url: string;
-  title: string;
-  description: string;
-  tags: string[];
-  date: string;
-};
-
-export default function Search() {
-  const [q, setQ] = useState('');
-  const [items, setItems] = useState<Item[]>([]);
-  const [open, setOpen] = useState(false);
+import { useEffect, useId, useRef, useState } from "preact/hooks";
+import { messages, type Locale } from "../i18n";
+import { searchItems, type SearchItem } from "../utils/search";
+export default function Search({ locale = "es" }: { locale?: Locale }) {
+  const m = messages[locale];
+  const id = useId();
+  const input = useRef<HTMLInputElement>(null);
+  const [query, setQuery] = useState("");
+  const [items, setItems] = useState<SearchItem[]>([]);
+  const [state, setState] = useState<"idle" | "loading" | "ready" | "error">(
+    "idle",
+  );
   const [active, setActive] = useState(0);
-  const inputRef = useRef<HTMLInputElement>(null);
-  const listRef = useRef<HTMLUListElement>(null);
-
+  const [attempt, setAttempt] = useState(0);
+  const [open, setOpen] = useState(false);
+  const results = searchItems(items, query);
   useEffect(() => {
-    fetch('/search.json')
-      .then((r) => r.json())
-      .then((data: Item[]) => setItems(data))
-      .catch(() => setItems([]));
-  }, []);
-
-  const results = useMemo(() => {
-    if (!q.trim()) return [] as Item[];
-    const t = q.toLowerCase();
-    return items
-      .filter((i) =>
-        i.title.toLowerCase().includes(t) ||
-        i.description.toLowerCase().includes(t) ||
-        i.tags.some((tag) => tag.toLowerCase().includes(t))
-      )
-      .slice(0, 8);
-  }, [q, items]);
-
+    const controller = new AbortController();
+    setState("loading");
+    fetch(`/${locale}/search.json`, { signal: controller.signal })
+      .then((r) => {
+        if (!r.ok) throw new Error("Search request failed");
+        return r.json();
+      })
+      .then((data) => {
+        setItems(data);
+        setState("ready");
+      })
+      .catch((error) => {
+        if (error.name !== "AbortError") setState("error");
+      });
+    return () => controller.abort();
+  }, [locale, attempt]);
   useEffect(() => {
-    setActive(0);
-  }, [q]);
-
-  useEffect(() => {
-    function onKey(e: KeyboardEvent) {
-      if (!open) return;
-      if (e.key === 'Escape') setOpen(false);
-      if (e.key === 'ArrowDown') {
+    function shortcut(e: KeyboardEvent) {
+      const target = e.target as HTMLElement;
+      if (
+        ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === "k") ||
+        (e.key === "/" &&
+          !target.closest('input, textarea, [contenteditable="true"]'))
+      ) {
         e.preventDefault();
-        setActive((a) => Math.min(a + 1, Math.max(0, results.length - 1)));
+        setOpen(true);
+        input.current?.focus();
       }
-      if (e.key === 'ArrowUp') {
-        e.preventDefault();
-        setActive((a) => Math.max(0, a - 1));
-      }
-      if (e.key === 'Enter' && results[active]) {
-        window.location.href = results[active].url;
-      }
+      if (e.key === "Escape") setOpen(false);
     }
-    window.addEventListener('keydown', onKey);
-    return () => window.removeEventListener('keydown', onKey);
-  }, [open, results, active]);
-
+    window.addEventListener("keydown", shortcut);
+    return () => window.removeEventListener("keydown", shortcut);
+  }, []);
   return (
-    <div class="search">
+    <div
+      class="global-search"
+      onFocusOut={(e) => {
+        if (!e.currentTarget.contains(e.relatedTarget as Node)) setOpen(false);
+      }}
+    >
       <input
-        ref={inputRef}
+        ref={input}
         type="search"
-        placeholder="Buscar artículos..."
-        aria-label="Buscar"
-        value={q}
+        placeholder={`${m.search} (⌘K)`}
+        aria-label={m.search}
+        role="combobox"
+        aria-expanded={open}
+        aria-controls={id}
+        aria-autocomplete="list"
+        aria-activedescendant={
+          open && results.length ? `${id}-${active}` : undefined
+        }
+        value={query}
+        onFocus={() => setOpen(true)}
         onInput={(e) => {
-          const v = (e.target as HTMLInputElement).value;
-          setQ(v);
-          setOpen(!!v);
+          setQuery(e.currentTarget.value);
+          setActive(0);
+          setOpen(true);
         }}
-        onFocus={() => setOpen(!!q)}
+        onKeyDown={(e) => {
+          if (e.key === "ArrowDown") {
+            e.preventDefault();
+            setActive((a) => Math.max(0, Math.min(a + 1, results.length - 1)));
+          }
+          if (e.key === "ArrowUp") {
+            e.preventDefault();
+            setActive((a) => Math.max(0, a - 1));
+          }
+          if (e.key === "Enter" && open && results[active])
+            window.location.assign(results[active].url);
+        }}
       />
-      {open && results.length > 0 && (
-        <ul class="panel" ref={listRef} role="listbox">
-          {results.map((r, i) => (
-            <li key={r.id} class={i === active ? 'active' : ''}>
-              <a href={r.url} onClick={() => setOpen(false)}>
-                <span class="title">{r.title}</span>
-                <span class="desc">{r.description}</span>
-              </a>
-            </li>
-          ))}
-        </ul>
+      {open && (
+        <div class="search-panel">
+          {state === "loading" && <p role="status">{m.loading}</p>}
+          {state === "error" && (
+            <p role="status">
+              {m.searchError}{" "}
+              <button type="button" onClick={() => setAttempt((a) => a + 1)}>
+                {locale === "en" ? "Retry" : "Reintentar"}
+              </button>
+            </p>
+          )}
+          {state === "ready" && query && !results.length && (
+            <p role="status">{m.noResults}</p>
+          )}
+          <ul id={id} role="listbox">
+            {results.map((r, i) => (
+              <li
+                key={r.id}
+                id={`${id}-${i}`}
+                role="option"
+                aria-selected={i === active}
+                class={i === active ? "active" : ""}
+              >
+                <a href={r.url}>
+                  <strong>{r.title}</strong>
+                  <small>
+                    {r.type === "project" ? m.projects : m.blog} ·{" "}
+                    {r.description}
+                  </small>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
       )}
-      {open && q && results.length === 0 && (
-        <div class="panel empty">Sin resultados</div>
-      )}
-      <style>
-        {`
-        .search { position: relative; }
-        .search input {
-          width: 220px;
-          padding: 0.5em 0.75em;
-          border-radius: 8px;
-          border: 1px solid var(--border-color);
-          background: rgba(var(--background-color-rgb), 0.6);
-          color: var(--foreground-color);
-        }
-        .panel {
-          position: absolute;
-          top: calc(100% + 6px);
-          right: 0;
-          width: 460px;
-          max-width: min(92dvw, 560px);
-          background: rgba(var(--background-color-rgb), 0.9);
-          backdrop-filter: blur(12px);
-          border: 1px solid var(--border-color);
-          border-radius: 10px;
-          box-shadow: 0 10px 24px rgba(0,0,0,.15);
-          z-index: 20;
-        }
-        .panel.empty { padding: 0.75em; font-size: .9em; color: var(--accent-muted-color); }
-        .panel ul { list-style: none; margin: 0; padding: 0; }
-        .panel li { border-bottom: 1px solid var(--border-color); }
-        .panel li:last-child { border-bottom: 0; }
-        .panel a { display: block; padding: .75em; color: inherit; }
-        .panel li.active, .panel a:hover { background: rgba(var(--accent-color-rgb, 255, 99, 71), .08); }
-        .title { display: block; font-weight: 600; }
-        .desc { display: block; font-size: .85em; color: var(--accent-muted-color); }
-        `}
-      </style>
     </div>
   );
 }

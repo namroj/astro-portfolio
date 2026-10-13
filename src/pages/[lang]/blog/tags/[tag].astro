@@ -1,0 +1,39 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "../../../../layouts/Layout.astro";
+import BlogPost from "../../../../components/BlogPost.astro";
+import { locales, messages, route } from "../../../../i18n";
+import { publishedPosts, postUrl } from "../../../../utils/blog";
+import { slugify } from "../../../../utils/slugify";
+export async function getStaticPaths() {
+  const posts = await getCollection("blog");
+  return locales.flatMap((locale) => {
+    const published = publishedPosts(posts, locale);
+    const tags = [...new Set(published.flatMap((p) => p.data.tags))];
+    return [...new Set(tags.map(slugify))].map((slug) => ({
+      params: { lang: locale, tag: slug },
+      props: {
+        locale,
+        tag: tags.find((t) => slugify(t) === slug),
+        posts: published.filter((p) =>
+          p.data.tags.some((t) => slugify(t) === slug),
+        ),
+      },
+    }));
+  });
+}
+const { locale, tag, posts } = Astro.props;
+---
+
+<Layout title={{ tab: `${messages[locale].tags}: ${tag}`, page: tag }}>
+  {
+    posts.map((post) => (
+      <BlogPost
+        url={postUrl(post)}
+        title={post.data.title}
+        date={post.data.pubDate}
+      />
+    ))
+  }
+  <a href={route(locale, "blog/tags")}>{messages[locale].tags}</a>
+</Layout>

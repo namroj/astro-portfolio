@@ -1,0 +1,9 @@
+[build]
+command = "pnpm build"
+publish = "dist"
+
+[build.environment]
+NODE_VERSION = "22"
+PNPM_VERSION = "9.12.3"
+
+# Generated localized pages and static assets are served directly.

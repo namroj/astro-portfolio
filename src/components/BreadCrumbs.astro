@@ -2,9 +2,11 @@
 import BreadCrumb from "./BreadCrumb.astro";
 import type { BreadCrumb as BreadCrumbType } from "../types/env";
 
+import { localeFromPath, route, messages } from "../i18n";
+const locale = localeFromPath(Astro.url.pathname);
 const HOME_BREADCRUMB: BreadCrumbType = {
-  url: "/",
-  label: "Inicio",
+  url: route(locale),
+  label: messages[locale].home,
 };
 
 const { breadCrumbs = [] } = Astro.props as {

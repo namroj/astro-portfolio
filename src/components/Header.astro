@@ -1,11 +1,101 @@
 ---
-import Nav from "./Nav.astro";
+import Search from "./Search";
+import PreferencesToggleButton from "./PreferecesToggleButton.astro";
+import TableOfContentsToggleButton from "./TableOfContentsToggleButton.astro";
+import { localeFromPath, navigation, route } from "../i18n";
+const locale = localeFromPath(Astro.url.pathname);
+const links = navigation(locale);
+const { alternateUrls = {} } = Astro.props;
 ---
 
-<header>
-  <Nav />
+<header class="site-header">
+  <a class="mobile-brand" href={route(locale)}>Jorman Espinoza</a>
+  <div class="site-controls">
+    <Search locale={locale} client:load />
+    <nav aria-label={locale === "en" ? "Language" : "Idioma"} class="languages">
+      {
+        (["es", "en"] as const).map((lang) => (
+          <a
+            href={alternateUrls[lang] || route(lang)}
+            lang={lang}
+            hreflang={lang}
+            aria-current={lang === locale ? "page" : undefined}
+          >
+            {lang.toUpperCase()}
+          </a>
+        ))
+      }
+    </nav>
+    <PreferencesToggleButton />
+    <TableOfContentsToggleButton />
+  </div>
+  <details class="mobile-menu">
+    <summary>{locale === "en" ? "Menu" : "Menú"}</summary>
+    <nav
+      aria-label={locale === "en" ? "Main navigation" : "Navegación principal"}
+    >
+      {links.map((link) => <a href={link.url}>{link.label}</a>)}
+    </nav>
+  </details>
 </header>
-
-<script>
-  import "../scripts/navigation.js";
-</script>
+<style>
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    padding: 0.75rem 1rem;
+    background: var(--background-color);
+    border-bottom: 1px solid var(--border-color);
+  }
+  .site-controls {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-left: auto;
+  }
+  .languages {
+    display: flex;
+    gap: 0.5rem;
+    font-size: 0.85rem;
+  }
+  .languages [aria-current] {
+    color: var(--accent-color);
+    text-decoration: underline;
+  }
+  summary {
+    cursor: pointer;
+  }
+  .mobile-menu nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding: 1rem 0;
+  }
+  @media (min-width: 1024px) {
+    .site-header {
+      position: fixed;
+      top: 0;
+      right: 0;
+      left: auto;
+      background: var(--background-color);
+    }
+    .mobile-brand,
+    .mobile-menu {
+      display: none;
+    }
+  }
+  @media (max-width: 600px) {
+    .mobile-brand {
+      width: 100%;
+    }
+    .site-controls {
+      margin-left: 0;
+      flex: 1;
+      flex-wrap: wrap;
+    }
+  }
+</style>

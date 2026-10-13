@@ -1,0 +1,82 @@
+[
+  {
+    "name": "IntelliJ IDEA",
+    "url": "https://www.jetbrains.com/idea/"
+  },
+  {
+    "name": "VS Code",
+    "url": "https://code.visualstudio.com/"
+  },
+  {
+    "name": "Terminal",
+    "url": "https://ohmyz.sh/"
+  },
+  {
+    "name": "GitHub",
+    "url": "https://github.com/"
+  },
+  {
+    "name": "Bitbucket",
+    "url": "https://bitbucket.org/"
+  },
+  {
+    "name": "Postman",
+    "url": "https://www.postman.com/"
+  },
+  {
+    "name": "DBeaver",
+    "url": "https://dbeaver.io/"
+  },
+  {
+    "name": "Draw.io",
+    "url": "https://draw.io/"
+  },
+  {
+    "name": "Jira",
+    "url": "https://www.atlassian.com/es/software/jira/"
+  },
+  {
+    "name": "AWS",
+    "url": "https://aws.amazon.com/"
+  },
+  {
+    "name": "Illustrator",
+    "url": "https://www.adobe.com/ar/products/illustrator.html"
+  },
+  {
+    "name": "Figma",
+    "url": "https://www.figma.com/"
+  },
+  {
+    "name": "Notion",
+    "url": "https://www.notion.so/"
+  },
+  {
+    "name": "Slack",
+    "url": "https://slack.com/"
+  },
+  {
+    "name": "Trello",
+    "url": "https://trello.com/"
+  },
+  {
+    "name": "Junie",
+    "url": "https://www.jetbrains.com/junie/"
+  },
+  {
+    "name": "Claude Code",
+    "url": "https://claude.com/product/claude-code/"
+  },
+  {
+    "name": "Codex",
+    "url": "https://openai.com/codex/"
+  },
+  {
+    "name": "Azure",
+    "url": "https://azure.microsoft.com"
+  },
+  {
+    "name": "Docker",
+    "url": "https://www.docker.com"
+  }
+]

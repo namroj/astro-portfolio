@@ -1,0 +1,110 @@
+[
+  {
+    "name": "GIT",
+    "url": "https://git-scm.com/"
+  },
+  {
+    "name": "Next.js",
+    "url": "https://nextjs.org/"
+  },
+  {
+    "name": "Java",
+    "url": "https://www.java.com/"
+  },
+  {
+    "name": "Spring",
+    "url": "https://spring.io/"
+  },
+  {
+    "name": "JavaScript",
+    "url": "https://www.javascript.com/"
+  },
+  {
+    "name": "JQuery",
+    "url": "https://brand.jquery.org/"
+  },
+  {
+    "name": "TypeScript",
+    "url": "https://www.typescriptlang.org/"
+  },
+  {
+    "name": "Node.js",
+    "url": "https://nodejs.org/"
+  },
+  {
+    "name": "React",
+    "url": "https://react.dev/"
+  },
+  {
+    "name": "Umi.js",
+    "url": "https://v3.umijs.org/"
+  },
+  {
+    "name": "PHP",
+    "url": "https://www.php.net/"
+  },
+  {
+    "name": "Symfony",
+    "url": "https://symfony.com/"
+  },
+  {
+    "name": "Laravel",
+    "url": "https://laravel.com/"
+  },
+  {
+    "name": "MySQL",
+    "url": "https://www.mysql.com/"
+  },
+  {
+    "name": "PostgreSQL",
+    "url": "https://www.postgresql.org/"
+  },
+  {
+    "name": "HTML",
+    "url": "https://www.w3.org/TR/html/"
+  },
+  {
+    "name": "CSS",
+    "url": "https://www.w3.org/Style/CSS/"
+  },
+  {
+    "name": "SASS",
+    "url": "https://sass-lang.com/"
+  },
+  {
+    "name": "Ant Design",
+    "url": "https://ant.design/"
+  },
+  {
+    "name": "Bootstrap",
+    "url": "https://getbootstrap.com/"
+  },
+  {
+    "name": "Tailwind",
+    "url": "https://tailwindcss.com/"
+  },
+  {
+    "name": "Expo",
+    "url": "https://expo.dev/"
+  },
+  {
+    "name": "Astro",
+    "url": "https://astro.build"
+  },
+  {
+    "name": "React Native",
+    "url": "https://reactnative.dev"
+  },
+  {
+    "name": "iOS",
+    "url": "https://developer.apple.com/ios/"
+  },
+  {
+    "name": "Android",
+    "url": "https://developer.android.com"
+  },
+  {
+    "name": "VTEX",
+    "url": "https://vtex.com"
+  }
+]

@@ -3,20 +3,38 @@
     "id": "freelance",
     "entity": {
       "name": "Freelance",
-      "url": "https://jorman.dev/proyectos/freelance",
+      "url": "https://github.com/namroj",
       "image": {
         "path": "/images/experience/freelance.jpeg",
         "alt": "Freelance logo"
       }
     },
-    "location": "Buenos Aires, Argentina",
-    "interval": "Abr 2018 - Presente",
+    "location": {
+      "es": "Buenos Aires, Argentina",
+      "en": "Buenos Aires, Argentina"
+    },
+    "interval": {
+      "es": "Abr 2018 - Presente",
+      "en": "Apr 2018 - Present"
+    },
     "positions": [
       {
-        "title": "Desarrollador Full Stack",
-        "description": "Desarrollo de sitios web, landing pages, portafolios, blogs, tiendas virtuales, sistemas de gestión de contenido, entre otros.Modelado de bases de datos.||Despliegue de sitios a nivel Hosting.||Configuración de dominios y DNS.||Configuración de cuentas de correo.||Instalación/configuración y aplicación de WordPress, incluyendo personalización de temas y edición y aplicación de plugins PHP.||Armado de firmas de correo electrónico con HTML.",
-        "highlight": "Desarrollador autónomo en paralelo -clientes generados a través de networking y recomendaciones por compañeros de trabajo y referencias de clientes previos. Maquetado|Desarrollo de API con Java|Spring Boot.",
-        "interval": "Abr 2018 - Presente"
+        "title": {
+          "es": "Desarrollador Full Stack",
+          "en": "Full Stack Developer"
+        },
+        "description": {
+          "es": "Desarrollo de sitios web, landing pages, portafolios, blogs, tiendas virtuales, sistemas de gestión de contenido, entre otros.Modelado de bases de datos.||Despliegue de sitios a nivel Hosting.||Configuración de dominios y DNS.||Configuración de cuentas de correo.||Instalación/configuración y aplicación de WordPress, incluyendo personalización de temas y edición y aplicación de plugins PHP.||Armado de firmas de correo electrónico con HTML.",
+          "en": "Development of websites, landing pages, portfolios, blogs, online stores, content management systems, among others. Database modeling.||Deployment of sites at Hosting level.||Configuration of domains and DNS.||Configuration of email accounts.||Installation/configuration and application of WordPress, including theme customization and editing and application of PHP plugins.||Creation of email signatures with HTML."
+        },
+        "highlight": {
+          "es": "Desarrollador autónomo en paralelo -clientes generados a través de networking y recomendaciones por compañeros de trabajo y referencias de clientes previos. Maquetado|Desarrollo de API con Java|Spring Boot.",
+          "en": "Parallel freelance developer - clients generated through networking and recommendations from coworkers and previous client references. Layout|API development with Java|Spring Boot."
+        },
+        "interval": {
+          "es": "Abr 2018 - Presente",
+          "en": "Apr 2018 - Present"
+        }
       }
     ],
     "tags": [
@@ -61,20 +79,50 @@
         "alt": "Accenture Song logo"
       }
     },
-    "location": "Buenos Aires, Argentina",
-    "interval": "Abr 2022 - Presente",
+    "location": {
+      "es": "Buenos Aires, Argentina",
+      "en": "Buenos Aires, Argentina"
+    },
+    "interval": {
+      "es": "Abr 2022 - Presente",
+      "en": "Apr 2022 - Present"
+    },
     "positions": [
       {
-        "title": "Desarrollador Full Stack [Líder]",
-        "description": "Creación de diagramas de arquitectura, secuencia, flujo y entidad relación.||Inducción de procesos y proyectos a integrantes del equipo.||Desarrollo de una aplicación para el manejo interno de la documentación de proceso mediante una herramienta de generación de contenido estático.||Documentación de procesos.||Levantamiento/relevamiento de información con clientes y personal interno.",
-        "highlight": "Traspaso a un nuevo equipo como líder, pasando de tener algunos proyectos a muchos en poco tiempo -requirió una rápida adaptación para el avance, resolución y desarrollo de nuevas funcionalidades, además de mejorar habilidades en cuanto a liderazgo, negociación y organización.",
-        "interval": "Abr 2023 - Presente"
+        "title": {
+          "es": "Desarrollador Full Stack [Líder]",
+          "en": "Full Stack Developer [Lead]"
+        },
+        "description": {
+          "es": "Creación de diagramas de arquitectura, secuencia, flujo y entidad relación.||Inducción de procesos y proyectos a integrantes del equipo.||Desarrollo de una aplicación para el manejo interno de la documentación de proceso mediante una herramienta de generación de contenido estático.||Documentación de procesos.||Levantamiento/relevamiento de información con clientes y personal interno.",
+          "en": "Creation of architecture, sequence, flow, and entity-relationship diagrams.||Induction of processes and projects to team members.||Development of an application for internal handling of process documentation using a static content generation tool.||Process documentation.||Information gathering/surveying with clients and internal staff."
+        },
+        "highlight": {
+          "es": "Traspaso a un nuevo equipo como líder, pasando de tener algunos proyectos a muchos en poco tiempo -requirió una rápida adaptación para el avance, resolución y desarrollo de nuevas funcionalidades, además de mejorar habilidades en cuanto a liderazgo, negociación y organización.",
+          "en": "Transfer to a new team as a leader, going from having a few projects to many in a short time - required rapid adaptation for progress, resolution, and development of new functionalities, as well as improving leadership, negotiation, and organization skills."
+        },
+        "interval": {
+          "es": "Abr 2023 - Presente",
+          "en": "Apr 2023 - Present"
+        }
       },
       {
-        "title": "Desarrollador Full Stack",
-        "description": "Desarrollo y mantenimiento de microservicios, librerías Y SDKs internas.||Optimización y actualización de aplicaciones.||Integración y documentación de APIs.||Aplicación de Arquitectura Hexagonal para la integración de módulos.",
-        "highlight": "Glamit es adquirida por Accenture, así que marca una transición dentro de la línea de tiempo. En esta etapa destaca la elaboración de un módulo completo para la gestión de stock de productos.",
-        "interval": "Ago 2022 - Abr 2023"
+        "title": {
+          "es": "Desarrollador Full Stack",
+          "en": "Full Stack Developer"
+        },
+        "description": {
+          "es": "Desarrollo y mantenimiento de microservicios, librerías Y SDKs internas.||Optimización y actualización de aplicaciones.||Integración y documentación de APIs.||Aplicación de Arquitectura Hexagonal para la integración de módulos.",
+          "en": "Development and maintenance of microservices, internal libraries, and SDKs.||Optimization and update of applications.||API integration and documentation.||Application of Hexagonal Architecture for module integration."
+        },
+        "highlight": {
+          "es": "Glamit es adquirida por Accenture, así que marca una transición dentro de la línea de tiempo. En esta etapa destaca la elaboración de un módulo completo para la gestión de stock de productos.",
+          "en": "Glamit is acquired by Accenture, marking a transition in the timeline. This stage highlights the development of a complete module for product stock management."
+        },
+        "interval": {
+          "es": "Ago 2022 - Abr 2023",
+          "en": "Aug 2022 - Apr 2023"
+        }
       }
     ],
     "tags": [
@@ -118,20 +166,50 @@
         "alt": "Glamit logo"
       }
     },
-    "location": "Buenos Aires, Argentina",
-    "interval": "Jul 2020 - Abr 2022",
+    "location": {
+      "es": "Buenos Aires, Argentina",
+      "en": "Buenos Aires, Argentina"
+    },
+    "interval": {
+      "es": "Jul 2020 - Abr 2022",
+      "en": "Jul 2020 - Apr 2022"
+    },
     "positions": [
       {
-        "title": "Desarrollador Back End [Senior]",
-        "description": "Armado y aplicación de máquinas de estados <<mediante Spring Boot State Machine>> para el manejo de estados de las entidades base de proyectos para garantizar el correcto flujo de vida de los datos.||Documentación de procesos internos.",
-        "highlight": "Buen desempeño en la resolución de tareas llevaron a un ascenso tras haber participado en 2 proyectos clave -uno, un sistema de gestión de envío de compras a clientes .Y dos, un sistema gestor de productos y preparación de paquetes para entregas.",
-        "interval": "Jul 2021 - Abr 2022"
+        "title": {
+          "es": "Desarrollador Back End [Senior]",
+          "en": "Back End Developer [Senior]"
+        },
+        "description": {
+          "es": "Armado y aplicación de máquinas de estados <<mediante Spring Boot State Machine>> para el manejo de estados de las entidades base de proyectos para garantizar el correcto flujo de vida de los datos.||Documentación de procesos internos.",
+          "en": "Building and applying state machines <<using Spring Boot State Machine>> for handling the states of project base entities to guarantee the correct data life flow.||Internal process documentation."
+        },
+        "highlight": {
+          "es": "Buen desempeño en la resolución de tareas llevaron a un ascenso tras haber participado en 2 proyectos clave -uno, un sistema de gestión de envío de compras a clientes .Y dos, un sistema gestor de productos y preparación de paquetes para entregas.",
+          "en": "Good performance in task resolution led to a promotion after participating in 2 key projects - one, a customer purchase shipping management system. And two, a product manager and package preparation system for deliveries."
+        },
+        "interval": {
+          "es": "Jul 2021 - Abr 2022",
+          "en": "Jul 2021 - Apr 2022"
+        }
       },
       {
-        "title": "Desarrollador Back End [Semi Senior]",
-        "description": "Creación de diagramas entidad relación y modelado/mantenimiento/gestión de bases de datos.||Desarrollo de API RESTful.||Desarrollo y mantenimiento de microservicios mediante Spring Boot.||Desarrollo de servicios y procesos serverless para integraciones con AWS Lambda.||Desarrollo/mantenimiento de aplicaciones web con NodeJs, React y UmiJS.||Desarrollo de funciones en Java, PHP y Magento.",
-        "highlight": "La prueba técnica implicó el desarrollo de un Blog que manejará comentarios y likes, así como gestión de usuarios -esto con cualquier tecnología (la elegida fue Symfony con MySQL para el back y jQuery con Bootstrap para el front). No tenía fecha límite pero logré armarlo en 5 días y 4 largas noches.",
-        "interval": "Jul 2020 - Jun 2021"
+        "title": {
+          "es": "Desarrollador Back End [Semi Senior]",
+          "en": "Back End Developer [Semi Senior]"
+        },
+        "description": {
+          "es": "Creación de diagramas entidad relación y modelado/mantenimiento/gestión de bases de datos.||Desarrollo de API RESTful.||Desarrollo y mantenimiento de microservicios mediante Spring Boot.||Desarrollo de servicios y procesos serverless para integraciones con AWS Lambda.||Desarrollo/mantenimiento de aplicaciones web con NodeJs, React y UmiJS.||Desarrollo de funciones en Java, PHP y Magento.",
+          "en": "Creation of entity-relationship diagrams and database modeling/maintenance/management.||RESTful API development.||Development and maintenance of microservices using Spring Boot.||Development of serverless services and processes for AWS Lambda integrations.||Development/maintenance of web applications with NodeJs, React, and UmiJS.||Development of functions in Java, PHP, and Magento."
+        },
+        "highlight": {
+          "es": "La prueba técnica implicó el desarrollo de un Blog que manejará comentarios y likes, así como gestión de usuarios -esto con cualquier tecnología (la elegida fue Symfony con MySQL para el back y jQuery con Bootstrap para el front). No tenía fecha límite pero logré armarlo en 5 días y 4 largas noches.",
+          "en": "The technical test involved the development of a Blog that handles comments and likes, as well as user management - this with any technology (the chosen one was Symfony with MySQL for the back-end and jQuery with Bootstrap for the front-end). It had no deadline but I managed to build it in 5 days and 4 long nights."
+        },
+        "interval": {
+          "es": "Jul 2020 - Jun 2021",
+          "en": "Jul 2020 - Jun 2021"
+        }
       }
     ],
     "tags": [
@@ -175,14 +253,32 @@
         "alt": "Remolino logo"
       }
     },
-    "location": "Buenos Aires, Argentina",
-    "interval": "Oct 2017 - Jun 2020",
+    "location": {
+      "es": "Buenos Aires, Argentina",
+      "en": "Buenos Aires, Argentina"
+    },
+    "interval": {
+      "es": "Oct 2017 - Jun 2020",
+      "en": "Oct 2017 - Jun 2020"
+    },
     "positions": [
       {
-        "title": "Desarrollador Web",
-        "description": "Generación de sitios web personalizados incluyendo sistemas gestores de contenido (CMS) específicos para cada proyecto/cliente basados en un framework PHP específico de la organización, así como también el uso de Symfony 4.||Maquetación, corrección y mantenimiento de los mismos.||Generación de firmas de mail (HTML).||Diseño/creación/gestión de bases de datos.||Manejo de herramientas de diseño como Adobe Photoshop e Illustrator para la gestión de imágenes y elementos de diseño a llevar a los sitios.||Integración con la API de Google Maps junto con Snazzy Maps para generar/aplicar mapas personalizados.||Generación de manuales de usuario e inducción online/presencial a clientes acerca del manejo de sus respectivos sitios.",
-        "highlight": "Primer trabajo en Argentina. Desarrollo continuo de sitios para clientes variados mayoritariamente en las áreas de Marketing/Diseño y Real Estate, tanto nacionales como internacionales -esto representó un reto por la diversidad de requerimientos y necesidades de los clientes. Al ser un equipo pequeño de desarrolladores, se requería de un alto grado de comunicación y organización para llevar a cabo los proyectos de manera exitosa - destacar el buen manejo del líder de tecnología (gracias Tomy!) quien trajo mucho aprendizaje no sólo a nivel técnico sino también en cuanto a la gestión del equipo/tiempos/priorización de tareas así como habilidades blandas.",
-        "interval": "Oct 2017 - Jun 2020"
+        "title": {
+          "es": "Desarrollador Web",
+          "en": "Web Developer"
+        },
+        "description": {
+          "es": "Generación de sitios web personalizados incluyendo sistemas gestores de contenido (CMS) específicos para cada proyecto/cliente basados en un framework PHP específico de la organización, así como también el uso de Symfony 4.||Maquetación, corrección y mantenimiento de los mismos.||Generación de firmas de mail (HTML).||Diseño/creación/gestión de bases de datos.||Manejo de herramientas de diseño como Adobe Photoshop e Illustrator para la gestión de imágenes y elementos de diseño a llevar a los sitios.||Integración con la API de Google Maps junto con Snazzy Maps para generar/aplicar mapas personalizados.||Generación de manuales de usuario e inducción online/presencial a clientes acerca del manejo de sus respectivos sitios.",
+          "en": "Generation of customized websites including specific content management systems (CMS) for each project/client based on a specific organizational PHP framework, as well as the use of Symfony 4.||Layout, correction, and maintenance of the same.||Generation of email signatures (HTML).||Database design/creation/management.||Handling design tools such as Adobe Photoshop and Illustrator for managing images and design elements for the sites.||Integration with the Google Maps API along with Snazzy Maps to generate/apply customized maps.||Generation of user manuals and online/in-person induction for clients regarding the management of their respective sites."
+        },
+        "highlight": {
+          "es": "Primer trabajo en Argentina. Desarrollo continuo de sitios para clientes variados mayoritariamente en las áreas de Marketing/Diseño y Real Estate, tanto nacionales como internacionales -esto representó un reto por la diversidad de requerimientos y necesidades de los clientes. Al ser un equipo pequeño de desarrolladores, se requería de un alto grado de comunicación y organización para llevar a cabo los proyectos de manera exitosa - destacar el buen manejo del líder de tecnología (gracias Tomy!) quien trajo mucho aprendizaje no sólo a nivel técnico sino también en cuanto a la gestión del equipo/tiempos/priorización de tareas así como habilidades blandas.",
+          "en": "First job in Argentina. Continuous development of sites for various clients mostly in the Marketing/Design and Real Estate areas, both national and international - this represented a challenge due to the diversity of client requirements and needs. Being a small team of developers, a high degree of communication and organization was required to carry out projects successfully - highlighting the good management of the technology leader (thanks Tomy!) who brought much learning not only at a technical level but also regarding team/time management/task prioritization as well as soft skills."
+        },
+        "interval": {
+          "es": "Oct 2017 - Jun 2020",
+          "en": "Oct 2017 - Jun 2020"
+        }
       }
     ],
     "tags": [
@@ -220,14 +316,32 @@
         "alt": "3D Link logo"
       }
     },
-    "location": "Caracas, Venezuela",
-    "interval": "Ene 2017 - Dic 2018",
+    "location": {
+      "es": "Caracas, Venezuela",
+      "en": "Caracas, Venezuela"
+    },
+    "interval": {
+      "es": "Ene 2017 - Dic 2018",
+      "en": "Jan 2017 - Dec 2018"
+    },
     "positions": [
       {
-        "title": "Desarrollador Web",
-        "description": "Generación de sitios web mediante HTML, CSS, PHP, JavaScript, jQuery incluyendo WordPress y frameworks como Laravel.||Edición de temas y plugins para WordPress, adaptaciones, implementaciones de diseños específicas para los distintos clientes.||Implementación de sitios web a nivel de servidor.||Inducción presencial a clientes acerca del manejo de sus respectivos sitios web, así como la generación video tutoriales y manuales de procedimiento acerca del manejo de herramientas y sitios web.",
-        "highlight": "Afianzamiento en la aplicación de tecnologías y manejo de CMS -desarrollo de un gestor de tareas y asignaciones dentro del equipo <<utilizando Laravel>>.",
-        "interval": "Ene 2017 - Dic 2018"
+        "title": {
+          "es": "Desarrollador Web",
+          "en": "Web Developer"
+        },
+        "description": {
+          "es": "Generación de sitios web mediante HTML, CSS, PHP, JavaScript, jQuery incluyendo WordPress y frameworks como Laravel.||Edición de temas y plugins para WordPress, adaptaciones, implementaciones de diseños específicas para los distintos clientes.||Implementación de sitios web a nivel de servidor.||Inducción presencial a clientes acerca del manejo de sus respectivos sitios web, así como la generación video tutoriales y manuales de procedimiento acerca del manejo de herramientas y sitios web.",
+          "en": "Generation of websites using HTML, CSS, PHP, JavaScript, jQuery including WordPress and frameworks like Laravel.||Editing WordPress themes and plugins, adaptations, specific design implementations for different clients.||Implementation of websites at the server level.||In-person induction for clients regarding the management of their respective websites, as well as the generation of video tutorials and procedure manuals regarding the management of tools and websites."
+        },
+        "highlight": {
+          "es": "Afianzamiento en la aplicación de tecnologías y manejo de CMS -desarrollo de un gestor de tareas y asignaciones dentro del equipo <<utilizando Laravel>>.",
+          "en": "Consolidation in the application of technologies and CMS management - development of a task and assignment manager within the team <<using Laravel>>."
+        },
+        "interval": {
+          "es": "Ene 2017 - Dic 2018",
+          "en": "Jan 2017 - Dec 2018"
+        }
       }
     ],
     "tags": [
@@ -263,14 +377,32 @@
         "alt": "Key Systems logo"
       }
     },
-    "location": "Estado Miranda, Venezuela",
-    "interval": "Abr 2014 - Dic 2016",
+    "location": {
+      "es": "Estado Miranda, Venezuela",
+      "en": "Miranda State, Venezuela"
+    },
+    "interval": {
+      "es": "Abr 2014 - Dic 2016",
+      "en": "Apr 2014 - Dec 2016"
+    },
     "positions": [
       {
-        "title": "Desarrollador Web",
-        "description": "Elaboración de sitios web mediante HTML, CSS, PHP, JavaScript incluyendo WordPress, PrestaShop, Joomla y WIX como gestores de contenido.||Edición de temas y plugins para WordPress, adaptaciones, implementaciones de diseños específicas para clientes.||Implementación de sitios web a nivel de servidor.||Soporte en línea para usuarios en cuanto el manejo de sus respectivos sitios web.||Creación de Video tutoriales acerca del manejo de herramientas y sitios web.||Elaboración de manuales de usuario.",
-        "highlight": "Primer trabajo en desarrollo web. Aprendizaje de nuevas tecnologías, manejo de CMS, creación de múltiples sitios web (desde páginas sencillas hasta tiendas virtuales) -agradecimiento siempre para esta Startup por la oportunidad brindada.",
-        "interval": "Abr 2014 - Dic 2016"
+        "title": {
+          "es": "Desarrollador Web",
+          "en": "Web Developer"
+        },
+        "description": {
+          "es": "Elaboración de sitios web mediante HTML, CSS, PHP, JavaScript incluyendo WordPress, PrestaShop, Joomla y WIX como gestores de contenido.||Edición de temas y plugins para WordPress, adaptaciones, implementaciones de diseños específicas para clientes.||Implementación de sitios web a nivel de servidor.||Soporte en línea para usuarios en cuanto el manejo de sus respectivos sitios web.||Creación de Video tutoriales acerca del manejo de herramientas y sitios web.||Elaboración de manuales de usuario.",
+          "en": "Creation of websites using HTML, CSS, PHP, JavaScript including WordPress, PrestaShop, Joomla, and WIX as content management systems.||Editing WordPress themes and plugins, adaptations, specific design implementations for clients.||Implementation of websites at the server level.||Online support for users regarding the management of their respective websites.||Creation of video tutorials regarding the management of tools and websites.||Creation of user manuals."
+        },
+        "highlight": {
+          "es": "Primer trabajo en desarrollo web. Aprendizaje de nuevas tecnologías, manejo de CMS, creación de múltiples sitios web (desde páginas sencillas hasta tiendas virtuales) -agradecimiento siempre para esta Startup por la oportunidad brindada.",
+          "en": "First job in web development. Learning new technologies, CMS management, creation of multiple websites (from simple pages to online stores) - always grateful to this Startup for the opportunity provided."
+        },
+        "interval": {
+          "es": "Abr 2014 - Dic 2016",
+          "en": "Apr 2014 - Dec 2016"
+        }
       }
     ],
     "tags": [
@@ -304,20 +436,50 @@
         "alt": "BBVA Provincial logo"
       }
     },
-    "location": "Caracas, Venezuela",
-    "interval": "Mar 2010 - Sep 2014",
+    "location": {
+      "es": "Caracas, Venezuela",
+      "en": "Caracas, Venezuela"
+    },
+    "interval": {
+      "es": "Mar 2010 - Sep 2014",
+      "en": "Mar 2010 - Sep 2014"
+    },
     "positions": [
       {
-        "title": "Analista de Soporte Informático",
-        "description": "Soporte telefónico a la red de oficinas a nivel nacional.||Soporte remoto mediante la herramienta DameWare para equipos con S.O. Windows.||Atención remota con Putty a estaciones de trabajo Windows, Linux, servidores de oficina.||Registro, atención y canalización de casos web a través de la herramienta CRM (Microsoft).||Activación y desbloqueo de terminales de usuarios y oficinas a través del Emulador 3270.||Monitoreo de ATMs (manejo y distribución del total de cajeros automáticos a monitorear entre gestores, canalización y gestión de fallas y/o consultas, validación de estado de ATMs).||Soporte técnico de primer nivel a red oficinas (activación de servicios, importación de datos estadísticos).||Soporte de primer nivel en el área de Seguridad Lógica.||Reinicio y desbloqueo de claves de acceso de usuarios.||Monitoreo de equipos de comunicación de las oficinas (routers, switches, servidores).||Canalización y escalamiento de fallas con las distintas áreas resolutorias.",
-        "highlight": "Resolución de problemas variados, manejo de herramientas de soporte remoto, atención telefónica y remota, manejo de herramientas de monitoreo y gestión de fallas.",
-        "interval": "Mar 2011 - Set 2014"
+        "title": {
+          "es": "Analista de Soporte Informático",
+          "en": "IT Support Analyst"
+        },
+        "description": {
+          "es": "Soporte telefónico a la red de oficinas a nivel nacional.||Soporte remoto mediante la herramienta DameWare para equipos con S.O. Windows.||Atención remota con Putty a estaciones de trabajo Windows, Linux, servidores de oficina.||Registro, atención y canalización de casos web a través de la herramienta CRM (Microsoft).||Activación y desbloqueo de terminales de usuarios y oficinas a través del Emulador 3270.||Monitoreo de ATMs (manejo y distribución del total de cajeros automáticos a monitorear entre gestores, canalización y gestión de fallas y/o consultas, validación de estado de ATMs).||Soporte técnico de primer nivel a red oficinas (activación de servicios, importación de datos estadísticos).||Soporte de primer nivel en el área de Seguridad Lógica.||Reinicio y desbloqueo de claves de acceso de usuarios.||Monitoreo de equipos de comunicación de las oficinas (routers, switches, servidores).||Canalización y escalamiento de fallas con las distintas áreas resolutorias.",
+          "en": "Telephone support for the nationwide branch network.||Remote support using the DameWare tool for computers with Windows OS.||Remote attention with Putty for Windows and Linux workstations, and office servers.||Registration, attention, and channeling of web cases through the CRM tool (Microsoft).||Activation and unlocking of user and office terminals through the 3270 Emulator.||ATM monitoring (management and distribution of the total number of ATMs to be monitored among managers, channeling and management of failures and/or queries, validation of ATM status).||First-level technical support for the branch network (activation of services, import of statistical data).||First-level support in the area of Logical Security.||Reset and unlocking of user access keys.||Monitoring of office communication equipment (routers, switches, servers).||Channeling and escalation of failures with the various resolution areas."
+        },
+        "highlight": {
+          "es": "Resolución de problemas variados, manejo de herramientas de soporte remoto, atención telefónica y remota, manejo de herramientas de monitoreo y gestión de fallas.",
+          "en": "Resolution of varied problems, handling remote support tools, telephone and remote attention, handling monitoring tools and fault management."
+        },
+        "interval": {
+          "es": "Mar 2011 - Set 2014",
+          "en": "Mar 2011 - Sep 2014"
+        }
       },
       {
-        "title": "Gestor de Requerimientos Especiales",
-        "description": "Atención telefónica a todo el personal interno a nivel nacional en las áreas de Diseño y Desarrollo (D&D).||Gestión, canalización y escalamiento de requerimientos vía web de parte del personal de D&D  hacia las distintas Áreas Resolutorias.||Coordinación y planificación de proyectos en conjunto con las áreas de D&D, Implantación, Homologación y Producción.||Canalización de pases emergentes (programas, modificaciones, scripts) hacia el entorno de producción.||Auditoría y seguimiento de proyectos de D&D, llevados al ambiente de producción.",
-        "highlight": "Capacidad de organización, planificación y comunicación. Redacción y envío de emails -debido a constante comunicación con personal de Diseño y Desarrollo así como áreas resolutorias tanto telefónica, remota y presencial.",
-        "interval": "Mar 2010 - Mar 2011"
+        "title": {
+          "es": "Gestor de Requerimientos Especiales",
+          "en": "Special Requirements Manager"
+        },
+        "description": {
+          "es": "Atención telefónica a todo el personal interno a nivel nacional en las áreas de Diseño y Desarrollo (D&D).||Gestión, canalización y escalamiento de requerimientos vía web de parte del personal de D&D  hacia las distintas Áreas Resolutorias.||Coordinación y planificación de proyectos en conjunto con las áreas de D&D, Implantación, Homologación y Producción.||Canalización de pases emergentes (programas, modificaciones, scripts) hacia el entorno de producción.||Auditoría y seguimiento de proyectos de D&D, llevados al ambiente de producción.",
+          "en": "Telephone attention to all internal staff nationwide in the Design and Development (D&D) areas.||Management, channeling, and escalation of web requirements from D&D staff to the different Resolution Areas.||Coordination and planning of projects in conjunction with the areas of D&D, Implementation, Homologation, and Production.||Channeling of emergent passes (programs, modifications, scripts) to the production environment.||Auditing and monitoring of D&D projects taken to the production environment."
+        },
+        "highlight": {
+          "es": "Capacidad de organización, planificación y comunicación. Redacción y envío de emails -debido a constante comunicación con personal de Diseño y Desarrollo así como áreas resolutorias tanto telefónica, remota y presencial.",
+          "en": "Organization, planning, and communication skills. Drafting and sending emails - due to constant communication with D&D personnel and resolution areas by telephone, remotely, and in person."
+        },
+        "interval": {
+          "es": "Mar 2010 - Mar 2011",
+          "en": "Mar 2010 - Mar 2011"
+        }
       }
     ],
     "tags": [
@@ -346,14 +508,32 @@
         "alt": "CANTV logo"
       }
     },
-    "location": "Caracas, Venezuela",
-    "interval": "Ene 2010 - Mar 2010",
+    "location": {
+      "es": "Caracas, Venezuela",
+      "en": "Caracas, Venezuela"
+    },
+    "interval": {
+      "es": "Ene 2010 - Mar 2010",
+      "en": "Jan 2010 - Mar 2010"
+    },
     "positions": [
       {
-        "title": "Operador telefónico",
-        "description": "Servicio 113 de CANTV. Agente de atención al cliente. Responsable de proveer datos en base a recepción de solicitudes de información (números telefónicos y direcciones) de locales, establecimientos, hospitales, empresas, entre otros.",
-        "highlight": "Velocidad en la gestión, rapidez de respuesta, seguimiento de procedimientos y metodologías -30 segundos era la cantidad máxima esperada de tiempo de respuesta de cara al cliente con una media de 300 llamadas durante la jornada.",
-        "interval": "Ene 2010 - Mar 2010"
+        "title": {
+          "es": "Operador telefónico",
+          "en": "Telephone Operator"
+        },
+        "description": {
+          "es": "Servicio 113 de CANTV. Agente de atención al cliente. Responsable de proveer datos en base a recepción de solicitudes de información (números telefónicos y direcciones) de locales, establecimientos, hospitales, empresas, entre otros.",
+          "en": "CANTV 113 service. Customer service agent. Responsible for providing data based on receipt of information requests (telephone numbers and addresses) for locations, establishments, hospitals, companies, among others."
+        },
+        "highlight": {
+          "es": "Velocidad en la gestión, rapidez de respuesta, seguimiento de procedimientos y metodologías -30 segundos era la cantidad máxima esperada de tiempo de respuesta de cara al cliente con una media de 300 llamadas durante la jornada.",
+          "en": "Management speed, response quickness, following procedures and methodologies - 30 seconds was the maximum expected response time for customers with an average of 300 calls during the workday."
+        },
+        "interval": {
+          "es": "Ene 2010 - Mar 2010",
+          "en": "Jan 2010 - Mar 2010"
+        }
       }
     ],
     "tags": [
@@ -375,20 +555,50 @@
         "alt": "DIRECTV logo"
       }
     },
-    "location": "Caracas, Venezuela",
-    "interval": "Ene 2009 - Dic 2009",
+    "location": {
+      "es": "Caracas, Venezuela",
+      "en": "Caracas, Venezuela"
+    },
+    "interval": {
+      "es": "Ene 2009 - Dic 2009",
+      "en": "Jan 2009 - Dec 2009"
+    },
     "positions": [
       {
-        "title": "Actualizador de datos",
-        "description": "Actualizador de datos de las carteras de clientes, verificando y actualizando la información de los mismos.",
-        "highlight": "Capacidad de organización y velocidad en la gestión -debido a meta diaria de actualización de datos.",
-        "interval": "Jul 2009 - Dic 2009"
+        "title": {
+          "es": "Actualizador de datos",
+          "en": "Data Updater"
+        },
+        "description": {
+          "es": "Actualizador de datos de las carteras de clientes, verificando y actualizando la información de los mismos.",
+          "en": "Data updater for client portfolios, verifying and updating their information."
+        },
+        "highlight": {
+          "es": "Capacidad de organización y velocidad en la gestión -debido a meta diaria de actualización de datos.",
+          "en": "Organization and management speed - due to daily data update goal."
+        },
+        "interval": {
+          "es": "Jul 2009 - Dic 2009",
+          "en": "Jul 2009 - Dec 2009"
+        }
       },
       {
-        "title": "Agente de cobranzas",
-        "description": "Realizando llamadas a los clientes para gestionar el pago de sus facturas.",
-        "highlight": "Mejor comunicación/manejo con/de clientes -todo un reto al tener que comunicar aspectos negativos a clientes.",
-        "interval": "Ene 2009 - Jun 2009"
+        "title": {
+          "es": "Agente de cobranzas",
+          "en": "Collection Agent"
+        },
+        "description": {
+          "es": "Realizando llamadas a los clientes para gestionar el pago de sus facturas.",
+          "en": "Making calls to customers to manage the payment of their bills."
+        },
+        "highlight": {
+          "es": "Mejor comunicación/manejo con/de clientes -todo un reto al tener que comunicar aspectos negativos a clientes.",
+          "en": "Better communication/handling with/of customers - a challenge when having to communicate negative aspects to customers."
+        },
+        "interval": {
+          "es": "Ene 2009 - Jun 2009",
+          "en": "Jan 2009 - Jun 2009"
+        }
       }
     ],
     "tags": [

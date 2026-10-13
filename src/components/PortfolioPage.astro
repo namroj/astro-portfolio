@@ -1,0 +1,208 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "../layouts/Layout.astro";
+import TimelineItem from "./TimelineItem.astro";
+import Filter from "./Filter.astro";
+import BlogPost from "./BlogPost.astro";
+import Socials from "./Socials.astro";
+import VenezuelaToArgentinaMap from "./VenezuelaToArgentinaMap";
+import skills from "../data/skills.json";
+import tools from "../data/tools.json";
+import { messages, route, localize, type Locale } from "../i18n";
+import { publishedPosts, postUrl } from "../utils/blog";
+import "../styles/timeline.css";
+import "../styles/sections.css";
+const { locale, page = "" } = Astro.props as { locale: Locale; page?: string };
+const m = messages[locale];
+const key = page as keyof typeof m;
+const heading =
+  page === ""
+    ? m.role
+    : page === "from-venezuela-to-argentina"
+      ? m.journey
+      : m[key];
+const collection =
+  page === "projects"
+    ? "projects"
+    : page === "experience"
+      ? "experience"
+      : "education";
+const isTimeline = ["projects", "experience", "education"].includes(page);
+const items = isTimeline
+  ? (await getCollection(collection))
+      .filter((item) => !("visible" in item.data) || item.data.visible)
+      .map((item) => ({ ...item, data: localize(item.data, locale) }))
+  : [];
+const posts =
+  page === "blog" ? publishedPosts(await getCollection("blog"), locale) : [];
+const tags = [
+  ...new Set((isTimeline ? items : posts).flatMap((item) => item.data.tags)),
+].sort();
+const jsonLd =
+  page === ""
+    ? {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        name: "Jorman Espinoza",
+        jobTitle: m.role,
+        url: new URL(route(locale), Astro.site).href,
+        sameAs: [
+          "https://github.com/namroj",
+          "https://www.linkedin.com/in/jormanespinoza",
+          "https://x.com/jormandev",
+        ],
+      }
+    : undefined;
+---
+
+<Layout title={{ tab: page ? heading : "", page: heading }} jsonLd={jsonLd}>
+  {
+    page === "" && (
+      <>
+        <p>{m.intro}</p>
+        <p>{m.interests}</p>
+        <p>
+          <a href={route(locale, "projects")}>{m.projects} →</a> ·{" "}
+          <a href={route(locale, "experience")}>{m.experience} →</a>
+        </p>
+        <section>
+          <>
+            <h2>{m.skills}</h2>
+            <ul class="technology-list">
+              {skills.map((item) => (
+                <li>
+                  <a href={item.url} target="_blank" rel="noopener noreferrer">
+                    {item.name}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </>
+        </section>
+        <section>
+          <>
+            <h2>{m.tools}</h2>
+            <ul class="technology-list">
+              {tools.map((item) => (
+                <li>
+                  <a href={item.url} target="_blank" rel="noopener noreferrer">
+                    {item.name}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </>
+        </section>
+      </>
+    )
+  }
+  {
+    page === "about" && (
+      <>
+        <>
+          <p>{m.aboutText}</p>
+          <p>{m.interests}</p>
+        </>
+        <p>
+          <a href={route(locale, "from-venezuela-to-argentina")}>
+            {m.journey} →
+          </a>
+        </p>
+        <p>
+          <a href={route(locale, "experience")}>{m.experience} →</a> ·{" "}
+          <a href={route(locale, "education")}>{m.education} →</a>
+        </p>
+      </>
+    )
+  }
+  {
+    isTimeline && (
+      <section class="timeline" data-filter-list>
+        <Filter tags={tags} locale={locale} />
+        <ul class="timeline-list">
+          {items.map((item, index) => (
+            <TimelineItem
+              item={item}
+              isLast={index === items.length - 1}
+              type={page === "projects" ? "project" : page}
+            />
+          ))}
+        </ul>
+      </section>
+    )
+  }
+  {
+    page === "blog" && (
+      <>
+        <section data-filter-list>
+          <Filter tags={tags} locale={locale} />
+          <div class="blog-list">
+            {posts.map((post) => (
+              <div data-filter-item data-tags={post.data.tags.join(",")}>
+                <BlogPost
+                  url={postUrl(post)}
+                  title={post.data.title}
+                  date={post.data.pubDate}
+                />
+              </div>
+            ))}
+          </div>
+          {posts.length === 0 && <p>{m.emptyBlog}</p>}
+        </section>
+        <p>
+          <a href={route(locale, "blog/tags")}>{m.tags} →</a> ·{" "}
+          <a href={route(locale, "rss.xml")}>RSS</a>
+        </p>
+      </>
+    )
+  }
+  {
+    page === "contact" && (
+      <>
+        <>
+          <p>{m.contactText}</p>
+          <p>
+            <a href="mailto:espinoza.dev@gmail.com">espinoza.dev@gmail.com</a>
+          </p>
+          <Socials />
+        </>
+      </>
+    )
+  }
+  {
+    page === "from-venezuela-to-argentina" && (
+      <>
+        <p>{m.intro}</p>
+        {import.meta.env.GOOGLE_MAPS_API_KEY ? (
+          <VenezuelaToArgentinaMap client:only="preact" />
+        ) : (
+          <p>
+            <a href="https://www.openstreetmap.org/directions?engine=fossgis_osrm_car&route=10.4806%2C-66.9036%3B-34.6037%2C-58.3816">
+              Caracas → Buenos Aires
+            </a>
+          </p>
+        )}
+      </>
+    )
+  }
+</Layout>
+<style>
+  p {
+    margin: 1.25rem 0;
+    line-height: 1.8;
+  }
+  section {
+    margin: 2rem 0;
+  }
+  .technology-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+  .technology-list a {
+    display: block;
+    border: 1px solid var(--border-color);
+    padding: 0.4rem 0.7rem;
+    border-radius: 0.35rem;
+  }
+</style>

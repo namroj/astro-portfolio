@@ -1,16 +1,7 @@
-import type { APIRoute } from 'astro';
-
-export const GET: APIRoute = ({ site }) => {
-  const baseUrl = site?.toString() || 'https://namroj-astro-portfolio.netlify.app';
-  const content = `User-agent: *
-Allow: /
-
-Sitemap: ${baseUrl}sitemap.xml
-`;
-
-  return new Response(content, {
-    headers: {
-      'Content-Type': 'text/plain; charset=utf-8',
-    },
-  });
-};
+import type { APIContext } from "astro";
+export function GET({ site }: APIContext) {
+  return new Response(
+    `User-agent: *\nAllow: /\n\nSitemap: ${new URL("/sitemap.xml", site!).href}\n`,
+    { headers: { "Content-Type": "text/plain; charset=utf-8" } },
+  );
+}

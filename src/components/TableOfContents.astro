@@ -1,5 +1,6 @@
 ---
-
+import { localeFromPath, messages } from "../i18n";
+const m = messages[localeFromPath(Astro.url.pathname)];
 ---
 
 <style>
@@ -85,7 +86,7 @@
 
 <aside id="toc" class="toc">
   <div class="content">
-    <h3 class="title">Tabla de Contenidos</h3>
+    <h3 class="title">{m.toc}</h3>
     <div id="headings" class="headings">
       <!-- Table of contents will be generated here -->
     </div>
@@ -108,7 +109,7 @@
 
       // Create an ID for the heading if it doesn't have one
       if (!heading.id) {
-        heading.id = text
+        heading.id = (text || "section")
           ?.toLowerCase()
           .replace(/[^a-z0-9]+/g, "-")
           .replace(/(^-|-$)/g, "");
@@ -181,8 +182,9 @@
   }
 
   // Generate TOC when the page loads
-  document.addEventListener("astro:page-load", () => {
+  function initialize() {
     generateTableOfContents();
     setupScrollSpy();
-  });
+  }
+  initialize();
 </script>

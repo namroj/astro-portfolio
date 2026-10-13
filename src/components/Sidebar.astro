@@ -1,55 +1,45 @@
 ---
 import Socials from "./Socials.astro";
-const currentPath = Astro.url.pathname;
+import { localeFromPath, navigation, route, messages } from "../i18n";
+const locale = localeFromPath(Astro.url.pathname);
+const m = messages[locale];
 ---
 
 <aside class="sidebar">
   <div class="sidebar-content">
     <div class="intro-section">
-      <h1 class="name">
-        <a href="/">Jorman Espinoza</a>
-      </h1>
-      <h2 class="tagline">Desarrollador de Software</h2>
-      <p class="description">
-        Construyo experiencias digitales accesibles y de alto rendimiento para la web.
-      </p>
+      <p class="name"><a href={route(locale)}>Jorman Espinoza</a></p>
+      <p class="tagline">{m.role}</p>
+      <p class="description">{m.intro}</p>
     </div>
-
-    <nav class="main-nav">
+    <nav
+      class="main-nav"
+      aria-label={locale === "en" ? "Main navigation" : "Navegación principal"}
+    >
       <ul>
-        <li>
-          <a href="/about" class={currentPath === "/about" ? "active" : ""}>
-            <span class="nav-indicator"></span>
-            <span class="nav-text">Sobre mí</span>
-          </a>
-        </li>
-        <li>
-          <a href="/experience" class={currentPath === "/experience" ? "active" : ""}>
-            <span class="nav-indicator"></span>
-            <span class="nav-text">Experiencia</span>
-          </a>
-        </li>
-        <li>
-          <a href="/projects" class={currentPath === "/projects" ? "active" : ""}>
-            <span class="nav-indicator"></span>
-            <span class="nav-text">Proyectos</span>
-          </a>
-        </li>
-        <li>
-          <a href="/blog" class={currentPath === "/blog" || currentPath.startsWith("/blog") ? "active" : ""}>
-            <span class="nav-indicator"></span>
-            <span class="nav-text">Blog</span>
-          </a>
-        </li>
+        {
+          navigation(locale).map((link) => (
+            <li>
+              <a
+                href={link.url}
+                class={Astro.url.pathname.startsWith(link.url) ? "active" : ""}
+                aria-current={
+                  Astro.url.pathname === link.url ? "page" : undefined
+                }
+              >
+                <>
+                  <span class="nav-indicator" />
+                  <span class="nav-text">{link.label}</span>
+                </>
+              </a>
+            </li>
+          ))
+        }
       </ul>
     </nav>
-
-    <div class="sidebar-footer">
-      <Socials template="icons" />
-    </div>
+    <div class="sidebar-footer"><Socials template="icons" /></div>
   </div>
 </aside>
-
 <style>
   .sidebar {
     display: none;

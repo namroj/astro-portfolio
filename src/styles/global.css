@@ -113,3 +113,22 @@ textarea {
   -webkit-box-shadow: inset 0 0 6px rgba(var(--accent-color-rgb), 0.5);
   background-color: var(--scrollbar-thumb-color);
 }
+
+/* Shared controls and progressive enhancement. */
+[hidden] { display: none !important; }
+:focus-visible { outline: 2px solid var(--accent-color); outline-offset: 4px; }
+.skip-link { position: fixed; left: 1rem; top: -8rem; z-index: 100; background: var(--background-color); padding: 1rem; }
+.skip-link:focus { top: 1rem; }
+.global-search { position: relative; }
+.global-search input { width: min(260px, 45vw); padding: .6rem; border: 1px solid var(--border-color); border-radius: .4rem; color: var(--foreground-color); background: var(--background-color); }
+.search-panel { position: absolute; right: 0; top: 100%; width: min(480px, 85vw); max-height: 65vh; overflow: auto; background: var(--background-color); border: 1px solid var(--border-color); box-shadow: 0 8px 24px #0004; }
+.search-panel a { display: block; padding: .8rem; }
+.search-panel small { display: block; }
+.search-panel .active { border-left: 3px solid var(--accent-color); }
+.search-panel p { padding: .8rem; }
+@media (max-width: 1023px) { main { padding-top: 2rem; } }
+
+@media (min-width: 1024px) {
+  body { height: 100dvh; }
+  main { height: 100dvh; min-height: 0; padding-bottom: 7rem; }
+}

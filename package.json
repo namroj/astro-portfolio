@@ -9,7 +9,9 @@
     "astro": "astro",
     "test": "vitest run",
     "test:watch": "vitest",
-    "serve": "astro build && astro preview"
+    "serve": "astro build && astro preview",
+    "check": "astro check",
+    "verify": "pnpm check && pnpm test && pnpm build && node scripts/check-build.mjs"
   },
   "dependencies": {
     "@astrojs/preact": "^4.0.8",
@@ -21,14 +23,21 @@
     "sharp": "^0.34.1"
   },
   "devDependencies": {
+    "@astrojs/check": "^0.9.4",
     "@types/google.maps": "^3.58.1",
+    "jsdom": "^26.1.0",
     "prettier": "3.5.3",
     "prettier-plugin-astro": "0.14.1",
     "sass": "^1.86.3",
+    "typescript": "~5.8.2",
     "vitest": "^3.1.1"
   },
   "overrides": {
     "react": "npm:@preact/compat@latest",
     "react-dom": "npm:@preact/compat@latest"
+  },
+  "packageManager": "pnpm@9.12.3",
+  "engines": {
+    "node": ">=22.0.0"
   }
 }

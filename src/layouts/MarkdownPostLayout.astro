@@ -1,7 +1,9 @@
 ---
 import Layout from "./Layout.astro";
 import { slugify } from "../utils/slugify";
-import { LANGUAGE } from "../const";
+import { localeFromPath, messages, route } from "../i18n";
+const locale = localeFromPath(Astro.url.pathname);
+const m = messages[locale];
 import "../styles/code-block.css";
 
 const { frontmatter } = Astro.props;
@@ -13,7 +15,7 @@ const title = {
 
 const breadCrumbs = [
   {
-    url: "/blog",
+    url: route(locale, "blog"),
     label: "Blog",
   },
   {
@@ -26,14 +28,17 @@ const tags = [
   ...new Set(frontmatter.tags.map((tag: string) => tag.toLowerCase())),
 ];
 
-const baseUrl = Astro.site?.toString() || "https://namroj-astro-portfolio.netlify.app";
+const baseUrl = Astro.site?.toString() || "https://jormanespinoza.netlify.app";
 const articleUrl = new URL(Astro.url.pathname, baseUrl).toString();
 
 const seo = {
   title: `${frontmatter.title} • Jorman Espinoza`,
   description: frontmatter.description,
   url: articleUrl,
-  image: frontmatter.image,
+  image: {
+    ...frontmatter.image,
+    url: new URL(frontmatter.image.url, baseUrl).href,
+  },
   type: "article",
 };
 
@@ -47,7 +52,7 @@ const jsonLd = {
     name: frontmatter.author,
   },
   datePublished: frontmatter.pubDate.toISOString(),
-  image: frontmatter.image.url,
+  image: new URL(frontmatter.image.url, baseUrl).href,
   url: articleUrl,
   keywords: frontmatter.tags.join(", "),
 };
@@ -129,7 +134,7 @@ const jsonLd = {
       {
         tags.map((tag: any) => (
           <p class="tag">
-            <a href={`/blog/tags/${slugify(tag)}`}>{tag}</a>
+            <a href={route(locale, `blog/tags/${slugify(tag)}`)}>{tag}</a>
           </p>
         ))
       }
@@ -137,17 +142,20 @@ const jsonLd = {
     <span>{frontmatter.id}</span>
     <p>
       {
-        new Date(frontmatter.pubDate).toLocaleDateString(LANGUAGE.regional, {
-          day: "2-digit",
-          month: "long",
-          year: "numeric",
-        })
+        new Date(frontmatter.pubDate).toLocaleDateString(
+          locale === "en" ? "en-US" : "es-AR",
+          {
+            day: "2-digit",
+            month: "long",
+            year: "numeric",
+          },
+        )
       }
     </p>
     <p><em>{frontmatter.description}</em></p>
     <img src={frontmatter.image.url} width="300" alt={frontmatter.image.alt} />
     <slot />
-    <p class="written-by">Escrito por: {frontmatter.author}</p>
+    <p class="written-by">{m.by}: {frontmatter.author}</p>
   </div>
 </Layout>
 

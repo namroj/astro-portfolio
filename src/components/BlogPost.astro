@@ -1,10 +1,10 @@
 ---
 const { url, title, date } = Astro.props;
 
-const language = "es-ES";
+const language = Astro.url.pathname.startsWith("/en/") ? "en-US" : "es-AR";
 ---
 
-<a class="blog-post-link" href={`/blog/${url}`}>
+<a class="blog-post-link" href={url}>
   <div class="post-content">
     <h3 class="post-title">{title}</h3>
     <span class="post-date">
@@ -17,7 +17,18 @@ const language = "es-ES";
       }
     </span>
   </div>
-  <svg class="arrow" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <svg
+    class="arrow"
+    xmlns="http://www.w3.org/2000/svg"
+    width="20"
+    height="20"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  >
     <line x1="5" y1="12" x2="19" y2="12"></line>
     <polyline points="12 5 19 12 12 19"></polyline>
   </svg>
