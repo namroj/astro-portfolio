@@ -18,16 +18,16 @@ const hasMermaidDiagrams = currentPost
   : false;
 ---
 
-<aside id="preferences" class="preferences">
+<aside id="preferences" class="preferences" inert aria-hidden="true" aria-labelledby="preferences-title">
   <div class="content">
-    <h3 class="title">{m.preferences}</h3>
+    <h3 id="preferences-title" class="title">{m.preferences}</h3>
     <div class="switchers">
       <div class="group">
         <h4 class="title">{m.theme}</h4>
         <ThemeSwitcher client:load />
       </div>
       <div class="group">
-        <h4 class="title">{m.font}</h4>
+        <h4 class="title">{m.developerFont}</h4>
         <FontSwitcher client:load />
       </div>
       {
@@ -35,7 +35,7 @@ const hasMermaidDiagrams = currentPost
           <>
           <div class="group">
             <h4 class="title">{m.code}</h4>
-            <LineNumberToggle client:load />
+            <LineNumberToggle client:load label={m.lineNumbers} />
           </div>
           {hasMermaidDiagrams && <div class="group">
             <h4 class="title">{m.diagrams}</h4>
@@ -54,8 +54,10 @@ const hasMermaidDiagrams = currentPost
     top: calc(var(--navbar-height) + 1px);
     right: calc(var(--sidebar-width) * -1);
     width: var(--sidebar-width);
-    height: calc(50dvh);
-    background-image: var(--navigation-background-image);
+    height: calc(100dvh - var(--navbar-height) - 1px);
+    max-width: 100vw;
+    background-color: var(--background-color);
+    background-image: none;
     background-repeat: repeat;
     backdrop-filter: blur(10px);
     z-index: 9;
@@ -74,8 +76,10 @@ const hasMermaidDiagrams = currentPost
     @media screen and (min-width: 992px) {
       right: -28dvw;
       width: 28dvw;
-      height: calc(100vh - 91px);
+      height: calc(100dvh - var(--navbar-height) - 1px);
     }
+
+    :global(button) { min-width: 44px; min-height: 44px; }
 
     .title {
       margin-bottom: 2em;
@@ -97,7 +101,9 @@ const hasMermaidDiagrams = currentPost
       flex-direction: column;
       gap: 10px;
 
-      .title {
+      :global(button) { min-width: 44px; min-height: 44px; }
+
+    .title {
         margin-bottom: 0.5em;
         color: var(--accent-color);
       }

@@ -184,36 +184,4 @@ const m = messages[localeFromPath(Astro.url.pathname)];
   </button>
 </div>
 
-<script>
-  function initialize() {
-    // Toggle preferences visibility
-    const preferencesToggleBtn = document.getElementById(
-      "preferences-toggle-btn",
-    );
-    const preferences = document.getElementById("preferences");
-
-    preferencesToggleBtn?.addEventListener("click", () => {
-      preferences?.classList.toggle("active");
-      preferencesToggleBtn.classList.toggle("active");
-      preferencesToggleBtn.setAttribute(
-        "aria-expanded",
-        String(preferences?.classList.contains("active")),
-      );
-    });
-
-    // Close the preferences when clicking outside
-    document.addEventListener("click", (event) => {
-      const target = event.target as HTMLElement;
-      if (
-        preferences?.classList.contains("active") &&
-        !preferences.contains(target) &&
-        !preferencesToggleBtn?.contains(target)
-      ) {
-        preferences.classList.remove("active");
-        preferencesToggleBtn?.classList.remove("active");
-        preferencesToggleBtn?.setAttribute("aria-expanded", "false");
-      }
-    });
-  }
-  initialize();
-</script>
+<script src="../scripts/preferences.ts"></script>

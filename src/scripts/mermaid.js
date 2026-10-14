@@ -26,7 +26,7 @@ function getMermaidConfig() {
     startOnLoad: false,
     securityLevel: "strict",
     theme: themeName,
-    look: root.dataset.mermaidLook === "classic" ? "classic" : "handDrawn",
+    look: root.dataset.mermaidLook === "handDrawn" ? "handDrawn" : "classic",
     handDrawnSeed: 7,
     flowchart: {
       wrappingWidth: 110,
@@ -89,6 +89,7 @@ async function renderDiagrams() {
 
   isRendering = true;
   try {
+    await document.fonts.ready;
     const mermaid = await getMermaid();
     mermaid.initialize(getMermaidConfig());
 
@@ -122,10 +123,11 @@ async function renderDiagrams() {
     if (!themeObserver) {
       themeObserver = new MutationObserver(async (mutations) => {
         if (!mutations.some((mutation) =>
-          ["data-theme", "data-mermaid-look", "data-mermaid-theme"].includes(mutation.attributeName)
+          ["data-theme", "data-mermaid-look", "data-mermaid-theme", "style"].includes(mutation.attributeName)
         )) {
           return;
         }
+        await document.fonts.ready;
         mermaid.initialize(getMermaidConfig());
         for (const figure of document.querySelectorAll(
           "figure.mermaid-diagram[data-mermaid-source]",
@@ -135,7 +137,7 @@ async function renderDiagrams() {
       });
       themeObserver.observe(document.documentElement, {
         attributes: true,
-        attributeFilter: ["data-theme", "data-mermaid-look", "data-mermaid-theme"],
+        attributeFilter: ["data-theme", "data-mermaid-look", "data-mermaid-theme", "style"],
       });
     }
   } catch (error) {

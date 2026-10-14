@@ -129,6 +129,15 @@ textarea {
   background-color: var(--scrollbar-thumb-color);
 }
 
+/* Reading text uses a separate font from technical UI and code. */
+.article-page .post > p,
+.article-page .post > ul,
+.article-page .post > ol,
+.article-page .post > blockquote {
+  font-family: var(--prose-font);
+  line-height: 1.75;
+}
+
 /* Shared controls and progressive enhancement. */
 [hidden] { display: none !important; }
 :focus-visible { outline: 2px solid var(--accent-color); outline-offset: 4px; }

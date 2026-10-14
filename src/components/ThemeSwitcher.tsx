@@ -66,6 +66,7 @@ const ThemeSwitcher = () => {
       {/* Light Theme Button */}
       <button
         aria-label="Light theme"
+        aria-pressed={preferredTheme === "light"}
         class={`btn light ${preferredTheme === "light" ? "active" : ""}`}
         onClick={() => handleThemeChange("light")}
       >
@@ -85,6 +86,7 @@ const ThemeSwitcher = () => {
       {/* Dark Theme Button */}
       <button
         aria-label="Dark theme"
+        aria-pressed={preferredTheme === "dark"}
         class={`btn dark ${preferredTheme === "dark" ? "active" : ""}`}
         onClick={() => handleThemeChange("dark")}
       >
@@ -104,6 +106,7 @@ const ThemeSwitcher = () => {
       {/* System Theme Button */}
       <button
         aria-label="System theme"
+        aria-pressed={preferredTheme === "system"}
         class={`btn system ${preferredTheme === "system" ? "active" : ""}`}
         onClick={() => handleThemeChange("system")}
       >
