@@ -3,8 +3,8 @@ title: Patrón Guardia
 author: Jorman Espinoza
 description: "¡El Patrón Guardia simplifica y mejora la lectura del código!"
 image:
-  url: "https://docs.astro.build/assets/rays.webp"
-  alt: "El logo de Astro sobre un fondo oscuro con rayos de colores."
+  url: "/images/posts/guard-clauses.png"
+  alt: "Un árbol de condiciones anidadas se transforma en una secuencia directa de cláusulas guardia con salidas tempranas."
 pubDate: 2025-03-23
 tags: [ "java", "patrón de diseño", "guardia", "código limpio" ]
 draft: false
@@ -18,6 +18,15 @@ El patrón guardia (también conocido como cláusulas de guardia o retornos temp
 mejora la legibilidad y mantenibilidad del código al manejar los casos límite y las condiciones inválidas al inicio de
 una función. En lugar de anidar la lógica principal dentro de estructuras condicionales, "protegemos" el flujo manejando
 los casos inválidos de forma temprana y realizando un retorno anticipado.
+
+```mermaid
+flowchart TD
+    A["`Recibir solicitud`"] --> B{"`¿Existe?`"}
+    B -- No --> X["`Error`"]
+    B -- Sí --> C{"`¿Los campos requeridos son válidos?`"}
+    C -- No --> Y["`Error de validación`"]
+    C -- Sí --> D["`Continuar`"]
+```
 
 ## ¿Por qué usar el Patrón Guardia?
 
