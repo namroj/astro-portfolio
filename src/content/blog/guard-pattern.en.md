@@ -3,8 +3,8 @@ title: "Guard Clauses: Clearer Validation in Java"
 author: Jorman Espinoza
 description: A practical look at using guard clauses to keep validation logic readable and reduce unnecessary nesting in Java.
 image:
-  url: "https://docs.astro.build/assets/rays.webp"
-  alt: "Astro logo on a dark background with colored rays."
+  url: "/images/posts/guard-clauses.png"
+  alt: "A tangled conditional tree transforms into a straight sequence of guard checks with early exits."
 pubDate: 2025-03-23
 tags: ["java", "design patterns", "guard clauses", "clean code"]
 draft: false
@@ -51,6 +51,15 @@ public String validateUserRegistration(User user) {
 ```
 
 The same checks read more directly as early returns:
+
+```mermaid
+flowchart TD
+    A["`Request`"] --> B{"`User exists?`"}
+    B -- No --> X["`Error`"]
+    B -- Yes --> C{"`Fields valid?`"}
+    C -- No --> Y["`Invalid fields`"]
+    C -- Yes --> D["`Continue`"]
+```
 
 ```java
 public String validateUserRegistration(User user) {

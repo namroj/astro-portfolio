@@ -2,10 +2,20 @@
 import ThemeSwitcher from "./ThemeSwitcher";
 import FontSwitcher from "./FontSwitcher";
 import LineNumberToggle from "./LineNumberToggle";
+import DiagramStyleSwitcher from "./DiagramStyleSwitcher";
+import { getCollection } from "astro:content";
 
 import { localeFromPath, messages, unlocalizedPath } from "../i18n";
-const m = messages[localeFromPath(Astro.url.pathname)];
+const locale = localeFromPath(Astro.url.pathname);
+const m = messages[locale];
 const currentPath = unlocalizedPath(Astro.url.pathname);
+const postSlug = currentPath.startsWith("blog/") ? currentPath.slice(5) : "";
+const currentPost = postSlug
+  ? (await getCollection("blog")).find((post) => post.data.lang === locale && post.data.slug === postSlug)
+  : undefined;
+const hasMermaidDiagrams = currentPost
+  ? currentPost.body?.includes("```mermaid") ?? false
+  : false;
 ---
 
 <aside id="preferences" class="preferences">
@@ -22,10 +32,16 @@ const currentPath = unlocalizedPath(Astro.url.pathname);
       </div>
       {
         currentPath.startsWith("blog") && (
+          <>
           <div class="group">
             <h4 class="title">{m.code}</h4>
             <LineNumberToggle client:load />
           </div>
+          {hasMermaidDiagrams && <div class="group">
+            <h4 class="title">{m.diagrams}</h4>
+            <DiagramStyleSwitcher client:load labels={{ diagramStyle: m.diagramStyle, sketch: m.sketch, classic: m.classic, diagramTheme: m.diagramTheme, matchSite: m.matchSite, darkTheme: m.darkTheme, forestTheme: m.forestTheme }} />
+          </div>}
+          </>
         )
       }
     </div>

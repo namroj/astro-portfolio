@@ -17,6 +17,7 @@ Visit `/es/` or `/en/`. Language selection uses real URLs and rendered HTML, rat
 
 - `src/content/{projects,experience,education}.json`: stable IDs and shared assets, with `{ "es": "…", "en": "…" }` for translated text. Existing Spanish content is retained and English translations came from the Next.js repository.
 - `src/content/blog/*.md`: articles with `lang`, `slug`, `draft`, `title`, `description`, `pubDate`, `author`, `image`, and `tags`. Translations share a slug and have different filenames, for example `article.es.md` and `article.en.md`.
+- Blog articles can include diagrams in fenced `mermaid` code blocks. Mermaid 11.17.2 is loaded on demand from jsDelivr only for articles that contain a diagram. The rendered diagram includes a source disclosure; if Mermaid cannot load, the original code block remains visible.
 - `src/data/{skills,tools}.json`: technology and tooling links migrated from Next.js and supplemented with the technologies in the profile README.
 - `public/`: certificates, images, fonts, and Netlify redirects.
 

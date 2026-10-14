@@ -65,6 +65,12 @@ for (const locale of locales) {
     !existsSync(resolve(root, `${locale}/blog/prueba/index.html`)),
     "Draft has a published page",
   );
+
+  const guardArticle = read(`${locale}/blog/guard-pattern/index.html`);
+  assert(
+    guardArticle.includes('data-language="mermaid"'),
+    `${locale} Guard Clauses article is missing its Mermaid source fallback`,
+  );
 }
 const sitemap = read("sitemap.xml");
 assert(

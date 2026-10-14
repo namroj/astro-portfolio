@@ -61,6 +61,21 @@ h1 {
   line-height: 1.1;
 }
 
+main.article-page > h1 {
+  max-width: 24ch;
+  font-size: clamp(2rem, 3.4vw, 3rem);
+  line-height: 1.15;
+}
+
+main.article-page .article-thumbnail {
+  display: block;
+  width: min(300px, 100%);
+  height: auto;
+  margin: 1rem 0 1.5rem;
+  border: 1px solid var(--border-color);
+  border-radius: 0.4rem;
+}
+
 h2 {
   font-size: 1.75em;
   color: var(--accent-secondary-color);

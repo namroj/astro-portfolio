@@ -83,6 +83,9 @@ function enhanceCodeBlocks() {
     // Skip if already enhanced
     if (pre.hasAttribute("data-enhanced")) return;
 
+    // Mermaid fences are rendered by the diagram enhancer and must keep their source intact.
+    if (pre.dataset.language?.toLowerCase() === "mermaid") return;
+
     const code = pre.querySelector("code");
     if (!code) return;
 

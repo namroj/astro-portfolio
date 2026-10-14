@@ -1,0 +1,42 @@
+.diagram-style-switcher {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+}
+
+.diagram-style-label {
+  color: var(--foreground-color);
+  font-family: var(--main-font), monospace;
+  font-size: 0.89em;
+}
+
+.diagram-style-options {
+  display: flex;
+  gap: 0.35em;
+}
+
+.diagram-style-btn {
+  min-height: 28px;
+  padding: 0.25em 0.65em;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  background: transparent;
+  color: var(--foreground-color);
+  cursor: pointer;
+  font-family: var(--main-font), monospace;
+  font-size: 0.82em;
+  opacity: 0.75;
+  transition: border-color 0.2s ease, color 0.2s ease, opacity 0.2s ease;
+}
+
+.diagram-style-btn:hover,
+.diagram-style-btn:focus-visible {
+  border-color: var(--accent-color);
+  opacity: 1;
+}
+
+.diagram-style-btn.active {
+  border-color: var(--accent-color);
+  color: var(--accent-color);
+  opacity: 1;
+}
