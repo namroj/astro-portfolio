@@ -1,11 +1,12 @@
 ---
+import ReadingViewToggle from "./ReadingViewToggle.astro";
 import Search from "./Search";
 import PreferencesToggleButton from "./PreferencesToggleButton.astro";
 import TableOfContentsToggleButton from "./TableOfContentsToggleButton.astro";
 import { localeFromPath, navigation, route } from "../i18n";
 const locale = localeFromPath(Astro.url.pathname);
 const links = navigation(locale);
-const { alternateUrls = {} } = Astro.props;
+const { alternateUrls = {}, isBlogPost = false } = Astro.props;
 ---
 
 <header class="site-header">
@@ -26,6 +27,7 @@ const { alternateUrls = {} } = Astro.props;
         ))
       }
     </nav>
+    {isBlogPost && <ReadingViewToggle />}
     <PreferencesToggleButton />
     <TableOfContentsToggleButton />
   </div>

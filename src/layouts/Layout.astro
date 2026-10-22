@@ -13,7 +13,7 @@ import "../styles/fonts.css";
 import "../styles/variables.css";
 import "../styles/global.css";
 
-const { title, breadCrumbs, seo, jsonLd, showSidebar = true, mainClass = "" } = Astro.props as any;
+const { title, breadCrumbs, seo, jsonLd, showSidebar = true, isBlogPost = false, mainClass = "" } = Astro.props as any;
 
 const locale = localeFromPath(Astro.url.pathname);
 const m = messages[locale];
@@ -82,7 +82,7 @@ const canonicalUrl = Astro.site ? new URL(Astro.url.pathname, Astro.site).toStri
   </head>
   <body>
     <a class="skip-link" href="#main-content">{locale === "en" ? "Skip to content" : "Ir al contenido"}</a>
-    <Header alternateUrls={alternateUrls} />
+    <Header alternateUrls={alternateUrls} isBlogPost={isBlogPost} />
     {showSidebar && <Sidebar />}
     <main id="main-content" class={mainClass} tabindex="-1">
       {title.page && <h1>{title.page}</h1>}

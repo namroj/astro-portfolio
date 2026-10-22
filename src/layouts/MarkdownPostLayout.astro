@@ -5,6 +5,7 @@ import { localeFromPath, messages, route } from "../i18n";
 const locale = localeFromPath(Astro.url.pathname);
 const m = messages[locale];
 import "../styles/code-block.css";
+import "../styles/reading-view.css";
 
 const { frontmatter } = Astro.props;
 
@@ -187,7 +188,7 @@ const jsonLd = {
   }
 </style>
 
-<Layout title={title} breadCrumbs={breadCrumbs} seo={seo} jsonLd={jsonLd} mainClass="article-page">
+<Layout isBlogPost={true} title={title} breadCrumbs={breadCrumbs} seo={seo} jsonLd={jsonLd} mainClass="article-page">
   <div class="post" transition:name={frontmatter.name}>
     <div class="tags">
       {
