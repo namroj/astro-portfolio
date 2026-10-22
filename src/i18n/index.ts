@@ -45,7 +45,7 @@ export const messages = {
     projects: "Proyectos",
     blog: "Blog",
     contact: "Contacto",
-    role: "Desarrollador Full Stack",
+    role: "Ingeniero de Software",
     intro:
       "Desarrollo experiencias web, móviles y de ecommerce desde 2014. Venezolano, establecido en Buenos Aires, Argentina.",
     aboutText:
@@ -113,7 +113,7 @@ export const messages = {
     projects: "Projects",
     blog: "Blog",
     contact: "Contact",
-    role: "Full Stack Developer",
+    role: "Software Engineer",
     intro:
       "Building web, mobile, and ecommerce experiences since 2014. Originally from Venezuela, based in Buenos Aires, Argentina.",
     aboutText:
