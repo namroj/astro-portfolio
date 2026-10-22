@@ -9,7 +9,7 @@ import { readFileSync } from "node:fs";
 
 describe("localized content migration", () => {
   it("preserves the complete portfolio in both languages", () => {
-    expect(projects).toHaveLength(9);
+    expect(projects).toHaveLength(10);
     expect(experience).toHaveLength(9);
     expect(education).toHaveLength(27);
     for (const locale of locales) {

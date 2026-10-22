@@ -30,6 +30,15 @@ export function localize<T>(value: T, locale: Locale): Localized<T> {
 export const messages = {
   es: {
     home: "Inicio",
+    homeIntro:
+      "Soy Jorman Espinoza. Desarrollo aplicaciones web, móviles y tiendas online para empresas y clientes freelance. Trabajo en frontend, backend e integración de APIs desde 2014, con base en Buenos Aires.",
+    viewWork: "Ver mis proyectos",
+    getInTouch: "Escríbeme",
+    readingTime: "min de lectura estimada",
+    sourceCode: "Ver código",
+    liveDemo: "Abrir demo",
+    websiteUnavailable: "Sitio original no disponible",
+
     about: "Sobre mí",
     education: "Educación",
     experience: "Experiencia",
@@ -89,6 +98,15 @@ export const messages = {
   },
   en: {
     home: "Home",
+    homeIntro:
+      "I’m Jorman Espinoza. I build web applications, mobile apps, and online stores for businesses and freelance clients. I’ve worked across frontend, backend, and API integration since 2014, based in Buenos Aires.",
+    viewWork: "View my work",
+    getInTouch: "Get in touch",
+    readingTime: "min estimated read",
+    sourceCode: "View source",
+    liveDemo: "Open demo",
+    websiteUnavailable: "Original website unavailable",
+
     about: "About me",
     education: "Education",
     experience: "Experience",

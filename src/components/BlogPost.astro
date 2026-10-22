@@ -1,87 +1,92 @@
 ---
-const { url, title, date } = Astro.props;
-
-const language = Astro.url.pathname.startsWith("/en/") ? "en-US" : "es-AR";
+import { localeFromPath, messages } from "../i18n";
+interface Props {
+  url: string;
+  title: string;
+  date: Date;
+  description: string;
+  image: { url: string; alt: string };
+  body?: string;
+}
+const { url, title, date, description, image, body = "" } = Astro.props;
+const locale = localeFromPath(Astro.url.pathname);
+const minutes = Math.max(
+  1,
+  Math.ceil(body.trim().split(/\s+/).filter(Boolean).length / 200),
+);
 ---
 
 <a class="blog-post-link" href={url}>
+  <img
+    src={image.url}
+    alt=""
+    width="240"
+    height="160"
+    loading="lazy"
+    decoding="async"
+  />
   <div class="post-content">
-    <h3 class="post-title">{title}</h3>
-    <span class="post-date">
-      {
-        new Date(date).toLocaleDateString(language, {
-          day: "2-digit",
-          month: "long",
-          year: "numeric",
-        })
-      }
-    </span>
+    <h3>{title}</h3>
+    <p>{description}</p>
+    <div class="post-meta">
+      <time datetime={date.toISOString()}
+        >{
+          date.toLocaleDateString(locale === "en" ? "en-US" : "es-AR", {
+            day: "numeric",
+            month: "short",
+            year: "numeric",
+          })
+        }</time
+      >
+      <span>{minutes} {messages[locale].readingTime}</span>
+    </div>
   </div>
-  <svg
-    class="arrow"
-    xmlns="http://www.w3.org/2000/svg"
-    width="20"
-    height="20"
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    stroke-width="2"
-    stroke-linecap="round"
-    stroke-linejoin="round"
-  >
-    <line x1="5" y1="12" x2="19" y2="12"></line>
-    <polyline points="12 5 19 12 12 19"></polyline>
-  </svg>
+  <span class="arrow" aria-hidden="true">→</span>
 </a>
-
-<style is:inline>
-  a.blog-post-link {
-    display: flex;
-    justify-content: space-between;
+<style>
+  .blog-post-link {
+    display: grid;
+    grid-template-columns: 9rem minmax(0, 1fr) auto;
+    gap: 1.25rem;
     align-items: center;
+    padding: 1.5rem 0;
+    border-bottom: 1px solid var(--border-color);
+  }
+  img {
     width: 100%;
-    padding: 1.25em 0;
-    border-bottom: 1px solid rgba(var(--border-color-rgb, 142, 142, 142), 0.2);
-    transition: all 0.2s ease;
-    gap: 1em;
+    aspect-ratio: 3 / 2;
+    object-fit: cover;
+    border-radius: 0.4rem;
   }
-
-  a.blog-post-link:hover {
-    padding-left: 0.5em;
-    border-bottom-color: var(--accent-color);
-  }
-
-  a.blog-post-link:hover .post-title {
-    color: var(--accent-color);
-  }
-
-  a.blog-post-link:hover .arrow {
-    transform: translateX(4px);
-    color: var(--accent-color);
-  }
-
-  .post-content {
-    flex: 1;
-    min-width: 0;
-  }
-
-  .post-title {
-    font-size: 1.1em;
-    font-weight: 600;
-    margin: 0 0 0.25em 0;
+  h3 {
+    margin: 0 0 0.5rem;
+    font-size: 1.05rem;
     color: var(--foreground-color);
-    transition: color 0.2s ease;
   }
-
-  .post-date {
-    font-size: 0.875em;
-    color: var(--accent-muted-color);
-    font-family: var(--code-font);
+  p {
+    margin: 0 0 0.75rem;
+    font: 0.95rem/1.6 var(--prose-font);
+    color: var(--foreground-color);
   }
-
-  .arrow {
-    flex-shrink: 0;
+  .post-meta {
+    display: flex;
+    gap: 0.5rem 1rem;
+    flex-wrap: wrap;
     color: var(--accent-muted-color);
-    transition: all 0.2s ease;
+    font-size: 0.75rem;
+  }
+  .arrow,
+  .blog-post-link:hover h3 {
+    color: var(--accent-color);
+  }
+  @media (max-width: 600px) {
+    .blog-post-link {
+      grid-template-columns: 5rem minmax(0, 1fr);
+      gap: 0.75rem;
+      align-items: start;
+    }
+    .arrow {
+      display: none;
+    }
   }
 </style>

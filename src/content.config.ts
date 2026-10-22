@@ -70,7 +70,12 @@ export const projects = defineCollection({
     name: z.string(),
     summary: text,
     description: text,
-    url: z.string().url(),
+    url: z.string().url().optional(),
+    repositoryUrl: z.string().url().optional(),
+    demoUrl: z.union([z.string().url(), z.string().startsWith("/")]).optional(),
+    websiteStatus: z
+      .enum(["available", "unavailable", "unverified"])
+      .default("unverified"),
     logo: z.object({
       path: z.string(),
       bg_color: z.string(),

@@ -4,6 +4,7 @@ import Layout from "../layouts/Layout.astro";
 import TimelineItem from "./TimelineItem.astro";
 import Filter from "./Filter.astro";
 import BlogPost from "./BlogPost.astro";
+import ProjectLinks from "./ProjectLinks.astro";
 import Socials from "./Socials.astro";
 import VenezuelaToArgentinaMap from "./VenezuelaToArgentinaMap";
 import skills from "../data/skills.json";
@@ -55,7 +56,9 @@ const featuredToolNames = new Set([
   "Figma",
 ]);
 const featuredTools = tools.filter((item) => featuredToolNames.has(item.name));
-const additionalTools = tools.filter((item) => !featuredToolNames.has(item.name));
+const additionalTools = tools.filter(
+  (item) => !featuredToolNames.has(item.name),
+);
 const key = page as keyof typeof m;
 const heading =
   page === ""
@@ -83,12 +86,6 @@ const tags = [
 const homeExperience =
   page === ""
     ? (await getCollection("experience"))
-        .slice(0, 3)
-        .map((item) => ({ ...item, data: localize(item.data, locale) }))
-    : [];
-const homeEducation =
-  page === ""
-    ? (await getCollection("education"))
         .slice(0, 3)
         .map((item) => ({ ...item, data: localize(item.data, locale) }))
     : [];
@@ -125,17 +122,13 @@ const jsonLd =
   {
     page === "" && (
       <>
-        <p>{m.intro}</p>
-        <p>{m.interests}</p>
-        <p>
-          <a href={route(locale, "projects")}>{m.projects} →</a> ·{" "}
-          <a href={route(locale, "experience")}>{m.experience} →</a>
-        </p>
-        <p>
-          <a class="cta" href={route(locale, "contact")}>
-            {m.contact} →
+        <p class="home-intro">{m.homeIntro}</p>
+        <div class="home-actions">
+          <a class="primary-action" href={route(locale, "projects")}>
+            {m.viewWork} →
           </a>
-        </p>
+          <a href={route(locale, "contact")}>{m.contact} →</a>
+        </div>
         <section class="home-section" id="projects">
           <h2>{m.projects}</h2>
           <ul class="item-list project-list">
@@ -157,18 +150,15 @@ const jsonLd =
                     <span class="project-card-meta">{item.data.year}</span>
                     <strong>{item.data.name}</strong>
                     <span>{item.data.summary}</span>
-                    <span class="project-card-stack">{item.data.tags.filter((tag) => !/^\d{4}$/.test(tag)).slice(0, 3).join(" · ")}</span>
+                    <span class="project-card-stack">
+                      {item.data.tags
+                        .filter((tag) => !/^\d{4}$/.test(tag))
+                        .slice(0, 3)
+                        .join(" · ")}
+                    </span>
                   </span>
                 </a>
-                <a
-                  class="project-visit"
-                  href={item.data.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={`${m.visitProject}: ${item.data.name}`}
-                >
-                  {m.visitProject} ↗
-                </a>
+                <ProjectLinks {...item.data} />
               </li>
             ))}
           </ul>
@@ -191,21 +181,6 @@ const jsonLd =
             {m.experience} →
           </a>
         </section>
-        <section class="home-section" id="education">
-          <h2>{m.education}</h2>
-          <ul class="item-list">
-            {homeEducation.map((item) => (
-              <li>
-                <strong>{item.data.title}</strong>
-                <div>{item.data.entity.name}</div>
-                <div class="item-interval">{item.data.interval}</div>
-              </li>
-            ))}
-          </ul>
-          <a class="more" href={route(locale, "education")}>
-            {m.education} →
-          </a>
-        </section>
         <section class="home-section" id="blog">
           <h2>{m.blog}</h2>
           {homePosts.map((post) => (
@@ -213,6 +188,9 @@ const jsonLd =
               url={postUrl(post)}
               title={post.data.title}
               date={post.data.pubDate}
+              description={post.data.description}
+              image={post.data.image}
+              body={post.body}
             />
           ))}
           {homePosts.length === 0 && <p>{m.emptyBlog}</p>}
@@ -220,6 +198,32 @@ const jsonLd =
             {m.blog} →
           </a>
         </section>
+        <section class="home-contact">
+          <h2>{m.contact}</h2>
+          <p>{m.contactText}</p>
+          <a class="primary-action" href="mailto:espinoza.dev@gmail.com">
+            {m.getInTouch} →
+          </a>
+        </section>
+      </>
+    )
+  }
+  {
+    page === "about" && (
+      <>
+        <>
+          <p>{m.aboutText}</p>
+          <p>{m.interests}</p>
+        </>
+        <p>
+          <a href={route(locale, "from-venezuela-to-argentina")}>
+            {m.journey} →
+          </a>
+        </p>
+        <p>
+          <a href={route(locale, "experience")}>{m.experience} →</a> ·{" "}
+          <a href={route(locale, "education")}>{m.education} →</a>
+        </p>
         <section>
           <h2>{m.skills}</h2>
           <div class="technology-groups">
@@ -229,7 +233,11 @@ const jsonLd =
                 <ul class="technology-list">
                   {group.items.map((item) => (
                     <li>
-                      <a href={item.url} target="_blank" rel="noopener noreferrer">
+                      <a
+                        href={item.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
                         {item.name}
                       </a>
                     </li>
@@ -278,25 +286,6 @@ const jsonLd =
     )
   }
   {
-    page === "about" && (
-      <>
-        <>
-          <p>{m.aboutText}</p>
-          <p>{m.interests}</p>
-        </>
-        <p>
-          <a href={route(locale, "from-venezuela-to-argentina")}>
-            {m.journey} →
-          </a>
-        </p>
-        <p>
-          <a href={route(locale, "experience")}>{m.experience} →</a> ·{" "}
-          <a href={route(locale, "education")}>{m.education} →</a>
-        </p>
-      </>
-    )
-  }
-  {
     isTimeline && (
       <section class="timeline" data-filter-list>
         <Filter tags={tags} locale={locale} />
@@ -324,6 +313,9 @@ const jsonLd =
                   url={postUrl(post)}
                   title={post.data.title}
                   date={post.data.pubDate}
+                  description={post.data.description}
+                  image={post.data.image}
+                  body={post.body}
                 />
               </div>
             ))}

@@ -1,0 +1,84 @@
+---
+import { localeFromPath, messages } from "../i18n";
+interface Props {
+  url?: string;
+  repositoryUrl?: string;
+  demoUrl?: string;
+  websiteStatus?: "available" | "unavailable" | "unverified";
+  name: string;
+}
+const {
+  url,
+  repositoryUrl,
+  demoUrl,
+  websiteStatus = "unverified",
+  name,
+} = Astro.props;
+const locale = localeFromPath(Astro.url.pathname);
+const m = messages[locale];
+const demoHref = demoUrl?.startsWith("/") ? `/${locale}${demoUrl}` : demoUrl;
+---
+
+<div class="project-links">
+  {
+    demoUrl && (
+      <a
+        href={demoHref}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label={`${m.liveDemo}: ${name}`}
+      >
+        {m.liveDemo} ↗
+      </a>
+    )
+  }
+  {
+    websiteStatus === "available" && url && url !== demoUrl && (
+      <a
+        href={url}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label={`${m.visitProject}: ${name}`}
+      >
+        {m.visitProject} ↗
+      </a>
+    )
+  }
+  {
+    repositoryUrl && (
+      <a
+        href={repositoryUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label={`${m.sourceCode}: ${name}`}
+      >
+        {m.sourceCode} ↗
+      </a>
+    )
+  }
+  {
+    websiteStatus === "unavailable" && (
+      <span class="unavailable">{m.websiteUnavailable}</span>
+    )
+  }
+</div>
+<style>
+  .project-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.25rem;
+  }
+  .unavailable {
+    align-self: center;
+    font-size: 0.85rem;
+    color: var(--accent-muted-color);
+  }
+  a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    color: var(--accent-color);
+    font-size: 0.875rem;
+    font-weight: 600;
+  }
+</style>

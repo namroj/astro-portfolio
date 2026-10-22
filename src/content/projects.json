@@ -15,15 +15,11 @@
       "path": "/images/projects/daza/logo.svg",
       "bg_color": "#e5e5e5"
     },
-    "tags": [
-      "HTML",
-      "SASS",
-      "JavaScript",
-      "Figma",
-      "2022"
-    ],
+    "tags": ["HTML", "SASS", "JavaScript", "Figma", "2022"],
     "year": 2022,
-    "visible": true
+    "visible": true,
+    "repositoryUrl": "https://github.com/namroj/daza",
+    "websiteStatus": "available"
   },
   {
     "id": "proper-daza-real-estate",
@@ -41,14 +37,11 @@
       "path": "/images/projects/daza/proper/logo.svg",
       "bg_color": "#1b4136"
     },
-    "tags": [
-      "HTML",
-      "SASS",
-      "JavaScript",
-      "Figma"
-    ],
+    "tags": ["HTML", "SASS", "JavaScript", "Figma"],
     "year": 2022,
-    "visible": true
+    "visible": true,
+    "repositoryUrl": "https://github.com/namroj/daza-proper",
+    "websiteStatus": "available"
   },
   {
     "id": "codigo-natural",
@@ -67,14 +60,9 @@
       "bg_color": "#263e37"
     },
     "year": 2022,
-    "tags": [
-      "HTML",
-      "SASS",
-      "JavaScript",
-      "Figma",
-      "2022"
-    ],
-    "visible": true
+    "tags": ["HTML", "SASS", "JavaScript", "Figma", "2022"],
+    "visible": true,
+    "websiteStatus": "available"
   },
   {
     "id": "sarapura-signatures",
@@ -93,13 +81,7 @@
       "bg_color": "#fff"
     },
     "year": 2021,
-    "tags": [
-      "HTML",
-      "CSS",
-      "JavaScript",
-      "Illustrator",
-      "2021"
-    ],
+    "tags": ["HTML", "CSS", "JavaScript", "Illustrator", "2021"],
     "visible": false
   },
   {
@@ -113,7 +95,7 @@
       "es": "El sitio web de DUB (https://dub.com.ar/) presenta a un estudio de arquitectura y urbanismo con sede en Buenos Aires, Argentina, enfocado en proyectos de sustentabilidad creativa en diseño arquitectónico y urbano. Con un enfoque holístico y multidisciplinario, DUB se dedica a desarrollar diseños innovadores y genuinamente responsables con el medio ambiente, arraigados al lugar, la geografía y el paisaje, buscando generar espacios que mejoren la calidad de vida y el confort de las personas. El sitio está desarrollado con tecnologías estándar como HTML, CSS, JavaScript y PHP, utilizando una base de datos MySQL para gestionar el contenido dinámico. El diseño visual se basa en archivos de Illustrator, asegurando una interfaz atractiva y coherente con la identidad del estudio.",
       "en": "The DUB website (https://dub.com.ar/) presents an architecture and urbanism studio based in Buenos Aires, Argentina, focused on creative sustainability projects in architectural and urban design. With a holistic and multidisciplinary approach, DUB is dedicated to developing innovative and genuinely environmentally responsible designs, rooted in place, geography, and landscape, seeking to generate spaces that improve people's quality of life and comfort. The site is developed with standard technologies such as HTML, CSS, JavaScript, and PHP, using a MySQL database to manage dynamic content. The visual design is based on Illustrator files, ensuring an attractive interface consistent with the studio's identity."
     },
-    "url": "https://dub.com.ar",
+    "url": "https://www.dub.com.ar/",
     "logo": {
       "path": "/images/projects/dub/logo.svg",
       "bg_color": "#fff"
@@ -128,7 +110,9 @@
       "Illustrator",
       "2020"
     ],
-    "visible": true
+    "visible": true,
+    "demoUrl": "/demos/dub/",
+    "websiteStatus": "available"
   },
   {
     "id": "pablo-manso",
@@ -156,7 +140,8 @@
       "Illustrator",
       "2020"
     ],
-    "visible": true
+    "visible": true,
+    "websiteStatus": "available"
   },
   {
     "id": "frigorifico-gorina",
@@ -169,20 +154,37 @@
       "es": "El sitio web de Frigorífico Gorina (https://www.friggorina.com/) presenta a la empresa como un actor destacado en la industria cárnica argentina, con una moderna planta industrial ubicada en La Plata. Desarrollado con tecnologías estándar como HTML, CSS y JavaScript, el diseño del sitio se basó en archivos de Illustrator para lograr una interfaz visualmente atractiva y funcional. El contenido resalta la historia de la empresa, sus valores, objetivos y compromiso con la calidad, además de proporcionar información detallada sobre sus productos y mercados de exportación.",
       "en": "The Frigorífico Gorina website (https://www.friggorina.com/) presents the company as a prominent player in the Argentine meat industry, with a modern industrial plant located in La Plata. Developed with standard technologies such as HTML, CSS, and JavaScript, the site's design was made using Illustrator files to achieve a visually attractive and functional interface. The content highlights the company's history, its values, objectives, and commitment to quality, in addition to providing detailed information about its products and export markets."
     },
-    "url": "https://www.friggorina.com",
+    "url": "https://www.friggorina.com/",
     "logo": {
       "path": "/images/projects/friggorina/logo.svg",
       "bg_color": "#d9001d"
     },
     "year": 2019,
-    "tags": [
-      "HTML",
-      "CSS",
-      "JavaScript",
-      "Illustrator",
-      "2019"
-    ],
-    "visible": true
+    "tags": ["HTML", "CSS", "JavaScript", "Illustrator", "2019"],
+    "visible": true,
+    "websiteStatus": "available"
+  },
+  {
+    "id": "millas",
+    "name": "Millas",
+    "summary": {
+      "es": "Landing page minimalista para Millas, con una identidad visual distintiva y un canal de contacto directo.",
+      "en": "Minimal landing page for Millas, with a distinctive visual identity and a direct contact path."
+    },
+    "description": {
+      "es": "Micrositio estático desarrollado con HTML y CSS para Millas. Presenta la marca con un diseño adaptable y dirige las consultas al equipo por correo electrónico.",
+      "en": "Static microsite built with HTML and CSS for Millas. It introduces the brand with a responsive design and directs inquiries to the team by email."
+    },
+    "logo": {
+      "path": "/images/projects/millas/logo.svg",
+      "bg_color": "#ffffff"
+    },
+    "year": 2019,
+    "tags": ["HTML", "CSS", "Responsive Design", "2019"],
+    "visible": true,
+    "repositoryUrl": "https://github.com/namroj/millasweb",
+    "demoUrl": "https://namroj.github.io/millasweb/",
+    "websiteStatus": "unverified"
   },
   {
     "id": "boca-de-toro",
@@ -210,7 +212,8 @@
       "Illustrator",
       "2019"
     ],
-    "visible": true
+    "visible": true,
+    "websiteStatus": "available"
   },
   {
     "id": "las-yungas",
@@ -229,14 +232,8 @@
       "bg_color": "#fff"
     },
     "year": 2018,
-    "tags": [
-      "HTML",
-      "CSS",
-      "JavaScript",
-      "PHP",
-      "Illustrator",
-      "2018"
-    ],
-    "visible": true
+    "tags": ["HTML", "CSS", "JavaScript", "PHP", "Illustrator", "2018"],
+    "visible": true,
+    "websiteStatus": "unavailable"
   }
 ]
