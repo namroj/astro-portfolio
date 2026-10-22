@@ -5,6 +5,7 @@ import preact from "@astrojs/preact";
 // https://astro.build/config
 export default defineConfig({
   site: process.env.SITE_URL || "https://jormanespinoza.netlify.app",
+  base: process.env.BASE_PATH || "",
   output: "static",
   trailingSlash: "always",
   redirects: {

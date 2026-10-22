@@ -38,6 +38,7 @@ See `.env.example`. Environment variables are optional:
 | Variable                   | Purpose                                                                                                          |
 | -------------------------- | ---------------------------------------------------------------------------------------------------------------- |
 | `SITE_URL`                 | Canonical origin; defaults to `https://jormanespinoza.netlify.app`. Set to the working custom domain when ready. |
+| `BASE_PATH`                | Optional path prefix for static project sites (for example, `/demo-repo` on `namroj.github.io/demo-repo/`). Leave empty for the portfolio's root deployment. |
 | `GOOGLE_MAPS_API_KEY`      | Enables the interactive Venezuela-to-Argentina map. Without it, the page offers an OpenStreetMap link.           |
 | `PUBLIC_GA_MEASUREMENT_ID` | Enables Google Analytics. The previous site used `G-SZZ5X56S6P`; leave unset to disable it.                      |
 
@@ -55,3 +56,11 @@ Netlify's project ID can be used in place of its name. Configure continuous depl
 Legacy unprefixed URLs, `/formation`, `/location`, and old `/posts/` article links redirect to the corresponding Spanish pages. Netlify serves permanent HTTP redirects from `public/_redirects`; generated static redirect pages also work on simpler static hosts.
 
 See [the migration notes](docs/migration.md) for the cutover checklist.
+
+### Project links and demos
+
+Project entries in `src/content/projects.json` can specify `repositoryUrl` for public source code and `demoUrl` for a working demo. Add a demo URL after verifying that it works for a visitor without access to your private accounts. Keep private repository URLs out of public project entries.
+
+The original `url` is shown only when `websiteStatus` is `available`. Use `unavailable` for a known broken site (the project remains visible with a localized notice), or `unverified` until it has been checked. Verify actual page content: a suspended account or application error can still return HTTP 200. These statuses are editorial snapshots, not automatic uptime monitoring.
+
+GitHub Pages can host static HTML, CSS, and JavaScript, but it cannot run PHP or a MySQL server. For MySQL projects, publish a static, read-only walkthrough with sanitized sample data to Pages, or keep the interactive application on a backend-capable host and link to it from the portfolio. Do not put database credentials in the browser bundle or GitHub repository. For a static project repository, set `BASE_PATH` to `/<repository-name>` during the build; for `namroj.github.io`, leave it empty. See [GitHub Pages documentation](https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages) for the hosting limits.

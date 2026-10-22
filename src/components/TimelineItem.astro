@@ -1,5 +1,6 @@
 ---
 import "../styles/timeline-item.css";
+import ProjectLinks from "./ProjectLinks.astro";
 import type { JobPosition } from "../types/env";
 import { messages } from "../i18n";
 
@@ -56,14 +57,19 @@ const url = type === "project" ? data.url : data.entity?.url;
           />
         )
       }
-      <a
-        href={url}
-        target="_blank"
-        rel="noopener noreferrer"
-        class="entity-name"
-      >
-        {type === "project" ? data.name : data.entity?.name}
-      </a>
+      {
+        type !== "project" && (
+          <a
+            href={url}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="entity-name"
+          >
+            {data.entity?.name}
+          </a>
+        )
+      }
+
       <span class="location">{location}</span>
     </div>
 
@@ -73,6 +79,7 @@ const url = type === "project" ? data.url : data.entity?.url;
       )
     }
     {description && <p class="description">{description}</p>}
+    {type === "project" && <ProjectLinks {...data} />}
 
     {
       type === "experience" && data.positions && (

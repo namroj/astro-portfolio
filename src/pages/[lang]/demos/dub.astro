@@ -1,0 +1,184 @@
+---
+import { locales } from "../../../i18n";
+
+export function getStaticPaths() {
+  return locales.map((locale) => ({ params: { lang: locale }, props: { locale } }));
+}
+
+const { locale } = Astro.props;
+const en = locale === "en";
+const copy = en
+  ? {
+      title: "Design & Sustainability",
+      intro: "We are a studio specializing in creative sustainability projects in architecture and urban design.",
+      approach: "With a holistic and multidisciplinary approach, our purpose is to work toward innovative and genuinely environmentally responsible design.",
+      belief: "We believe in design rooted in place, geography, and landscape: spaces that improve people's quality of life and comfort.",
+      closing: "Sustainability is at the heart of everything we do.",
+      menu: "MENU",
+      architecture: "SUSTAINABLE ARCHITECTURAL DESIGN",
+      architectureChild: "Architecture",
+      urban: "Urban development",
+      interior: "Interior design",
+      consulting: "SUSTAINABLE DESIGN CONSULTING",
+      research: "RESEARCH",
+      projects: "PROJECT INDEX",
+      blog: "BLOG",
+      bio: "BIO",
+      contact: "CONTACT",
+      original: "Visit the original site",
+      portfolio: "Back to Jorman’s portfolio",
+      sample: "Portfolio reconstruction with local sample projects. Not an official DUB site.",
+      more: "More about the studio",
+    }
+  : {
+      title: "Diseño & Sustentabilidad",
+      intro: "Somos un estudio especializado en proyectos de sustentabilidad creativa en diseño de arquitectura y urbanismo.",
+      approach: "Con un enfoque holístico y multidisciplinar, nuestro propósito es trabajar en pos de un diseño innovador y genuinamente responsable ambientalmente.",
+      belief: "Creemos en un diseño arraigado al lugar, a la geografía y al paisaje: espacios que mejoran la calidad de vida y el confort de las personas.",
+      closing: "La sustentabilidad está en el corazón de todo lo que emprendemos.",
+      menu: "MENÚ",
+      architecture: "DISEÑO ARQUITECTÓNICO SUSTENTABLE",
+      architectureChild: "Arquitectura",
+      urban: "Desarrollo urbano",
+      interior: "Diseño Interior",
+      consulting: "CONSULTORÍA EN DISEÑO SUSTENTABLE",
+      research: "INVESTIGACIÓN",
+      projects: "ÍNDICE DE PROYECTOS",
+      blog: "BLOG",
+      bio: "BIO",
+      contact: "CONTACTO",
+      original: "Visitar el sitio original",
+      portfolio: "Volver al portfolio de Jorman",
+      sample: "Reconstrucción para portfolio con proyectos de muestra locales. No es un sitio oficial de DUB.",
+      more: "Más sobre el estudio",
+    };
+---
+
+<!doctype html>
+<html lang={locale}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={copy.intro} />
+    <title>DUB | {copy.title} · Portfolio demo</title>
+    <link rel="icon" type="image/svg+xml" href="/images/projects/dub/logo.svg" />
+  </head>
+  <body>
+    <a class="skip-link" href="#intro">{en ? "Skip to content" : "Ir al contenido"}</a>
+    <main class="demo">
+      <div class="color-field">
+        <section class="hero" aria-label="DUB">
+          <div class="languages"><a href="/es/demos/dub/" aria-current={!en ? "page" : undefined}>ES</a> / <a href="/en/demos/dub/" aria-current={en ? "page" : undefined}>EN</a></div>
+          <span class="vertical-label">{copy.title}</span>
+          <img class="hero-logo" src="/images/projects/dub/logo.svg" alt="DUB" />
+        </section>
+        <section class="intro" id="intro" aria-labelledby="intro-heading">
+          <h1 id="intro-heading">{copy.title}</h1>
+          <p>{copy.intro}</p>
+          <p>{copy.approach}</p>
+          <div class="more-copy" id="more-copy"><p>{copy.belief}</p><p>{copy.closing}</p></div>
+          <button class="more-button" type="button" aria-expanded="false" aria-controls="more-copy" aria-label={copy.more}>+</button>
+        </section>
+      </div>
+
+      <aside class="menu-panel" id="menu-panel" aria-label={copy.menu}>
+        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu-nav"><span>{copy.menu}</span></button>
+        <button class="menu-close" type="button" aria-label={en ? "Close menu" : "Cerrar menú"}>×</button>
+        <nav id="menu-nav" aria-label={copy.menu}>
+          <div class="nav-group"><a href={`/${locale}/demos/dub/projects/`}>{copy.architecture}</a><a class="nav-child" href={`/${locale}/demos/dub/projects/#architecture`}>{copy.architectureChild}</a><a class="nav-child" href={`/${locale}/demos/dub/projects/#urban`}>{copy.urban}</a><a class="nav-child" href={`/${locale}/demos/dub/projects/#interior`}>{copy.interior}</a></div>
+          <a href={`/${locale}/demos/dub/projects/#consulting`}>{copy.consulting}</a>
+          <a href={`/${locale}/demos/dub/projects/#research`}>{copy.research}</a>
+          <a href={`/${locale}/demos/dub/projects/`}>{copy.projects}</a>
+          <a href="https://www.dub.com.ar/" target="_blank" rel="noopener noreferrer">{copy.blog}</a>
+          <a href="#intro">{copy.bio}</a>
+          <a href="#contact">{copy.contact}</a>
+        </nav>
+      </aside>
+
+      <footer id="contact"><a class="footer-plus" href="https://www.dub.com.ar/" target="_blank" rel="noopener noreferrer" aria-label={copy.original}>+</a><p>{copy.sample}</p><div><a href="https://www.dub.com.ar/" target="_blank" rel="noopener noreferrer">{copy.original} ↗</a><a href={`/${locale}/projects/`}>{copy.portfolio} ↗</a></div></footer>
+    </main>
+    <script>
+      const panel = document.querySelector<HTMLElement>(".menu-panel");
+      const toggle = document.querySelector<HTMLButtonElement>(".menu-toggle");
+      toggle?.addEventListener("click", () => {
+        const open = toggle.getAttribute("aria-expanded") !== "true";
+        toggle.setAttribute("aria-expanded", String(open));
+        panel?.classList.toggle("open", open);
+      });
+      document.querySelector<HTMLButtonElement>(".menu-close")?.addEventListener("click", () => {
+        toggle?.setAttribute("aria-expanded", "false");
+        panel?.classList.remove("open");
+        toggle?.focus();
+      });
+      const more = document.querySelector<HTMLButtonElement>(".more-button");
+      more?.addEventListener("click", () => {
+        const open = more.getAttribute("aria-expanded") !== "true";
+        more.setAttribute("aria-expanded", String(open));
+        document.querySelector(".more-copy")?.classList.toggle("visible", open);
+        more.textContent = open ? "−" : "+";
+      });
+    </script>
+  </body>
+</html>
+
+<style>
+  :global(*) { box-sizing: border-box; }
+  :global(html) { scroll-behavior: smooth; }
+  :global(body) { margin: 0; font-family: Arial, Helvetica, sans-serif; }
+  :global(button), :global(a) { -webkit-tap-highlight-color: transparent; }
+  :global(a:focus-visible), :global(button:focus-visible) { outline: 2px solid #fff; outline-offset: 4px; }
+  .skip-link { position: fixed; top: -5rem; left: 1rem; z-index: 30; padding: .6rem; background: #fff; color: #252525; }
+  .skip-link:focus { top: 1rem; }
+  .demo { position: relative; color: #fff; overflow: clip; }
+  .color-field { min-height: 1900px; margin-right: 80px; background: linear-gradient(180deg, #fa92ed 0%, #f4b5d9 38%, #d6c3ce 52%, #63abb3 100%); }
+  .hero { position: relative; height: 820px; }
+  .languages { position: absolute; top: 29px; left: 29px; z-index: 2; font-size: 15px; letter-spacing: .03em; }
+  .languages a { color: #fff; text-decoration: none; }
+  .languages a[aria-current] { text-decoration: underline; }
+  .vertical-label { position: absolute; left: 27px; top: 52%; writing-mode: vertical-rl; transform: rotate(180deg) translateY(50%); font-size: 16px; letter-spacing: .02em; }
+  .hero-logo { position: absolute; width: min(75vw, 1000px); height: auto; left: 50%; top: 55%; transform: translate(-50%, -50%); filter: invert(1); }
+  .intro { position: relative; max-width: 900px; min-height: 1080px; margin-left: 12%; padding: 0; font-size: clamp(1.7rem, 2.5vw, 2.3rem); line-height: 1.26; letter-spacing: .025em; }
+  .intro h1 { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+  .intro p { margin: 0 0 2.7rem; }
+  .more-copy { display: none; }
+  .more-copy.visible { display: block; }
+  .more-button { position: absolute; left: calc(50% - 35px); bottom: 150px; width: 70px; height: 70px; border: 3px solid #fff; border-radius: 50%; color: #fff; background: none; font: inherit; font-size: 2.7rem; line-height: 1; cursor: pointer; }
+  .menu-panel { position: fixed; right: 0; top: 0; width: 80px; height: 100vh; z-index: 10; background: #ff755b; box-shadow: -3px 0 8px #8d64723d; transition: width .35s ease; }
+  .menu-panel.open { width: 50vw; }
+  .menu-toggle { position: absolute; top: 0; left: 0; width: 80px; height: 100%; border: 0; background: none; color: #fff; font: inherit; font-size: 16px; cursor: pointer; }
+  .menu-toggle > span:first-child { writing-mode: vertical-rl; transform: rotate(180deg); }
+  .menu-close { display: none; position: absolute; top: 17px; right: 23px; z-index: 1; padding: 0; border: 0; color: #fff; background: none; font: inherit; font-size: 36px; line-height: 1; cursor: pointer; }
+  .menu-panel.open .menu-close { display: block; }
+  .menu-panel nav { display: none; flex-direction: column; align-items: center; justify-content: center; gap: 2.35rem; width: calc(100% - 80px); height: 100%; margin-left: 80px; text-align: center; }
+  .menu-panel.open nav { display: flex; }
+  .menu-panel nav a { display: block; max-width: 330px; color: #fff; text-decoration: none; font-size: clamp(1rem, 1.5vw, 1.4rem); font-weight: 700; line-height: 1.2; }
+  .menu-panel nav a:hover { text-decoration: underline; }
+  .nav-group { display: flex; flex-direction: column; align-items: center; gap: 1.1rem; }
+  .menu-panel nav .nav-child { font-size: clamp(.9rem, 1.4vw, 1.25rem); font-weight: 400; }
+  footer { min-height: 160px; margin-right: 80px; padding: 2.5rem 3rem; background: #63abb3; display: flex; align-items: end; justify-content: space-between; gap: 2rem; font-size: .8rem; }
+  footer p { max-width: 340px; margin: 0; }
+  .footer-plus { display: none; }
+  footer div { display: flex; flex-wrap: wrap; gap: 1.4rem; }
+  footer a { color: #fff; text-decoration: underline; text-underline-offset: .2rem; }
+  @media (max-width: 700px) {
+    .color-field { min-height: 800px; margin-right: 0; background: linear-gradient(180deg, #fa92ed, #f1b6d5 100%); }
+    .hero { height: 800px; }
+    .languages { top: 16px; left: 15px; }
+    .vertical-label { left: 14px; top: 52%; font-size: 14px; }
+    .hero-logo { width: min(78vw, 330px); top: 53%; left: 52%; }
+    .intro { display: none; }
+    .menu-panel { position: relative; display: flow-root; width: 100%; height: 850px; box-shadow: 0 -3px 8px #8d64723d; transition: none; }
+    .menu-panel.open { position: fixed; width: 100%; height: 100vh; }
+    .menu-toggle { top: 0; left: 0; width: 100%; height: 42px; font-size: 16px; }
+    .menu-toggle > span:first-child { writing-mode: initial; transform: none; }
+    .menu-close { right: 17px; top: -4px; }
+    .menu-panel nav, .menu-panel.open nav { display: flex; width: 100%; height: calc(100% - 42px); margin: 42px 0 0; gap: 2.5rem; padding: 0 2rem 5rem; }
+    .menu-panel nav a { max-width: 290px; font-size: 18px; }
+    .menu-panel nav .nav-child { font-size: 18px; }
+    .nav-group { gap: 1.1rem; }
+    footer { position: relative; min-height: 190px; margin: 0; padding: 6.3rem 1.25rem 1rem; display: block; font-size: .65rem; }
+    footer .footer-plus { position: absolute; top: 14px; left: calc(50% - 24px); display: grid; place-items: center; width: 48px; height: 48px; border: 2px solid #fff; border-radius: 50%; font-size: 2rem; font-weight: 200; line-height: 1; text-decoration: none; }
+    footer div { margin-top: 1rem; }
+  }
+  @media (prefers-reduced-motion: reduce) { :global(html) { scroll-behavior: auto; } .menu-panel { transition: none; } }
+</style>

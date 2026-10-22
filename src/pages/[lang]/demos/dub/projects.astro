@@ -1,0 +1,89 @@
+---
+import { locales } from "../../../../i18n";
+
+export function getStaticPaths() {
+  return locales.map((locale) => ({ params: { lang: locale }, props: { locale } }));
+}
+
+const { locale } = Astro.props;
+const en = locale === "en";
+const copy = en
+  ? {
+      title: "Project index",
+      back: "Back to DUB demo",
+      notice: "Illustrative local sample projects. These are not DUB client work.",
+      original: "Visit the original DUB site",
+      works: [
+        { id: "architecture", title: "Courtyard House", type: "Architecture", place: "Mendoza", year: "2024" },
+        { id: "urban", title: "Common Ground", type: "Urban development", place: "Rosario", year: "2023" },
+        { id: "interior", title: "Quiet Room", type: "Interior design", place: "Buenos Aires", year: "2023" },
+        { id: "consulting", title: "Shaded Block", type: "Sustainable design consulting", place: "La Plata", year: "2022" },
+        { id: "research", title: "Living With Water", type: "Research", place: "Delta del Paraná", year: "2022" },
+      ],
+    }
+  : {
+      title: "Índice de proyectos",
+      back: "Volver a la demo de DUB",
+      notice: "Proyectos ilustrativos de muestra con datos locales. No son trabajos de clientes de DUB.",
+      original: "Visitar el sitio original de DUB",
+      works: [
+        { id: "architecture", title: "Casa Patio", type: "Arquitectura", place: "Mendoza", year: "2024" },
+        { id: "urban", title: "Espacio Común", type: "Desarrollo urbano", place: "Rosario", year: "2023" },
+        { id: "interior", title: "Sala Serena", type: "Diseño interior", place: "Buenos Aires", year: "2023" },
+        { id: "consulting", title: "Manzana de Sombra", type: "Consultoría en diseño sustentable", place: "La Plata", year: "2022" },
+        { id: "research", title: "Habitar el Agua", type: "Investigación", place: "Delta del Paraná", year: "2022" },
+      ],
+    };
+---
+
+<!doctype html>
+<html lang={locale}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={copy.notice} />
+    <title>DUB | {copy.title} · Portfolio demo</title>
+    <link rel="icon" type="image/svg+xml" href="/images/projects/dub/logo.svg" />
+  </head>
+  <body>
+    <header><a class="brand" href={`/${locale}/demos/dub/`}><img src="/images/projects/dub/logo.svg" alt="DUB" /></a><a href={`/${locale}/demos/dub/`}>← {copy.back}</a></header>
+    <main>
+      <p class="eyebrow">DUB / {copy.title}</p>
+      <h1>{copy.title}</h1>
+      <p class="notice" role="note">✳ {copy.notice}</p>
+      <div class="grid">
+        {copy.works.map((work, index) => <article id={work.id} class={`work work-${index + 1}`}><div class="art" aria-hidden="true"><span>0{index + 1}</span><i></i></div><div class="meta"><span>{work.type}</span><span>{work.place} · {work.year}</span></div><h2>{work.title}</h2></article>)}
+      </div>
+    </main>
+    <footer><a href={`/${locale}/demos/dub/`}>← {copy.back}</a><a href="https://www.dub.com.ar/" target="_blank" rel="noopener noreferrer">{copy.original} ↗</a></footer>
+  </body>
+</html>
+
+<style>
+  :global(*) { box-sizing: border-box; }
+  :global(html) { scroll-behavior: smooth; }
+  :global(body) { margin: 0; background: #f7b2d8; color: #fff; font-family: Arial, Helvetica, sans-serif; }
+  :global(a:focus-visible) { outline: 2px solid #fff; outline-offset: 4px; }
+  header, footer { display: flex; justify-content: space-between; align-items: center; gap: 1rem; padding: 1.5rem clamp(1.25rem, 5vw, 5rem); }
+  header a, footer a { color: #fff; font-size: .82rem; text-decoration: underline; text-underline-offset: .25rem; }
+  .brand img { display: block; width: 70px; filter: invert(1); }
+  main { min-height: 100vh; padding: 5rem clamp(1.25rem, 5vw, 5rem) 8rem; background: linear-gradient(180deg, #f7b2d8, #79afb7); }
+  .eyebrow, .meta { font-size: .7rem; letter-spacing: .08em; text-transform: uppercase; }
+  h1 { margin: .6rem 0 1rem; font-size: clamp(3rem, 7vw, 7rem); font-weight: 400; letter-spacing: -.06em; }
+  .notice { max-width: 700px; margin: 0 0 3rem; line-height: 1.5; }
+  .grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 3.5rem 1.5rem; text-align: left; }
+  .work { text-align: left; }
+  .art { position: relative; aspect-ratio: 1.35; overflow: hidden; background: #94a79d; }
+  .art:before { content: ""; position: absolute; width: 100%; height: 50%; bottom: -15%; transform: rotate(-8deg); background: #6e897b; }
+  .art i { position: absolute; width: 58%; height: 55%; right: 11%; bottom: 21%; transform: skewY(-8deg); background: #eee9d8; box-shadow: -17px 16px #829a8d; }
+  .art i:before { content: ""; position: absolute; inset: 20% 12%; background: repeating-linear-gradient(90deg, #6c8d82 0 23%, #d8e0d7 23% 30%); }
+  .art span { position: absolute; z-index: 1; left: 1rem; bottom: 1rem; font-size: .7rem; }
+  .work-2 .art { background: #aab0a0; }
+  .work-3 .art { background: #c5b9a4; }
+  .work-4 .art { background: #91aba5; }
+  .work-5 .art { background: #739a9f; }
+  .meta { display: flex; justify-content: flex-start; flex-wrap: wrap; gap: .5rem 1rem; margin-top: 1rem; text-align: left; }
+  h2 { margin: .5rem 0 0; font-size: clamp(1.4rem, 2.5vw, 2.3rem); font-weight: 400; }
+  footer { background: #63abb3; }
+  @media (max-width: 650px) { main { padding-top: 4rem; } .grid { grid-template-columns: 1fr; } .meta { font-size: .62rem; } }
+</style>

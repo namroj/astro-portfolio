@@ -157,3 +157,31 @@
 .position-description {
   margin-top: 0.5rem;
 }
+
+.home-intro {
+  max-width: 65ch;
+  font-family: var(--prose-font);
+}
+.home-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem 1.5rem;
+  margin: 1.5rem 0 3rem;
+}
+.primary-action {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0.6rem 1rem;
+  border: 1px solid var(--accent-color);
+  border-radius: 0.4rem;
+  color: var(--accent-color);
+}
+.primary-action:hover {
+  background: rgba(var(--accent-color-rgb), 0.1);
+}
+.home-contact {
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border-color);
+}

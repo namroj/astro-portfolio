@@ -32,6 +32,9 @@ const { locale, tag, posts } = Astro.props;
         url={postUrl(post)}
         title={post.data.title}
         date={post.data.pubDate}
+        description={post.data.description}
+        image={post.data.image}
+        body={post.body}
       />
     ))
   }
