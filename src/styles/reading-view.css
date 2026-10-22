@@ -1,0 +1,54 @@
+/* All overrides are opt-in; the normal site layout remains unchanged. */
+html[data-reading-view="expanded"] {
+  --reading-toolbar-height: 60px;
+
+  body > .sidebar,
+  body > footer,
+  .site-header .global-search,
+  .site-header .languages,
+  .site-header .mobile-brand,
+  .site-header .mobile-menu {
+    display: none;
+  }
+
+  .site-header {
+    position: fixed;
+    inset: 0 0 auto;
+    height: var(--reading-toolbar-height);
+    padding: 8px max(16px, calc((100% - 900px) / 2));
+    border-left: 0;
+    flex-wrap: nowrap;
+  }
+  .site-header .site-controls {
+    margin-left: auto;
+    flex: none;
+    flex-wrap: nowrap;
+  }
+  .site-controls button { min-width: 44px; min-height: 44px; }
+
+  main.article-page {
+    width: 100%;
+    max-width: none;
+    min-width: 0;
+    padding: var(--reading-top-padding, calc(var(--reading-toolbar-height) + 24px)) max(16px, calc((100% - 900px) / 2)) 50vh;
+    overflow-wrap: anywhere;
+  }
+  main.article-page > h1,
+  main.article-page .post {
+    width: 100%;
+    max-width: 900px;
+    margin-inline: auto;
+  }
+  main.article-page :is(h2, h3, h4) {
+    scroll-margin-top: calc(var(--reading-toolbar-height) + 16px);
+  }
+  .post :is(pre, table, .mermaid-output) { max-width: 100%; overflow-x: auto; }
+  .post table { display: block; }
+  .post .tags { flex-wrap: wrap; }
+  .post :is(img, svg) { max-width: 100%; }
+
+  #preferences, #toc {
+    top: var(--reading-toolbar-height);
+    max-height: calc(100dvh - var(--reading-toolbar-height));
+  }
+}
