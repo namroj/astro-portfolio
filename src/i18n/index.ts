@@ -47,7 +47,7 @@ export const messages = {
     contact: "Contacto",
     role: "Ingeniero de Software",
     intro:
-      "Desarrollo experiencias web, móviles y de ecommerce desde 2014. Venezolano, establecido en Buenos Aires, Argentina.",
+      "Sigue mi recorrido desde Venezuela hasta Buenos Aires, Argentina. Los marcadores señalan los lugares de la ruta, desde el punto de partida hasta la ciudad que hoy llamo hogar.",
     aboutText:
       "Soy Jorman Espinoza, desarrollador de software venezolano. Vivo y trabajo en Argentina desde 2017. He trabajado en frontend, backend e integración de APIs, y actualmente desarrollo y lidero proyectos en Accenture. También colaboro con clientes freelance en sitios web y tiendas online.",
     interests:
@@ -115,7 +115,7 @@ export const messages = {
     contact: "Contact",
     role: "Software Engineer",
     intro:
-      "Building web, mobile, and ecommerce experiences since 2014. Originally from Venezuela, based in Buenos Aires, Argentina.",
+      "Follow my journey from Venezuela to Buenos Aires, Argentina. The markers highlight places along the route, from where it began to the city I now call home.",
     aboutText:
       "I’m Jorman Espinoza, a Venezuelan software developer. I have lived and worked in Argentina since 2017. My experience spans frontend, backend, and API integrations, and I currently develop and lead projects at Accenture. I also work with freelance clients on websites and online stores.",
     interests:
