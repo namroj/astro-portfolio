@@ -7,8 +7,17 @@ interface Props {
   description: string;
   image: { url: string; alt: string };
   body?: string;
+  draft?: boolean;
 }
-const { url, title, date, description, image, body = "" } = Astro.props;
+const {
+  url,
+  title,
+  date,
+  description,
+  image,
+  body = "",
+  draft = false,
+} = Astro.props;
 const locale = localeFromPath(Astro.url.pathname);
 const minutes = Math.max(
   1,
@@ -26,7 +35,15 @@ const minutes = Math.max(
     decoding="async"
   />
   <div class="post-content">
-    <h3>{title}</h3>
+    <h3>
+      {title}{
+        draft && (
+          <span class="draft-label">
+            {locale === "en" ? "Draft preview" : "Vista previa del borrador"}
+          </span>
+        )
+      }
+    </h3>
     <p>{description}</p>
     <div class="post-meta">
       <time datetime={date.toISOString()}
@@ -62,6 +79,12 @@ const minutes = Math.max(
     margin: 0 0 0.5rem;
     font-size: 1.05rem;
     color: var(--foreground-color);
+  }
+  .draft-label {
+    display: inline-block;
+    margin-left: 0.6rem;
+    font: 0.7rem/1.4 var(--prose-font);
+    color: var(--accent-muted-color);
   }
   p {
     margin: 0 0 0.75rem;

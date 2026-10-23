@@ -10,7 +10,7 @@ import VenezuelaToArgentinaMap from "./VenezuelaToArgentinaMap";
 import skills from "../data/skills.json";
 import tools from "../data/tools.json";
 import { messages, route, localize, type Locale } from "../i18n";
-import { publishedPosts, postUrl } from "../utils/blog";
+import { blogListingPosts, publishedPosts, postUrl } from "../utils/blog";
 import "../styles/timeline.css";
 import "../styles/sections.css";
 import "../styles/home.css";
@@ -79,7 +79,9 @@ const items = isTimeline
       .map((item) => ({ ...item, data: localize(item.data, locale) }))
   : [];
 const posts =
-  page === "blog" ? publishedPosts(await getCollection("blog"), locale) : [];
+  page === "blog"
+    ? blogListingPosts(await getCollection("blog"), locale, import.meta.env.DEV)
+    : [];
 const tags = [
   ...new Set((isTimeline ? items : posts).flatMap((item) => item.data.tags)),
 ].sort();
@@ -316,6 +318,7 @@ const jsonLd =
                   description={post.data.description}
                   image={post.data.image}
                   body={post.body}
+                  draft={post.data.draft}
                 />
               </div>
             ))}

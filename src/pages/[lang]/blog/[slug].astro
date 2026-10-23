@@ -1,9 +1,13 @@
 ---
 import { getCollection, render } from "astro:content";
 import MarkdownPostLayout from "../../../layouts/MarkdownPostLayout.astro";
-import { publishedPosts, postSlug } from "../../../utils/blog";
+import { blogListingPosts, postSlug } from "../../../utils/blog";
 export async function getStaticPaths() {
-  return publishedPosts(await getCollection("blog")).map((post) => ({
+  return blogListingPosts(
+    await getCollection("blog"),
+    undefined,
+    import.meta.env.DEV,
+  ).map((post) => ({
     params: { lang: post.data.lang, slug: postSlug(post) },
     props: { post },
   }));

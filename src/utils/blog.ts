@@ -12,6 +12,16 @@ export function publishedPosts<T extends PostInfo>(
     .filter((p) => !p.data.draft && (!locale || p.data.lang === locale))
     .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
 }
+export function blogListingPosts<T extends PostInfo>(
+  posts: T[],
+  locale: Locale | undefined,
+  includeDrafts: boolean,
+): T[] {
+  if (!includeDrafts) return publishedPosts(posts, locale);
+  return posts
+    .filter((post) => !locale || post.data.lang === locale)
+    .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
+}
 export function postSlug(post: PostInfo) {
   return post.data.slug || post.id;
 }

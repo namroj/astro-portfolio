@@ -138,6 +138,15 @@ textarea {
   line-height: 1.75;
 }
 
+.article-page .post > p a,
+.article-page .post > ul a,
+.article-page .post > ol a,
+.article-page .post > blockquote a {
+  color: var(--accent-color);
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+}
+
 /* Shared controls and progressive enhancement. */
 [hidden] { display: none !important; }
 :focus-visible { outline: 2px solid var(--accent-color); outline-offset: 4px; }
