@@ -1,10 +1,13 @@
 // @ts-check
 import { defineConfig, envField } from "astro/config";
 import preact from "@astrojs/preact";
+import { rehypeExternalLinks } from "./src/utils/rehypeExternalLinks.mjs";
+
+const siteUrl = process.env.SITE_URL || "https://jormanespinoza.netlify.app";
 
 // https://astro.build/config
 export default defineConfig({
-  site: process.env.SITE_URL || "https://jormanespinoza.netlify.app",
+  site: siteUrl,
   base: process.env.BASE_PATH || "",
   output: "static",
   trailingSlash: "always",
@@ -47,6 +50,9 @@ export default defineConfig({
     },
   },
   markdown: {
+    rehypePlugins: [
+      [rehypeExternalLinks, { siteOrigin: new URL(siteUrl).origin }],
+    ],
     shikiConfig: {
       themes: {
         light: "github-light",
