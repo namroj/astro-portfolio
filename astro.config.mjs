@@ -34,6 +34,16 @@ export default defineConfig({
         access: "public",
         optional: true,
       }),
+      GOOGLE_MAPS_LIGHT_MAP_ID: envField.string({
+        context: "client",
+        access: "public",
+        optional: true,
+      }),
+      GOOGLE_MAPS_DARK_MAP_ID: envField.string({
+        context: "client",
+        access: "public",
+        optional: true,
+      }),
     },
   },
   markdown: {

@@ -346,7 +346,10 @@ const jsonLd =
     page === "from-venezuela-to-argentina" && (
       <>
         <p>{m.intro}</p>
-        {import.meta.env.GOOGLE_MAPS_API_KEY ? (
+        {
+          import.meta.env.GOOGLE_MAPS_API_KEY &&
+          import.meta.env.GOOGLE_MAPS_LIGHT_MAP_ID &&
+          import.meta.env.GOOGLE_MAPS_DARK_MAP_ID ? (
           <VenezuelaToArgentinaMap client:only="preact" />
         ) : (
           <p>
@@ -354,7 +357,8 @@ const jsonLd =
               Caracas → Buenos Aires
             </a>
           </p>
-        )}
+          )
+        }
       </>
     )
   }
